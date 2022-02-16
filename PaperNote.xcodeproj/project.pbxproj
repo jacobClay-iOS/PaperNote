@@ -1,0 +1,733 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1631556D27BBEC2700E05CD8 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631556C27BBEC2700E05CD8 /* Tests_iOS.swift */; };
+		1631556F27BBEC2700E05CD8 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631556E27BBEC2700E05CD8 /* Tests_iOSLaunchTests.swift */; };
+		1631557927BBEC2700E05CD8 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631557827BBEC2700E05CD8 /* Tests_macOS.swift */; };
+		1631557B27BBEC2700E05CD8 /* Tests_macOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631557A27BBEC2700E05CD8 /* Tests_macOSLaunchTests.swift */; };
+		1631557C27BBEC2700E05CD8 /* PaperNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1631555127BBEC2600E05CD8 /* PaperNote.xcdatamodeld */; };
+		1631557D27BBEC2700E05CD8 /* PaperNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1631555127BBEC2600E05CD8 /* PaperNote.xcdatamodeld */; };
+		1631557E27BBEC2700E05CD8 /* PaperNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631555327BBEC2600E05CD8 /* PaperNoteApp.swift */; };
+		1631557F27BBEC2700E05CD8 /* PaperNoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631555327BBEC2600E05CD8 /* PaperNoteApp.swift */; };
+		1631558027BBEC2700E05CD8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631555427BBEC2600E05CD8 /* ContentView.swift */; };
+		1631558127BBEC2700E05CD8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631555427BBEC2600E05CD8 /* ContentView.swift */; };
+		1631558227BBEC2700E05CD8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631555527BBEC2600E05CD8 /* Persistence.swift */; };
+		1631558327BBEC2700E05CD8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631555527BBEC2600E05CD8 /* Persistence.swift */; };
+		1631558427BBEC2700E05CD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1631555627BBEC2700E05CD8 /* Assets.xcassets */; };
+		1631558527BBEC2700E05CD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1631555627BBEC2700E05CD8 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1631556927BBEC2700E05CD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1631554C27BBEC2600E05CD8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1631555A27BBEC2700E05CD8;
+			remoteInfo = "PaperNote (iOS)";
+		};
+		1631557527BBEC2700E05CD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1631554C27BBEC2600E05CD8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1631556027BBEC2700E05CD8;
+			remoteInfo = "PaperNote (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1631555227BBEC2600E05CD8 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
+		1631555327BBEC2600E05CD8 /* PaperNoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperNoteApp.swift; sourceTree = "<group>"; };
+		1631555427BBEC2600E05CD8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1631555527BBEC2600E05CD8 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		1631555627BBEC2700E05CD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1631555B27BBEC2700E05CD8 /* PaperNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaperNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1631556127BBEC2700E05CD8 /* PaperNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaperNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1631556327BBEC2700E05CD8 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		1631556827BBEC2700E05CD8 /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1631556C27BBEC2700E05CD8 /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
+		1631556E27BBEC2700E05CD8 /* Tests_iOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOSLaunchTests.swift; sourceTree = "<group>"; };
+		1631557427BBEC2700E05CD8 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1631557827BBEC2700E05CD8 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
+		1631557A27BBEC2700E05CD8 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1631555827BBEC2700E05CD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1631555E27BBEC2700E05CD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1631556527BBEC2700E05CD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1631557127BBEC2700E05CD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1631554B27BBEC2600E05CD8 = {
+			isa = PBXGroup;
+			children = (
+				1631555027BBEC2600E05CD8 /* Shared */,
+				1631556227BBEC2700E05CD8 /* macOS */,
+				1631556B27BBEC2700E05CD8 /* Tests iOS */,
+				1631557727BBEC2700E05CD8 /* Tests macOS */,
+				1631555C27BBEC2700E05CD8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1631555027BBEC2600E05CD8 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1631555327BBEC2600E05CD8 /* PaperNoteApp.swift */,
+				1631555427BBEC2600E05CD8 /* ContentView.swift */,
+				1631555527BBEC2600E05CD8 /* Persistence.swift */,
+				1631555627BBEC2700E05CD8 /* Assets.xcassets */,
+				1631555127BBEC2600E05CD8 /* PaperNote.xcdatamodeld */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		1631555C27BBEC2700E05CD8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1631555B27BBEC2700E05CD8 /* PaperNote.app */,
+				1631556127BBEC2700E05CD8 /* PaperNote.app */,
+				1631556827BBEC2700E05CD8 /* Tests iOS.xctest */,
+				1631557427BBEC2700E05CD8 /* Tests macOS.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1631556227BBEC2700E05CD8 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				1631556327BBEC2700E05CD8 /* macOS.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		1631556B27BBEC2700E05CD8 /* Tests iOS */ = {
+			isa = PBXGroup;
+			children = (
+				1631556C27BBEC2700E05CD8 /* Tests_iOS.swift */,
+				1631556E27BBEC2700E05CD8 /* Tests_iOSLaunchTests.swift */,
+			);
+			path = "Tests iOS";
+			sourceTree = "<group>";
+		};
+		1631557727BBEC2700E05CD8 /* Tests macOS */ = {
+			isa = PBXGroup;
+			children = (
+				1631557827BBEC2700E05CD8 /* Tests_macOS.swift */,
+				1631557A27BBEC2700E05CD8 /* Tests_macOSLaunchTests.swift */,
+			);
+			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1631555A27BBEC2700E05CD8 /* PaperNote (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1631558827BBEC2700E05CD8 /* Build configuration list for PBXNativeTarget "PaperNote (iOS)" */;
+			buildPhases = (
+				1631555727BBEC2700E05CD8 /* Sources */,
+				1631555827BBEC2700E05CD8 /* Frameworks */,
+				1631555927BBEC2700E05CD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PaperNote (iOS)";
+			productName = "PaperNote (iOS)";
+			productReference = 1631555B27BBEC2700E05CD8 /* PaperNote.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1631556027BBEC2700E05CD8 /* PaperNote (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1631558B27BBEC2700E05CD8 /* Build configuration list for PBXNativeTarget "PaperNote (macOS)" */;
+			buildPhases = (
+				1631555D27BBEC2700E05CD8 /* Sources */,
+				1631555E27BBEC2700E05CD8 /* Frameworks */,
+				1631555F27BBEC2700E05CD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PaperNote (macOS)";
+			productName = "PaperNote (macOS)";
+			productReference = 1631556127BBEC2700E05CD8 /* PaperNote.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1631556727BBEC2700E05CD8 /* Tests iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1631558E27BBEC2700E05CD8 /* Build configuration list for PBXNativeTarget "Tests iOS" */;
+			buildPhases = (
+				1631556427BBEC2700E05CD8 /* Sources */,
+				1631556527BBEC2700E05CD8 /* Frameworks */,
+				1631556627BBEC2700E05CD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1631556A27BBEC2700E05CD8 /* PBXTargetDependency */,
+			);
+			name = "Tests iOS";
+			productName = "Tests iOS";
+			productReference = 1631556827BBEC2700E05CD8 /* Tests iOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		1631557327BBEC2700E05CD8 /* Tests macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1631559127BBEC2700E05CD8 /* Build configuration list for PBXNativeTarget "Tests macOS" */;
+			buildPhases = (
+				1631557027BBEC2700E05CD8 /* Sources */,
+				1631557127BBEC2700E05CD8 /* Frameworks */,
+				1631557227BBEC2700E05CD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1631557627BBEC2700E05CD8 /* PBXTargetDependency */,
+			);
+			name = "Tests macOS";
+			productName = "Tests macOS";
+			productReference = 1631557427BBEC2700E05CD8 /* Tests macOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1631554C27BBEC2600E05CD8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					1631555A27BBEC2700E05CD8 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					1631556027BBEC2700E05CD8 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					1631556727BBEC2700E05CD8 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 1631555A27BBEC2700E05CD8;
+					};
+					1631557327BBEC2700E05CD8 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 1631556027BBEC2700E05CD8;
+					};
+				};
+			};
+			buildConfigurationList = 1631554F27BBEC2600E05CD8 /* Build configuration list for PBXProject "PaperNote" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1631554B27BBEC2600E05CD8;
+			productRefGroup = 1631555C27BBEC2700E05CD8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1631555A27BBEC2700E05CD8 /* PaperNote (iOS) */,
+				1631556027BBEC2700E05CD8 /* PaperNote (macOS) */,
+				1631556727BBEC2700E05CD8 /* Tests iOS */,
+				1631557327BBEC2700E05CD8 /* Tests macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1631555927BBEC2700E05CD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1631558427BBEC2700E05CD8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1631555F27BBEC2700E05CD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1631558527BBEC2700E05CD8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1631556627BBEC2700E05CD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1631557227BBEC2700E05CD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1631555727BBEC2700E05CD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1631557E27BBEC2700E05CD8 /* PaperNoteApp.swift in Sources */,
+				1631558227BBEC2700E05CD8 /* Persistence.swift in Sources */,
+				1631557C27BBEC2700E05CD8 /* PaperNote.xcdatamodeld in Sources */,
+				1631558027BBEC2700E05CD8 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1631555D27BBEC2700E05CD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1631557F27BBEC2700E05CD8 /* PaperNoteApp.swift in Sources */,
+				1631558327BBEC2700E05CD8 /* Persistence.swift in Sources */,
+				1631557D27BBEC2700E05CD8 /* PaperNote.xcdatamodeld in Sources */,
+				1631558127BBEC2700E05CD8 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1631556427BBEC2700E05CD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1631556F27BBEC2700E05CD8 /* Tests_iOSLaunchTests.swift in Sources */,
+				1631556D27BBEC2700E05CD8 /* Tests_iOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1631557027BBEC2700E05CD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1631557B27BBEC2700E05CD8 /* Tests_macOSLaunchTests.swift in Sources */,
+				1631557927BBEC2700E05CD8 /* Tests_macOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1631556A27BBEC2700E05CD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1631555A27BBEC2700E05CD8 /* PaperNote (iOS) */;
+			targetProxy = 1631556927BBEC2700E05CD8 /* PBXContainerItemProxy */;
+		};
+		1631557627BBEC2700E05CD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1631556027BBEC2700E05CD8 /* PaperNote (macOS) */;
+			targetProxy = 1631557527BBEC2700E05CD8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1631558627BBEC2700E05CD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1631558727BBEC2700E05CD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		1631558927BBEC2700E05CD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZMGX78296A;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.jacobclay.PaperNote;
+				PRODUCT_NAME = PaperNote;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1631558A27BBEC2700E05CD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZMGX78296A;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.jacobclay.PaperNote;
+				PRODUCT_NAME = PaperNote;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1631558C27BBEC2700E05CD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZMGX78296A;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.jacobclay.PaperNote;
+				PRODUCT_NAME = PaperNote;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1631558D27BBEC2700E05CD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZMGX78296A;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.jacobclay.PaperNote;
+				PRODUCT_NAME = PaperNote;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		1631558F27BBEC2700E05CD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZMGX78296A;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.jacobclay.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "PaperNote (iOS)";
+			};
+			name = Debug;
+		};
+		1631559027BBEC2700E05CD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZMGX78296A;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.jacobclay.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "PaperNote (iOS)";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1631559227BBEC2700E05CD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZMGX78296A;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.jacobclay.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "PaperNote (macOS)";
+			};
+			name = Debug;
+		};
+		1631559327BBEC2700E05CD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZMGX78296A;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.jacobclay.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "PaperNote (macOS)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1631554F27BBEC2600E05CD8 /* Build configuration list for PBXProject "PaperNote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1631558627BBEC2700E05CD8 /* Debug */,
+				1631558727BBEC2700E05CD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1631558827BBEC2700E05CD8 /* Build configuration list for PBXNativeTarget "PaperNote (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1631558927BBEC2700E05CD8 /* Debug */,
+				1631558A27BBEC2700E05CD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1631558B27BBEC2700E05CD8 /* Build configuration list for PBXNativeTarget "PaperNote (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1631558C27BBEC2700E05CD8 /* Debug */,
+				1631558D27BBEC2700E05CD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1631558E27BBEC2700E05CD8 /* Build configuration list for PBXNativeTarget "Tests iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1631558F27BBEC2700E05CD8 /* Debug */,
+				1631559027BBEC2700E05CD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1631559127BBEC2700E05CD8 /* Build configuration list for PBXNativeTarget "Tests macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1631559227BBEC2700E05CD8 /* Debug */,
+				1631559327BBEC2700E05CD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1631555127BBEC2600E05CD8 /* PaperNote.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1631555227BBEC2600E05CD8 /* Shared.xcdatamodel */,
+			);
+			currentVersion = 1631555227BBEC2600E05CD8 /* Shared.xcdatamodel */;
+			path = PaperNote.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1631554C27BBEC2600E05CD8 /* Project object */;
+}
