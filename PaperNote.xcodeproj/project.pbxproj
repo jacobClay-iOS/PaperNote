@@ -41,6 +41,14 @@
 		16FE62FD27C1C67C00034B0D /* RedHatText-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE62F227C1C67C00034B0D /* RedHatText-Italic.ttf */; };
 		16FE62FE27C1C67C00034B0D /* RedHatText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE62F327C1C67C00034B0D /* RedHatText-Regular.ttf */; };
 		16FE62FF27C1C67C00034B0D /* RedHatText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE62F327C1C67C00034B0D /* RedHatText-Regular.ttf */; };
+		16FE630527C1C8C400034B0D /* AddTaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE630427C1C8C400034B0D /* AddTaskButton.swift */; };
+		16FE630627C1C8C400034B0D /* AddTaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE630427C1C8C400034B0D /* AddTaskButton.swift */; };
+		16FE630D27C1CB0500034B0D /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE630C27C1CB0500034B0D /* TaskListView.swift */; };
+		16FE630E27C1CB0500034B0D /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE630C27C1CB0500034B0D /* TaskListView.swift */; };
+		16FE631127C1CC6D00034B0D /* TaskListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE631027C1CC6D00034B0D /* TaskListVM.swift */; };
+		16FE631227C1CC6D00034B0D /* TaskListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE631027C1CC6D00034B0D /* TaskListVM.swift */; };
+		16FE631427C1CDE700034B0D /* NeumorphicBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE631327C1CDE700034B0D /* NeumorphicBackground.swift */; };
+		16FE631527C1CDE700034B0D /* NeumorphicBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE631327C1CDE700034B0D /* NeumorphicBackground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +95,10 @@
 		16FE62F327C1C67C00034B0D /* RedHatText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatText-Regular.ttf"; sourceTree = "<group>"; };
 		16FE630027C1C6E200034B0D /* PaperNote--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "PaperNote--iOS--Info.plist"; sourceTree = "<group>"; };
 		16FE630127C1C75100034B0D /* PaperNote--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "PaperNote--macOS--Info.plist"; sourceTree = "<group>"; };
+		16FE630427C1C8C400034B0D /* AddTaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskButton.swift; sourceTree = "<group>"; };
+		16FE630C27C1CB0500034B0D /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
+		16FE631027C1CC6D00034B0D /* TaskListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListVM.swift; sourceTree = "<group>"; };
+		16FE631327C1CDE700034B0D /* NeumorphicBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,10 +150,11 @@
 			isa = PBXGroup;
 			children = (
 				1631555327BBEC2600E05CD8 /* PaperNoteApp.swift */,
-				1631555427BBEC2600E05CD8 /* ContentView.swift */,
+				16FE630727C1CA3000034B0D /* Views */,
 				1631555527BBEC2600E05CD8 /* Persistence.swift */,
 				16FE62DF27C1C2C800034B0D /* Model */,
 				1631555627BBEC2700E05CD8 /* Assets.xcassets */,
+				16FE630227C1C88800034B0D /* Styling */,
 				16FE62E927C1C61E00034B0D /* Fonts */,
 				1631555127BBEC2600E05CD8 /* PaperNote.xcdatamodeld */,
 			);
@@ -215,6 +228,65 @@
 				16FE62F327C1C67C00034B0D /* RedHatText-Regular.ttf */,
 			);
 			path = RedHat;
+			sourceTree = "<group>";
+		};
+		16FE630227C1C88800034B0D /* Styling */ = {
+			isa = PBXGroup;
+			children = (
+				16FE630327C1C89B00034B0D /* Button Styles */,
+			);
+			path = Styling;
+			sourceTree = "<group>";
+		};
+		16FE630327C1C89B00034B0D /* Button Styles */ = {
+			isa = PBXGroup;
+			children = (
+				16FE630427C1C8C400034B0D /* AddTaskButton.swift */,
+			);
+			path = "Button Styles";
+			sourceTree = "<group>";
+		};
+		16FE630727C1CA3000034B0D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				16FE630827C1CA4600034B0D /* Full Screens */,
+				16FE630A27C1CA6F00034B0D /* SubViews */,
+				16FE630B27C1CA8900034B0D /* Components */,
+				1631555427BBEC2600E05CD8 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		16FE630827C1CA4600034B0D /* Full Screens */ = {
+			isa = PBXGroup;
+			children = (
+				16FE630F27C1CC3D00034B0D /* Task List */,
+			);
+			path = "Full Screens";
+			sourceTree = "<group>";
+		};
+		16FE630A27C1CA6F00034B0D /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		16FE630B27C1CA8900034B0D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				16FE631327C1CDE700034B0D /* NeumorphicBackground.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		16FE630F27C1CC3D00034B0D /* Task List */ = {
+			isa = PBXGroup;
+			children = (
+				16FE630C27C1CB0500034B0D /* TaskListView.swift */,
+				16FE631027C1CC6D00034B0D /* TaskListVM.swift */,
+			);
+			path = "Task List";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -389,10 +461,14 @@
 			files = (
 				16FE62E427C1C3B400034B0D /* TaskList.swift in Sources */,
 				1631557E27BBEC2700E05CD8 /* PaperNoteApp.swift in Sources */,
+				16FE630527C1C8C400034B0D /* AddTaskButton.swift in Sources */,
+				16FE631427C1CDE700034B0D /* NeumorphicBackground.swift in Sources */,
 				16FE62E727C1C4C500034B0D /* TaskListCollection.swift in Sources */,
 				16FE62E127C1C2E700034B0D /* TaskItem.swift in Sources */,
 				1631558227BBEC2700E05CD8 /* Persistence.swift in Sources */,
 				1631557C27BBEC2700E05CD8 /* PaperNote.xcdatamodeld in Sources */,
+				16FE631127C1CC6D00034B0D /* TaskListVM.swift in Sources */,
+				16FE630D27C1CB0500034B0D /* TaskListView.swift in Sources */,
 				16FE62EB27C1C65A00034B0D /* FontManager.swift in Sources */,
 				1631558027BBEC2700E05CD8 /* ContentView.swift in Sources */,
 			);
@@ -404,10 +480,14 @@
 			files = (
 				16FE62E527C1C3B400034B0D /* TaskList.swift in Sources */,
 				1631557F27BBEC2700E05CD8 /* PaperNoteApp.swift in Sources */,
+				16FE630627C1C8C400034B0D /* AddTaskButton.swift in Sources */,
+				16FE631527C1CDE700034B0D /* NeumorphicBackground.swift in Sources */,
 				16FE62E827C1C4C500034B0D /* TaskListCollection.swift in Sources */,
 				16FE62E227C1C2E700034B0D /* TaskItem.swift in Sources */,
 				1631558327BBEC2700E05CD8 /* Persistence.swift in Sources */,
 				1631557D27BBEC2700E05CD8 /* PaperNote.xcdatamodeld in Sources */,
+				16FE631227C1CC6D00034B0D /* TaskListVM.swift in Sources */,
+				16FE630E27C1CB0500034B0D /* TaskListView.swift in Sources */,
 				16FE62EC27C1C65A00034B0D /* FontManager.swift in Sources */,
 				1631558127BBEC2700E05CD8 /* ContentView.swift in Sources */,
 			);
