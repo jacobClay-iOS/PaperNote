@@ -21,6 +21,26 @@
 		1631558327BBEC2700E05CD8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631555527BBEC2600E05CD8 /* Persistence.swift */; };
 		1631558427BBEC2700E05CD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1631555627BBEC2700E05CD8 /* Assets.xcassets */; };
 		1631558527BBEC2700E05CD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1631555627BBEC2700E05CD8 /* Assets.xcassets */; };
+		16FE62E127C1C2E700034B0D /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE62E027C1C2E700034B0D /* TaskItem.swift */; };
+		16FE62E227C1C2E700034B0D /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE62E027C1C2E700034B0D /* TaskItem.swift */; };
+		16FE62E427C1C3B400034B0D /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE62E327C1C3B400034B0D /* TaskList.swift */; };
+		16FE62E527C1C3B400034B0D /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE62E327C1C3B400034B0D /* TaskList.swift */; };
+		16FE62E727C1C4C500034B0D /* TaskListCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE62E627C1C4C500034B0D /* TaskListCollection.swift */; };
+		16FE62E827C1C4C500034B0D /* TaskListCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE62E627C1C4C500034B0D /* TaskListCollection.swift */; };
+		16FE62EB27C1C65A00034B0D /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE62EA27C1C65A00034B0D /* FontManager.swift */; };
+		16FE62EC27C1C65A00034B0D /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE62EA27C1C65A00034B0D /* FontManager.swift */; };
+		16FE62F427C1C67C00034B0D /* RedHatText-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE62EE27C1C67C00034B0D /* RedHatText-SemiBold.ttf */; };
+		16FE62F527C1C67C00034B0D /* RedHatText-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE62EE27C1C67C00034B0D /* RedHatText-SemiBold.ttf */; };
+		16FE62F627C1C67C00034B0D /* RedHatText-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE62EF27C1C67C00034B0D /* RedHatText-LightItalic.ttf */; };
+		16FE62F727C1C67C00034B0D /* RedHatText-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE62EF27C1C67C00034B0D /* RedHatText-LightItalic.ttf */; };
+		16FE62F827C1C67C00034B0D /* RedHatText-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE62F027C1C67C00034B0D /* RedHatText-SemiBoldItalic.ttf */; };
+		16FE62F927C1C67C00034B0D /* RedHatText-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE62F027C1C67C00034B0D /* RedHatText-SemiBoldItalic.ttf */; };
+		16FE62FA27C1C67C00034B0D /* RedHatText-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE62F127C1C67C00034B0D /* RedHatText-Light.ttf */; };
+		16FE62FB27C1C67C00034B0D /* RedHatText-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE62F127C1C67C00034B0D /* RedHatText-Light.ttf */; };
+		16FE62FC27C1C67C00034B0D /* RedHatText-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE62F227C1C67C00034B0D /* RedHatText-Italic.ttf */; };
+		16FE62FD27C1C67C00034B0D /* RedHatText-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE62F227C1C67C00034B0D /* RedHatText-Italic.ttf */; };
+		16FE62FE27C1C67C00034B0D /* RedHatText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE62F327C1C67C00034B0D /* RedHatText-Regular.ttf */; };
+		16FE62FF27C1C67C00034B0D /* RedHatText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE62F327C1C67C00034B0D /* RedHatText-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +75,18 @@
 		1631557427BBEC2700E05CD8 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1631557827BBEC2700E05CD8 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		1631557A27BBEC2700E05CD8 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		16FE62E027C1C2E700034B0D /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
+		16FE62E327C1C3B400034B0D /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
+		16FE62E627C1C4C500034B0D /* TaskListCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListCollection.swift; sourceTree = "<group>"; };
+		16FE62EA27C1C65A00034B0D /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
+		16FE62EE27C1C67C00034B0D /* RedHatText-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatText-SemiBold.ttf"; sourceTree = "<group>"; };
+		16FE62EF27C1C67C00034B0D /* RedHatText-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatText-LightItalic.ttf"; sourceTree = "<group>"; };
+		16FE62F027C1C67C00034B0D /* RedHatText-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatText-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		16FE62F127C1C67C00034B0D /* RedHatText-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatText-Light.ttf"; sourceTree = "<group>"; };
+		16FE62F227C1C67C00034B0D /* RedHatText-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatText-Italic.ttf"; sourceTree = "<group>"; };
+		16FE62F327C1C67C00034B0D /* RedHatText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatText-Regular.ttf"; sourceTree = "<group>"; };
+		16FE630027C1C6E200034B0D /* PaperNote--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "PaperNote--iOS--Info.plist"; sourceTree = "<group>"; };
+		16FE630127C1C75100034B0D /* PaperNote--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "PaperNote--macOS--Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +124,8 @@
 		1631554B27BBEC2600E05CD8 = {
 			isa = PBXGroup;
 			children = (
+				16FE630127C1C75100034B0D /* PaperNote--macOS--Info.plist */,
+				16FE630027C1C6E200034B0D /* PaperNote--iOS--Info.plist */,
 				1631555027BBEC2600E05CD8 /* Shared */,
 				1631556227BBEC2700E05CD8 /* macOS */,
 				1631556B27BBEC2700E05CD8 /* Tests iOS */,
@@ -106,7 +140,9 @@
 				1631555327BBEC2600E05CD8 /* PaperNoteApp.swift */,
 				1631555427BBEC2600E05CD8 /* ContentView.swift */,
 				1631555527BBEC2600E05CD8 /* Persistence.swift */,
+				16FE62DF27C1C2C800034B0D /* Model */,
 				1631555627BBEC2700E05CD8 /* Assets.xcassets */,
+				16FE62E927C1C61E00034B0D /* Fonts */,
 				1631555127BBEC2600E05CD8 /* PaperNote.xcdatamodeld */,
 			);
 			path = Shared;
@@ -147,6 +183,38 @@
 				1631557A27BBEC2700E05CD8 /* Tests_macOSLaunchTests.swift */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		16FE62DF27C1C2C800034B0D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				16FE62E027C1C2E700034B0D /* TaskItem.swift */,
+				16FE62E327C1C3B400034B0D /* TaskList.swift */,
+				16FE62E627C1C4C500034B0D /* TaskListCollection.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		16FE62E927C1C61E00034B0D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				16FE62ED27C1C67C00034B0D /* RedHat */,
+				16FE62EA27C1C65A00034B0D /* FontManager.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		16FE62ED27C1C67C00034B0D /* RedHat */ = {
+			isa = PBXGroup;
+			children = (
+				16FE62EE27C1C67C00034B0D /* RedHatText-SemiBold.ttf */,
+				16FE62EF27C1C67C00034B0D /* RedHatText-LightItalic.ttf */,
+				16FE62F027C1C67C00034B0D /* RedHatText-SemiBoldItalic.ttf */,
+				16FE62F127C1C67C00034B0D /* RedHatText-Light.ttf */,
+				16FE62F227C1C67C00034B0D /* RedHatText-Italic.ttf */,
+				16FE62F327C1C67C00034B0D /* RedHatText-Regular.ttf */,
+			);
+			path = RedHat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,7 +342,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16FE62F827C1C67C00034B0D /* RedHatText-SemiBoldItalic.ttf in Resources */,
+				16FE62F427C1C67C00034B0D /* RedHatText-SemiBold.ttf in Resources */,
+				16FE62F627C1C67C00034B0D /* RedHatText-LightItalic.ttf in Resources */,
+				16FE62FA27C1C67C00034B0D /* RedHatText-Light.ttf in Resources */,
+				16FE62FE27C1C67C00034B0D /* RedHatText-Regular.ttf in Resources */,
 				1631558427BBEC2700E05CD8 /* Assets.xcassets in Resources */,
+				16FE62FC27C1C67C00034B0D /* RedHatText-Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,7 +356,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16FE62F927C1C67C00034B0D /* RedHatText-SemiBoldItalic.ttf in Resources */,
+				16FE62F527C1C67C00034B0D /* RedHatText-SemiBold.ttf in Resources */,
+				16FE62F727C1C67C00034B0D /* RedHatText-LightItalic.ttf in Resources */,
+				16FE62FB27C1C67C00034B0D /* RedHatText-Light.ttf in Resources */,
+				16FE62FF27C1C67C00034B0D /* RedHatText-Regular.ttf in Resources */,
 				1631558527BBEC2700E05CD8 /* Assets.xcassets in Resources */,
+				16FE62FD27C1C67C00034B0D /* RedHatText-Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,9 +387,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16FE62E427C1C3B400034B0D /* TaskList.swift in Sources */,
 				1631557E27BBEC2700E05CD8 /* PaperNoteApp.swift in Sources */,
+				16FE62E727C1C4C500034B0D /* TaskListCollection.swift in Sources */,
+				16FE62E127C1C2E700034B0D /* TaskItem.swift in Sources */,
 				1631558227BBEC2700E05CD8 /* Persistence.swift in Sources */,
 				1631557C27BBEC2700E05CD8 /* PaperNote.xcdatamodeld in Sources */,
+				16FE62EB27C1C65A00034B0D /* FontManager.swift in Sources */,
 				1631558027BBEC2700E05CD8 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,9 +402,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16FE62E527C1C3B400034B0D /* TaskList.swift in Sources */,
 				1631557F27BBEC2700E05CD8 /* PaperNoteApp.swift in Sources */,
+				16FE62E827C1C4C500034B0D /* TaskListCollection.swift in Sources */,
+				16FE62E227C1C2E700034B0D /* TaskItem.swift in Sources */,
 				1631558327BBEC2700E05CD8 /* Persistence.swift in Sources */,
 				1631557D27BBEC2700E05CD8 /* PaperNote.xcdatamodeld in Sources */,
+				16FE62EC27C1C65A00034B0D /* FontManager.swift in Sources */,
 				1631558127BBEC2700E05CD8 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,6 +568,7 @@
 				DEVELOPMENT_TEAM = ZMGX78296A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "PaperNote--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -510,6 +599,7 @@
 				DEVELOPMENT_TEAM = ZMGX78296A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "PaperNote--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -544,6 +634,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "PaperNote--macOS--Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -572,6 +663,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "PaperNote--macOS--Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
