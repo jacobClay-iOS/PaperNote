@@ -16,10 +16,10 @@ struct TaskList: Identifiable {
     var completedTaskCount: Double = 0
     var date: Date = .now
     
-    static var sampleData: [TaskItem] =
-    [
-        TaskItem(name: "sample task 1"),
-        TaskItem(name: "sample task 2"),
-        TaskItem(name: "sample task 3")
-    ]
+//    static var sampleData: [TaskItem] =
+//    [
+//        TaskItem(name: "sample task 1"),
+//        TaskItem(name: "sample task 2"),
+//        TaskItem(name: "sample task 3")
+//    ]
 }

@@ -8,26 +8,55 @@
 import SwiftUI
 
 struct TaskListView: View {
-    
-    @State var taskList: [TaskItem] = []
-    @State var totalTasks: Double = 0
-    @State var completedTasks: Double = 0
+    @StateObject var taskListVM = TaskListVM()
     @State var isShowingAddTaskSheet = false
-    @State var listTitle = "Title"
     @Environment(\.presentationMode) var presentationMode
     
+    @FocusState private var todoFieldFocus: activeField?
+    
+    enum activeField {
+        case primaryTask
+        case notesTextEditor
+    }
+    
     var body: some View {
+    
+        
         ZStack {
             NeumorphicBackground()
             VStack{
                 header
                 progressBar
+                
+                VStack(alignment: .leading, spacing: 15) {
+                    ForEach(taskListVM.taskList) { listItem in
+                        HStack {
+                            ListItem(listItem: listItem)
+                                .padding(.horizontal, 2)
+                                .animation(.default, value: 1)
+                            Spacer()
+                        }
+                    }
+                }
+                
                 Spacer()
                 bottomButtons
             }
             .padding(.horizontal)
             
+            ZStack {
+                if isShowingAddTaskSheet {
+                    AddTaskSheet(isShowingAddTaskSheet: $isShowingAddTaskSheet, AddTaskSheetVM: AddTaskSheetVM())
+                        .padding(.top, 150)
+                        .transition(.move(edge: .bottom))
+                }
+                    
+            }
+            .zIndex(2)
+           
         }
+        .environmentObject(taskListVM)
+        .navigationBarHidden(true)
     }
     
     var header: some View {
@@ -41,7 +70,7 @@ struct TaskListView: View {
             }
             .buttonStyle(.plain)
             Spacer()
-            Text(listTitle)
+            Text(taskListVM.listTitle)
                 .customFontHeadline()
                 .foregroundColor(.primary)
                 .padding(.trailing)
@@ -55,15 +84,15 @@ struct TaskListView: View {
             ZStack(alignment: .leading) {
                 ProgressBarBackground
                 
-                if !taskList.isEmpty {
+                if !taskListVM.taskList.isEmpty {
                     RoundedRectangle(cornerRadius: 10)
                         .fill( LinearGradient(colors: [Color("AccentStart"), Color("AccentEnd")], startPoint: .topLeading, endPoint: .bottomTrailing)
                         )
                         .frame(
-                            width: 316 * ((completedTasks) / (totalTasks)) ,
+                            width: 316 * ((taskListVM.completedTasks) / (taskListVM.totalTasks)) ,
                             height: 9
                         )
-                        .padding(completedTasks == 0 ? 0 : 8)
+                        .padding(taskListVM.completedTasks == 0 ? 0 : 8)
                         .background(
                             RoundedRectangle(cornerRadius: .infinity)
                                 .fill(Color("Surface"))
@@ -77,7 +106,7 @@ struct TaskListView: View {
             HStack {
                 Spacer()
                     .frame(width: 280)
-                Text("\(completedTasks, specifier: "%.f")/\(totalTasks, specifier: "%.f")")
+                Text("\(taskListVM.completedTasks, specifier: "%.f")/\(taskListVM.totalTasks, specifier: "%.f")")
                     .customFontCaptionRegular()
                     .foregroundColor(.secondary)
             }
@@ -88,10 +117,10 @@ struct TaskListView: View {
     
     var bottomButtons: some View {
         HStack {
-            if ((completedTasks == totalTasks) && (totalTasks > 0)) {
+            if ((taskListVM.completedTasks == taskListVM.totalTasks) && (taskListVM.totalTasks > 0)) {
                 Button {
-                    //            viewModel.clearTodoList()
-                    //            viewModel.resetTodoListCounters()
+                    taskListVM.clearTaskList()
+                    taskListVM.resetTaskListCounters()
                     print("balls")
                 } label: {
                     Text("clear list")
@@ -103,6 +132,10 @@ struct TaskListView: View {
             }
             Spacer()
             Button {
+                withAnimation {
+                    isShowingAddTaskSheet.toggle()
+                }
+                
                 //                { sheetType = .newTask }
             } label: {
                 Image(systemName: "plus")
@@ -117,7 +150,11 @@ struct TaskListView: View {
     }
     
 
+    
 }
+
+
+
 var ProgressBarBackground: some View {
     RoundedRectangle(cornerRadius: 10)
         .fill(Color("Surface"))
@@ -169,9 +206,19 @@ var ProgressBarBackground: some View {
         )
 }
 
+
+
+
+
+
 struct TaskListView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskListView()
-            .preferredColorScheme(.dark)
+      
+        VStack {
+            TaskListView()
+                .environmentObject(TaskListVM())
+                .preferredColorScheme(.dark)
+        }
+        
     }
 }

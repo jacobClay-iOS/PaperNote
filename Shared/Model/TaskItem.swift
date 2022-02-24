@@ -12,5 +12,5 @@ struct TaskItem: Identifiable, Codable {
     var name: String
     var isTaskCompleted: Bool = false
     var date: Date = .now
-    var note = ""
+    var note: String
 }
