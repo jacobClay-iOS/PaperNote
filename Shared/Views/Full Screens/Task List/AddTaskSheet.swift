@@ -11,19 +11,11 @@ struct AddTaskSheet: View {
     @Binding var isShowingAddTaskSheet: Bool
     @ObservedObject var AddTaskSheetVM: AddTaskSheetVM
     @EnvironmentObject var TaskListVM: TaskListVM
-    @FocusState private var todoFieldFocus: activeField?
-    
-    enum activeField {
-        case primaryTask
-        case notesTextEditor
-    }
+    @FocusState private var taskFieldFocus
 
-    
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 30)
-                .fill(LinearGradient(colors: [Color("BackgroundTop"), Color("BackgroundBottom")], startPoint: .topLeading, endPoint: .bottomTrailing))
-                .shadow(color: Color("OuterGlare"), radius: 2, x: -2, y: -4)
+        VStack {
+            Spacer()
             VStack(spacing: 25) {
                 HStack {
                     Spacer()
@@ -34,6 +26,7 @@ struct AddTaskSheet: View {
                     Spacer()
                     Button {
                         withAnimation {
+                            taskFieldFocus = false
                             isShowingAddTaskSheet.toggle()
                         }
                         
@@ -46,7 +39,7 @@ struct AddTaskSheet: View {
                 }
                 .padding(.horizontal, 10)
                 SunkenTextField(textField: TextField("task", text: $AddTaskSheetVM.taskName))
-                    .focused($todoFieldFocus, equals: .primaryTask)
+                    .focused($taskFieldFocus)
                     .onSubmit {
                         if AddTaskSheetVM.updating {
                             updateTask()
@@ -60,14 +53,16 @@ struct AddTaskSheet: View {
                     .frame(height: 150)
                 
                 toolBar
-                Spacer()
             }
             .padding()
-        }
-        .edgesIgnoringSafeArea(.bottom)
-        .task {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                todoFieldFocus = .primaryTask
+            .background(
+                LinearGradient(colors: [Color("BackgroundTop"), Color("BackgroundBottom")], startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .shadow(color: Color("OuterGlare"), radius: 2, x: -2, y: -4)
+            )
+            .task {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    taskFieldFocus = true
+                }
             }
         }
     }
@@ -138,10 +133,10 @@ extension AddTaskSheet {
 }
 
 
-struct AddTaskSheet_Previews: PreviewProvider {
-    static var previews: some View {
-        AddTaskSheet(isShowingAddTaskSheet: .constant(true), AddTaskSheetVM: AddTaskSheetVM())
-            .environmentObject(TaskListVM())
-
-    }
-}
+//struct AddTaskSheet_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddTaskSheet(isShowingAddTaskSheet: .constant(true), AddTaskSheetVM: AddTaskSheetVM())
+//            .environmentObject(TaskListVM())
+//
+//    }
+//}

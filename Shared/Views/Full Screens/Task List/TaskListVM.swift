@@ -8,14 +8,23 @@
 import SwiftUI
 
 class TaskListVM: ObservableObject {
-    
+
     @Published var taskList: [TaskItem] = []
+    @Published var title = ""
     @Published var totalTasks: Double = 0
     @Published var completedTasks: Double = 0
-    @Published var listTitle = "Title"
+    var collectionListItem: TaskList
     
+
     
-    init() {}
+    init(_ list: TaskList) {
+        self.collectionListItem = list
+        self.taskList = list.list
+        self.title = list.name
+        self.totalTasks = list.totalTaskCount
+        self.completedTasks = list.completedTaskCount
+    }
+
     
     
     func addTaskToList(_ task: TaskItem) {

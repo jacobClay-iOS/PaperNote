@@ -8,20 +8,12 @@
 import SwiftUI
 
 struct TaskListView: View {
-    @StateObject var taskListVM = TaskListVM()
+    var taskList: TaskList
+    @ObservedObject var taskListVM: TaskListVM
     @State var isShowingAddTaskSheet = false
     @Environment(\.presentationMode) var presentationMode
     
-    @FocusState private var todoFieldFocus: activeField?
-    
-    enum activeField {
-        case primaryTask
-        case notesTextEditor
-    }
-    
     var body: some View {
-    
-        
         ZStack {
             NeumorphicBackground()
             VStack{
@@ -43,11 +35,11 @@ struct TaskListView: View {
                 bottomButtons
             }
             .padding(.horizontal)
+            .disabled(isShowingAddTaskSheet)
             
             ZStack {
                 if isShowingAddTaskSheet {
                     AddTaskSheet(isShowingAddTaskSheet: $isShowingAddTaskSheet, AddTaskSheetVM: AddTaskSheetVM())
-                        .padding(.top, 150)
                         .transition(.move(edge: .bottom))
                 }
                     
@@ -70,7 +62,7 @@ struct TaskListView: View {
             }
             .buttonStyle(.plain)
             Spacer()
-            Text(taskListVM.listTitle)
+            Text(taskList.name)
                 .customFontHeadline()
                 .foregroundColor(.primary)
                 .padding(.trailing)
@@ -121,7 +113,6 @@ struct TaskListView: View {
                 Button {
                     taskListVM.clearTaskList()
                     taskListVM.resetTaskListCounters()
-                    print("balls")
                 } label: {
                     Text("clear list")
                         .customFontHeadline()
@@ -147,13 +138,8 @@ struct TaskListView: View {
             //            .sheet(item: $sheetType) { $0 }
         }
         .padding(.horizontal)
-    }
-    
-
-    
+    }  
 }
-
-
 
 var ProgressBarBackground: some View {
     RoundedRectangle(cornerRadius: 10)
@@ -211,14 +197,14 @@ var ProgressBarBackground: some View {
 
 
 
-struct TaskListView_Previews: PreviewProvider {
-    static var previews: some View {
-      
-        VStack {
-            TaskListView()
-                .environmentObject(TaskListVM())
-                .preferredColorScheme(.dark)
-        }
-        
-    }
-}
+//struct TaskListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//      
+//        VStack {
+//            TaskListView(taskList: TaskList())
+//                .environmentObject(TaskListVM())
+//                .preferredColorScheme(.dark)
+//        }
+//        
+//    }
+//}

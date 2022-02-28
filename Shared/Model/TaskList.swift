@@ -10,8 +10,8 @@ import SwiftUI
 
 struct TaskList: Identifiable {
     var id = UUID().uuidString
-    var name: String
-    var list: [TaskItem]
+    var name = "Untitled"
+    var list: [TaskItem] = []
     var totalTaskCount: Double = 0
     var completedTaskCount: Double = 0
     var date: Date = .now

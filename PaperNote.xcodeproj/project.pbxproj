@@ -31,6 +31,16 @@
 		1631558327BBEC2700E05CD8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631555527BBEC2600E05CD8 /* Persistence.swift */; };
 		1631558427BBEC2700E05CD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1631555627BBEC2700E05CD8 /* Assets.xcassets */; };
 		1631558527BBEC2700E05CD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1631555627BBEC2700E05CD8 /* Assets.xcassets */; };
+		164E644F27CC516500EA769B /* AddListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E644E27CC516500EA769B /* AddListSheet.swift */; };
+		164E645027CC516500EA769B /* AddListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E644E27CC516500EA769B /* AddListSheet.swift */; };
+		164E645227CC517600EA769B /* AddListSheetVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E645127CC517600EA769B /* AddListSheetVM.swift */; };
+		164E645327CC517600EA769B /* AddListSheetVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164E645127CC517600EA769B /* AddListSheetVM.swift */; };
+		168811DE27C7A19100EEF2FB /* UsersTaskListCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168811DD27C7A19100EEF2FB /* UsersTaskListCollection.swift */; };
+		168811DF27C7A19100EEF2FB /* UsersTaskListCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168811DD27C7A19100EEF2FB /* UsersTaskListCollection.swift */; };
+		168811E127C7A40100EEF2FB /* ListCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168811E027C7A40100EEF2FB /* ListCard.swift */; };
+		168811E227C7A40100EEF2FB /* ListCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168811E027C7A40100EEF2FB /* ListCard.swift */; };
+		168811E427C7AE4D00EEF2FB /* UsersTaskListCollectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168811E327C7AE4D00EEF2FB /* UsersTaskListCollectionVM.swift */; };
+		168811E527C7AE4D00EEF2FB /* UsersTaskListCollectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168811E327C7AE4D00EEF2FB /* UsersTaskListCollectionVM.swift */; };
 		16FE62E127C1C2E700034B0D /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE62E027C1C2E700034B0D /* TaskItem.swift */; };
 		16FE62E227C1C2E700034B0D /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE62E027C1C2E700034B0D /* TaskItem.swift */; };
 		16FE62E427C1C3B400034B0D /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE62E327C1C3B400034B0D /* TaskList.swift */; };
@@ -98,6 +108,11 @@
 		1631557427BBEC2700E05CD8 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1631557827BBEC2700E05CD8 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		1631557A27BBEC2700E05CD8 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		164E644E27CC516500EA769B /* AddListSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListSheet.swift; sourceTree = "<group>"; };
+		164E645127CC517600EA769B /* AddListSheetVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListSheetVM.swift; sourceTree = "<group>"; };
+		168811DD27C7A19100EEF2FB /* UsersTaskListCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTaskListCollection.swift; sourceTree = "<group>"; };
+		168811E027C7A40100EEF2FB /* ListCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCard.swift; sourceTree = "<group>"; };
+		168811E327C7AE4D00EEF2FB /* UsersTaskListCollectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTaskListCollectionVM.swift; sourceTree = "<group>"; };
 		16FE62E027C1C2E700034B0D /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		16FE62E327C1C3B400034B0D /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
 		16FE62E627C1C4C500034B0D /* TaskListCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListCollection.swift; sourceTree = "<group>"; };
@@ -293,6 +308,10 @@
 		16FE630A27C1CA6F00034B0D /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				168811DD27C7A19100EEF2FB /* UsersTaskListCollection.swift */,
+				168811E327C7AE4D00EEF2FB /* UsersTaskListCollectionVM.swift */,
+				164E644E27CC516500EA769B /* AddListSheet.swift */,
+				164E645127CC517600EA769B /* AddListSheetVM.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -302,6 +321,7 @@
 			children = (
 				16FE631327C1CDE700034B0D /* NeumorphicBackground.swift */,
 				162809AE27C292AD009425CE /* ListItem.swift */,
+				168811E027C7A40100EEF2FB /* ListCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -494,13 +514,18 @@
 				16FE630527C1C8C400034B0D /* AddTaskButton.swift in Sources */,
 				162809B327C348A9009425CE /* SunkenTextEditor.swift in Sources */,
 				16FE631427C1CDE700034B0D /* NeumorphicBackground.swift in Sources */,
+				168811DE27C7A19100EEF2FB /* UsersTaskListCollection.swift in Sources */,
+				164E644F27CC516500EA769B /* AddListSheet.swift in Sources */,
 				16FE62E727C1C4C500034B0D /* TaskListCollection.swift in Sources */,
 				16FE62E127C1C2E700034B0D /* TaskItem.swift in Sources */,
 				1631558227BBEC2700E05CD8 /* Persistence.swift in Sources */,
 				1631557C27BBEC2700E05CD8 /* PaperNote.xcdatamodeld in Sources */,
 				162809B627C349C7009425CE /* SunkenTextField.swift in Sources */,
 				16FE631127C1CC6D00034B0D /* TaskListVM.swift in Sources */,
+				168811E427C7AE4D00EEF2FB /* UsersTaskListCollectionVM.swift in Sources */,
+				168811E127C7A40100EEF2FB /* ListCard.swift in Sources */,
 				16FE630D27C1CB0500034B0D /* TaskListView.swift in Sources */,
+				164E645227CC517600EA769B /* AddListSheetVM.swift in Sources */,
 				162809AF27C292AD009425CE /* ListItem.swift in Sources */,
 				16FE62EB27C1C65A00034B0D /* FontManager.swift in Sources */,
 				1631558027BBEC2700E05CD8 /* ContentView.swift in Sources */,
@@ -518,13 +543,18 @@
 				16FE630627C1C8C400034B0D /* AddTaskButton.swift in Sources */,
 				162809B427C348A9009425CE /* SunkenTextEditor.swift in Sources */,
 				16FE631527C1CDE700034B0D /* NeumorphicBackground.swift in Sources */,
+				168811DF27C7A19100EEF2FB /* UsersTaskListCollection.swift in Sources */,
+				164E645027CC516500EA769B /* AddListSheet.swift in Sources */,
 				16FE62E827C1C4C500034B0D /* TaskListCollection.swift in Sources */,
 				16FE62E227C1C2E700034B0D /* TaskItem.swift in Sources */,
 				1631558327BBEC2700E05CD8 /* Persistence.swift in Sources */,
 				1631557D27BBEC2700E05CD8 /* PaperNote.xcdatamodeld in Sources */,
 				162809B727C349C7009425CE /* SunkenTextField.swift in Sources */,
 				16FE631227C1CC6D00034B0D /* TaskListVM.swift in Sources */,
+				168811E527C7AE4D00EEF2FB /* UsersTaskListCollectionVM.swift in Sources */,
+				168811E227C7A40100EEF2FB /* ListCard.swift in Sources */,
 				16FE630E27C1CB0500034B0D /* TaskListView.swift in Sources */,
+				164E645327CC517600EA769B /* AddListSheetVM.swift in Sources */,
 				162809B027C292AD009425CE /* ListItem.swift in Sources */,
 				16FE62EC27C1C65A00034B0D /* FontManager.swift in Sources */,
 				1631558127BBEC2700E05CD8 /* ContentView.swift in Sources */,
@@ -616,6 +646,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -669,6 +700,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -690,6 +722,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
@@ -697,7 +730,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.jacobclay.PaperNote;
 				PRODUCT_NAME = PaperNote;
 				SDKROOT = iphoneos;
@@ -721,6 +754,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
@@ -728,7 +762,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.jacobclay.PaperNote;
 				PRODUCT_NAME = PaperNote;
 				SDKROOT = iphoneos;
