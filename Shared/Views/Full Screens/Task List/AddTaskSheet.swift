@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddTaskSheet: View {
-    @Binding var isShowingAddTaskSheet: Bool
+    @Binding var isShowingAddNewTaskSheet: Bool
     @ObservedObject var AddTaskSheetVM: AddTaskSheetVM
     @EnvironmentObject var TaskListVM: TaskListVM
     @FocusState private var taskFieldFocus
@@ -27,7 +27,7 @@ struct AddTaskSheet: View {
                     Button {
                         withAnimation {
                             taskFieldFocus = false
-                            isShowingAddTaskSheet.toggle()
+                            isShowingAddNewTaskSheet.toggle()
                         }
                         
                     } label: {
@@ -38,6 +38,7 @@ struct AddTaskSheet: View {
                     }
                 }
                 .padding(.horizontal, 10)
+                
                 SunkenTextField(textField: TextField("task", text: $AddTaskSheetVM.taskName))
                     .focused($taskFieldFocus)
                     .onSubmit {
@@ -48,6 +49,8 @@ struct AddTaskSheet: View {
                         }
                     }
                     .submitLabel(.done)
+                
+                
                 
                 SunkenTextEditor(textField: TextEditor(text: $AddTaskSheetVM.taskNoteName), placeHolderText: AddTaskSheetVM.taskNoteName.isEmpty ? "note" : "")
                     .frame(height: 150)
@@ -121,22 +124,22 @@ extension AddTaskSheet {
             note: AddTaskSheetVM.taskNoteName
         )
         TaskListVM.updateTask(task)
-        isShowingAddTaskSheet = false
+        isShowingAddNewTaskSheet = false
         
     }
     
     func addTask() {
         let task = TaskItem(name: AddTaskSheetVM.taskName, note: AddTaskSheetVM.taskNoteName)
         TaskListVM.addTaskToList(task)
-        isShowingAddTaskSheet = false
+        isShowingAddNewTaskSheet = false
     }
 }
 
-
+//
 //struct AddTaskSheet_Previews: PreviewProvider {
 //    static var previews: some View {
 //        AddTaskSheet(isShowingAddTaskSheet: .constant(true), AddTaskSheetVM: AddTaskSheetVM())
-//            .environmentObject(TaskListVM())
+//            .environmentObject(TaskListVM((TaskList.init(id: "1", name: "Grocery List", list: [TaskItem(name: "Melons", note: "")], totalTaskCount: 1, completedTaskCount: 0))))
 //
 //    }
 //}

@@ -172,6 +172,7 @@ struct ListItem: View {
     var taskNoteNotCompletedView: some View {
         Text(listItem.note)
             .customFontCaptionRegular()
+            .foregroundColor(.primary)
             .padding(.horizontal, 48)
         
     }

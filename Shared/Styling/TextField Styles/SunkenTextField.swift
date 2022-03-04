@@ -15,6 +15,7 @@ struct SunkenTextField: View {
             .customFontBodyRegular()
             .padding()
             .foregroundColor(.primary)
+            .multilineTextAlignment(.leading)
             .background(
                 ZStack {
                     RoundedRectangle(cornerRadius: 8)

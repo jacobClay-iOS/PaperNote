@@ -31,6 +31,7 @@ struct SunkenTextEditor: View {
             .padding(.horizontal, 13)
             .padding(.vertical, 10)
             .foregroundColor(.primary)
+            .multilineTextAlignment(.leading)
             .background(
                 ZStack {
                     RoundedRectangle(cornerRadius: 8)

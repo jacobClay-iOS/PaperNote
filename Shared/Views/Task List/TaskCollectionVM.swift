@@ -1,15 +1,16 @@
 //
-//  UsersTaskListCollectionVM.swift
+//  TaskCollectionVM.swift
 //  PaperNote
 //
-//  Created by Jacob Clay on 2/24/22.
+//  Created by Jacob Clay on 3/2/22.
 //
 
 import Foundation
 
-class UsersTaskListCollectionVM: ObservableObject {
+class TaskCollectionVM: ObservableObject {
     @Published var collectionOfLists: [TaskList] = []
-    
+    @Published var newListTitle = ""
+    @Published var isShowingListTitleField = false
     init() {
         loadSampleCollection()
     }
@@ -18,9 +19,7 @@ class UsersTaskListCollectionVM: ObservableObject {
     func addListToCollection(_ list: TaskList) {
         collectionOfLists.append(list)
     }
-    
-    
-    
+
     func loadSampleCollection() {
         collectionOfLists.append(contentsOf: sampleCollection)
     }
@@ -31,8 +30,3 @@ class UsersTaskListCollectionVM: ObservableObject {
         TaskList(name: "Task List 1", list: [TaskItem(name: "wash car", note: "twice")], totalTaskCount: 1, completedTaskCount: 0)
     ]
 }
-
-
-
-
-
