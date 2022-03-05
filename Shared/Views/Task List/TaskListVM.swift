@@ -5,28 +5,20 @@
 //  Created by Jacob Clay on 3/2/22.
 //
 
-import Foundation
+import SwiftUI
 
 class TaskListVM: ObservableObject {
     @Published var initializedTaskList = TaskList()
-//    @Published var taskList: [TaskItem] = []
-//    @Published var title = ""
-//    @Published var totalTasks: Double = 0
-//    @Published var completedTasks: Double = 0
     @Published var isListExpanded = false
     @Published var isShowingAddNewTaskSheet = false
-//    var collectionListItem: TaskList
-//
-//
-//
-//    init(_ list: TaskList) {
-//        self.collectionListItem = list
-//        self.taskList = list.list
-//        self.title = list.name
-//        self.totalTasks = list.totalTaskCount
-//        self.completedTasks = list.completedTaskCount
-//    }
 
+    var percentageCompleted: CGFloat {
+        1 - (initializedTaskList.completedTaskCount / initializedTaskList.totalTaskCount)
+    }
+    
+    var allTasksCompleted: Bool {
+        (percentageCompleted == 0) && (initializedTaskList.totalTaskCount != 0)
+    }
     
     
     func addTaskToList(_ task: TaskItem) {

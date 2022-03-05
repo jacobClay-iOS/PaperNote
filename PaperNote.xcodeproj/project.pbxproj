@@ -37,6 +37,8 @@
 		1637F3A227D0554D00CA2C3E /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637F3A027D0554D00CA2C3E /* TaskListView.swift */; };
 		164A834E27D05FA20071E0D2 /* PaperNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1631555127BBEC2600E05CD8 /* PaperNote.xcdatamodeld */; };
 		164A834F27D0600D0071E0D2 /* PaperNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1631555127BBEC2600E05CD8 /* PaperNote.xcdatamodeld */; };
+		16889D5327D26AB9000298CE /* ProtoProgressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16889D5227D26AB9000298CE /* ProtoProgressCard.swift */; };
+		16889D5427D26AB9000298CE /* ProtoProgressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16889D5227D26AB9000298CE /* ProtoProgressCard.swift */; };
 		168FC5EA27D064FA00DD7ECA /* TaskListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168FC5E927D064FA00DD7ECA /* TaskListVM.swift */; };
 		168FC5EB27D064FA00DD7ECA /* TaskListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168FC5E927D064FA00DD7ECA /* TaskListVM.swift */; };
 		16FE62E127C1C2E700034B0D /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE62E027C1C2E700034B0D /* TaskItem.swift */; };
@@ -103,6 +105,7 @@
 		1637F39A27D054AD00CA2C3E /* TaskCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCollectionView.swift; sourceTree = "<group>"; };
 		1637F39D27D054C100CA2C3E /* TaskCollectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCollectionVM.swift; sourceTree = "<group>"; };
 		1637F3A027D0554D00CA2C3E /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
+		16889D5227D26AB9000298CE /* ProtoProgressCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoProgressCard.swift; sourceTree = "<group>"; };
 		168FC5E927D064FA00DD7ECA /* TaskListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListVM.swift; sourceTree = "<group>"; };
 		16FE62E027C1C2E700034B0D /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		16FE62E327C1C3B400034B0D /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
@@ -308,6 +311,7 @@
 			children = (
 				16FE631327C1CDE700034B0D /* NeumorphicBackground.swift */,
 				162809AE27C292AD009425CE /* ListItem.swift */,
+				16889D5227D26AB9000298CE /* ProtoProgressCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -494,6 +498,7 @@
 				164A834F27D0600D0071E0D2 /* PaperNote.xcdatamodeld in Sources */,
 				1614256B27C3DA8F00C74ACD /* AddTaskSheetVM.swift in Sources */,
 				16FE62E427C1C3B400034B0D /* TaskList.swift in Sources */,
+				16889D5327D26AB9000298CE /* ProtoProgressCard.swift in Sources */,
 				1631557E27BBEC2700E05CD8 /* PaperNoteApp.swift in Sources */,
 				1614256827C3D72200C74ACD /* AddTaskSheet.swift in Sources */,
 				16FE630527C1C8C400034B0D /* AddTaskButton.swift in Sources */,
@@ -519,6 +524,7 @@
 				164A834E27D05FA20071E0D2 /* PaperNote.xcdatamodeld in Sources */,
 				1614256C27C3DA8F00C74ACD /* AddTaskSheetVM.swift in Sources */,
 				16FE62E527C1C3B400034B0D /* TaskList.swift in Sources */,
+				16889D5427D26AB9000298CE /* ProtoProgressCard.swift in Sources */,
 				1631557F27BBEC2700E05CD8 /* PaperNoteApp.swift in Sources */,
 				1614256927C3D72200C74ACD /* AddTaskSheet.swift in Sources */,
 				16FE630627C1C8C400034B0D /* AddTaskButton.swift in Sources */,

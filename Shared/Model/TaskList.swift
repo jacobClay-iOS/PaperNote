@@ -12,8 +12,8 @@ struct TaskList: Identifiable {
     var id = UUID().uuidString
     var name = "Untitled"
     var list: [TaskItem] = []
-    var totalTaskCount: Double = 0
-    var completedTaskCount: Double = 0
+    var totalTaskCount: CGFloat = 0
+    var completedTaskCount: CGFloat = 0
     var date: Date = .now
     
 //    static var sampleData: [TaskItem] =

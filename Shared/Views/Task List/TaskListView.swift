@@ -45,13 +45,25 @@ struct TaskListView: View {
                 Spacer()
             }
         }
-        .padding()
+        .padding(25)
         .frame(width: 120, height: 120)
         .background(
-            Color("Surface")
-                .clipShape(RoundedRectangle(cornerRadius: 15))
-                .shadow(color: Color("OuterShadow"), radius: 4, x: 2, y: 2)
-                .shadow(color: Color("OuterGlare"), radius: 2, x: -2, y: -2)
+            ZStack {
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(Color("Surface"))
+                    .shadow(color: Color("OuterShadow"), radius: 2, x: 4, y: 4)
+                    .shadow(color: Color("OuterGlare"), radius: 2, x: -2, y: -2)
+                RoundedRectangle(cornerRadius: 12)
+                    .strokeBorder(Color.gray, lineWidth: 4)
+                    .opacity(0.1)
+                    .padding(10)
+                RoundedRectangle(cornerRadius: 12)
+                    .trim(from: taskListVM.percentageCompleted, to: 1)
+                    .stroke(Color("AccentStart"), style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
+                    .rotationEffect(Angle(degrees: 90))
+                    .rotation3DEffect(Angle(degrees: 180), axis: (x: 1, y: 0, z: 0))
+                    .padding(12)
+            }
         )
         .fullScreenCover(isPresented: $taskListVM.isListExpanded) {
             expandedListView
@@ -148,7 +160,7 @@ struct TaskListView: View {
     
     var bottomButtons: some View {
         HStack {
-            if ((taskListVM.initializedTaskList.completedTaskCount == taskListVM.initializedTaskList.totalTaskCount) && (taskListVM.initializedTaskList.totalTaskCount > 0)) {
+            if taskListVM.allTasksCompleted {
                 Button {
                     taskListVM.clearTaskList()
                     taskListVM.resetTaskListCounters()
