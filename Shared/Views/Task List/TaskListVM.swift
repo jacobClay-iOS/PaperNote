@@ -11,6 +11,7 @@ class TaskListVM: ObservableObject {
     @Published var initializedTaskList = TaskList()
     @Published var isListExpanded = false
     @Published var isShowingAddNewTaskSheet = false
+    @Published var isVisible = false
 
     var percentageCompleted: CGFloat {
         1 - (initializedTaskList.completedTaskCount / initializedTaskList.totalTaskCount)
@@ -92,6 +93,12 @@ class TaskListVM: ObservableObject {
             guard let index = self.initializedTaskList.list.firstIndex(where: { $0.id == task.id }) else { return }
             let removedElement = self.initializedTaskList.list.remove(at: index)
             self.initializedTaskList.list.insert(removedElement, at: self.initializedTaskList.list.startIndex)
+        }
+    }
+    
+    func delayVisibility() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.isVisible = true
         }
     }
 }

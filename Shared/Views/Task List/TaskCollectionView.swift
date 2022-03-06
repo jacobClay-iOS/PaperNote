@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: remove horizontal padding on individual elements
+
 struct TaskCollectionView: View {
     @StateObject var taskCollectionVM = TaskCollectionVM()
     @FocusState private var newTaskListFieldFocus: Bool
@@ -15,7 +17,6 @@ struct TaskCollectionView: View {
         ZStack {
             NeumorphicBackground()
             VStack(spacing: 0) {
-                
                 HStack {
                     Text("Lists")
                         .customFontHeadline()
@@ -34,17 +35,17 @@ struct TaskCollectionView: View {
                                 taskCollectionVM.isShowingListTitleField.toggle()
                             }
                         } label: {
-                            addListButtonLabel
+                            Image(systemName: "plus")
+                                .font(.largeTitle)
+                                .foregroundColor(.primary)
                         } // Button
+                        .buttonStyle(AddListButtonStyle())
                     } // LazyHStack
-                    .offset(x: 18)
+                    .padding(.horizontal)
                 } // Scrollview
                 .frame(height: 150)
-
             } // VStack
-        
         } // ZStack
-        
         .overlay {
             if taskCollectionVM.isShowingListTitleField {
                 addListsheet
@@ -62,7 +63,7 @@ struct TaskCollectionView: View {
                     Text("New List")
                         .customFontHeadline()
                         .foregroundColor(.primary)
-                        .padding(.trailing)
+                        .padding(.leading)
                     Spacer()
                     Button {
                         withAnimation {
@@ -77,6 +78,8 @@ struct TaskCollectionView: View {
                     } // Button
                 } // HStack
                 SunkenTextField(textField: TextField("title", text: $taskCollectionVM.newListTitle))
+                    .customFontBodyRegular()
+                    .multilineTextAlignment(.leading)
                     .focused($newTaskListFieldFocus)
                     .onSubmit {
                         addList()
@@ -87,7 +90,7 @@ struct TaskCollectionView: View {
             .padding()
             .background(
                 Color("Surface")
-                    .shadow(color: Color("OuterShadow"), radius: 4, x: 2, y: 2)
+                    .shadow(color: Color("OuterShadow"), radius: 4, x: 4, y: 4)
                     .shadow(color: Color("OuterGlare"), radius: 2, x: -2, y: -2)
             )
         } // Vstack
@@ -97,20 +100,6 @@ struct TaskCollectionView: View {
             }
         } // Task
     } // AddListSheet
-    
-    var addListButtonLabel: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 15)
-                .fill(Color("Surface"))
-                .frame(width: 120, height: 120)
-                .shadow(color: Color("OuterShadow"), radius: 4, x: 2, y: 2)
-                .shadow(color: Color("OuterGlare"), radius: 2, x: -2, y: -2)
-            
-            Image(systemName: "plus")
-                .font(.largeTitle)
-                .foregroundColor(.primary)
-        } // ZStack
-    } // AddListButtonLabel
 } // Struct
 
 extension TaskCollectionView {

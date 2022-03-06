@@ -11,6 +11,7 @@ class TaskCollectionVM: ObservableObject {
     @Published var collectionOfLists: [TaskList] = []
     @Published var newListTitle = ""
     @Published var isShowingListTitleField = false
+    
     init() {
         loadSampleCollection()
     }

@@ -14,7 +14,6 @@ struct TaskListView: View {
     var body: some View {
         ZStack {
             cardListView
-            
         }
         .onAppear(perform: {
             taskListVM.initializedTaskList.name = list.name
@@ -29,46 +28,13 @@ struct TaskListView: View {
     var cardListView: some View {
         Button { withAnimation { taskListVM.isListExpanded.toggle() } }
         label: {
-        VStack(alignment: .leading) {
-            HStack {
-                Text(taskListVM.initializedTaskList.name)
-                    .customFontCaptionBold()
-                    .foregroundColor(.primary)
-                    .multilineTextAlignment(.leading)
-                Spacer()
-            }
-            Spacer()
-            HStack {
-                Text("\(taskListVM.initializedTaskList.completedTaskCount, specifier: "%.f")/\(taskListVM.initializedTaskList.totalTaskCount, specifier: "%.f")")
-                    .customFontCaptionRegular()
-                    .foregroundColor(.primary)
-                Spacer()
-            }
+            listButtonLabel
         }
-        .padding(25)
-        .frame(width: 120, height: 120)
-        .background(
-            ZStack {
-                RoundedRectangle(cornerRadius: 15)
-                    .fill(Color("Surface"))
-                    .shadow(color: Color("OuterShadow"), radius: 2, x: 4, y: 4)
-                    .shadow(color: Color("OuterGlare"), radius: 2, x: -2, y: -2)
-                RoundedRectangle(cornerRadius: 12)
-                    .strokeBorder(Color.gray, lineWidth: 4)
-                    .opacity(0.1)
-                    .padding(10)
-                RoundedRectangle(cornerRadius: 12)
-                    .trim(from: taskListVM.percentageCompleted, to: 1)
-                    .stroke(Color("AccentStart"), style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
-                    .rotationEffect(Angle(degrees: 90))
-                    .rotation3DEffect(Angle(degrees: 180), axis: (x: 1, y: 0, z: 0))
-                    .padding(12)
-            }
-        )
+        .buttonStyle(AddListButtonStyle())
         .fullScreenCover(isPresented: $taskListVM.isListExpanded) {
             expandedListView
         }
-        }
+        
     }
     
     var expandedListView: some View {
@@ -111,7 +77,7 @@ struct TaskListView: View {
             } label: {
                 Image(systemName: "chevron.backward")
                     .font(.headline)
-                    .foregroundColor(.primary)
+                    .foregroundColor(.secondary)
             }
             .buttonStyle(.plain)
             Spacer()
@@ -122,6 +88,39 @@ struct TaskListView: View {
             Spacer()
         }
         .padding(.vertical)
+    }
+    
+    var listButtonLabel: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 12)
+                .strokeBorder(Color.gray, lineWidth: 4)
+                .opacity(0.1)
+                .padding(10)
+            RoundedRectangle(cornerRadius: 12)
+                .trim(from: taskListVM.percentageCompleted, to: 1)
+                .stroke(Color("AccentStart"), style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
+                .rotationEffect(Angle(degrees: 90))
+                .rotation3DEffect(Angle(degrees: 180), axis: (x: 1, y: 0, z: 0))
+                .opacity(taskListVM.initializedTaskList.list.isEmpty ? 0.0 : 1)
+                .padding(12)
+            VStack(alignment: .leading) {
+                HStack {
+                    Text(taskListVM.initializedTaskList.name)
+                        .customFontCaptionBold()
+                        .foregroundColor(.primary)
+                        .multilineTextAlignment(.leading)
+                    Spacer()
+                }
+                Spacer()
+                HStack {
+                    Text(taskListVM.allTasksCompleted ? "Complete" : "\(taskListVM.initializedTaskList.completedTaskCount, specifier: "%.f")/\(taskListVM.initializedTaskList.totalTaskCount, specifier: "%.f")")
+                        .customFontCaptionRegular()
+                        .foregroundColor(.primary)
+                    Spacer()
+                }
+            }
+            .padding(25)
+        }
     }
     
     var taskProgressBar: some View {
@@ -174,7 +173,10 @@ struct TaskListView: View {
             }
             Spacer()
             Button {
-                withAnimation { taskListVM.isShowingAddNewTaskSheet.toggle() }
+                withAnimation {
+                    taskListVM.isShowingAddNewTaskSheet.toggle()
+                    
+                }
             } label: {
                 Image(systemName: "plus")
                     .font(.largeTitle)

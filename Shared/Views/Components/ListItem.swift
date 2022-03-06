@@ -94,8 +94,8 @@ struct ListItem: View {
             }
         label: {
             Text(listItem.name)
-                .customFontBodyRegularStrikethrough()
-            
+                .customFontBodyRegular()
+                .foregroundColor(.secondary)
         }
         .buttonStyle(.plain)
             

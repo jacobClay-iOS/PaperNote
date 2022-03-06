@@ -33,7 +33,7 @@ struct AddTaskSheet: View {
                     } label: {
                         Image(systemName: "xmark")
                             .font(.headline)
-                            .foregroundColor(.primary)
+                            .foregroundColor(.secondary)
                             .buttonStyle(.plain)
                     }
                 }
