@@ -53,8 +53,17 @@ struct TaskCollectionView: View {
             }
         } // Overlay
     } // body
-        
-    var addListsheet: some View {
+} // Struct
+
+extension TaskCollectionView {
+    
+    private func addList() {
+        let list = TaskList(name: taskCollectionVM.newListTitle)
+        taskCollectionVM.addListToCollection(list)
+        taskCollectionVM.isShowingListTitleField = false
+    }
+    
+    private var addListsheet: some View {
         VStack {
             Spacer()
             VStack(spacing: 15) {
@@ -74,11 +83,12 @@ struct TaskCollectionView: View {
                     } label: {
                         Image(systemName: "xmark")
                             .font(.headline)
-                            .foregroundColor(.primary)
+                            .foregroundColor(.secondary)
                     } // Button
                 } // HStack
                 SunkenTextField(textField: TextField("title", text: $taskCollectionVM.newListTitle))
                     .customFontBodyRegular()
+                    .foregroundColor(.primary)
                     .multilineTextAlignment(.leading)
                     .focused($newTaskListFieldFocus)
                     .onSubmit {
@@ -99,14 +109,6 @@ struct TaskCollectionView: View {
                 newTaskListFieldFocus = true
             }
         } // Task
-    } // AddListSheet
-} // Struct
-
-extension TaskCollectionView {
-    private func addList() {
-        let list = TaskList(name: taskCollectionVM.newListTitle)
-        taskCollectionVM.addListToCollection(list)
-        taskCollectionVM.isShowingListTitleField = false
     }
 }
 

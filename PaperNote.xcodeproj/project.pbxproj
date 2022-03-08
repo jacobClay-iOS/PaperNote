@@ -59,8 +59,8 @@
 		16FE62FD27C1C67C00034B0D /* RedHatText-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE62F227C1C67C00034B0D /* RedHatText-Italic.ttf */; };
 		16FE62FE27C1C67C00034B0D /* RedHatText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE62F327C1C67C00034B0D /* RedHatText-Regular.ttf */; };
 		16FE62FF27C1C67C00034B0D /* RedHatText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16FE62F327C1C67C00034B0D /* RedHatText-Regular.ttf */; };
-		16FE630527C1C8C400034B0D /* AddTaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE630427C1C8C400034B0D /* AddTaskButton.swift */; };
-		16FE630627C1C8C400034B0D /* AddTaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE630427C1C8C400034B0D /* AddTaskButton.swift */; };
+		16FE630527C1C8C400034B0D /* AddTaskButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE630427C1C8C400034B0D /* AddTaskButtonStyle.swift */; };
+		16FE630627C1C8C400034B0D /* AddTaskButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE630427C1C8C400034B0D /* AddTaskButtonStyle.swift */; };
 		16FE631427C1CDE700034B0D /* NeumorphicBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE631327C1CDE700034B0D /* NeumorphicBackground.swift */; };
 		16FE631527C1CDE700034B0D /* NeumorphicBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE631327C1CDE700034B0D /* NeumorphicBackground.swift */; };
 /* End PBXBuildFile section */
@@ -118,7 +118,7 @@
 		16FE62F327C1C67C00034B0D /* RedHatText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatText-Regular.ttf"; sourceTree = "<group>"; };
 		16FE630027C1C6E200034B0D /* PaperNote--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "PaperNote--iOS--Info.plist"; sourceTree = "<group>"; };
 		16FE630127C1C75100034B0D /* PaperNote--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "PaperNote--macOS--Info.plist"; sourceTree = "<group>"; };
-		16FE630427C1C8C400034B0D /* AddTaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskButton.swift; sourceTree = "<group>"; };
+		16FE630427C1C8C400034B0D /* AddTaskButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskButtonStyle.swift; sourceTree = "<group>"; };
 		16FE631327C1CDE700034B0D /* NeumorphicBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -282,7 +282,7 @@
 		16FE630327C1C89B00034B0D /* Button Styles */ = {
 			isa = PBXGroup;
 			children = (
-				16FE630427C1C8C400034B0D /* AddTaskButton.swift */,
+				16FE630427C1C8C400034B0D /* AddTaskButtonStyle.swift */,
 				16CEA9D927D448D4005F8CEA /* AddListButtonStyle.swift */,
 			);
 			path = "Button Styles";
@@ -501,7 +501,7 @@
 				16FE62E427C1C3B400034B0D /* TaskList.swift in Sources */,
 				1631557E27BBEC2700E05CD8 /* PaperNoteApp.swift in Sources */,
 				1614256827C3D72200C74ACD /* AddTaskSheet.swift in Sources */,
-				16FE630527C1C8C400034B0D /* AddTaskButton.swift in Sources */,
+				16FE630527C1C8C400034B0D /* AddTaskButtonStyle.swift in Sources */,
 				162809B327C348A9009425CE /* SunkenTextEditor.swift in Sources */,
 				16FE631427C1CDE700034B0D /* NeumorphicBackground.swift in Sources */,
 				16FE62E127C1C2E700034B0D /* TaskItem.swift in Sources */,
@@ -527,7 +527,7 @@
 				16FE62E527C1C3B400034B0D /* TaskList.swift in Sources */,
 				1631557F27BBEC2700E05CD8 /* PaperNoteApp.swift in Sources */,
 				1614256927C3D72200C74ACD /* AddTaskSheet.swift in Sources */,
-				16FE630627C1C8C400034B0D /* AddTaskButton.swift in Sources */,
+				16FE630627C1C8C400034B0D /* AddTaskButtonStyle.swift in Sources */,
 				162809B427C348A9009425CE /* SunkenTextEditor.swift in Sources */,
 				16FE631527C1CDE700034B0D /* NeumorphicBackground.swift in Sources */,
 				16FE62E227C1C2E700034B0D /* TaskItem.swift in Sources */,

@@ -12,6 +12,7 @@ struct ListItem: View {
     @EnvironmentObject var taskListVM: TaskListVM
     //    @State private var sheetType: SheetType? = nil
     @State var isShowingNote = false
+    @State var isShowingActionSheet = false
     
     var body: some View {
         if listItem.isTaskCompleted {
@@ -42,14 +43,12 @@ struct ListItem: View {
                 withAnimation {
                     taskListVM.completeTask(listItem)
                     taskListVM.moveTaskEndOfArray(listItem)
-                    
                 }
             } label: { primaryTaskNotCompletedButtonLabel }
             .buttonStyle(.plain)
             
             Button {
-                //                sheetType = .updateTask(listItem)
-                
+                isShowingActionSheet.toggle()
             }
         label: {
             Text(listItem.name)
@@ -57,19 +56,34 @@ struct ListItem: View {
                 .foregroundColor(.primary)
         }
         .buttonStyle(.plain)
-            
+        .confirmationDialog("Task options", isPresented: $isShowingActionSheet, actions: {
+            Button("Complete") {
+                withAnimation {
+                    taskListVM.completeTask(listItem)
+                    taskListVM.moveTaskEndOfArray(listItem)
+                }
+            }
+            Button("Edit") {
+                
+            }
+            Button("Delete", role: .destructive) {
+                withAnimation {
+                    taskListVM.deleteTask(listItem)
+                }
+            }
+        }, message: {
+            Text(listItem.name)
+        })
             
             if !listItem.note.isEmpty {
                 Button {
                     withAnimation {
                         isShowingNote.toggle()
                     }
-                    
                 } label: {
                     Image(systemName: isShowingNote ? "chevron.up" : "chevron.down")
                         .font(.body)
                         .foregroundColor(.secondary)
-                    
                 }
                 .buttonStyle(.plain)
             }
@@ -87,10 +101,8 @@ struct ListItem: View {
             .offset(x: 1, y: 0)
             .buttonStyle(.plain)
             
-            
             Button {
-                //                sheetType = .updateTask(listItem)
-                
+                isShowingActionSheet.toggle()
             }
         label: {
             Text(listItem.name)
@@ -98,19 +110,34 @@ struct ListItem: View {
                 .foregroundColor(.secondary)
         }
         .buttonStyle(.plain)
-            
+        .confirmationDialog("Task options", isPresented: $isShowingActionSheet, actions: {
+            Button("Unmark") {
+                withAnimation {
+                    taskListVM.unCompleteTask(listItem)
+                    taskListVM.moveTaskStartOfArray(listItem)
+                }
+            }
+            Button("Edit") {
+                
+            }
+            Button("Delete", role: .destructive) {
+                withAnimation {
+                    taskListVM.deleteTask(listItem)
+                }
+            }
+        }, message: {
+            Text(listItem.name)
+        })
             
             if !listItem.note.isEmpty {
                 Button {
                     withAnimation {
                         isShowingNote.toggle()
                     }
-                    
                 } label: {
                     Image(systemName: isShowingNote ? "chevron.up" : "chevron.down")
                         .font(.body)
                         .foregroundColor(.secondary)
-                    
                 }
                 .buttonStyle(.plain)
             }

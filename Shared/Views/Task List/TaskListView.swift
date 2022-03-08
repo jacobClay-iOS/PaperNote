@@ -14,30 +14,31 @@ struct TaskListView: View {
     var body: some View {
         ZStack {
             cardListView
-        }
+                .fullScreenCover(isPresented: $taskListVM.isListExpanded) {
+                    expandedListView
+                }
+        } // ZStack
         .onAppear(perform: {
             taskListVM.initializedTaskList.name = list.name
             taskListVM.initializedTaskList.list = list.list
             taskListVM.initializedTaskList.totalTaskCount = list.totalTaskCount
             taskListVM.initializedTaskList.completedTaskCount = list.completedTaskCount
-        })
+        }) // OnAppear
         .environmentObject(taskListVM)
-        
-    }
-        
-    var cardListView: some View {
+    } // Body
+} // Struct
+
+extension TaskListView {
+    
+    private var cardListView: some View {
         Button { withAnimation { taskListVM.isListExpanded.toggle() } }
         label: {
             listButtonLabel
         }
         .buttonStyle(AddListButtonStyle())
-        .fullScreenCover(isPresented: $taskListVM.isListExpanded) {
-            expandedListView
-        }
-        
     }
     
-    var expandedListView: some View {
+    private var expandedListView: some View {
         ZStack {
             NeumorphicBackground()
             VStack{
@@ -70,7 +71,8 @@ struct TaskListView: View {
         }
     }
     
-    var listHeader: some View {
+    
+    private var listHeader: some View {
         HStack {
             Button {
                 withAnimation { taskListVM.isListExpanded.toggle() }
@@ -90,7 +92,7 @@ struct TaskListView: View {
         .padding(.vertical)
     }
     
-    var listButtonLabel: some View {
+    private var listButtonLabel: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
                 .strokeBorder(Color.gray, lineWidth: 4)
@@ -115,7 +117,7 @@ struct TaskListView: View {
                 HStack {
                     Text(taskListVM.allTasksCompleted ? "Complete" : "\(taskListVM.initializedTaskList.completedTaskCount, specifier: "%.f")/\(taskListVM.initializedTaskList.totalTaskCount, specifier: "%.f")")
                         .customFontCaptionRegular()
-                        .foregroundColor(.primary)
+                        .foregroundColor(.secondary)
                     Spacer()
                 }
             }
@@ -123,7 +125,7 @@ struct TaskListView: View {
         }
     }
     
-    var taskProgressBar: some View {
+    private var taskProgressBar: some View {
         VStack {
             ZStack(alignment: .leading) {
                 ProgressBarSunkenBackground()
@@ -157,7 +159,7 @@ struct TaskListView: View {
         .frame(height: 50)
     }
     
-    var bottomButtons: some View {
+    private var bottomButtons: some View {
         HStack {
             if taskListVM.allTasksCompleted {
                 Button {
@@ -187,9 +189,7 @@ struct TaskListView: View {
         }
         .padding(.horizontal)
     }
-    
-} // struct
-
+}
 
 struct ProgressBarSunkenBackground: View {
     var body: some View {
@@ -247,7 +247,7 @@ struct ProgressBarSunkenBackground: View {
 struct TaskListView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            TaskListView(list: TaskList(name: "Grocery List", list: [TaskItem(name: "Bananas", note: "All of them")], totalTaskCount: 1, completedTaskCount: 0))
+            TaskListView(list: TaskList(name: "Grocery List", list: [TaskItem(name: "Bananas", isTaskCompleted: true, note: "All of them")], totalTaskCount: 1, completedTaskCount: 1))
         }
     }
 }

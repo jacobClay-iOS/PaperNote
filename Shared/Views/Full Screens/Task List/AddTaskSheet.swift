@@ -12,6 +12,7 @@ struct AddTaskSheet: View {
     @ObservedObject var AddTaskSheetVM: AddTaskSheetVM
     @EnvironmentObject var TaskListVM: TaskListVM
     @FocusState private var taskFieldFocus
+    
 
     var body: some View {
         VStack {
@@ -55,7 +56,7 @@ struct AddTaskSheet: View {
                 SunkenTextEditor(textField: TextEditor(text: $AddTaskSheetVM.taskNoteName), placeHolderText: AddTaskSheetVM.taskNoteName.isEmpty ? "note" : "")
                     .frame(height: 150)
                 
-                toolBar
+                taskSheetToolBar
             }
             .padding()
             .background(
@@ -70,7 +71,7 @@ struct AddTaskSheet: View {
         }
     }
     
-    var toolBar: some View {
+    var taskSheetToolBar: some View {
         HStack(spacing: 15) {
             Image(systemName: "repeat")
                 .font(.title2)
