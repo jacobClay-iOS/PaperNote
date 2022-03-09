@@ -12,7 +12,12 @@ class TaskListVM: ObservableObject {
     @Published var isListExpanded = false
     @Published var isShowingAddNewTaskSheet = false
     @Published var isShowingEditTaskSheet = false
-    @Published var isVisible = false
+    
+    @Published var taskID = ""
+    @Published var taskName = ""
+    @Published var taskNoteName = ""
+    @Published var isTaskCompleted = false
+    
 
     var percentageCompleted: CGFloat {
         1 - (initializedTaskList.completedTaskCount / initializedTaskList.totalTaskCount)
@@ -22,6 +27,9 @@ class TaskListVM: ObservableObject {
         (percentageCompleted == 0) && (initializedTaskList.totalTaskCount != 0)
     }
     
+//    var selectedTask: TaskItem {
+//        
+//    }
     
     func addTaskToList(_ task: TaskItem) {
         if initializedTaskList.list.isEmpty {
@@ -67,6 +75,20 @@ class TaskListVM: ObservableObject {
     func resetTaskListCounters() {
         initializedTaskList.totalTaskCount = 0.0
         initializedTaskList.completedTaskCount = 0.0
+    }
+    
+    func grabAndApplyTaskProperties(_ task: TaskItem) {
+        taskID = task.id
+        taskName = task.name
+        taskNoteName = task.note
+        isTaskCompleted = task.isTaskCompleted
+    }
+    
+    func resetAddTaskSheetProperties() {
+        taskID = ""
+        taskName = ""
+        taskNoteName = ""
+        isTaskCompleted = false
     }
     
     func completeTask(_ task: TaskItem) {

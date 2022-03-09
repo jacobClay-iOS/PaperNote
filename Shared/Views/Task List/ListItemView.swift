@@ -1,5 +1,5 @@
 //
-//  ListItem.swift
+//  ListItemView.swift
 //  PaperNote
 //
 //  Created by Jacob Clay on 2/20/22.
@@ -7,12 +7,11 @@
 
 import SwiftUI
 
-struct ListItem: View {
+struct ListItemView: View {
     var listItem: TaskItem
     @EnvironmentObject var taskListVM: TaskListVM
-    //    @State private var sheetType: SheetType? = nil
-    @State var isShowingNote = false
-    @State var isShowingActionSheet = false
+    @State private var isShowingNote = false
+    @State private var isShowingActionSheet = false
     
     var body: some View {
         if listItem.isTaskCompleted {
@@ -23,7 +22,6 @@ struct ListItem: View {
                     taskNoteCompletedView
                 }
             }
-            //            .sheet(item: $sheetType) { $0 }
         } else {
             VStack(alignment: .leading) {
                 primaryTaskListItemNotCompletedView
@@ -32,10 +30,11 @@ struct ListItem: View {
                     taskNoteNotCompletedView
                 }
             }
-            //            .sheet(item: $sheetType) { $0 }
         }
     }
-    
+}
+
+extension ListItemView {
     
     var primaryTaskListItemNotCompletedView: some View {
         HStack(spacing: 20) {
@@ -64,7 +63,10 @@ struct ListItem: View {
                 }
             }
             Button("Edit") {
-                
+                withAnimation {
+                    taskListVM.grabAndApplyTaskProperties(listItem)
+                    taskListVM.isShowingEditTaskSheet.toggle()
+                }
             }
             Button("Delete", role: .destructive) {
                 withAnimation {
@@ -118,7 +120,10 @@ struct ListItem: View {
                 }
             }
             Button("Edit") {
-                
+                withAnimation {
+                    taskListVM.grabAndApplyTaskProperties(listItem)
+                    taskListVM.isShowingEditTaskSheet.toggle()
+                }
             }
             Button("Delete", role: .destructive) {
                 withAnimation {

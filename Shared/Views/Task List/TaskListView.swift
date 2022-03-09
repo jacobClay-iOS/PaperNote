@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TaskListView: View {
     @StateObject var taskListVM = TaskListVM()
+    @FocusState private var addTaskFieldFocus: Bool
     var list: TaskList
     
     var body: some View {
@@ -48,7 +49,7 @@ extension TaskListView {
                 VStack(alignment: .leading, spacing: 15) {
                     ForEach(taskListVM.initializedTaskList.list) { listItem in
                         HStack {
-                            ListItem(listItem: listItem)
+                            ListItemView(listItem: listItem)
                                 .padding(.horizontal, 2)
                                 .animation(.default, value: 1)
                             Spacer()
@@ -59,17 +60,26 @@ extension TaskListView {
                 bottomButtons
             }
             .padding(.horizontal)
-            .disabled(taskListVM.isShowingAddNewTaskSheet)
+            .disabled(taskListVM.isShowingAddNewTaskSheet || taskListVM.isShowingEditTaskSheet)
             
             ZStack {
                 if taskListVM.isShowingAddNewTaskSheet {
-                    AddTaskSheet(isShowingAddNewTaskSheet: $taskListVM.isShowingAddNewTaskSheet, AddTaskSheetVM: AddTaskSheetVM())
+                    AddTaskSheetView(isShowingAddNewTaskSheet: $taskListVM.isShowingAddNewTaskSheet, isShowingEditTaskSheet: $taskListVM.isShowingEditTaskSheet)
                         .transition(.move(edge: .bottom))
                 }
             }
-            .zIndex(3)
+            .zIndex(2)
+            
+            ZStack {
+                if taskListVM.isShowingEditTaskSheet {
+                    AddTaskSheetView(isShowingAddNewTaskSheet: $taskListVM.isShowingAddNewTaskSheet, isShowingEditTaskSheet: $taskListVM.isShowingEditTaskSheet)
+                        .transition(.move(edge: .bottom))
+                }
+            }
+            .zIndex(2)
         }
     }
+    
     
     
     private var listHeader: some View {
@@ -177,7 +187,6 @@ extension TaskListView {
             Button {
                 withAnimation {
                     taskListVM.isShowingAddNewTaskSheet.toggle()
-                    
                 }
             } label: {
                 Image(systemName: "plus")
@@ -189,6 +198,7 @@ extension TaskListView {
         }
         .padding(.horizontal)
     }
+    
 }
 
 struct ProgressBarSunkenBackground: View {
