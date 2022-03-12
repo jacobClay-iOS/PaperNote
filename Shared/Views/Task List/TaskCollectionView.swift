@@ -73,6 +73,7 @@ extension TaskCollectionView {
                         .customFontHeadline()
                         .foregroundColor(.primary)
                         .padding(.leading)
+                        .padding(.leading, 4)
                     Spacer()
                     Button {
                         withAnimation {
@@ -85,6 +86,7 @@ extension TaskCollectionView {
                             .font(.headline)
                             .foregroundColor(.secondary)
                     } // Button
+                    .buttonStyle(.plain)
                 } // HStack
                 SunkenTextField(textField: TextField("title", text: $taskCollectionVM.newListTitle))
                     .customFontBodyRegular()

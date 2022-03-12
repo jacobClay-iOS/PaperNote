@@ -17,7 +17,7 @@ struct PaperNoteApp: App {
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
             NavigationView {
                 TaskCollectionView()
-                    .preferredColorScheme(.dark)
+//                    .preferredColorScheme(.dark)
             }
         }
     }

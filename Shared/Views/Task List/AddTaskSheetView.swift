@@ -75,6 +75,7 @@ extension AddTaskSheetView {
                 .customFontHeadline()
                 .foregroundColor(.primary)
                 .padding(.leading)
+                .padding(.leading, 4)
             Spacer()
             Button {
                 withAnimation {
@@ -88,8 +89,9 @@ extension AddTaskSheetView {
                 Image(systemName: "xmark")
                     .font(.headline)
                     .foregroundColor(.secondary)
-                    .buttonStyle(.plain)
+                    
             }
+            .buttonStyle(.plain)
         }
     }
     
@@ -105,8 +107,10 @@ extension AddTaskSheetView {
                             addTask()
                         }
                     } else {
-                        taskListVM.isShowingEditTaskSheet = false
-                        taskListVM.isShowingAddNewTaskSheet = false
+                        withAnimation {
+                            taskListVM.isShowingEditTaskSheet = false
+                            taskListVM.isShowingAddNewTaskSheet = false
+                        }
                     }
                 }
                 .submitLabel(.done)

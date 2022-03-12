@@ -27,7 +27,7 @@ class TaskCollectionVM: ObservableObject {
     
     let sampleCollection: [TaskList] =
     [
-        TaskList(name: "Grocery List 1", list: [TaskItem(name: "eggs", note: "2 dozen")], totalTaskCount: 1, completedTaskCount: 0),
-        TaskList(name: "Task List 1", list: [TaskItem(name: "wash car", note: "twice")], totalTaskCount: 1, completedTaskCount: 0)
+        TaskList(name: "Grocery List", list: [TaskItem(name: "eggs", note: "2 dozen")], totalTaskCount: 1, completedTaskCount: 0),
+        TaskList(name: "Task List", list: [TaskItem(name: "wash car", note: "twice")], totalTaskCount: 1, completedTaskCount: 0)
     ]
 }
