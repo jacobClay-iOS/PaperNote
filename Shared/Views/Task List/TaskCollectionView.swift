@@ -25,13 +25,14 @@ struct TaskCollectionView: View {
                 } // HStack
                 .padding(.horizontal)
                 ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack(spacing: 20) {
+                    HStack(spacing: 20) {
                         ForEach(taskCollectionVM.collectionOfLists) { collectionListItem in
                             TaskListView(list: collectionListItem)
                           
                         } // ForEach
                         Button {
                             withAnimation {
+                                taskCollectionVM.newListTitle = ""
                                 taskCollectionVM.isShowingListTitleField.toggle()
                             }
                         } label: {
@@ -40,8 +41,8 @@ struct TaskCollectionView: View {
                                 .foregroundColor(.primary)
                         } // Button
                         .buttonStyle(AddListButtonStyle())
-                    } // LazyHStack
-                    .padding(.horizontal)
+                    } // HStack
+                    .padding()
                 } // Scrollview
                 .frame(height: 150)
             } // VStack
@@ -79,7 +80,6 @@ extension TaskCollectionView {
                         withAnimation {
                             newTaskListFieldFocus = false
                             taskCollectionVM.isShowingListTitleField.toggle()
-                            taskCollectionVM.newListTitle = ""
                         }
                     } label: {
                         Image(systemName: "xmark")
@@ -95,7 +95,6 @@ extension TaskCollectionView {
                     .focused($newTaskListFieldFocus)
                     .onSubmit {
                         addList()
-                        taskCollectionVM.newListTitle = ""
                     } // TextField
                     .submitLabel(.done)
             } // VStack
@@ -106,6 +105,7 @@ extension TaskCollectionView {
                     .shadow(color: Color("OuterGlare"), radius: 2, x: -2, y: -2)
             )
         } // Vstack
+        .ignoresSafeArea(.container, edges: .horizontal)
         .task {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 newTaskListFieldFocus = true

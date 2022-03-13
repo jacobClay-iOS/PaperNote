@@ -35,6 +35,7 @@ struct AddTaskSheetView: View {
                 .shadow(color: Color("OuterGlare"), radius: 2, x: -2, y: -4)
             )
         }
+        .ignoresSafeArea(.container, edges: .horizontal)
         .task {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 taskFieldFocus = true
