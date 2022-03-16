@@ -32,7 +32,7 @@ struct AddTaskSheetView: View {
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
-                .shadow(color: Color("OuterGlare"), radius: 2, x: -2, y: -4)
+                .shadow(color: Color("OuterGlare"), radius: 2, y: -4)
             )
         }
         .ignoresSafeArea(.container, edges: .horizontal)
@@ -158,7 +158,7 @@ extension AddTaskSheetView {
             } label: {
                 Image(systemName: "checkmark.rectangle.fill")
                     .font(.title)
-                    .foregroundColor(taskListVM.taskName.isEmpty ? .secondary : Color("AccentStart"))
+                    .foregroundColor(taskListVM.taskName.isEmpty ? .secondary : taskListVM.initializedTaskList.customAccentColor)
             }
             .disabled(taskListVM.taskName.isEmpty)
             .buttonStyle(.plain)

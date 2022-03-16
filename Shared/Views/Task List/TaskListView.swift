@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TaskListView: View {
     @StateObject var taskListVM = TaskListVM()
+    @EnvironmentObject var taskCollectionVM: TaskCollectionVM
     @FocusState private var addTaskFieldFocus: Bool
     var list: TaskList
     
@@ -24,6 +25,7 @@ struct TaskListView: View {
             taskListVM.initializedTaskList.list = list.list
             taskListVM.initializedTaskList.totalTaskCount = list.totalTaskCount
             taskListVM.initializedTaskList.completedTaskCount = list.completedTaskCount
+            taskListVM.initializedTaskList.customAccentColor = list.customAccentColor
         }) // OnAppear
         .environmentObject(taskListVM)
     } // Body
@@ -46,7 +48,8 @@ extension TaskListView {
                 listHeader
                 taskProgressBar
                 
-                VStack(alignment: .leading, spacing: 15) {
+//                VStack(alignment: .leading, spacing: 15) {
+                List {
                     ForEach(taskListVM.initializedTaskList.list) { listItem in
                         HStack {
                             ListItemView(listItem: listItem)
@@ -55,12 +58,17 @@ extension TaskListView {
                             Spacer()
                         }
                     }
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .padding(.top, 2)
                 }
+                .listStyle(.plain)
+                .padding(.horizontal, -10)
                 Spacer()
                 bottomButtons
             }
             .padding(.horizontal)
-            .disabled(taskListVM.isShowingAddNewTaskSheet || taskListVM.isShowingEditTaskSheet)
+            .disabled(taskListVM.isShowingAddNewTaskSheet || taskListVM.isShowingEditTaskSheet || taskListVM.isShowingSettingsSheet)
             
             ZStack {
                 if taskListVM.isShowingAddNewTaskSheet {
@@ -77,10 +85,98 @@ extension TaskListView {
                 }
             }
             .zIndex(2)
+            
+            ZStack {
+                if taskListVM.isShowingSettingsSheet {
+                    settingsSheetView
+                        .transition(.move(edge: .bottom))
+                }
+            }
+            .zIndex(2)
         }
     }
     
-    
+    private var settingsSheetView: some View {
+        VStack {
+            Spacer()
+            VStack(spacing: 25) {
+                    HStack {
+                        Spacer()
+                        Text("List Settings")
+                            .customFontBodyRegular()
+                            .foregroundColor(.primary)
+                            .padding(.leading)
+                            .padding(.leading, 4)
+                        Spacer()
+                        Button {
+                            withAnimation {
+                                taskListVM.isShowingSettingsSheet.toggle()
+                            }
+                        } label: {
+                            Image(systemName: "xmark")
+                                .font(.headline)
+                                .foregroundColor(.secondary)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                    HStack {
+                        Text("Title: ")
+                            .customFontHeadline()
+                            .foregroundColor(.primary)
+                        TextField("\(taskListVM.initializedTaskList.name)", text: $taskListVM.initializedTaskList.name)
+                            .customFontBodyRegular()
+                            .foregroundColor(.primary)
+                    }
+                    
+                    HStack {
+                        ColorPicker(selection: $taskListVM.initializedTaskList.customAccentColor, supportsOpacity: false) {
+                            Text("Accent color:")
+                                .customFontHeadline()
+                                .foregroundColor(.primary)
+                        }
+                        .frame(width: 150)
+                        Spacer()
+                    }
+        
+                    Text("Get Premium")
+                        .customFontHeadline()
+                        .foregroundColor(.primary)
+                        .padding(.horizontal, 40)
+                        .padding(.vertical, 15)
+                        .background(
+                            Color.secondary
+                                .clipShape(RoundedRectangle(cornerRadius: 25)
+                                            .stroke(lineWidth: 4)
+                                )
+                        )
+                    Button {
+                        taskListVM.isShowingDeleteListAlert.toggle()
+                    } label: {
+                        Text("Delete List")
+                            .customFontHeadline()
+                            .foregroundColor(.red)
+                    }
+                    .alert(isPresented: $taskListVM.isShowingDeleteListAlert) {
+                        Alert(title: Text("Are you sure?"), message: Text("This will remove the list from your collection"), primaryButton: .destructive(Text("Delete"), action: {
+                            taskListVM.isShowingSettingsSheet.toggle()
+                            taskListVM.isListExpanded.toggle()
+                            taskCollectionVM.deleteListFromCollection(list)
+                        }), secondaryButton: .cancel())
+                    }
+                }
+                .padding()
+                .padding(.bottom)
+                .background(
+                    LinearGradient(
+                        colors: [Color("BackgroundTop"), Color("BackgroundBottom")],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                    .shadow(color: Color("OuterGlare"), radius: 2, y: -4)
+            )
+        }
+        .ignoresSafeArea(.container, edges: .bottom)
+    }
     
     private var listHeader: some View {
         HStack {
@@ -96,8 +192,16 @@ extension TaskListView {
             Text(taskListVM.initializedTaskList.name)
                 .customFontHeadline()
                 .foregroundColor(.primary)
-                .padding(.trailing)
+                
             Spacer()
+            Button {
+                withAnimation { taskListVM.isShowingSettingsSheet.toggle() }
+            } label: {
+                Image(systemName: "ellipsis")
+                    .font(.headline)
+                    .foregroundColor(.secondary)
+            }
+            .buttonStyle(.plain)
         }
         .padding(.vertical)
     }
@@ -110,7 +214,7 @@ extension TaskListView {
                 .padding(10)
             RoundedRectangle(cornerRadius: 12)
                 .trim(from: taskListVM.percentageCompleted, to: 1)
-                .stroke(Color("AccentStart"), style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
+                .stroke(taskListVM.initializedTaskList.customAccentColor, style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
                 .rotationEffect(Angle(degrees: 90))
                 .rotation3DEffect(Angle(degrees: 180), axis: (x: 1, y: 0, z: 0))
                 .opacity(taskListVM.initializedTaskList.list.isEmpty ? 0.0 : 1)
@@ -141,8 +245,8 @@ extension TaskListView {
                 ProgressBarSunkenBackground()
                 if !taskListVM.initializedTaskList.list.isEmpty {
                     RoundedRectangle(cornerRadius: 10)
-                        .fill( LinearGradient(colors: [Color("AccentStart"), Color("AccentEnd")], startPoint: .topLeading, endPoint: .bottomTrailing)
-                        )
+                        .fill(taskListVM.initializedTaskList.customAccentColor)
+                        
                         .frame(
                             width: 316 * ((taskListVM.initializedTaskList.completedTaskCount) / (taskListVM.initializedTaskList.totalTaskCount)) ,
                             height: 9
@@ -258,6 +362,7 @@ struct TaskListView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             TaskListView(list: TaskList(name: "Grocery List", list: [TaskItem(name: "Bananas", isTaskCompleted: true, note: "All of them")], totalTaskCount: 1, completedTaskCount: 1))
+                .preferredColorScheme(.dark)
         }
     }
 }

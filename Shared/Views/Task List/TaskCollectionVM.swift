@@ -20,6 +20,13 @@ class TaskCollectionVM: ObservableObject {
     func addListToCollection(_ list: TaskList) {
         collectionOfLists.append(list)
     }
+    
+    func deleteListFromCollection(_ list: TaskList) {
+        guard let index = collectionOfLists.firstIndex(where: { $0.id == list.id }) else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.collectionOfLists.remove(at: index)
+        }
+    }
 
     func loadSampleCollection() {
         collectionOfLists.append(contentsOf: sampleCollection)

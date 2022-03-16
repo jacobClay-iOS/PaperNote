@@ -12,7 +12,8 @@ class TaskListVM: ObservableObject {
     @Published var isListExpanded = false
     @Published var isShowingAddNewTaskSheet = false
     @Published var isShowingEditTaskSheet = false
-    
+    @Published var isShowingSettingsSheet = false
+    @Published var isShowingDeleteListAlert = false
     @Published var taskID = ""
     @Published var taskName = ""
     @Published var taskNoteName = ""

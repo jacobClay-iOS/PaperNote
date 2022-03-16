@@ -152,7 +152,7 @@ extension ListItemView {
     var primaryTaskCompletedButtonLabel: some View {
         Image(systemName: "circlebadge.fill")
             .font(.body)
-            .foregroundColor(Color ("AccentStart"))
+            .foregroundColor(taskListVM.initializedTaskList.customAccentColor)
             .padding(5)
             .background(
                 Circle()
@@ -183,7 +183,7 @@ extension ListItemView {
     var primaryTaskNotCompletedButtonLabel: some View {
         Image(systemName: "circlebadge")
             .font(.body)
-            .foregroundColor(Color ("AccentStart"))
+            .foregroundColor(taskListVM.initializedTaskList.customAccentColor)
             .padding(5)
             .background(
                 Circle()

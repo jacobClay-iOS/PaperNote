@@ -14,6 +14,7 @@ struct TaskList: Identifiable {
     var list: [TaskItem] = []
     var totalTaskCount: CGFloat = 0
     var completedTaskCount: CGFloat = 0
+    var customAccentColor: Color = Color("AccentStart")
     var date: Date = .now
     
 //    static var sampleData: [TaskItem] =

@@ -47,6 +47,7 @@ struct TaskCollectionView: View {
                 .frame(height: 150)
             } // VStack
         } // ZStack
+        .environmentObject(taskCollectionVM)
         .overlay {
             if taskCollectionVM.isShowingListTitleField {
                 addListsheet
@@ -54,6 +55,7 @@ struct TaskCollectionView: View {
             }
         } // Overlay
     } // body
+        
 } // Struct
 
 extension TaskCollectionView {
