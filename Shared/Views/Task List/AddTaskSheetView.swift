@@ -32,10 +32,10 @@ struct AddTaskSheetView: View {
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
-                .shadow(color: Color("OuterGlare"), radius: 2, y: -4)
+                .shadow(color: Color("OuterGlare"), radius: 1, y: -4)
             )
         }
-        .ignoresSafeArea(.container, edges: .horizontal)
+        .ignoresSafeArea(.container, edges: .bottom)
         .task {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 taskFieldFocus = true
@@ -90,7 +90,11 @@ extension AddTaskSheetView {
                 Image(systemName: "xmark")
                     .font(.headline)
                     .foregroundColor(.secondary)
-                    
+                    .overlay(
+                        Rectangle()
+                            .frame(width: 50, height: 50)
+                            .foregroundColor(.secondary.opacity(0.000001))
+                    )
             }
             .buttonStyle(.plain)
         }

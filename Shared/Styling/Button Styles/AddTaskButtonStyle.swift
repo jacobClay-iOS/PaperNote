@@ -36,7 +36,14 @@ struct AddTaskButtonStyle: ButtonStyle {
                         Circle()
                             .fill(Color("Surface"))
                             .shadow(color: Color("OuterShadow"), radius: 4, x: 4, y: 4)
-                            .shadow(color: Color("OuterGlare"), radius: 2, x: -2, y: -2)
+                            .shadow(color: Color("OuterGlare"), radius: 2, x: -1, y: -1)
+                            .overlay(
+                                Circle()
+                                    .stroke( LinearGradient(gradient: Gradient(stops: [
+                                        Gradient.Stop(color: Color("OuterGlare"), location: 0.3),
+                                        Gradient.Stop(color: Color("Surface"), location: 0.5),
+                                    ]), startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 1.5)
+                        )
                     }
                 }
             )

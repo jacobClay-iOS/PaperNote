@@ -37,8 +37,15 @@ struct AddListButtonStyle: ButtonStyle {
                         RoundedRectangle(cornerRadius: 15)
                             .fill(Color("Surface"))
                             .frame(width: 120, height: 120)
-                            .shadow(color: Color("OuterShadow"), radius: 4, x: 4, y: 4)
-                            .shadow(color: Color("OuterGlare"), radius: 2, x: -2, y: -2)
+                            .shadow(color: Color("OuterShadow"), radius: 4, x: 4, y: 6)
+                            .shadow(color: Color("OuterGlare"), radius: 1, x: -1, y: -1)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 15)
+                                    .strokeBorder( LinearGradient(gradient: Gradient(stops: [
+                                        Gradient.Stop(color: Color("OuterGlare"), location: 0.3),
+                                        Gradient.Stop(color: Color("Surface"), location: 0.5),
+                                    ]), startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 2, antialiased: true)
+                        )
                     }
                 }
             )

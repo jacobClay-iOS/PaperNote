@@ -12,6 +12,7 @@ class TaskCollectionVM: ObservableObject {
     @Published var newListTitle = ""
     @Published var isShowingListTitleField = false
     
+    
     init() {
         loadSampleCollection()
     }
@@ -34,7 +35,25 @@ class TaskCollectionVM: ObservableObject {
     
     let sampleCollection: [TaskList] =
     [
-        TaskList(name: "Grocery List", list: [TaskItem(name: "eggs", note: "2 dozen")], totalTaskCount: 1, completedTaskCount: 0),
-        TaskList(name: "Task List", list: [TaskItem(name: "wash car", note: "twice")], totalTaskCount: 1, completedTaskCount: 0)
+        TaskList(name: "Grocery List",
+                 list: [
+                    TaskItem(name: "cereal", isTaskCompleted: false, note: "Lucky Charms"),
+                    TaskItem(name: "juice", isTaskCompleted: false, note: ""),
+                    TaskItem(name: "bread", isTaskCompleted: true, note: "")
+                 ],
+                 totalTaskCount: 3,
+                 completedTaskCount: 1,
+                 customAccentColor: .mint
+        ),
+        TaskList(name: "To-do List",
+                 list: [
+                    TaskItem(name: "downlaod PaperNote", isTaskCompleted: true, note: ""),
+                    TaskItem(name: "plan my day", isTaskCompleted: true, note: ""),
+                    TaskItem(name: "get things done!", isTaskCompleted: true, note: "")
+                 ],
+                 totalTaskCount: 3,
+                 completedTaskCount: 3,
+                 customAccentColor: .indigo
+        )
     ]
 }

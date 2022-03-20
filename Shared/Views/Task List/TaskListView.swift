@@ -47,23 +47,24 @@ extension TaskListView {
             VStack{
                 listHeader
                 taskProgressBar
-                
-//                VStack(alignment: .leading, spacing: 15) {
-                List {
-                    ForEach(taskListVM.initializedTaskList.list) { listItem in
-                        HStack {
-                            ListItemView(listItem: listItem)
-                                .padding(.horizontal, 2)
-                                .animation(.default, value: 1)
-                            Spacer()
+                ScrollView {
+                    
+                    VStack(alignment: .leading, spacing: 10) {
+                        ForEach(taskListVM.initializedTaskList.list) { listItem in
+                            HStack {
+                                ListItemView(listItem: listItem)
+                                    .padding(.horizontal, 2)
+                                    .animation(.default, value: 1)
+                                Spacer()
+                            }
                         }
                     }
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
                     .padding(.top, 2)
                 }
-                .listStyle(.plain)
-                .padding(.horizontal, -10)
+                
+                
+                
+
                 Spacer()
                 bottomButtons
             }
@@ -103,7 +104,7 @@ extension TaskListView {
                     HStack {
                         Spacer()
                         Text("List Settings")
-                            .customFontBodyRegular()
+                            .customFontHeadline()
                             .foregroundColor(.primary)
                             .padding(.leading)
                             .padding(.leading, 4)
@@ -134,21 +135,10 @@ extension TaskListView {
                                 .customFontHeadline()
                                 .foregroundColor(.primary)
                         }
-                        .frame(width: 150)
+                        .frame(width: 175)
                         Spacer()
                     }
         
-                    Text("Get Premium")
-                        .customFontHeadline()
-                        .foregroundColor(.primary)
-                        .padding(.horizontal, 40)
-                        .padding(.vertical, 15)
-                        .background(
-                            Color.secondary
-                                .clipShape(RoundedRectangle(cornerRadius: 25)
-                                            .stroke(lineWidth: 4)
-                                )
-                        )
                     Button {
                         taskListVM.isShowingDeleteListAlert.toggle()
                     } label: {
@@ -156,23 +146,24 @@ extension TaskListView {
                             .customFontHeadline()
                             .foregroundColor(.red)
                     }
+                    .padding(.top, 20)
+                    .buttonStyle(.plain)
                     .alert(isPresented: $taskListVM.isShowingDeleteListAlert) {
                         Alert(title: Text("Are you sure?"), message: Text("This will remove the list from your collection"), primaryButton: .destructive(Text("Delete"), action: {
                             taskListVM.isShowingSettingsSheet.toggle()
                             taskListVM.isListExpanded.toggle()
-                            taskCollectionVM.deleteListFromCollection(list)
+                            withAnimation {
+                                taskCollectionVM.deleteListFromCollection(list)
+                            }
+                            
                         }), secondaryButton: .cancel())
                     }
                 }
                 .padding()
                 .padding(.bottom)
                 .background(
-                    LinearGradient(
-                        colors: [Color("BackgroundTop"), Color("BackgroundBottom")],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                    .shadow(color: Color("OuterGlare"), radius: 2, y: -4)
+                    Color("Surface")
+                        .shadow(color: Color("OuterGlare"), radius: 1, y: -4)
             )
         }
         .ignoresSafeArea(.container, edges: .bottom)
@@ -183,15 +174,23 @@ extension TaskListView {
             Button {
                 withAnimation { taskListVM.isListExpanded.toggle() }
             } label: {
+                
                 Image(systemName: "chevron.backward")
                     .font(.headline)
                     .foregroundColor(.secondary)
+                    .overlay(
+                        Rectangle()
+                            .frame(width: 50, height: 50)
+                            .foregroundColor(.secondary.opacity(0.000001))
+                    )
             }
             .buttonStyle(.plain)
             Spacer()
             Text(taskListVM.initializedTaskList.name)
                 .customFontHeadline()
                 .foregroundColor(.primary)
+                .lineLimit(1)
+                .padding(.horizontal)
                 
             Spacer()
             Button {
@@ -200,6 +199,11 @@ extension TaskListView {
                 Image(systemName: "ellipsis")
                     .font(.headline)
                     .foregroundColor(.secondary)
+                    .overlay(
+                        Rectangle()
+                            .frame(width: 50, height: 50)
+                            .foregroundColor(.secondary.opacity(0.000001))
+                    )
             }
             .buttonStyle(.plain)
         }
@@ -256,7 +260,9 @@ extension TaskListView {
                             RoundedRectangle(cornerRadius: .infinity)
                                 .fill(Color("Surface"))
                                 .shadow(color: Color("OuterShadow"), radius: 2, x: 2, y: 2)
-                                .shadow(color: Color("OuterGlare"), radius: 2, x: -2, y: -2)
+                                .shadow(color: Color("OuterGlare"), radius: 1, x: -1, y: -1)
+                                .shadow(color: Color("OuterGlare"), radius: 1, x: -1, y: -1)
+                                
                         )
                 }
             }
@@ -362,7 +368,7 @@ struct TaskListView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             TaskListView(list: TaskList(name: "Grocery List", list: [TaskItem(name: "Bananas", isTaskCompleted: true, note: "All of them")], totalTaskCount: 1, completedTaskCount: 1))
-                .preferredColorScheme(.dark)
+//                .preferredColorScheme(.dark)
         }
     }
 }

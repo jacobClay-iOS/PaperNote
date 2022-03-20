@@ -28,7 +28,7 @@ struct TaskCollectionView: View {
                     HStack(spacing: 20) {
                         ForEach(taskCollectionVM.collectionOfLists) { collectionListItem in
                             TaskListView(list: collectionListItem)
-                          
+                                .transition(.scale(scale: 0.1))
                         } // ForEach
                         Button {
                             withAnimation {
@@ -87,6 +87,11 @@ extension TaskCollectionView {
                         Image(systemName: "xmark")
                             .font(.headline)
                             .foregroundColor(.secondary)
+                            .overlay(
+                                Rectangle()
+                                    .frame(width: 50, height: 50)
+                                    .foregroundColor(.secondary.opacity(0.000001))
+                            )
                     } // Button
                     .buttonStyle(.plain)
                 } // HStack
@@ -96,18 +101,19 @@ extension TaskCollectionView {
                     .multilineTextAlignment(.leading)
                     .focused($newTaskListFieldFocus)
                     .onSubmit {
-                        addList()
+                        withAnimation {
+                            addList()
+                        }
                     } // TextField
                     .submitLabel(.done)
             } // VStack
             .padding()
             .background(
                 Color("Surface")
-                    .shadow(color: Color("OuterShadow"), radius: 4, x: 4, y: 4)
-                    .shadow(color: Color("OuterGlare"), radius: 2, x: -2, y: -2)
+                    .shadow(color: Color("OuterGlare"), radius: 1, y: -4)
             )
         } // Vstack
-        .ignoresSafeArea(.container, edges: .horizontal)
+        .ignoresSafeArea(.container, edges: .bottom)
         .task {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 newTaskListFieldFocus = true

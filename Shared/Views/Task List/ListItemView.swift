@@ -15,7 +15,7 @@ struct ListItemView: View {
     
     var body: some View {
         if listItem.isTaskCompleted {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 6) {
                 primaryTaskListItemCompletedView
                 
                 if !listItem.note.isEmpty && isShowingNote {
@@ -23,7 +23,7 @@ struct ListItemView: View {
                 }
             }
         } else {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 6) {
                 primaryTaskListItemNotCompletedView
                 
                 if !listItem.note.isEmpty && isShowingNote {
@@ -38,13 +38,17 @@ extension ListItemView {
     
     var primaryTaskListItemNotCompletedView: some View {
         HStack(spacing: 20) {
-            Button {
-                withAnimation {
-                    taskListVM.completeTask(listItem)
-                    taskListVM.moveTaskEndOfArray(listItem)
-                }
-            } label: { primaryTaskNotCompletedButtonLabel }
-            .buttonStyle(.plain)
+            VStack {
+                Button {
+                    withAnimation {
+                        taskListVM.completeTask(listItem)
+                        taskListVM.moveTaskEndOfArray(listItem)
+                    }
+                } label: { primaryTaskNotCompletedButtonLabel }
+                .buttonStyle(.plain)
+                .offset(y: 4)
+                Spacer()
+            }
             
             Button {
                 isShowingActionSheet.toggle()
@@ -78,30 +82,38 @@ extension ListItemView {
         })
             
             if !listItem.note.isEmpty {
-                Button {
-                    withAnimation {
-                        isShowingNote.toggle()
+                VStack {
+                    Button {
+                        withAnimation {
+                            isShowingNote.toggle()
+                        }
+                    } label: {
+                        Image(systemName: isShowingNote ? "chevron.up" : "chevron.down")
+                            .font(.body)
+                            .foregroundColor(.secondary)
                     }
-                } label: {
-                    Image(systemName: isShowingNote ? "chevron.up" : "chevron.down")
-                        .font(.body)
-                        .foregroundColor(.secondary)
+                    .buttonStyle(.plain)
+                    .offset(y: 11)
+                    Spacer()
                 }
-                .buttonStyle(.plain)
             }
         }
     }
     
     var primaryTaskListItemCompletedView: some View {
         HStack(spacing: 20) {
-            Button {
-                withAnimation {
-                    taskListVM.unCompleteTask(listItem)
-                    taskListVM.moveTaskStartOfArray(listItem)
-                }
-            } label: { primaryTaskCompletedButtonLabel }
-            .offset(x: 1, y: 0)
-            .buttonStyle(.plain)
+            VStack {
+                Button {
+                    withAnimation {
+                        taskListVM.unCompleteTask(listItem)
+                        taskListVM.moveTaskStartOfArray(listItem)
+                    }
+                } label: { primaryTaskCompletedButtonLabel }
+                .offset(x: 1, y: 0)
+                .buttonStyle(.plain)
+                .offset(y: 4)
+                Spacer()
+            }
             
             Button {
                 isShowingActionSheet.toggle()
@@ -135,16 +147,20 @@ extension ListItemView {
         })
             
             if !listItem.note.isEmpty {
-                Button {
-                    withAnimation {
-                        isShowingNote.toggle()
+                VStack {
+                    Button {
+                        withAnimation {
+                            isShowingNote.toggle()
+                        }
+                    } label: {
+                        Image(systemName: isShowingNote ? "chevron.up" : "chevron.down")
+                            .font(.body)
+                            .foregroundColor(.secondary)
                     }
-                } label: {
-                    Image(systemName: isShowingNote ? "chevron.up" : "chevron.down")
-                        .font(.body)
-                        .foregroundColor(.secondary)
+                    .buttonStyle(.plain)
+                    .offset(y: 11)
+                    Spacer()
                 }
-                .buttonStyle(.plain)
             }
         }
     }
@@ -153,7 +169,7 @@ extension ListItemView {
         Image(systemName: "circlebadge.fill")
             .font(.body)
             .foregroundColor(taskListVM.initializedTaskList.customAccentColor)
-            .padding(5)
+            .padding(6)
             .background(
                 Circle()
                     .foregroundColor(Color("Surface"))
@@ -170,13 +186,20 @@ extension ListItemView {
                     .overlay(
                         Circle()
                             .stroke(Color("InnerShadow"), lineWidth: 4)
-                            .blur(radius: 4)
+                            .blur(radius: 6)
                             .offset(x: -2, y: -2)
                             .mask(
                                 Circle()
                                     .fill(LinearGradient(colors: [Color.black, Color.clear], startPoint: .topLeading, endPoint: .bottomTrailing))
                             )
                     )
+                    .overlay(
+                        Circle()
+                            .stroke( LinearGradient(gradient: Gradient(stops: [
+                                Gradient.Stop(color: Color("OuterGlare"), location: 0.4),
+                                Gradient.Stop(color: Color("Surface"), location: 0.6),
+                            ]), startPoint: .bottomTrailing, endPoint: .topLeading), lineWidth: 1.5)
+                )
             )
     }
     
@@ -184,12 +207,18 @@ extension ListItemView {
         Image(systemName: "circlebadge")
             .font(.body)
             .foregroundColor(taskListVM.initializedTaskList.customAccentColor)
-            .padding(5)
+            .padding(6)
             .background(
                 Circle()
                     .foregroundColor(Color("Surface"))
-                    .shadow(color: Color("OuterShadow"), radius: 2, x: 2, y: 2)
-                    .shadow(color: Color("OuterGlare"), radius: 1, x: -2, y: -2)
+                    .shadow(color: Color("OuterShadow"), radius: 2, x: 1, y: 2)
+                    .overlay(
+                        Circle()
+                            .stroke( LinearGradient(gradient: Gradient(stops: [
+                                Gradient.Stop(color: Color("OuterGlare"), location: 0.4),
+                                Gradient.Stop(color: Color("Surface"), location: 0.6),
+                            ]), startPoint: .topLeading, endPoint: .bottom), lineWidth: 1.5)
+                )
             )
     }
     
