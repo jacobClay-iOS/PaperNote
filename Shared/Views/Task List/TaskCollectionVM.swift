@@ -38,16 +38,16 @@ class TaskCollectionVM: ObservableObject {
         TaskList(name: "Grocery List",
                  list: [
                     TaskItem(name: "cereal", isTaskCompleted: false, note: "Lucky Charms"),
-                    TaskItem(name: "juice", isTaskCompleted: false, note: ""),
+                    TaskItem(name: "juice", isTaskCompleted: true, note: ""),
                     TaskItem(name: "bread", isTaskCompleted: true, note: "")
                  ],
                  totalTaskCount: 3,
-                 completedTaskCount: 1,
+                 completedTaskCount: 2,
                  customAccentColor: .mint
         ),
         TaskList(name: "To-do List",
                  list: [
-                    TaskItem(name: "downlaod PaperNote", isTaskCompleted: true, note: ""),
+                    TaskItem(name: "download PaperNote", isTaskCompleted: true, note: "on iPhone, iPad, and Mac"),
                     TaskItem(name: "plan my day", isTaskCompleted: true, note: ""),
                     TaskItem(name: "get things done!", isTaskCompleted: true, note: "")
                  ],

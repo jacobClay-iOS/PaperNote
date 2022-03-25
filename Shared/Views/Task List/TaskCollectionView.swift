@@ -18,7 +18,7 @@ struct TaskCollectionView: View {
             NeumorphicBackground()
             VStack(spacing: 0) {
                 HStack {
-                    Text("Lists")
+                    Text("Tasks")
                         .customFontHeadline()
                         .foregroundColor(.secondary)
                     Spacer()
