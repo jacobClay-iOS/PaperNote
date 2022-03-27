@@ -34,28 +34,32 @@ func getSampleDate(offset: Int) -> Date {
 var tasks: [TaskMetaData] = [
 
     TaskMetaData(task: [
-        CalendarTask(title: "Create calendar"),
-        CalendarTask(title: "put that shit in PaperNote"),
-        CalendarTask(title: "Make Bank")
+        CalendarTask(title: "Sample event"),
+        CalendarTask(title: "Sample event"),
+        CalendarTask(title: "Sample event")
     ], taskDate: getSampleDate(offset: 1)),
     
     TaskMetaData(task: [
-        CalendarTask(title: "fugg yo bish"),
+        CalendarTask(title: "Sample event"),
     ], taskDate: getSampleDate(offset: -3)),
     
     TaskMetaData(task: [
-        CalendarTask(title: "wash my balls"),
+        CalendarTask(title: "Sample event"),
     ], taskDate: getSampleDate(offset: -8)),
     
     TaskMetaData(task: [
-        CalendarTask(title: "eat food"),
+        CalendarTask(title: "Sample event"),
     ], taskDate: getSampleDate(offset: 10)),
     
     TaskMetaData(task: [
-        CalendarTask(title: "wash my car"),
+        CalendarTask(title: "Sample event"),
     ], taskDate: getSampleDate(offset: 15)),
     
     TaskMetaData(task: [
-        CalendarTask(title: "wash my face"),
+        CalendarTask(title: "Sample event"),
     ], taskDate: getSampleDate(offset: -20)),
+    
+    TaskMetaData(task: [
+        CalendarTask(title: "Sample event"),
+    ], taskDate: getSampleDate(offset: 0)),
 ]

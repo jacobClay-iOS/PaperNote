@@ -15,10 +15,10 @@ struct PaperNoteApp: App {
         WindowGroup {
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            NavigationView {
-                TaskCollectionView()
+        
+                HomeView()
 //                    .preferredColorScheme(.dark)
-            }
+            
         }
     }
 }

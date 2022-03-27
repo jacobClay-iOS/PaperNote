@@ -14,8 +14,7 @@ struct TaskCollectionView: View {
     @FocusState private var newTaskListFieldFocus: Bool
      
     var body: some View {
-        ZStack {
-            NeumorphicBackground()
+       
             VStack(spacing: 0) {
                 HStack {
                     Text("Tasks")
@@ -46,7 +45,7 @@ struct TaskCollectionView: View {
                 } // Scrollview
                 .frame(height: 150)
             } // VStack
-        } // ZStack
+      
         .environmentObject(taskCollectionVM)
         .overlay {
             if taskCollectionVM.isShowingListTitleField {

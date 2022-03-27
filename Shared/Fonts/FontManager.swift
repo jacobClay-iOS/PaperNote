@@ -9,12 +9,12 @@ import SwiftUI
 
 struct FontManager {
     struct RedHat {
-        static let regular = "RedHatText-Regular"
-        static let regularItalic = "RedHatText-Italic"
+        static let regular = "RedHatText-Medium"
+        static let regularItalic = "RedHatText-MediumItalic"
         static let light = "RedHatText-Light"
         static let lightItalic = "RedHatText-LightItalic"
-        static let bold = "RedHatText-SemiBold"
-        static let boldItalic = "RedHatText-SemiBoldItalic"
+        static let bold = "RedHatText-Bold"
+        static let boldItalic = "RedHatText-BoldItalic"
     }
 }
 
@@ -253,3 +253,77 @@ extension View {
 }
 
 
+// MARK: Title2
+struct Title2Regular: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.custom(FontManager.RedHat.regular, size: 21, relativeTo: .title2))
+    }
+}
+extension View {
+    func customFontTitle2Regular() -> some View {
+        modifier(Title2Regular())
+    }
+}
+
+struct Title2Bold: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.custom(FontManager.RedHat.bold, size: 21, relativeTo: .title2))
+    }
+}
+extension View {
+    func customFontTitle2Bold() -> some View {
+        modifier(Title2Bold())
+    }
+}
+
+struct Title2Light: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.custom(FontManager.RedHat.light, size: 21, relativeTo: .title2))
+    }
+}
+extension View {
+    func customFontTitle2Light() -> some View {
+        modifier(Title2Light())
+    }
+}
+
+
+// MARK: Title3
+struct Title3Regular: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.custom(FontManager.RedHat.regular, size: 19, relativeTo: .title3))
+    }
+}
+extension View {
+    func customFontTitle3Regular() -> some View {
+        modifier(Title3Regular())
+    }
+}
+
+struct Title3Bold: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.custom(FontManager.RedHat.bold, size: 19, relativeTo: .title3))
+    }
+}
+extension View {
+    func customFontTitle3Bold() -> some View {
+        modifier(Title3Bold())
+    }
+}
+
+struct Title3Light: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.custom(FontManager.RedHat.light, size: 19, relativeTo: .title3))
+    }
+}
+extension View {
+    func customFontTitle3Light() -> some View {
+        modifier(Title3Light())
+    }
+}

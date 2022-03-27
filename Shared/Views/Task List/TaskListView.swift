@@ -226,7 +226,7 @@ extension TaskListView {
             VStack(alignment: .leading) {
                 HStack {
                     Text(taskListVM.initializedTaskList.name)
-                        .customFontCaptionBold()
+                        .customFontCaptionRegular()
                         .foregroundColor(.primary)
                         .multilineTextAlignment(.leading)
                     Spacer()
@@ -234,7 +234,7 @@ extension TaskListView {
                 Spacer()
                 HStack {
                     Text(taskListVM.allTasksCompleted ? "Complete" : "\(taskListVM.initializedTaskList.completedTaskCount, specifier: "%.f")/\(taskListVM.initializedTaskList.totalTaskCount, specifier: "%.f")")
-                        .customFontCaptionRegular()
+                        .customFontCaptionLight()
                         .foregroundColor(.secondary)
                     Spacer()
                 }
@@ -368,7 +368,7 @@ struct TaskListView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             TaskListView(list: TaskList(name: "Grocery List", list: [TaskItem(name: "Bananas", isTaskCompleted: true, note: "All of them")], totalTaskCount: 1, completedTaskCount: 1))
-//                .preferredColorScheme(.dark)
+                .preferredColorScheme(.dark)
         }
     }
 }

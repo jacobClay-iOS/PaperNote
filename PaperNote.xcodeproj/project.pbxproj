@@ -47,6 +47,20 @@
 		168FC5EB27D064FA00DD7ECA /* TaskListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168FC5E927D064FA00DD7ECA /* TaskListVM.swift */; };
 		16CEA9DA27D448D4005F8CEA /* AddListButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CEA9D927D448D4005F8CEA /* AddListButtonStyle.swift */; };
 		16CEA9DB27D448D4005F8CEA /* AddListButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CEA9D927D448D4005F8CEA /* AddListButtonStyle.swift */; };
+		16DACFB727EDF46000689729 /* Prototyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DACFB627EDF46000689729 /* Prototyping.swift */; };
+		16DACFB827EDF46000689729 /* Prototyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DACFB627EDF46000689729 /* Prototyping.swift */; };
+		16DACFBA27EDF5A700689729 /* RedHatText-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16DACFB927EDF5A700689729 /* RedHatText-Medium.ttf */; };
+		16DACFBB27EDF5A700689729 /* RedHatText-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16DACFB927EDF5A700689729 /* RedHatText-Medium.ttf */; };
+		16DACFBD27EDF5ED00689729 /* RedHatText-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16DACFBC27EDF5ED00689729 /* RedHatText-BoldItalic.ttf */; };
+		16DACFBE27EDF5ED00689729 /* RedHatText-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16DACFBC27EDF5ED00689729 /* RedHatText-BoldItalic.ttf */; };
+		16DACFC027EDF5FE00689729 /* RedHatText-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16DACFBF27EDF5FE00689729 /* RedHatText-Bold.ttf */; };
+		16DACFC127EDF5FE00689729 /* RedHatText-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16DACFBF27EDF5FE00689729 /* RedHatText-Bold.ttf */; };
+		16DACFC327EDF60C00689729 /* RedHatText-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16DACFC227EDF60C00689729 /* RedHatText-MediumItalic.ttf */; };
+		16DACFC427EDF60C00689729 /* RedHatText-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16DACFC227EDF60C00689729 /* RedHatText-MediumItalic.ttf */; };
+		16DACFC627EFF83C00689729 /* CalendarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DACFC527EFF83C00689729 /* CalendarVM.swift */; };
+		16DACFC727EFF83C00689729 /* CalendarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DACFC527EFF83C00689729 /* CalendarVM.swift */; };
+		16DACFCA27EFF9CE00689729 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DACFC927EFF9CE00689729 /* HomeView.swift */; };
+		16DACFCB27EFF9CE00689729 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DACFC927EFF9CE00689729 /* HomeView.swift */; };
 		16FE62E127C1C2E700034B0D /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE62E027C1C2E700034B0D /* TaskItem.swift */; };
 		16FE62E227C1C2E700034B0D /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE62E027C1C2E700034B0D /* TaskItem.swift */; };
 		16FE62E427C1C3B400034B0D /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE62E327C1C3B400034B0D /* TaskList.swift */; };
@@ -116,6 +130,13 @@
 		16440C4127E15B8C00821F16 /* ListSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSettingsView.swift; sourceTree = "<group>"; };
 		168FC5E927D064FA00DD7ECA /* TaskListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListVM.swift; sourceTree = "<group>"; };
 		16CEA9D927D448D4005F8CEA /* AddListButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListButtonStyle.swift; sourceTree = "<group>"; };
+		16DACFB627EDF46000689729 /* Prototyping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototyping.swift; sourceTree = "<group>"; };
+		16DACFB927EDF5A700689729 /* RedHatText-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatText-Medium.ttf"; sourceTree = "<group>"; };
+		16DACFBC27EDF5ED00689729 /* RedHatText-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatText-BoldItalic.ttf"; sourceTree = "<group>"; };
+		16DACFBF27EDF5FE00689729 /* RedHatText-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatText-Bold.ttf"; sourceTree = "<group>"; };
+		16DACFC227EDF60C00689729 /* RedHatText-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatText-MediumItalic.ttf"; sourceTree = "<group>"; };
+		16DACFC527EFF83C00689729 /* CalendarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVM.swift; sourceTree = "<group>"; };
+		16DACFC927EFF9CE00689729 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		16FE62E027C1C2E700034B0D /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		16FE62E327C1C3B400034B0D /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
 		16FE62EA27C1C65A00034B0D /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
@@ -167,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				1615B6A827ED41A600C5EA08 /* CalendarView.swift */,
+				16DACFC527EFF83C00689729 /* CalendarVM.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -259,6 +281,14 @@
 			path = "Task List";
 			sourceTree = "<group>";
 		};
+		16DACFC827EFF9B500689729 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				16DACFC927EFF9CE00689729 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		16FE62DF27C1C2C800034B0D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,8 +314,12 @@
 			children = (
 				16FE62EE27C1C67C00034B0D /* RedHatText-SemiBold.ttf */,
 				16FE62EF27C1C67C00034B0D /* RedHatText-LightItalic.ttf */,
+				16DACFB927EDF5A700689729 /* RedHatText-Medium.ttf */,
 				16FE62F027C1C67C00034B0D /* RedHatText-SemiBoldItalic.ttf */,
+				16DACFC227EDF60C00689729 /* RedHatText-MediumItalic.ttf */,
 				16FE62F127C1C67C00034B0D /* RedHatText-Light.ttf */,
+				16DACFBC27EDF5ED00689729 /* RedHatText-BoldItalic.ttf */,
+				16DACFBF27EDF5FE00689729 /* RedHatText-Bold.ttf */,
 				16FE62F227C1C67C00034B0D /* RedHatText-Italic.ttf */,
 				16FE62F327C1C67C00034B0D /* RedHatText-Regular.ttf */,
 			);
@@ -313,6 +347,7 @@
 		16FE630727C1CA3000034B0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				16DACFC827EFF9B500689729 /* Home */,
 				1615B6A727ED418E00C5EA08 /* Calendar */,
 				1637F39927D0547800CA2C3E /* Task List */,
 				16FE630B27C1CA8900034B0D /* Components */,
@@ -325,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				16FE631327C1CDE700034B0D /* NeumorphicBackground.swift */,
+				16DACFB627EDF46000689729 /* Prototyping.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -454,10 +490,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16DACFC027EDF5FE00689729 /* RedHatText-Bold.ttf in Resources */,
+				16DACFBD27EDF5ED00689729 /* RedHatText-BoldItalic.ttf in Resources */,
 				16FE62F827C1C67C00034B0D /* RedHatText-SemiBoldItalic.ttf in Resources */,
 				16FE62F427C1C67C00034B0D /* RedHatText-SemiBold.ttf in Resources */,
+				16DACFC327EDF60C00689729 /* RedHatText-MediumItalic.ttf in Resources */,
 				16FE62F627C1C67C00034B0D /* RedHatText-LightItalic.ttf in Resources */,
 				16FE62FA27C1C67C00034B0D /* RedHatText-Light.ttf in Resources */,
+				16DACFBA27EDF5A700689729 /* RedHatText-Medium.ttf in Resources */,
 				16FE62FE27C1C67C00034B0D /* RedHatText-Regular.ttf in Resources */,
 				1631558427BBEC2700E05CD8 /* Assets.xcassets in Resources */,
 				16FE62FC27C1C67C00034B0D /* RedHatText-Italic.ttf in Resources */,
@@ -468,10 +508,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16DACFC127EDF5FE00689729 /* RedHatText-Bold.ttf in Resources */,
+				16DACFBE27EDF5ED00689729 /* RedHatText-BoldItalic.ttf in Resources */,
 				16FE62F927C1C67C00034B0D /* RedHatText-SemiBoldItalic.ttf in Resources */,
 				16FE62F527C1C67C00034B0D /* RedHatText-SemiBold.ttf in Resources */,
+				16DACFC427EDF60C00689729 /* RedHatText-MediumItalic.ttf in Resources */,
 				16FE62F727C1C67C00034B0D /* RedHatText-LightItalic.ttf in Resources */,
 				16FE62FB27C1C67C00034B0D /* RedHatText-Light.ttf in Resources */,
+				16DACFBB27EDF5A700689729 /* RedHatText-Medium.ttf in Resources */,
 				16FE62FF27C1C67C00034B0D /* RedHatText-Regular.ttf in Resources */,
 				1631558527BBEC2700E05CD8 /* Assets.xcassets in Resources */,
 				16FE62FD27C1C67C00034B0D /* RedHatText-Italic.ttf in Resources */,
@@ -502,6 +546,7 @@
 				164A834F27D0600D0071E0D2 /* PaperNote.xcdatamodeld in Sources */,
 				16CEA9DA27D448D4005F8CEA /* AddListButtonStyle.swift in Sources */,
 				16FE62E427C1C3B400034B0D /* TaskList.swift in Sources */,
+				16DACFCA27EFF9CE00689729 /* HomeView.swift in Sources */,
 				1631557E27BBEC2700E05CD8 /* PaperNoteApp.swift in Sources */,
 				1614256827C3D72200C74ACD /* AddTaskSheetView.swift in Sources */,
 				16FE630527C1C8C400034B0D /* AddTaskButtonStyle.swift in Sources */,
@@ -515,12 +560,14 @@
 				1615B6AF27ED425F00C5EA08 /* DateValue.swift in Sources */,
 				1631558227BBEC2700E05CD8 /* Persistence.swift in Sources */,
 				162809B627C349C7009425CE /* SunkenTextField.swift in Sources */,
+				16DACFC627EFF83C00689729 /* CalendarVM.swift in Sources */,
 				168FC5EA27D064FA00DD7ECA /* TaskListVM.swift in Sources */,
 				16440C4227E15B8C00821F16 /* ListSettingsView.swift in Sources */,
 				1637F39E27D054C100CA2C3E /* TaskCollectionVM.swift in Sources */,
 				162809AF27C292AD009425CE /* ListItemView.swift in Sources */,
 				16FE62EB27C1C65A00034B0D /* FontManager.swift in Sources */,
 				1631558027BBEC2700E05CD8 /* ContentView.swift in Sources */,
+				16DACFB727EDF46000689729 /* Prototyping.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +578,7 @@
 				164A834E27D05FA20071E0D2 /* PaperNote.xcdatamodeld in Sources */,
 				16CEA9DB27D448D4005F8CEA /* AddListButtonStyle.swift in Sources */,
 				16FE62E527C1C3B400034B0D /* TaskList.swift in Sources */,
+				16DACFCB27EFF9CE00689729 /* HomeView.swift in Sources */,
 				1631557F27BBEC2700E05CD8 /* PaperNoteApp.swift in Sources */,
 				1614256927C3D72200C74ACD /* AddTaskSheetView.swift in Sources */,
 				16FE630627C1C8C400034B0D /* AddTaskButtonStyle.swift in Sources */,
@@ -544,12 +592,14 @@
 				1615B6B027ED425F00C5EA08 /* DateValue.swift in Sources */,
 				1631558327BBEC2700E05CD8 /* Persistence.swift in Sources */,
 				162809B727C349C7009425CE /* SunkenTextField.swift in Sources */,
+				16DACFC727EFF83C00689729 /* CalendarVM.swift in Sources */,
 				168FC5EB27D064FA00DD7ECA /* TaskListVM.swift in Sources */,
 				16440C4327E15B8C00821F16 /* ListSettingsView.swift in Sources */,
 				1637F39F27D054C100CA2C3E /* TaskCollectionVM.swift in Sources */,
 				162809B027C292AD009425CE /* ListItemView.swift in Sources */,
 				16FE62EC27C1C65A00034B0D /* FontManager.swift in Sources */,
 				1631558127BBEC2700E05CD8 /* ContentView.swift in Sources */,
+				16DACFB827EDF46000689729 /* Prototyping.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
