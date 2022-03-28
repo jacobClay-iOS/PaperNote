@@ -211,13 +211,15 @@ extension ListItemView {
             .background(
                 Circle()
                     .foregroundColor(Color("Surface"))
+                    .shadow(color: Color("OuterGlare"), radius: 0.5, x: -1, y: -1)
+                    .shadow(color: Color("OuterGlare"), radius: 0.5, x: -1, y: -1)
                     .shadow(color: Color("OuterShadow"), radius: 2, x: 1, y: 2)
                     .overlay(
                         Circle()
                             .stroke( LinearGradient(gradient: Gradient(stops: [
                                 Gradient.Stop(color: Color("OuterGlare"), location: 0.4),
                                 Gradient.Stop(color: Color("Surface"), location: 0.6),
-                            ]), startPoint: .topLeading, endPoint: .bottom), lineWidth: 1.5)
+                            ]), startPoint: .topLeading, endPoint: .bottom), lineWidth: 1)
                 )
             )
     }

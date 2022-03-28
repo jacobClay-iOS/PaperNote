@@ -189,16 +189,11 @@ extension CalendarView {
                             .background(
                                 Color("Surface")
                                     .cornerRadius(10)
-                                    .shadow(color: Color("OuterShadow"), radius: 5, x: 4, y: 4)
-                                    .shadow(color: Color("OuterGlare"), radius: 1, x: -4, y: -3)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .stroke( LinearGradient(gradient: Gradient(stops: [
-                                                Gradient.Stop(color: Color("OuterGlare"), location: 0.1),
-                                                Gradient.Stop(color: Color("Surface"), location: 0.1),
-                                            ]), startPoint: .top, endPoint: .bottom), lineWidth: 1)
-                                )
                                     
+                                    .shadow(color: Color("OuterGlare"), radius: 0.5, x: -1, y: -1)
+                                    .shadow(color: Color("OuterGlare"), radius: 0.5, x: -1, y: -1)
+                                  .shadow(color: Color("OuterGlare"), radius: 0.5, x: 0, y: -1)
+                                    .shadow(color: Color("OuterShadow"), radius: 4, x: 4, y: 6)
                             )
                         .padding(.horizontal, 14)
                         }
@@ -233,7 +228,7 @@ extension CalendarView {
                 )
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color("OuterGlare"), lineWidth: 1)
+                        .stroke(Color("OuterGlare"), lineWidth: 2)
                         .blur(radius: 1)
                         .offset(x: -1, y: -1)
                         .mask(
@@ -253,7 +248,7 @@ extension CalendarView {
                 )
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color("OuterGlare"), lineWidth: 1)
+                        .stroke(Color("OuterGlare"), lineWidth: 2)
                         .blur(radius: 1)
                         .offset(x: -1, y: -1)
                         .mask(
@@ -261,8 +256,9 @@ extension CalendarView {
                                 .fill(LinearGradient(colors: [Color.clear, Color("InnerShadow")], startPoint: .topLeading, endPoint: .bottomTrailing))
                         )
                 )
-                .padding(2)
+                .padding(1)
         }
+        .offset(y: 1)
     }
     
     
@@ -290,7 +286,10 @@ extension Date {
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView()
-//            .preferredColorScheme(.dark)
+        ZStack {
+            NeumorphicBackground()
+            CalendarView()
+                .preferredColorScheme(.dark)
+        }
     }
 }

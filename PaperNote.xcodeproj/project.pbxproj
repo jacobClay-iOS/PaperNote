@@ -43,6 +43,7 @@
 		16440C4327E15B8C00821F16 /* ListSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16440C4127E15B8C00821F16 /* ListSettingsView.swift */; };
 		164A834E27D05FA20071E0D2 /* PaperNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1631555127BBEC2600E05CD8 /* PaperNote.xcdatamodeld */; };
 		164A834F27D0600D0071E0D2 /* PaperNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1631555127BBEC2600E05CD8 /* PaperNote.xcdatamodeld */; };
+		166AC4D627F14A9A00E197A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166AC4D527F14A9A00E197A1 /* LaunchScreen.storyboard */; };
 		168FC5EA27D064FA00DD7ECA /* TaskListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168FC5E927D064FA00DD7ECA /* TaskListVM.swift */; };
 		168FC5EB27D064FA00DD7ECA /* TaskListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168FC5E927D064FA00DD7ECA /* TaskListVM.swift */; };
 		16CEA9DA27D448D4005F8CEA /* AddListButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CEA9D927D448D4005F8CEA /* AddListButtonStyle.swift */; };
@@ -128,6 +129,7 @@
 		1637F39D27D054C100CA2C3E /* TaskCollectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCollectionVM.swift; sourceTree = "<group>"; };
 		1637F3A027D0554D00CA2C3E /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		16440C4127E15B8C00821F16 /* ListSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSettingsView.swift; sourceTree = "<group>"; };
+		166AC4D527F14A9A00E197A1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		168FC5E927D064FA00DD7ECA /* TaskListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListVM.swift; sourceTree = "<group>"; };
 		16CEA9D927D448D4005F8CEA /* AddListButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListButtonStyle.swift; sourceTree = "<group>"; };
 		16DACFB627EDF46000689729 /* Prototyping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototyping.swift; sourceTree = "<group>"; };
@@ -281,6 +283,14 @@
 			path = "Task List";
 			sourceTree = "<group>";
 		};
+		166AC4D427F14A7600E197A1 /* Launch Screen */ = {
+			isa = PBXGroup;
+			children = (
+				166AC4D527F14A9A00E197A1 /* LaunchScreen.storyboard */,
+			);
+			path = "Launch Screen";
+			sourceTree = "<group>";
+		};
 		16DACFC827EFF9B500689729 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,6 +357,7 @@
 		16FE630727C1CA3000034B0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				166AC4D427F14A7600E197A1 /* Launch Screen */,
 				16DACFC827EFF9B500689729 /* Home */,
 				1615B6A727ED418E00C5EA08 /* Calendar */,
 				1637F39927D0547800CA2C3E /* Task List */,
@@ -499,6 +510,7 @@
 				16FE62FA27C1C67C00034B0D /* RedHatText-Light.ttf in Resources */,
 				16DACFBA27EDF5A700689729 /* RedHatText-Medium.ttf in Resources */,
 				16FE62FE27C1C67C00034B0D /* RedHatText-Regular.ttf in Resources */,
+				166AC4D627F14A9A00E197A1 /* LaunchScreen.storyboard in Resources */,
 				1631558427BBEC2700E05CD8 /* Assets.xcassets in Resources */,
 				16FE62FC27C1C67C00034B0D /* RedHatText-Italic.ttf in Resources */,
 			);
@@ -764,6 +776,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
@@ -796,6 +809,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;

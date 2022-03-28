@@ -12,12 +12,9 @@ struct HomeView: View {
         ZStack {
             NeumorphicBackground()
             VStack {
-                
                 CalendarView()
                 Spacer()
-                
                 TaskCollectionView()
-                    
             }
             .padding(.top, 45)
             .padding(.bottom, 20)
@@ -29,6 +26,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-            .preferredColorScheme(.dark)
+//            .preferredColorScheme(.dark)
     }
 }

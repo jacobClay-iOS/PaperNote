@@ -259,10 +259,10 @@ extension TaskListView {
                         .background(
                             RoundedRectangle(cornerRadius: .infinity)
                                 .fill(Color("Surface"))
-                                .shadow(color: Color("OuterShadow"), radius: 2, x: 2, y: 2)
-                                .shadow(color: Color("OuterGlare"), radius: 1, x: -1, y: -1)
-                                .shadow(color: Color("OuterGlare"), radius: 1, x: -1, y: -1)
-                                
+                                .shadow(color: Color("OuterGlare"), radius: 0.5, x: -1, y: -1)
+                                .shadow(color: Color("OuterGlare"), radius: 0.5, x: -1, y: -1)
+                                .shadow(color: Color("OuterGlare"), radius: 0.5, x: 0, y: -1)
+                                .shadow(color: Color("OuterShadow"), radius: 3, x: 2, y: 4)
                         )
                 }
             }
@@ -368,7 +368,7 @@ struct TaskListView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             TaskListView(list: TaskList(name: "Grocery List", list: [TaskItem(name: "Bananas", isTaskCompleted: true, note: "All of them")], totalTaskCount: 1, completedTaskCount: 1))
-                .preferredColorScheme(.dark)
+//                .preferredColorScheme(.dark)
         }
     }
 }
