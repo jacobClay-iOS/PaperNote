@@ -24,7 +24,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lauchScreenCheckmark" translatesAutoresizingMaskIntoConstraints="NO" id="45P-7D-bNL">
-                                <rect key="frame" x="-108" y="284" width="649" height="120"/>
+                                <rect key="frame" x="-117.5" y="328" width="649" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="3uC-7f-sWD"/>
                                     <constraint firstAttribute="height" constant="120" id="QO7-1U-Q6z"/>
@@ -35,9 +35,8 @@
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" name="Surface"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="45P-7D-bNL" secondAttribute="trailing" constant="-127" id="9TJ-Sa-ZhA"/>
-                            <constraint firstItem="45P-7D-bNL" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="-108" id="QOR-UX-eSB"/>
-                            <constraint firstItem="45P-7D-bNL" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="240" id="hfv-1h-agd"/>
+                            <constraint firstItem="45P-7D-bNL" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-60" id="1iw-eI-xif"/>
+                            <constraint firstItem="45P-7D-bNL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="USo-hc-kBg"/>
                         </constraints>
                     </view>
                 </viewController>

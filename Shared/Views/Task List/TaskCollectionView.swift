@@ -15,11 +15,12 @@ struct TaskCollectionView: View {
      
     var body: some View {
        
-            VStack(spacing: 0) {
+            VStack(spacing: 5) {
                 HStack {
                     Text("Tasks")
                         .customFontHeadline()
                         .foregroundColor(.secondary)
+                        
                     Spacer()
                 } // HStack
                 .padding(.horizontal)
@@ -112,6 +113,7 @@ extension TaskCollectionView {
                     .shadow(color: Color("OuterGlare"), radius: 1, y: -4)
             )
         } // Vstack
+        
         .ignoresSafeArea(.container, edges: .bottom)
         .task {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

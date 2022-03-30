@@ -26,6 +26,7 @@ struct CalendarView: View {
                             CardView1(value: value)
                                 .background(
                                     currentDayBackground
+                                        .frame(height: UIScreen.main.bounds.height * 0.068)
                                         .opacity(calendarVM.isSameDay1(date1: value.date, date2: calendarVM.currentDay1) ? 1 : 0)
                                 )
                                 .onTapGesture { calendarVM.highlightedDay = value.date }
@@ -59,6 +60,7 @@ struct CalendarView: View {
                         .customFontTitle2Bold()
                         .foregroundColor(Color("AccentStart"))
                         .frame(maxWidth: .infinity)
+                        .offset(y: -1)
                 } else {
                     Text("\(value.day)")
                         .customFontTitle3Regular()
@@ -73,12 +75,13 @@ struct CalendarView: View {
                     Spacer()
                     Circle()
                         .fill(Color("AccentEnd"))
-                        .frame(width: 8, height: 8)
+                        .frame(width: 7, height: 7)
+                        .offset(y: calendarVM.isSameDay1(date1: value.date, date2: calendarVM.highlightedDay) ? -2 : 0)
                 }
             }
         }
-        .padding(.vertical, 8)
-        .frame(height: 60, alignment: .top)
+        .padding(.vertical, 10)
+        .frame(height: UIScreen.main.bounds.height * 0.062, alignment: .top)
     }
     
 }
@@ -154,7 +157,8 @@ extension CalendarView {
             .customFontHeadline()
             .foregroundColor(.secondary)
             .frame(maxWidth: .infinity , alignment: .leading)
-                .padding(.bottom, 20)
+            .padding(.vertical, 10)
+            
             
             if let task = tasks.first(where: { task in
                 return calendarVM.isSameDay1(date1: task.taskDate, date2: calendarVM.highlightedDay)
@@ -228,16 +232,6 @@ extension CalendarView {
                 )
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color("OuterGlare"), lineWidth: 2)
-                        .blur(radius: 1)
-                        .offset(x: -1, y: -1)
-                        .mask(
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(LinearGradient(colors: [Color.clear, Color("InnerShadow")], startPoint: .top, endPoint: .bottom))
-                        )
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
                         .stroke(Color("OuterShadow"), lineWidth: 3)
                         .blur(radius: 2)
                         .offset(x: 2, y: 2)
@@ -253,12 +247,22 @@ extension CalendarView {
                         .offset(x: -1, y: -1)
                         .mask(
                             RoundedRectangle(cornerRadius: 10)
+                                .fill(LinearGradient(colors: [Color.clear, Color("InnerShadow")], startPoint: .top, endPoint: .bottom))
+                        )
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color("OuterGlare"), lineWidth: 2)
+                        .blur(radius: 1)
+                        .offset(x: -1, y: -1)
+                        .mask(
+                            RoundedRectangle(cornerRadius: 10)
                                 .fill(LinearGradient(colors: [Color.clear, Color("InnerShadow")], startPoint: .topLeading, endPoint: .bottomTrailing))
                         )
                 )
                 .padding(1)
         }
-        .offset(y: 1)
+        .offset(y: 8)
     }
     
     

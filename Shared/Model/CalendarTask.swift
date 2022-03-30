@@ -30,6 +30,12 @@ func getSampleDate(offset: Int) -> Date {
     return date ?? Date()
 }
 
+func sampleEvents(year: Int, month: Int, day: Int, hour: Int, minute: Int) -> Date {
+    let calendar = Calendar.current
+    let event = calendar.date(from: DateComponents(year: year, month: month, day: day, hour: hour, minute: minute))
+    return event ?? Date()
+}
+
 // sample tasks
 var tasks: [TaskMetaData] = [
 
@@ -37,29 +43,29 @@ var tasks: [TaskMetaData] = [
         CalendarTask(title: "Sample event"),
         CalendarTask(title: "Sample event"),
         CalendarTask(title: "Sample event")
-    ], taskDate: getSampleDate(offset: 1)),
+    ], taskDate: sampleEvents(year: 2022, month: 3, day: 29, hour: 9, minute: 30)),
     
     TaskMetaData(task: [
         CalendarTask(title: "Sample event"),
-    ], taskDate: getSampleDate(offset: -3)),
+    ], taskDate: sampleEvents(year: 2022, month: 3, day: 1, hour: 1, minute: 30)),
     
     TaskMetaData(task: [
         CalendarTask(title: "Sample event"),
-    ], taskDate: getSampleDate(offset: -8)),
-    
+    ], taskDate: sampleEvents(year: 2022, month: 3, day: 20, hour: 15, minute: 30)),
+
     TaskMetaData(task: [
         CalendarTask(title: "Sample event"),
-    ], taskDate: getSampleDate(offset: 10)),
-    
+    ], taskDate: sampleEvents(year: 2022, month: 3, day: 17, hour: 20, minute: 30)),
+
     TaskMetaData(task: [
         CalendarTask(title: "Sample event"),
-    ], taskDate: getSampleDate(offset: 15)),
-    
+    ], taskDate: sampleEvents(year: 2022, month: 3, day: 5, hour: 5, minute: 30)),
+
     TaskMetaData(task: [
         CalendarTask(title: "Sample event"),
-    ], taskDate: getSampleDate(offset: -20)),
-    
+    ], taskDate: sampleEvents(year: 2022, month: 3, day: 8, hour: 7, minute: 30)),
+
     TaskMetaData(task: [
         CalendarTask(title: "Sample event"),
-    ], taskDate: getSampleDate(offset: 0)),
+    ], taskDate: sampleEvents(year: 2022, month: 3, day: 23, hour: 9, minute: 30)),
 ]
