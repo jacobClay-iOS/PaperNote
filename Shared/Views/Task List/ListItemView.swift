@@ -40,6 +40,7 @@ extension ListItemView {
         HStack(spacing: 20) {
             VStack {
                 Button {
+                    UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
                     withAnimation {
                         taskListVM.completeTask(listItem)
                         taskListVM.moveTaskEndOfArray(listItem)
@@ -104,6 +105,7 @@ extension ListItemView {
         HStack(spacing: 20) {
             VStack {
                 Button {
+                    UIImpactFeedbackGenerator(style: .soft).impactOccurred()
                     withAnimation {
                         taskListVM.unCompleteTask(listItem)
                         taskListVM.moveTaskStartOfArray(listItem)
@@ -211,8 +213,8 @@ extension ListItemView {
             .background(
                 Circle()
                     .foregroundColor(Color("Surface"))
-                    .shadow(color: Color("OuterGlare"), radius: 0.5, x: -1, y: -1)
-                    .shadow(color: Color("OuterGlare"), radius: 0.5, x: -1, y: -1)
+                    .shadow(color: Color("OuterGlare"), radius: 0.5, x: -0.5, y: -0.5)
+                    .shadow(color: Color("OuterGlare"), radius: 0.5, x: -0.5, y: -0.5)
                     .shadow(color: Color("OuterShadow"), radius: 2, x: 1, y: 2)
                     .overlay(
                         Circle()

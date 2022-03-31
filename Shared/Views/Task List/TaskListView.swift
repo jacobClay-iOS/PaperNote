@@ -295,6 +295,7 @@ extension TaskListView {
             }
             Spacer()
             Button {
+                UIImpactFeedbackGenerator(style: .soft).impactOccurred()
                 withAnimation {
                     taskListVM.isShowingAddNewTaskSheet.toggle()
                 }
@@ -368,7 +369,8 @@ struct TaskListView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             TaskListView(list: TaskList(name: "Grocery List", list: [TaskItem(name: "Bananas", isTaskCompleted: true, note: "All of them")], totalTaskCount: 1, completedTaskCount: 1))
-//                .preferredColorScheme(.dark)
+                .preferredColorScheme(.dark)
+                
         }
     }
 }

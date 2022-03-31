@@ -17,7 +17,7 @@ struct PaperNoteApp: App {
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         
                 HomeView()
-                    .preferredColorScheme(.dark)
+//                    .preferredColorScheme(.dark)
             
         }
     }

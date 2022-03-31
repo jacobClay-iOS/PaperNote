@@ -209,6 +209,7 @@ extension CalendarView {
                 Text("No events")
                     .customFontBodyRegular()
                     .foregroundColor(.secondary)
+                    .padding(.top)
             }
         }
     }
