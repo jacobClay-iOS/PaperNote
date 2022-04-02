@@ -34,7 +34,10 @@ struct TaskListView: View {
 extension TaskListView {
     
     private var cardListView: some View {
-        Button { withAnimation { taskListVM.isListExpanded.toggle() } }
+        Button {
+            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+            withAnimation { taskListVM.isListExpanded.toggle() }
+        }
         label: {
             listButtonLabel
         }
@@ -295,7 +298,7 @@ extension TaskListView {
             }
             Spacer()
             Button {
-                UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                 withAnimation {
                     taskListVM.isShowingAddNewTaskSheet.toggle()
                 }

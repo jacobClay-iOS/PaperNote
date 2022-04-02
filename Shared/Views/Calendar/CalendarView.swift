@@ -9,30 +9,53 @@ import SwiftUI
 
 struct CalendarView: View {
     @StateObject var calendarVM = CalendarVm()
+    @Environment(\.scenePhase) var scenePhase
+    
+    @State var currentDragOffsetX: CGFloat = 0
     
     var body: some View {
             VStack(spacing: 15) {
                 header
                     .padding(.horizontal)
-                
+                    .padding(.bottom, -5)
                 // day view
-                VStack(spacing: 5) {
-                    dayOfTheWeekRow
-                        .padding(.horizontal, 2)
-                    // dates
-                    // lazy grid
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 5) {
-                        ForEach(calendarVM.extractDate1()) { value in
-                            CardView1(value: value)
-                                .background(
-                                    currentDayBackground
-                                        .frame(height: UIScreen.main.bounds.height * 0.068)
-                                        .opacity(calendarVM.isSameDay1(date1: value.date, date2: calendarVM.currentDay1) ? 1 : 0)
-                                )
-                                .onTapGesture { calendarVM.highlightedDay = value.date }
+                VStack {
+                    VStack(spacing: 5) {
+                        dayOfTheWeekRow
+                            .padding(.horizontal, 2)
+                        // dates
+                        // lazy grid
+                        LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 5) {
+                            ForEach(calendarVM.extractDate1()) { value in
+                                CardView1(value: value)
+                                    .background(
+                                        currentDayBackground
+                                            .frame(height: UIScreen.main.bounds.height * 0.068)
+                                            .opacity(calendarVM.isSameDay1(date1: value.date, date2: calendarVM.currentDay1) ? 1 : 0)
+                                    )
+                                    .onTapGesture { calendarVM.highlightedDay = value.date }
+                            }
+                            
                         }
+                        .padding(.horizontal, 6)
+                        .offset(x: currentDragOffsetX)
+                        .gesture(
+                            DragGesture()
+                                .onChanged { value in
+                                    withAnimation(.linear) {
+                                        currentDragOffsetX = value.translation.width
+                                    }
+                                }
+                                .onEnded { value in
+                                    if currentDragOffsetX < -80 {
+                                        calendarVM.userSelectedMonth1 += 1
+                                    } else if currentDragOffsetX > 80  {
+                                        calendarVM.userSelectedMonth1 -= 1
+                                    }
+                                    currentDragOffsetX = 0
+                                }
+                        )
                     }
-                    .padding(.horizontal, 6)
                 }
                 
                 eventView
@@ -48,7 +71,15 @@ struct CalendarView: View {
             .onDisappear {
                 calendarVM.highlightedDay = calendarVM.currentDay1
             }
-       
+            .onChange(of: scenePhase) { newPhase in
+                if newPhase == .active {
+                    calendarVM.currentDay1 = Date()
+                } else if newPhase == .inactive {
+                    
+                } else if newPhase == .background {
+                    
+                }
+            }
     }
     
     @ViewBuilder
@@ -88,32 +119,14 @@ struct CalendarView: View {
 
 extension CalendarView {
     private var header: some View {
-        HStack(spacing: 40) {
-            Button { calendarVM.userSelectedMonth1 -= 1 }
-            label: {
-            Image(systemName: "chevron.left")
-                .font(.headline)
-                .foregroundColor(.secondary)
+        HStack(alignment: .bottom, spacing: 10) {
+            Text(calendarVM.extraDate1()[1])
+                .customFontTitleBold()
+            //                Text(calendarVM.extraDate1()[0])
+            //                    .customFontCaptionRegular()
+            Spacer()
         }
-        .buttonStyle(.plain)
-            
-            VStack(alignment: .center, spacing: 5) {
-                Text(calendarVM.extraDate1()[0])
-                    .customFontCaptionRegular()
-                
-                Text(calendarVM.extraDate1()[1])
-                    .customFontHeadline()
-            }
-            .foregroundColor(.primary)
-            Button { calendarVM.userSelectedMonth1 += 1 }
-            label: {
-            Image(systemName: "chevron.right")
-                .font(.headline)
-                .foregroundColor(.secondary)
-        }
-        .buttonStyle(.plain)
-            
-        }
+        .foregroundColor(.secondary)
     }
     
     private var dayOfTheWeekRow: some View {

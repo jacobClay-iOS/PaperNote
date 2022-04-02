@@ -50,7 +50,7 @@ struct TaskCollectionView: View {
         .environmentObject(taskCollectionVM)
         .ignoresSafeArea(edges: .bottom)
         .offset(y: taskCollectionVM.isShowingListTitleField ? 0 : startingOffsetY)
-        .offset(y: taskCollectionVM.isShowingListTitleField ? UIScreen.main.bounds.height * 0.40 : currentDragOffsetY)
+        .offset(y: taskCollectionVM.isShowingListTitleField ? UIScreen.main.bounds.height * 0.35 : currentDragOffsetY)
         .offset(y: taskCollectionVM.isShowingListTitleField ? 0 : hiddenOffsetY)
         .gesture(
             DragGesture()
@@ -61,7 +61,7 @@ struct TaskCollectionView: View {
                 }
                 .onEnded{ value in
                     withAnimation(.spring()) {
-                        if (currentDragOffsetY > 100) && (!taskCollectionVM.isShowingListTitleField)  {
+                        if (currentDragOffsetY > 40) && (!taskCollectionVM.isShowingListTitleField)  {
                             hiddenOffsetY = UIScreen.main.bounds.height * 0.21
                         } else if hiddenOffsetY != 0 && currentDragOffsetY < -40 {
                             hiddenOffsetY = 0
@@ -123,7 +123,7 @@ extension TaskCollectionView {
                         .transition(.scale(scale: 0.1))
                 } // ForEach
                 Button {
-                    UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                     withAnimation(.spring()) {
                         taskCollectionVM.newListTitle = ""
                         taskCollectionVM.isShowingListTitleField.toggle()
