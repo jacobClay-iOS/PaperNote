@@ -12,14 +12,14 @@ class CalendarVm: ObservableObject {
     @Published var userSelectedDate: Date = Date()
     
     // update month with arrow buttons
-    @Published var userSelectedMonth1: Int = 0
-    @Published var currentDay1: Date = Date()
+    @Published var userSelectedMonth: Int = 0
+    @Published var currentDay: Date = Date()
     @Published var highlightedDay: Date = Date()
     
     
     
     // checking dates
-    func isSameDay1(date1: Date, date2: Date) -> Bool {
+    func isSameDay(date1: Date, date2: Date) -> Bool {
         let calendar = Calendar.current
         return calendar.isDate(date1, inSameDayAs: date2)
     }
@@ -38,9 +38,17 @@ class CalendarVm: ObservableObject {
         let calendar = Calendar.current
         return calendar.isDateInYesterday(highlightedDay)
     }
+    
+    func isMonthNotInCurrentYear(month: Date) -> Bool {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY"
+        let currentYearNumber = formatter.string(from: currentDay)
+        let userSelectedYearNumber = formatter.string(from: userSelectedDate)
+        return currentYearNumber != userSelectedYearNumber
+    }
 
     // extracting year and month for display
-    func extraDate1() -> [String] {
+    func extraDate() -> [String] {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY MMMM"
         
@@ -61,10 +69,10 @@ class CalendarVm: ObservableObject {
         return date.components(separatedBy: " ")
     }
 
-    func getCurrentMonth1() -> Date {
+    func getCurrentMonth() -> Date {
         let calendar = Calendar.current
         // getting current month date
-        guard let currentMonth = calendar.date(byAdding: .month, value: self.userSelectedMonth1, to: Date())
+        guard let currentMonth = calendar.date(byAdding: .month, value: self.userSelectedMonth, to: Date())
         else {
             return Date()
         }
@@ -72,11 +80,11 @@ class CalendarVm: ObservableObject {
     }
 
 
-    func extractDate1()->[DateValue] {
+    func extractDate()->[DateValue] {
         let calendar = Calendar.current
         // getting current month date
-        let currentMonth = getCurrentMonth1()
-        var days = currentMonth.getAllDates1().compactMap { date -> DateValue in
+        let currentMonth = getCurrentMonth()
+        var days = currentMonth.getAllDates().compactMap { date -> DateValue in
             
             // getting day
             let day = calendar.component(.day, from: date)
@@ -91,6 +99,16 @@ class CalendarVm: ObservableObject {
             days.insert(DateValue(day: -1, date: Date()), at: 0)
         }
         return days
+    }
+    
+    func resetCalendar() {
+        userSelectedMonth = 0
+        currentDay = Date()
+        highlightedDay = currentDay
+    }
+    
+    func refreshCurrentDate() {
+        currentDay = Date()
     }
 }
 

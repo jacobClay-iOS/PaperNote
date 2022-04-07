@@ -9,10 +9,12 @@ import SwiftUI
 
 struct FontManager {
     struct RedHat {
-        static let regular = "RedHatText-Medium"
-        static let regularItalic = "RedHatText-MediumItalic"
+        static let regular = "RedHatText-Regular"
+        static let regularItalic = "RedHatText-Italic"
         static let light = "RedHatText-Light"
         static let lightItalic = "RedHatText-LightItalic"
+        static let medium = "RedHatText-Medium"
+        static let mediumItalic = "RedHatText-MediumItalic"
         static let bold = "RedHatText-Bold"
         static let boldItalic = "RedHatText-BoldItalic"
     }
@@ -64,6 +66,30 @@ struct BodyLightItalic: ViewModifier {
 extension View {
     func customFontBodyLightItalic() -> some View {
         modifier(BodyLightItalic())
+    }
+}
+
+struct BodyMedium: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.custom(FontManager.RedHat.medium, size: 17, relativeTo: .body))
+    }
+}
+extension View {
+    func customFontBodyMedium() -> some View {
+        modifier(BodyMedium())
+    }
+}
+
+struct BodyMediumItalic: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.custom(FontManager.RedHat.mediumItalic, size: 17, relativeTo: .body))
+    }
+}
+extension View {
+    func customFontBodyMediumItalic() -> some View {
+        modifier(BodyMediumItalic())
     }
 }
 
@@ -149,6 +175,18 @@ extension View {
     }
 }
 
+struct CaptionMedium: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.custom(FontManager.RedHat.medium, size: 12, relativeTo: .caption))
+    }
+}
+extension View {
+    func customFontCaptionMedium() -> some View {
+        modifier(CaptionMedium())
+    }
+}
+
 
 
 // MARK: Headline
@@ -214,6 +252,18 @@ extension View {
     }
 }
 
+struct LargeTitleMedium: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.custom(FontManager.RedHat.medium, size: 32, relativeTo: .largeTitle))
+    }
+}
+extension View {
+    func customFontLargeTitleMedium() -> some View {
+        modifier(LargeTitleMedium())
+    }
+}
+
 
 // MARK: Title
 struct TitleRegular: ViewModifier {
@@ -249,6 +299,18 @@ struct TitleLight: ViewModifier {
 extension View {
     func customFontTitleLight() -> some View {
         modifier(TitleLight())
+    }
+}
+
+struct TitleMedium: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.custom(FontManager.RedHat.medium, size: 27, relativeTo: .title))
+    }
+}
+extension View {
+    func customFontTitleMedium() -> some View {
+        modifier(TitleMedium())
     }
 }
 
@@ -290,6 +352,18 @@ extension View {
     }
 }
 
+struct Title2Medium: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.custom(FontManager.RedHat.medium, size: 21, relativeTo: .title2))
+    }
+}
+extension View {
+    func customFontTitle2Medium() -> some View {
+        modifier(Title2Medium())
+    }
+}
+
 
 // MARK: Title3
 struct Title3Regular: ViewModifier {
@@ -325,5 +399,17 @@ struct Title3Light: ViewModifier {
 extension View {
     func customFontTitle3Light() -> some View {
         modifier(Title3Light())
+    }
+}
+
+struct Title3Medium: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.custom(FontManager.RedHat.medium, size: 19, relativeTo: .title3))
+    }
+}
+extension View {
+    func customFontTitle3Medium() -> some View {
+        modifier(Title3Medium())
     }
 }

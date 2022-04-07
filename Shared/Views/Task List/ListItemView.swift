@@ -90,11 +90,11 @@ extension ListItemView {
                         }
                     } label: {
                         Image(systemName: isShowingNote ? "chevron.up" : "chevron.down")
-                            .font(.body)
+                            .font(.caption)
                             .foregroundColor(.secondary)
                     }
                     .buttonStyle(.plain)
-                    .offset(y: 11)
+                    .offset(y: 13)
                     Spacer()
                 }
             }
@@ -156,11 +156,11 @@ extension ListItemView {
                         }
                     } label: {
                         Image(systemName: isShowingNote ? "chevron.up" : "chevron.down")
-                            .font(.body)
+                            .font(.caption)
                             .foregroundColor(.secondary)
                     }
                     .buttonStyle(.plain)
-                    .offset(y: 11)
+                    .offset(y: 13)
                     Spacer()
                 }
             }
@@ -213,15 +213,15 @@ extension ListItemView {
             .background(
                 Circle()
                     .foregroundColor(Color("Surface"))
-                    .shadow(color: Color("OuterGlare"), radius: 0.5, x: -0.5, y: -0.5)
-                    .shadow(color: Color("OuterGlare"), radius: 0.5, x: -0.5, y: -0.5)
+                    .shadow(color: Color("OuterGlare"), radius: 1, x: -0.5, y: -0.5)
+                    .shadow(color: Color("OuterGlare"), radius: 1, x: -0.5, y: -0.5)
                     .shadow(color: Color("OuterShadow"), radius: 2, x: 1, y: 2)
                     .overlay(
                         Circle()
                             .stroke( LinearGradient(gradient: Gradient(stops: [
                                 Gradient.Stop(color: Color("OuterGlare"), location: 0.4),
                                 Gradient.Stop(color: Color("Surface"), location: 0.6),
-                            ]), startPoint: .topLeading, endPoint: .bottom), lineWidth: 1)
+                            ]), startPoint: .topLeading, endPoint: .bottom), lineWidth: 0.5)
                 )
             )
     }

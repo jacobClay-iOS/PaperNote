@@ -229,7 +229,7 @@ extension TaskListView {
             VStack(alignment: .leading) {
                 HStack {
                     Text(taskListVM.initializedTaskList.name)
-                        .customFontCaptionRegular()
+                        .customFontCaptionMedium()
                         .foregroundColor(.primary)
                         .multilineTextAlignment(.leading)
                     Spacer()
@@ -262,10 +262,10 @@ extension TaskListView {
                         .background(
                             RoundedRectangle(cornerRadius: .infinity)
                                 .fill(Color("Surface"))
-                                .shadow(color: Color("OuterGlare"), radius: 0.5, x: -1, y: -1)
-                                .shadow(color: Color("OuterGlare"), radius: 0.5, x: -1, y: -1)
-                                .shadow(color: Color("OuterGlare"), radius: 0.5, x: 0, y: -1)
-                                .shadow(color: Color("OuterShadow"), radius: 3, x: 2, y: 4)
+                                .shadow(color: Color("OuterGlare"), radius: 0.5, x: -0.5, y: -0.5)
+                                .shadow(color: Color("OuterGlare"), radius: 0.5, x: -0.5, y: -0.5)
+                                .shadow(color: Color("OuterGlare"), radius: 0.5, x: 0, y: -0.5)
+                                .shadow(color: Color("OuterShadow"), radius: 3, x: 2, y: 3)
                         )
                 }
             }
@@ -322,8 +322,8 @@ struct ProgressBarSunkenBackground: View {
             .frame(width: 320, height: 15)
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color("OuterShadow"), lineWidth: 4)
-                    .blur(radius: 4)
+                    .stroke(Color("OuterShadow"), lineWidth: 3)
+                    .blur(radius: 3)
                     .offset(x: 2, y: 2)
                     .mask(
                         RoundedRectangle(cornerRadius: 8)
@@ -332,18 +332,8 @@ struct ProgressBarSunkenBackground: View {
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color("InnerGlare"), lineWidth: 4)
-                    .blur(radius: 4)
-                    .offset(x: -2, y: -2)
-                    .mask(
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(LinearGradient(colors: [Color.clear, Color("InnerGlare")], startPoint: .top, endPoint: .bottom))
-                    )
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color("OuterShadow"), lineWidth: 4)
-                    .blur(radius: 4)
+                    .stroke(Color("OuterShadow"), lineWidth: 3)
+                    .blur(radius: 3)
                     .offset(x: 2, y: 2)
                     .mask(
                         RoundedRectangle(cornerRadius: 8)
@@ -352,15 +342,35 @@ struct ProgressBarSunkenBackground: View {
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color("InnerGlare"), lineWidth: 4)
-                    .blur(radius: 4)
-                    .offset(x: -2, y: -2)
+                    .stroke(Color("InnerGlare"), lineWidth: 1)
+                    .blur(radius: 1)
+                    .offset(x: -1, y: -1)
+                    .mask(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(LinearGradient(colors: [Color.clear, Color("InnerGlare")], startPoint: .top, endPoint: .bottom))
+                    )
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color("InnerGlare"), lineWidth: 1)
+                    .blur(radius: 1)
+                    .offset(x: -1, y: -1)
                     .mask(
                         RoundedRectangle(cornerRadius: 8)
                             .fill(LinearGradient(colors: [Color.clear, Color("InnerGlare")], startPoint: .topLeading, endPoint: .bottomTrailing))
                     )
             )
-            .padding(2)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color("InnerGlare"), lineWidth: 1)
+                    .blur(radius: 1)
+                    .offset(x: -1, y: -1)
+                    .mask(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(LinearGradient(colors: [Color.clear, Color("InnerGlare")], startPoint: .topLeading, endPoint: .bottomTrailing))
+                    )
+            )
+            .padding(1)
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .fill(LinearGradient(colors: [Color("Surface"), Color("OuterGlare")], startPoint: .top, endPoint: .bottom))

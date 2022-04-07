@@ -43,6 +43,8 @@
 		16440C4327E15B8C00821F16 /* ListSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16440C4127E15B8C00821F16 /* ListSettingsView.swift */; };
 		164A834E27D05FA20071E0D2 /* PaperNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1631555127BBEC2600E05CD8 /* PaperNote.xcdatamodeld */; };
 		164A834F27D0600D0071E0D2 /* PaperNote.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1631555127BBEC2600E05CD8 /* PaperNote.xcdatamodeld */; };
+		1658919327FD2FCC007D6D30 /* AddEventButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1658919227FD2FCC007D6D30 /* AddEventButtonStyle.swift */; };
+		1658919427FD2FCC007D6D30 /* AddEventButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1658919227FD2FCC007D6D30 /* AddEventButtonStyle.swift */; };
 		166AC4D627F14A9A00E197A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166AC4D527F14A9A00E197A1 /* LaunchScreen.storyboard */; };
 		168FC5EA27D064FA00DD7ECA /* TaskListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168FC5E927D064FA00DD7ECA /* TaskListVM.swift */; };
 		168FC5EB27D064FA00DD7ECA /* TaskListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168FC5E927D064FA00DD7ECA /* TaskListVM.swift */; };
@@ -129,6 +131,7 @@
 		1637F39D27D054C100CA2C3E /* TaskCollectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCollectionVM.swift; sourceTree = "<group>"; };
 		1637F3A027D0554D00CA2C3E /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		16440C4127E15B8C00821F16 /* ListSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSettingsView.swift; sourceTree = "<group>"; };
+		1658919227FD2FCC007D6D30 /* AddEventButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButtonStyle.swift; sourceTree = "<group>"; };
 		166AC4D527F14A9A00E197A1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		168FC5E927D064FA00DD7ECA /* TaskListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListVM.swift; sourceTree = "<group>"; };
 		16CEA9D927D448D4005F8CEA /* AddListButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListButtonStyle.swift; sourceTree = "<group>"; };
@@ -350,6 +353,7 @@
 			children = (
 				16FE630427C1C8C400034B0D /* AddTaskButtonStyle.swift */,
 				16CEA9D927D448D4005F8CEA /* AddListButtonStyle.swift */,
+				1658919227FD2FCC007D6D30 /* AddEventButtonStyle.swift */,
 			);
 			path = "Button Styles";
 			sourceTree = "<group>";
@@ -573,6 +577,7 @@
 				1631558227BBEC2700E05CD8 /* Persistence.swift in Sources */,
 				162809B627C349C7009425CE /* SunkenTextField.swift in Sources */,
 				16DACFC627EFF83C00689729 /* CalendarVM.swift in Sources */,
+				1658919327FD2FCC007D6D30 /* AddEventButtonStyle.swift in Sources */,
 				168FC5EA27D064FA00DD7ECA /* TaskListVM.swift in Sources */,
 				16440C4227E15B8C00821F16 /* ListSettingsView.swift in Sources */,
 				1637F39E27D054C100CA2C3E /* TaskCollectionVM.swift in Sources */,
@@ -605,6 +610,7 @@
 				1631558327BBEC2700E05CD8 /* Persistence.swift in Sources */,
 				162809B727C349C7009425CE /* SunkenTextField.swift in Sources */,
 				16DACFC727EFF83C00689729 /* CalendarVM.swift in Sources */,
+				1658919427FD2FCC007D6D30 /* AddEventButtonStyle.swift in Sources */,
 				168FC5EB27D064FA00DD7ECA /* TaskListVM.swift in Sources */,
 				16440C4327E15B8C00821F16 /* ListSettingsView.swift in Sources */,
 				1637F39F27D054C100CA2C3E /* TaskCollectionVM.swift in Sources */,

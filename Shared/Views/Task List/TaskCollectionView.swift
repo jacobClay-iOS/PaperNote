@@ -104,7 +104,7 @@ extension TaskCollectionView {
         HStack {
             Text(taskCollectionVM.isShowingListTitleField ? "New List" : "Tasks")
                 .customFontHeadline()
-                .foregroundColor(.secondary)
+                .foregroundColor(.primary)
             Spacer()
         }
     }

@@ -68,4 +68,8 @@ var tasks: [TaskMetaData] = [
     TaskMetaData(task: [
         CalendarTask(title: "Sample event"),
     ], taskDate: sampleEvents(year: 2022, month: 3, day: 23, hour: 9, minute: 30)),
+    
+    TaskMetaData(task: [
+        CalendarTask(title: "Sample event Sample event Sample event"),
+    ], taskDate: sampleEvents(year: 2022, month: 4, day: 6, hour: 9, minute: 30))
 ]

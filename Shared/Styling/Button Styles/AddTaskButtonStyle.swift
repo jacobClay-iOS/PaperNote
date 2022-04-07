@@ -36,7 +36,7 @@ struct AddTaskButtonStyle: ButtonStyle {
                         Circle()
                             .fill(Color("Surface"))
                             .shadow(color: Color("OuterGlare"), radius: 1, x: -1, y: -1)
-                            .shadow(color: Color("OuterGlare"), radius: 1, x: -1, y: -1)
+                            .shadow(color: Color("OuterGlare"), radius: 1, x: -0.5, y: -0.5)
                             .shadow(color: Color("OuterShadow"), radius: 4, x: 4, y: 4)
                             .overlay(
                                 Circle()

@@ -26,12 +26,13 @@ struct CalendarView: View {
                         // dates
                         // lazy grid
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 5) {
-                            ForEach(calendarVM.extractDate1()) { value in
+                            ForEach(calendarVM.extractDate()) { value in
                                 CardView1(value: value)
+                                    
                                     .background(
                                         currentDayBackground
                                             .frame(height: UIScreen.main.bounds.height * 0.068)
-                                            .opacity(calendarVM.isSameDay1(date1: value.date, date2: calendarVM.currentDay1) ? 1 : 0)
+                                            .opacity(calendarVM.isSameDay(date1: value.date, date2: calendarVM.currentDay) ? 1 : 0)
                                     )
                                     .onTapGesture { calendarVM.highlightedDay = value.date }
                             }
@@ -42,15 +43,16 @@ struct CalendarView: View {
                         .gesture(
                             DragGesture()
                                 .onChanged { value in
-                                    withAnimation(.linear) {
+                                    withAnimation(.linear(duration: 0.01)) {
+                                      
                                         currentDragOffsetX = value.translation.width
                                     }
                                 }
                                 .onEnded { value in
                                     if currentDragOffsetX < -80 {
-                                        calendarVM.userSelectedMonth1 += 1
+                                        calendarVM.userSelectedMonth += 1
                                     } else if currentDragOffsetX > 80  {
-                                        calendarVM.userSelectedMonth1 -= 1
+                                        calendarVM.userSelectedMonth -= 1
                                     }
                                     currentDragOffsetX = 0
                                 }
@@ -64,20 +66,17 @@ struct CalendarView: View {
 //                Spacer()
                 
             }
-            .onChange(of: calendarVM.userSelectedMonth1) { newValue in
+            .onChange(of: calendarVM.userSelectedMonth) { newValue in
                 // updating month
-                calendarVM.userSelectedDate = calendarVM.getCurrentMonth1()
-            }
-            .onDisappear {
-                calendarVM.highlightedDay = calendarVM.currentDay1
+                calendarVM.userSelectedDate = calendarVM.getCurrentMonth()
             }
             .onChange(of: scenePhase) { newPhase in
                 if newPhase == .active {
-                    calendarVM.currentDay1 = Date()
+                    calendarVM.refreshCurrentDate()
                 } else if newPhase == .inactive {
                     
                 } else if newPhase == .background {
-                    
+                    calendarVM.resetCalendar()
                 }
             }
     }
@@ -86,47 +85,56 @@ struct CalendarView: View {
     func CardView1(value: DateValue) -> some View {
         VStack {
             if value.day != -1 {
-                if calendarVM.isSameDay1(date1: value.date, date2: calendarVM.highlightedDay) {
+                if calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay) {
                     Text("\(value.day)")
                         .customFontTitle2Bold()
                         .foregroundColor(Color("AccentStart"))
                         .frame(maxWidth: .infinity)
                         .offset(y: -1)
+                    Spacer()
                 } else {
                     Text("\(value.day)")
-                        .customFontTitle3Regular()
+                        .customFontTitle3Medium()
                         .foregroundColor(Color.primary)
                         .frame(maxWidth: .infinity)
+                    Spacer()
                 }
                 
+                
                 if let task = tasks.first(where: { task in
-                    return calendarVM.isSameDay1(date1: task.taskDate, date2: value.date)
+                    return calendarVM.isSameDay(date1: task.taskDate, date2: value.date)
                 }) {
-                    
-                    Spacer()
+                     
+//                    Spacer()
                     Circle()
                         .fill(Color("AccentEnd"))
                         .frame(width: 7, height: 7)
-                        .offset(y: calendarVM.isSameDay1(date1: value.date, date2: calendarVM.highlightedDay) ? -2 : 0)
+                        .offset(y: calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay) ? -2 : 0)
+                        
                 }
             }
         }
         .padding(.vertical, 10)
-        .frame(height: UIScreen.main.bounds.height * 0.062, alignment: .top)
+        .frame(
+            height: UIScreen.main.bounds.height * 0.062,
+            alignment: .top)
     }
     
 }
 
 extension CalendarView {
     private var header: some View {
-        HStack(alignment: .bottom, spacing: 10) {
-            Text(calendarVM.extraDate1()[1])
+        HStack(alignment: .bottom, spacing: 15) {
+            Text(calendarVM.extraDate()[1])
                 .customFontTitleBold()
-            //                Text(calendarVM.extraDate1()[0])
-            //                    .customFontCaptionRegular()
+            if calendarVM.isMonthNotInCurrentYear(month: calendarVM.highlightedDay) {
+                Text(calendarVM.extraDate()[0])
+                    .customFontCaptionBold()
+                    .offset(y: -5)
+            }
             Spacer()
         }
-        .foregroundColor(.secondary)
+        .foregroundColor(.primary)
     }
     
     private var dayOfTheWeekRow: some View {
@@ -165,39 +173,49 @@ extension CalendarView {
                     Text(calendarVM.displayDay()[1])
                 }
                 
+                Spacer()
+                Button {
+                    
+                } label: {
+                    Image(systemName: "plus")
+                        .foregroundColor(.primary)
+                        .font(.headline)
+                }
+                .buttonStyle(AddEventButtonStyle())
                 
+                    
             }
             .customFontHeadline()
-            .foregroundColor(.secondary)
+            .foregroundColor(.primary)
             .frame(maxWidth: .infinity , alignment: .leading)
             .padding(.vertical, 10)
             
             
             if let task = tasks.first(where: { task in
-                return calendarVM.isSameDay1(date1: task.taskDate, date2: calendarVM.highlightedDay)
+                return calendarVM.isSameDay(date1: task.taskDate, date2: calendarVM.highlightedDay)
             }) {
                 ScrollView(showsIndicators: false) {
                     ForEach(task.task) { task in
                         VStack {
                             HStack(spacing: 18) {
-                                VStack(alignment: .leading, spacing: 4) {
+//                                VStack(alignment: .leading, spacing: 4) {
                                     // for custom timing
-                                    Text(task.time.addingTimeInterval(CGFloat.random(in: 0...5000)), style: .time)
-                                        .customFontCaptionLight()
+                                Text(task.time , style: .time)
+                                        .customFontCaptionBold()
                                         .foregroundColor(.secondary)
                                     
                                     Text(task.title)
                                         .customFontBodyRegular()
                                         .foregroundColor(.primary)
-                                }
+//                                }
                                 
                                 Spacer()
-                                Image(systemName: "repeat")
-                                    .font(.headline)
-                                    .foregroundColor(.secondary)
-                                Image(systemName: "bell.slash")
-                                    .font(.headline)
-                                    .foregroundColor(.secondary)
+//                                Image(systemName: "repeat")
+//                                    .font(.headline)
+//                                    .foregroundColor(.secondary)
+//                                Image(systemName: "bell.slash")
+//                                    .font(.headline)
+//                                    .foregroundColor(.secondary)
                                 
                             }
                             .padding(.vertical, 10)
@@ -207,14 +225,14 @@ extension CalendarView {
                                 Color("Surface")
                                     .cornerRadius(10)
                                     
-                                    .shadow(color: Color("OuterGlare"), radius: 0.5, x: -1, y: -1)
-                                    .shadow(color: Color("OuterGlare"), radius: 0.5, x: -1, y: -1)
-                                  .shadow(color: Color("OuterGlare"), radius: 0.5, x: 0, y: -1)
-                                    .shadow(color: Color("OuterShadow"), radius: 4, x: 4, y: 6)
+                                    .shadow(color: Color("OuterGlare"), radius: 0.5, x: -0.5, y: -0.5)
+                                    .shadow(color: Color("OuterGlare"), radius: 0.5, x: -0.5, y: -0.5)
+                                    .shadow(color: Color("OuterGlare"), radius: 0.5, x: 0, y: -0.5)
+                                    .shadow(color: Color("OuterShadow"), radius: 3, x: 4, y: 4)
                             )
-                        .padding(.horizontal, 14)
+                        .padding(.horizontal, 15)
                         }
-                        .padding(.vertical, 8)
+                        .padding(.top, 15)
                     }
                     
                 }
@@ -276,7 +294,7 @@ extension CalendarView {
                 )
                 .padding(1)
         }
-        .offset(y: 8)
+        .offset(y: 6)
     }
     
     
@@ -285,7 +303,7 @@ extension CalendarView {
 
 // extending date to get current month dates
 extension Date {
-    func getAllDates1() -> [Date] {
+    func getAllDates() -> [Date] {
         let calendar = Calendar.current
         
         // getting start date
@@ -307,7 +325,7 @@ struct CalendarView_Previews: PreviewProvider {
         ZStack {
             NeumorphicBackground()
             CalendarView()
-                .preferredColorScheme(.dark)
+//                .preferredColorScheme(.dark)
         }
     }
 }

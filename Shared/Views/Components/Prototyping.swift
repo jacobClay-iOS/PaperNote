@@ -17,6 +17,13 @@ struct Prototyping: View {
                 .frame(width: 100, height: 100)
                 .padding(.bottom)
             
+            
+            Circle()
+                .frame(width: 50, height: 50)
+                .foregroundColor(.orange)
+            Circle()
+                .frame(width: 50, height: 50)
+                .foregroundColor(Color.accentColor)
         }
     }
 }
