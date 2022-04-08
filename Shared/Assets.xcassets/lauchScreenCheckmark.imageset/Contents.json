@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "checkmarklight.png",
+      "filename" : "Checkmark-Light.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,7 +12,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "checkmarkDark.png",
+      "filename" : "Checkmark-Dark.png",
       "idiom" : "universal",
       "scale" : "1x"
     },

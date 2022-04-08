@@ -26,7 +26,7 @@ struct CalendarView: View {
                         // dates
                         // lazy grid
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 5) {
-                            ForEach(calendarVM.extractDate()) { value in
+                            ForEach(calendarVM.populateCalendarWithDates()) { value in
                                 CardView1(value: value)
                                     
                                     .background(
@@ -125,10 +125,10 @@ struct CalendarView: View {
 extension CalendarView {
     private var header: some View {
         HStack(alignment: .bottom, spacing: 15) {
-            Text(calendarVM.extraDate()[1])
+            Text(calendarVM.displaySelectedMonthAndYear()[1])
                 .customFontTitleBold()
             if calendarVM.isMonthNotInCurrentYear(month: calendarVM.highlightedDay) {
-                Text(calendarVM.extraDate()[0])
+                Text(calendarVM.displaySelectedMonthAndYear()[0])
                     .customFontCaptionBold()
                     .offset(y: -5)
             }
@@ -168,9 +168,9 @@ extension CalendarView {
                 } else if calendarVM.isDateYesterday(yesterday: calendarVM.highlightedDay){
                     Text("Yesterday")
                 } else {
-                    Text(calendarVM.displayDay()[0])
-                    Text(calendarVM.displayDay()[2])
-                    Text(calendarVM.displayDay()[1])
+                    Text(calendarVM.displaySelectedDay()[0])
+                    Text(calendarVM.displaySelectedDay()[2])
+                    Text(calendarVM.displaySelectedDay()[1])
                 }
                 
                 Spacer()
@@ -305,17 +305,11 @@ extension CalendarView {
 extension Date {
     func getAllDates() -> [Date] {
         let calendar = Calendar.current
+        guard let startDate = calendar.date(from: Calendar.current.dateComponents([.year, .month], from: self)) else { return [Date()] }
+        guard let range = calendar.range(of: .day, in: .month, for: self) else { return [Date()] }
         
-        // getting start date
-        let startDate = calendar.date(from: Calendar.current.dateComponents([.year, .month], from: self))!
-        
-        let range = calendar.range(of: .day, in: .month, for: self)!
-        
-        
-        // getting date
         return range.compactMap { day -> Date in
-            return calendar.date(byAdding: .day, value: day - 1, to: startDate)!
-            
+            return calendar.date(byAdding: .day, value: day - 1, to: startDate) ?? Date()
         }
     }
 }

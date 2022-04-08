@@ -46,23 +46,19 @@ class CalendarVm: ObservableObject {
         let userSelectedYearNumber = formatter.string(from: userSelectedDate)
         return currentYearNumber != userSelectedYearNumber
     }
-
-    // extracting year and month for display
-    func extraDate() -> [String] {
+    
+    func displaySelectedMonthAndYear() -> [String] {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY MMMM"
-        
         
         let date = formatter.string(from: userSelectedDate)
         
         return date.components(separatedBy: " ")
     }
-
-    // extracting day for display
-    func displayDay() -> [String] {
+    
+    func displaySelectedDay() -> [String] {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE, dd MMMM"
-        
         
         let date = formatter.string(from: highlightedDay)
         
@@ -71,7 +67,7 @@ class CalendarVm: ObservableObject {
 
     func getCurrentMonth() -> Date {
         let calendar = Calendar.current
-        // getting current month date
+
         guard let currentMonth = calendar.date(byAdding: .month, value: self.userSelectedMonth, to: Date())
         else {
             return Date()
@@ -79,14 +75,11 @@ class CalendarVm: ObservableObject {
         return currentMonth
     }
 
-
-    func extractDate()->[DateValue] {
+    func populateCalendarWithDates()->[DateValue] {
         let calendar = Calendar.current
-        // getting current month date
         let currentMonth = getCurrentMonth()
         var days = currentMonth.getAllDates().compactMap { date -> DateValue in
             
-            // getting day
             let day = calendar.component(.day, from: date)
             
             return DateValue(day: day, date: date)
