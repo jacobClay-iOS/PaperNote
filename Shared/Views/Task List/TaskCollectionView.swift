@@ -14,16 +14,16 @@ struct TaskCollectionView: View {
     @FocusState private var newTaskListFieldFocus: Bool
     
     @Environment(\.scenePhase) var scenePhase
-    @State var startingOffsetY: CGFloat = UIScreen.main.bounds.height * 0.65
-    @State var currentDragOffsetY: CGFloat = 0
-    @State var hiddenOffsetY: CGFloat = 0
+    @State private var startingOffsetY: CGFloat = UIScreen.main.bounds.height * 0.65
+    @State private var currentDragOffsetY: CGFloat = 0
+    @State private var hiddenOffsetY: CGFloat = 0
     
     
     var body: some View {
         
         ZStack {
             VStack {
-                dragGestureTab
+                DragGestureTab()
                 VStack(spacing: 5) {
                     header
                         .padding(.horizontal)
@@ -43,9 +43,9 @@ struct TaskCollectionView: View {
                 Color("Surface")
             ) // ZStack
             .cornerRadius(30)
-            .shadow(color: Color("OuterGlare"), radius: 1, x: 0, y: -1)
-            .shadow(color: Color("OuterGlare"), radius: 0.5, x: 0, y: -1)
-            .shadow(color: Color("OuterGlare"), radius: 0.5, x: 0, y: -1)
+            .shadow(color: Color("OuterGlare"), radius: 1, y: -1)
+            .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
+            .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
         }
         .environmentObject(taskCollectionVM)
         .ignoresSafeArea(edges: .bottom)
@@ -92,13 +92,7 @@ extension TaskCollectionView {
         let list = TaskList(name: taskCollectionVM.newListTitle)
         taskCollectionVM.addListToCollection(list)
     }
-    
-    private var dragGestureTab: some View {
-        RoundedRectangle(cornerRadius: .infinity)
-            .frame(width: 40, height: 5)
-            .foregroundColor(.secondary)
-            .padding(.top)
-    }
+
     
     private var header: some View {
         HStack {

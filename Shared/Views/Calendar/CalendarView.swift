@@ -10,79 +10,42 @@ import SwiftUI
 struct CalendarView: View {
     @StateObject var calendarVM = CalendarVm()
     @Environment(\.scenePhase) var scenePhase
-    
     @State var currentDragOffsetX: CGFloat = 0
     
     var body: some View {
-            VStack(spacing: 15) {
-                header
-                    .padding(.horizontal)
-                    .padding(.bottom, -5)
-                // day view
-                VStack {
-                    VStack(spacing: 5) {
-                        dayOfTheWeekRow
-                            .padding(.horizontal, 2)
-                        // dates
-                        // lazy grid
-                        LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 5) {
-                            ForEach(calendarVM.populateCalendarWithDates()) { value in
-                                CardView1(value: value)
-                                    
-                                    .background(
-                                        currentDayBackground
-                                            .frame(height: UIScreen.main.bounds.height * 0.068)
-                                            .opacity(calendarVM.isSameDay(date1: value.date, date2: calendarVM.currentDay) ? 1 : 0)
-                                    )
-                                    .onTapGesture { calendarVM.highlightedDay = value.date }
-                            }
-                            
-                        }
-                        .padding(.horizontal, 6)
-                        .offset(x: currentDragOffsetX)
-                        .gesture(
-                            DragGesture()
-                                .onChanged { value in
-                                    withAnimation(.linear(duration: 0.01)) {
-                                      
-                                        currentDragOffsetX = value.translation.width
-                                    }
-                                }
-                                .onEnded { value in
-                                    if currentDragOffsetX < -80 {
-                                        calendarVM.userSelectedMonth += 1
-                                    } else if currentDragOffsetX > 80  {
-                                        calendarVM.userSelectedMonth -= 1
-                                    }
-                                    currentDragOffsetX = 0
-                                }
-                        )
-                    }
-                }
-                
-                eventView
-                    .padding(.horizontal)
-                
-//                Spacer()
-                
+        VStack(spacing: 15) {
+            header
+                .padding(.horizontal)
+                .padding(.bottom, -5)
+            
+            VStack(spacing: 5) {
+                dayOfTheWeekRow
+                    .padding(.horizontal, 2)
+                calendar
             }
-            .onChange(of: calendarVM.userSelectedMonth) { newValue in
-                // updating month
-                calendarVM.userSelectedDate = calendarVM.getCurrentMonth()
+
+            eventView
+                .padding(.horizontal)
+            
+            Spacer()
+        }
+        .onChange(of: calendarVM.userSelectedMonth) { newValue in
+            // updating month
+            calendarVM.userSelectedDate = calendarVM.getCurrentMonth()
+        }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                calendarVM.refreshCurrentDate()
+            } else if newPhase == .inactive {
+                
+            } else if newPhase == .background {
+                calendarVM.resetCalendar()
             }
-            .onChange(of: scenePhase) { newPhase in
-                if newPhase == .active {
-                    calendarVM.refreshCurrentDate()
-                } else if newPhase == .inactive {
-                    
-                } else if newPhase == .background {
-                    calendarVM.resetCalendar()
-                }
-            }
+        }
     }
     
     @ViewBuilder
-    func CardView1(value: DateValue) -> some View {
+    func CalendarDayView(value: CalendarDate) -> some View {
         VStack {
             if value.day != -1 {
                 if calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay) {
@@ -100,12 +63,10 @@ struct CalendarView: View {
                     Spacer()
                 }
                 
-                
-                if let task = tasks.first(where: { task in
-                    return calendarVM.isSameDay(date1: task.taskDate, date2: value.date)
-                }) {
-                     
-//                    Spacer()
+                if events.first(where: { event in
+                    return calendarVM.isSameDay(date1: event.date, date2: value.date)
+                }) != nil {
+    
                     Circle()
                         .fill(Color("AccentEnd"))
                         .frame(width: 7, height: 7)
@@ -158,6 +119,41 @@ extension CalendarView {
         .foregroundColor(.secondary)
     }
     
+    private var calendar: some View {
+        LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 5) {
+            ForEach(calendarVM.populateCalendarWithDates()) { value in
+                CalendarDayView(value: value)
+                    
+                    .background(
+                        currentDayBackground
+                            .frame(height: UIScreen.main.bounds.height * 0.068)
+                            .opacity(calendarVM.isSameDay(date1: value.date, date2: calendarVM.currentDay) ? 1 : 0)
+                    )
+                    .onTapGesture { calendarVM.highlightedDay = value.date }
+            }
+            
+        }
+        .padding(.horizontal, 6)
+        .offset(x: currentDragOffsetX)
+        .gesture(
+            DragGesture()
+                .onChanged { value in
+                    withAnimation(.linear(duration: 0.01)) {
+                      
+                        currentDragOffsetX = value.translation.width
+                    }
+                }
+                .onEnded { value in
+                    if currentDragOffsetX < -80 {
+                        calendarVM.userSelectedMonth += 1
+                    } else if currentDragOffsetX > 80  {
+                        calendarVM.userSelectedMonth -= 1
+                    }
+                    currentDragOffsetX = 0
+                }
+        )
+    }
+    
     private var eventView: some View {
         VStack(spacing: 0) {
             HStack(spacing: 7) {
@@ -170,7 +166,11 @@ extension CalendarView {
                 } else {
                     Text(calendarVM.displaySelectedDay()[0])
                     Text(calendarVM.displaySelectedDay()[2])
-                    Text(calendarVM.displaySelectedDay()[1])
+                    if calendarVM.displaySelectedDay()[1].description.hasPrefix("0") {
+                        Text(calendarVM.displaySelectedDay()[1].suffix(1))
+                    } else {
+                        Text(calendarVM.displaySelectedDay()[1])
+                    }
                 }
                 
                 Spacer()
@@ -181,9 +181,7 @@ extension CalendarView {
                         .foregroundColor(.primary)
                         .font(.headline)
                 }
-                .buttonStyle(AddEventButtonStyle())
-                
-                    
+                .buttonStyle(AddEventButtonStyle())    
             }
             .customFontHeadline()
             .foregroundColor(.primary)
@@ -191,20 +189,20 @@ extension CalendarView {
             .padding(.vertical, 10)
             
             
-            if let task = tasks.first(where: { task in
-                return calendarVM.isSameDay(date1: task.taskDate, date2: calendarVM.highlightedDay)
+            if let selectedDaysEvents = events.first(where: { value in
+                return calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay)
             }) {
                 ScrollView(showsIndicators: false) {
-                    ForEach(task.task) { task in
+                    ForEach(selectedDaysEvents.collection) { event in
                         VStack {
                             HStack(spacing: 18) {
 //                                VStack(alignment: .leading, spacing: 4) {
                                     // for custom timing
-                                Text(task.time , style: .time)
+                                Text(event.time, style: .time)
                                         .customFontCaptionBold()
                                         .foregroundColor(.secondary)
                                     
-                                    Text(task.title)
+                                    Text(event.title)
                                         .customFontBodyRegular()
                                         .foregroundColor(.primary)
 //                                }
@@ -234,7 +232,7 @@ extension CalendarView {
                         }
                         .padding(.top, 15)
                     }
-                    
+                    .padding(.bottom, 60)
                 }
             } else {
                 Text("No events")
@@ -301,7 +299,6 @@ extension CalendarView {
     
 }
 
-// extending date to get current month dates
 extension Date {
     func getAllDates() -> [Date] {
         let calendar = Calendar.current
@@ -318,7 +315,9 @@ struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             NeumorphicBackground()
-            CalendarView()
+            VStack {
+                CalendarView()
+            }
 //                .preferredColorScheme(.dark)
         }
     }

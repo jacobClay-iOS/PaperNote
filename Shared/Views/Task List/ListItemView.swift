@@ -36,7 +36,7 @@ struct ListItemView: View {
 
 extension ListItemView {
     
-    var primaryTaskListItemNotCompletedView: some View {
+    private var primaryTaskListItemNotCompletedView: some View {
         HStack(spacing: 20) {
             VStack {
                 Button {
@@ -101,7 +101,7 @@ extension ListItemView {
         }
     }
     
-    var primaryTaskListItemCompletedView: some View {
+    private var primaryTaskListItemCompletedView: some View {
         HStack(spacing: 20) {
             VStack {
                 Button {
@@ -111,7 +111,6 @@ extension ListItemView {
                         taskListVM.moveTaskStartOfArray(listItem)
                     }
                 } label: { primaryTaskCompletedButtonLabel }
-                .offset(x: 1, y: 0)
                 .buttonStyle(.plain)
                 .offset(y: 4)
                 Spacer()
@@ -167,7 +166,7 @@ extension ListItemView {
         }
     }
     
-    var primaryTaskCompletedButtonLabel: some View {
+    private var primaryTaskCompletedButtonLabel: some View {
         Image(systemName: "circlebadge.fill")
             .font(.body)
             .foregroundColor(taskListVM.initializedTaskList.customAccentColor)
@@ -205,11 +204,11 @@ extension ListItemView {
             )
     }
     
-    var primaryTaskNotCompletedButtonLabel: some View {
+    private var primaryTaskNotCompletedButtonLabel: some View {
         Image(systemName: "circlebadge")
             .font(.body)
             .foregroundColor(taskListVM.initializedTaskList.customAccentColor)
-            .padding(6)
+            .padding(5)
             .background(
                 Circle()
                     .foregroundColor(Color("Surface"))
@@ -226,7 +225,7 @@ extension ListItemView {
             )
     }
     
-    var taskNoteCompletedView: some View {
+    private var taskNoteCompletedView: some View {
         Text(listItem.note)
             .customFontCaptionRegular()
             .foregroundColor(.secondary)
@@ -234,7 +233,7 @@ extension ListItemView {
         
     }
     
-    var taskNoteNotCompletedView: some View {
+    private var taskNoteNotCompletedView: some View {
         Text(listItem.note)
             .customFontCaptionRegular()
             .foregroundColor(.primary)

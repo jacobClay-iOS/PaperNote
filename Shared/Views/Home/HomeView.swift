@@ -14,14 +14,10 @@ struct HomeView: View {
             NeumorphicBackground()
             VStack {
                 CalendarView()
-                Spacer()
             }
-            .padding(.top, 45)
-            .padding(.bottom, 20)
-            .ignoresSafeArea()
+            .ignoresSafeArea(.all, edges: .horizontal)
             
             TaskCollectionView()
-            
         }
     }
 }
@@ -29,7 +25,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-            .preferredColorScheme(.dark)
+//            .preferredColorScheme(.dark)
             
     }
 }

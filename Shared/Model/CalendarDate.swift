@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DateValue: Identifiable {
+struct CalendarDate: Identifiable {
     var id = UUID().uuidString
     var day: Int
     var date: Date

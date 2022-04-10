@@ -11,16 +11,20 @@
 		1614256927C3D72200C74ACD /* AddTaskSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1614256727C3D72200C74ACD /* AddTaskSheetView.swift */; };
 		1615B6A927ED41A600C5EA08 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1615B6A827ED41A600C5EA08 /* CalendarView.swift */; };
 		1615B6AA27ED41A600C5EA08 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1615B6A827ED41A600C5EA08 /* CalendarView.swift */; };
-		1615B6AC27ED423700C5EA08 /* CalendarTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1615B6AB27ED423700C5EA08 /* CalendarTask.swift */; };
-		1615B6AD27ED423700C5EA08 /* CalendarTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1615B6AB27ED423700C5EA08 /* CalendarTask.swift */; };
-		1615B6AF27ED425F00C5EA08 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1615B6AE27ED425F00C5EA08 /* DateValue.swift */; };
-		1615B6B027ED425F00C5EA08 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1615B6AE27ED425F00C5EA08 /* DateValue.swift */; };
+		1615B6AC27ED423700C5EA08 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1615B6AB27ED423700C5EA08 /* CalendarEvent.swift */; };
+		1615B6AD27ED423700C5EA08 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1615B6AB27ED423700C5EA08 /* CalendarEvent.swift */; };
+		1615B6AF27ED425F00C5EA08 /* CalendarDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1615B6AE27ED425F00C5EA08 /* CalendarDate.swift */; };
+		1615B6B027ED425F00C5EA08 /* CalendarDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1615B6AE27ED425F00C5EA08 /* CalendarDate.swift */; };
 		162809AF27C292AD009425CE /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162809AE27C292AD009425CE /* ListItemView.swift */; };
 		162809B027C292AD009425CE /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162809AE27C292AD009425CE /* ListItemView.swift */; };
 		162809B327C348A9009425CE /* SunkenTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162809B227C348A9009425CE /* SunkenTextEditor.swift */; };
 		162809B427C348A9009425CE /* SunkenTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162809B227C348A9009425CE /* SunkenTextEditor.swift */; };
 		162809B627C349C7009425CE /* SunkenTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162809B527C349C7009425CE /* SunkenTextField.swift */; };
 		162809B727C349C7009425CE /* SunkenTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162809B527C349C7009425CE /* SunkenTextField.swift */; };
+		162A584C280279B000D8B227 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A584B280279B000D8B227 /* RoundedCorner.swift */; };
+		162A584D280279B000D8B227 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A584B280279B000D8B227 /* RoundedCorner.swift */; };
+		162A585228027CA300D8B227 /* DragGestureTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A585128027CA300D8B227 /* DragGestureTab.swift */; };
+		162A585328027CA300D8B227 /* DragGestureTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A585128027CA300D8B227 /* DragGestureTab.swift */; };
 		1631556D27BBEC2700E05CD8 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631556C27BBEC2700E05CD8 /* Tests_iOS.swift */; };
 		1631556F27BBEC2700E05CD8 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631556E27BBEC2700E05CD8 /* Tests_iOSLaunchTests.swift */; };
 		1631557927BBEC2700E05CD8 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631557827BBEC2700E05CD8 /* Tests_macOS.swift */; };
@@ -108,11 +112,13 @@
 /* Begin PBXFileReference section */
 		1614256727C3D72200C74ACD /* AddTaskSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskSheetView.swift; sourceTree = "<group>"; };
 		1615B6A827ED41A600C5EA08 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
-		1615B6AB27ED423700C5EA08 /* CalendarTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTask.swift; sourceTree = "<group>"; };
-		1615B6AE27ED425F00C5EA08 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
+		1615B6AB27ED423700C5EA08 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
+		1615B6AE27ED425F00C5EA08 /* CalendarDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDate.swift; sourceTree = "<group>"; };
 		162809AE27C292AD009425CE /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		162809B227C348A9009425CE /* SunkenTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunkenTextEditor.swift; sourceTree = "<group>"; };
 		162809B527C349C7009425CE /* SunkenTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunkenTextField.swift; sourceTree = "<group>"; };
+		162A584B280279B000D8B227 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		162A585128027CA300D8B227 /* DragGestureTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragGestureTab.swift; sourceTree = "<group>"; };
 		1631555227BBEC2600E05CD8 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		1631555327BBEC2600E05CD8 /* PaperNoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperNoteApp.swift; sourceTree = "<group>"; };
 		1631555427BBEC2600E05CD8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -307,8 +313,8 @@
 			children = (
 				16FE62E027C1C2E700034B0D /* TaskItem.swift */,
 				16FE62E327C1C3B400034B0D /* TaskList.swift */,
-				1615B6AB27ED423700C5EA08 /* CalendarTask.swift */,
-				1615B6AE27ED425F00C5EA08 /* DateValue.swift */,
+				1615B6AB27ED423700C5EA08 /* CalendarEvent.swift */,
+				1615B6AE27ED425F00C5EA08 /* CalendarDate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -376,6 +382,8 @@
 			children = (
 				16FE631327C1CDE700034B0D /* NeumorphicBackground.swift */,
 				16DACFB627EDF46000689729 /* Prototyping.swift */,
+				162A584B280279B000D8B227 /* RoundedCorner.swift */,
+				162A585128027CA300D8B227 /* DragGestureTab.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -569,17 +577,19 @@
 				162809B327C348A9009425CE /* SunkenTextEditor.swift in Sources */,
 				16FE631427C1CDE700034B0D /* NeumorphicBackground.swift in Sources */,
 				16FE62E127C1C2E700034B0D /* TaskItem.swift in Sources */,
-				1615B6AC27ED423700C5EA08 /* CalendarTask.swift in Sources */,
+				1615B6AC27ED423700C5EA08 /* CalendarEvent.swift in Sources */,
 				1637F39B27D054AD00CA2C3E /* TaskCollectionView.swift in Sources */,
 				1615B6A927ED41A600C5EA08 /* CalendarView.swift in Sources */,
 				1637F3A127D0554D00CA2C3E /* TaskListView.swift in Sources */,
-				1615B6AF27ED425F00C5EA08 /* DateValue.swift in Sources */,
+				1615B6AF27ED425F00C5EA08 /* CalendarDate.swift in Sources */,
+				162A585228027CA300D8B227 /* DragGestureTab.swift in Sources */,
 				1631558227BBEC2700E05CD8 /* Persistence.swift in Sources */,
 				162809B627C349C7009425CE /* SunkenTextField.swift in Sources */,
 				16DACFC627EFF83C00689729 /* CalendarVM.swift in Sources */,
 				1658919327FD2FCC007D6D30 /* AddEventButtonStyle.swift in Sources */,
 				168FC5EA27D064FA00DD7ECA /* TaskListVM.swift in Sources */,
 				16440C4227E15B8C00821F16 /* ListSettingsView.swift in Sources */,
+				162A584C280279B000D8B227 /* RoundedCorner.swift in Sources */,
 				1637F39E27D054C100CA2C3E /* TaskCollectionVM.swift in Sources */,
 				162809AF27C292AD009425CE /* ListItemView.swift in Sources */,
 				16FE62EB27C1C65A00034B0D /* FontManager.swift in Sources */,
@@ -602,17 +612,19 @@
 				162809B427C348A9009425CE /* SunkenTextEditor.swift in Sources */,
 				16FE631527C1CDE700034B0D /* NeumorphicBackground.swift in Sources */,
 				16FE62E227C1C2E700034B0D /* TaskItem.swift in Sources */,
-				1615B6AD27ED423700C5EA08 /* CalendarTask.swift in Sources */,
+				1615B6AD27ED423700C5EA08 /* CalendarEvent.swift in Sources */,
 				1637F39C27D054AD00CA2C3E /* TaskCollectionView.swift in Sources */,
 				1615B6AA27ED41A600C5EA08 /* CalendarView.swift in Sources */,
 				1637F3A227D0554D00CA2C3E /* TaskListView.swift in Sources */,
-				1615B6B027ED425F00C5EA08 /* DateValue.swift in Sources */,
+				1615B6B027ED425F00C5EA08 /* CalendarDate.swift in Sources */,
+				162A585328027CA300D8B227 /* DragGestureTab.swift in Sources */,
 				1631558327BBEC2700E05CD8 /* Persistence.swift in Sources */,
 				162809B727C349C7009425CE /* SunkenTextField.swift in Sources */,
 				16DACFC727EFF83C00689729 /* CalendarVM.swift in Sources */,
 				1658919427FD2FCC007D6D30 /* AddEventButtonStyle.swift in Sources */,
 				168FC5EB27D064FA00DD7ECA /* TaskListVM.swift in Sources */,
 				16440C4327E15B8C00821F16 /* ListSettingsView.swift in Sources */,
+				162A584D280279B000D8B227 /* RoundedCorner.swift in Sources */,
 				1637F39F27D054C100CA2C3E /* TaskCollectionVM.swift in Sources */,
 				162809B027C292AD009425CE /* ListItemView.swift in Sources */,
 				16FE62EC27C1C65A00034B0D /* FontManager.swift in Sources */,

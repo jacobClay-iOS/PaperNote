@@ -12,28 +12,26 @@ struct AddTaskSheetView: View {
     @Binding var isShowingEditTaskSheet: Bool
     @EnvironmentObject var taskListVM: TaskListVM
     @FocusState private var taskFieldFocus
-    
+    @State private var currentDragOffsetY: CGFloat = 0
 
     var body: some View {
         VStack {
             Spacer()
-            VStack(spacing: 25) {
+            VStack(spacing: 15) {
                 header
-                    .padding(.horizontal, 10)
+                    .padding(.horizontal, 5)
                 
                 textFields
         
                 addTaskSheetToolBar
             }
-            .padding()
-            .background(
-                LinearGradient(
-                    colors: [Color("BackgroundTop"), Color("BackgroundBottom")],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-                .shadow(color: Color("OuterGlare"), radius: 1, y: -4)
-            )
+            .padding(.horizontal)
+            .padding(.bottom)
+            .background(Color("Surface"))
+            .customCornerRadius(30, corners: [.topLeft, .topRight])
+            .shadow(color: Color("OuterGlare"), radius: 1, y: -1)
+            .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
+            .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
         }
         .ignoresSafeArea(.container, edges: .bottom)
         .task {
@@ -41,6 +39,28 @@ struct AddTaskSheetView: View {
                 taskFieldFocus = true
             }
         }
+        .offset(y: currentDragOffsetY)
+        .gesture(
+            DragGesture()
+                .onChanged { value in
+                    withAnimation(.spring()) {
+                        currentDragOffsetY = value.translation.height
+                    }
+                }
+                .onEnded{ value in
+                    withAnimation(.spring()) {
+                        if currentDragOffsetY > 40 {
+                            withAnimation {
+                                taskFieldFocus = false
+                                taskListVM.isShowingEditTaskSheet = false
+                                taskListVM.isShowingAddNewTaskSheet = false
+                                taskListVM.resetAddTaskSheetProperties()
+                            }
+                        }
+                        currentDragOffsetY = 0
+                    }
+                }
+        )
     }
     
     
@@ -70,33 +90,15 @@ extension AddTaskSheetView {
     
 // MARK: Components
     private var header: some View {
-        HStack {
-            Spacer()
-            Text(taskListVM.isShowingEditTaskSheet ? "Edit Task" : "Add task")
-                .customFontHeadline()
-                .foregroundColor(.primary)
-                .padding(.leading)
-                .padding(.leading, 4)
-            Spacer()
-            Button {
-                withAnimation {
-                    taskFieldFocus = false
-                    taskListVM.isShowingEditTaskSheet = false
-                    taskListVM.isShowingAddNewTaskSheet = false
-                    taskListVM.resetAddTaskSheetProperties()
-                }
-                
-            } label: {
-                Image(systemName: "xmark")
-                    .font(.headline)
-                    .foregroundColor(.secondary)
-                    .overlay(
-                        Rectangle()
-                            .frame(width: 50, height: 50)
-                            .foregroundColor(.secondary.opacity(0.000001))
-                    )
+        VStack {
+            DragGestureTab()
+            HStack {
+                Text(taskListVM.isShowingEditTaskSheet ? "Edit Task" : "Add task")
+                    .customFontHeadline()
+                    .foregroundColor(.primary)
+
+                Spacer()
             }
-            .buttonStyle(.plain)
         }
     }
     

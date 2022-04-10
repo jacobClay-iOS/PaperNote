@@ -75,24 +75,26 @@ class CalendarVm: ObservableObject {
         return currentMonth
     }
 
-    func populateCalendarWithDates()->[DateValue] {
+    func populateCalendarWithDates()->[CalendarDate] {
         let calendar = Calendar.current
         let currentMonth = getCurrentMonth()
-        var days = currentMonth.getAllDates().compactMap { date -> DateValue in
+        var days = currentMonth.getAllDates().compactMap { date -> CalendarDate in
             
             let day = calendar.component(.day, from: date)
             
-            return DateValue(day: day, date: date)
+            return CalendarDate(day: day, date: date)
         }
         
         // adding offset days to get exact week day
         let firstWeekday = calendar.component(.weekday, from: days.first?.date ?? Date())
         
         for _ in 0..<firstWeekday - 1 {
-            days.insert(DateValue(day: -1, date: Date()), at: 0)
+            days.insert(CalendarDate(day: -1, date: Date()), at: 0)
         }
         return days
     }
+    
+    
     
     func resetCalendar() {
         userSelectedMonth = 0
@@ -104,6 +106,4 @@ class CalendarVm: ObservableObject {
         currentDay = Date()
     }
 }
-
-
 
