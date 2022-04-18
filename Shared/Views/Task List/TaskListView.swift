@@ -10,8 +10,9 @@ import SwiftUI
 struct TaskListView: View {
     @StateObject var taskListVM = TaskListVM()
     @EnvironmentObject var taskCollectionVM: TaskCollectionVM
-    @FocusState private var addTaskFieldFocus: Bool
+
     var list: TaskList
+
     
     var body: some View {
         ZStack {
@@ -47,32 +48,42 @@ extension TaskListView {
     private var expandedListView: some View {
         ZStack {
             NeumorphicBackground()
-            VStack{
-                listHeader
-                taskProgressBar
-                ScrollView {
-                    
-                    VStack(alignment: .leading, spacing: 10) {
-                        ForEach(taskListVM.initializedTaskList.list) { listItem in
-                            HStack {
-                                ListItemView(listItem: listItem)
-                                    .padding(.horizontal, 2)
-                                    .animation(.default, value: 1)
-                                Spacer()
+                VStack{
+                    listHeader
+                    taskProgressBar
+                    ScrollView {
+                        
+                        VStack(alignment: .leading, spacing: 8) {
+                            ForEach(taskListVM.initializedTaskList.list) { listItem in
+                                HStack {
+                                    ListItemView(listItem: listItem)
+                                        .padding(.horizontal, 2)
+                                        .animation(.default, value: 1)
+                                    Spacer()
+                                }
                             }
                         }
+                        .padding(.top, 2)
                     }
-                    .padding(.top, 2)
+                    
+                    Spacer()
+                    bottomButtons
                 }
                 
-                
-                
-
-                Spacer()
-                bottomButtons
-            }
-            .padding(.horizontal)
-            .disabled(taskListVM.isShowingAddNewTaskSheet || taskListVM.isShowingEditTaskSheet || taskListVM.isShowingSettingsSheet)
+                .padding(.horizontal)
+                .disabled(taskListVM.isShowingASheet)
+                .overlay(alignment: .center) {
+                    if taskListVM.isShowingASheet {
+                        RoundedRectangle(cornerRadius: 5)
+                            .fill(Color.white.opacity(0.00001))
+                            .onTapGesture {
+                                withAnimation {
+                                    taskListVM.dismissAllSheets()
+                                }
+                            }
+                    }
+                    
+                }
             
             ZStack {
                 if taskListVM.isShowingAddNewTaskSheet {
@@ -92,84 +103,17 @@ extension TaskListView {
             
             ZStack {
                 if taskListVM.isShowingSettingsSheet {
-                    settingsSheetView
+                    ListSettingsView(list: list)
                         .transition(.move(edge: .bottom))
                 }
             }
             .zIndex(2)
+            
+            
+            
+            
         }
-    }
-    
-    private var settingsSheetView: some View {
-        VStack {
-            Spacer()
-            VStack(spacing: 25) {
-                    HStack {
-                        Spacer()
-                        Text("List Settings")
-                            .customFontHeadline()
-                            .foregroundColor(.primary)
-                            .padding(.leading)
-                            .padding(.leading, 4)
-                        Spacer()
-                        Button {
-                            withAnimation {
-                                taskListVM.isShowingSettingsSheet.toggle()
-                            }
-                        } label: {
-                            Image(systemName: "xmark")
-                                .font(.headline)
-                                .foregroundColor(.secondary)
-                        }
-                        .buttonStyle(.plain)
-                    }
-                    HStack {
-                        Text("Title: ")
-                            .customFontHeadline()
-                            .foregroundColor(.primary)
-                        TextField("\(taskListVM.initializedTaskList.name)", text: $taskListVM.initializedTaskList.name)
-                            .customFontBodyRegular()
-                            .foregroundColor(.primary)
-                    }
-                    
-                    HStack {
-                        ColorPicker(selection: $taskListVM.initializedTaskList.customAccentColor, supportsOpacity: false) {
-                            Text("Accent color:")
-                                .customFontHeadline()
-                                .foregroundColor(.primary)
-                        }
-                        .frame(width: 175)
-                        Spacer()
-                    }
         
-                    Button {
-                        taskListVM.isShowingDeleteListAlert.toggle()
-                    } label: {
-                        Text("Delete List")
-                            .customFontHeadline()
-                            .foregroundColor(.red)
-                    }
-                    .padding(.top, 20)
-                    .buttonStyle(.plain)
-                    .alert(isPresented: $taskListVM.isShowingDeleteListAlert) {
-                        Alert(title: Text("Are you sure?"), message: Text("This will remove the list from your collection"), primaryButton: .destructive(Text("Delete"), action: {
-                            taskListVM.isShowingSettingsSheet.toggle()
-                            taskListVM.isListExpanded.toggle()
-                            withAnimation {
-                                taskCollectionVM.deleteListFromCollection(list)
-                            }
-                            
-                        }), secondaryButton: .cancel())
-                    }
-                }
-                .padding()
-                .padding(.bottom)
-                .background(
-                    Color("Surface")
-                        .shadow(color: Color("OuterGlare"), radius: 1, y: -4)
-            )
-        }
-        .ignoresSafeArea(.container, edges: .bottom)
     }
     
     private var listHeader: some View {
@@ -258,7 +202,7 @@ extension TaskListView {
                             width: 316 * ((taskListVM.initializedTaskList.completedTaskCount) / (taskListVM.initializedTaskList.totalTaskCount)) ,
                             height: 9
                         )
-                        .padding(taskListVM.initializedTaskList.completedTaskCount == 0 ? 0 : 8)
+                        .padding(taskListVM.initializedTaskList.completedTaskCount == 0 ? 0 : 7)
                         .background(
                             RoundedRectangle(cornerRadius: .infinity)
                                 .fill(Color("Surface"))
@@ -280,39 +224,39 @@ extension TaskListView {
             }
         }
         .frame(height: 50)
+        .opacity(taskListVM.isShowingASheet ? 0.5 : 1.0)
     }
     
     private var bottomButtons: some View {
-        HStack {
-            if taskListVM.allTasksCompleted {
+            HStack {
+                if taskListVM.allTasksCompleted {
+                    Button {
+                        taskListVM.clearTaskList()
+                        taskListVM.resetTaskListCounters()
+                    } label: {
+                        Text("clear list")
+                            .customFontHeadline()
+                            .foregroundColor(.primary)
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.leading)
+                }
+                Spacer()
                 Button {
-                    taskListVM.clearTaskList()
-                    taskListVM.resetTaskListCounters()
+                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                    withAnimation {
+                        taskListVM.isShowingAddNewTaskSheet.toggle()
+                    }
                 } label: {
-                    Text("clear list")
-                        .customFontHeadline()
+                    Image(systemName: "plus")
+                        .font(.largeTitle)
                         .foregroundColor(.primary)
                 }
-                .buttonStyle(.plain)
-                .padding(.leading)
+                .buttonStyle(AddTaskButtonStyle())
+                .padding()
             }
-            Spacer()
-            Button {
-                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                withAnimation {
-                    taskListVM.isShowingAddNewTaskSheet.toggle()
-                }
-            } label: {
-                Image(systemName: "plus")
-                    .font(.largeTitle)
-                    .foregroundColor(.primary)
-            }
-            .buttonStyle(AddTaskButtonStyle())
-            .padding()
-        }
-        .padding(.horizontal)
+            .padding(.horizontal)
     }
-    
 }
 
 struct ProgressBarSunkenBackground: View {

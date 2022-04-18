@@ -13,7 +13,7 @@ struct AddTaskSheetView: View {
     @EnvironmentObject var taskListVM: TaskListVM
     @FocusState private var taskFieldFocus
     @State private var currentDragOffsetY: CGFloat = 0
-
+    
     var body: some View {
         VStack {
             Spacer()
@@ -22,20 +22,20 @@ struct AddTaskSheetView: View {
                     .padding(.horizontal, 5)
                 
                 textFields
-        
+                
                 addTaskSheetToolBar
             }
             .padding(.horizontal)
             .padding(.bottom)
             .background(Color("Surface"))
-            .customCornerRadius(30, corners: [.topLeft, .topRight])
+            .customCornerRadius(25, corners: [.topLeft, .topRight])
             .shadow(color: Color("OuterGlare"), radius: 1, y: -1)
             .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
             .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
         }
         .ignoresSafeArea(.container, edges: .bottom)
         .task {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.async {
                 taskFieldFocus = true
             }
         }
@@ -52,9 +52,7 @@ struct AddTaskSheetView: View {
                         if currentDragOffsetY > 40 {
                             withAnimation {
                                 taskFieldFocus = false
-                                taskListVM.isShowingEditTaskSheet = false
-                                taskListVM.isShowingAddNewTaskSheet = false
-                                taskListVM.resetAddTaskSheetProperties()
+                                taskListVM.dismissAllSheets()
                             }
                         }
                         currentDragOffsetY = 0
@@ -123,7 +121,7 @@ extension AddTaskSheetView {
                 .submitLabel(.done)
             
             SunkenTextEditor(textField: TextEditor(text: $taskListVM.taskNoteName), placeHolderText: taskListVM.taskNoteName.isEmpty ? "note" : "")
-                .frame(height: 150)
+                .frame(height: 100)
         }
     }
     

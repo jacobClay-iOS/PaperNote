@@ -12,7 +12,7 @@ struct DragGestureTab: View {
         RoundedRectangle(cornerRadius: .infinity)
             .frame(width: 40, height: 5)
             .foregroundColor(.secondary)
-            .padding(.top)
+            .padding(.top, 12)
     }
 }
 

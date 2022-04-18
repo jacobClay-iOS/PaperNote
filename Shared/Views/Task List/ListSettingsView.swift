@@ -9,124 +9,140 @@ import SwiftUI
 
 struct ListSettingsView: View {
     @EnvironmentObject var taskListVM: TaskListVM
+    @EnvironmentObject var taskCollectionVM: TaskCollectionVM
+    @FocusState private var settingTextFieldFocus
+    @State private var currentDragOffsetY: CGFloat = 0
+    @Environment(\.scenePhase) private var scenePhase
+    var list: TaskList
+    
     var body: some View {
-       
-            
-        ZStack {
-            NeumorphicBackground()
-            VStack(spacing: 30) {
-                RoundedRectangle(cornerRadius: 15)
-                    .fill(Color("Surface"))
-                    .frame(width: 120, height: 120)
-                    .shadow(color: Color("OuterShadow"), radius: 4, x: 4, y: 6)
-                    .shadow(color: Color("OuterGlare"), radius: 1, x: -1, y: -1)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 15)
-                            .strokeBorder( LinearGradient(gradient: Gradient(stops: [
-                                Gradient.Stop(color: Color("OuterGlare"), location: 0.3),
-                                Gradient.Stop(color: Color("Surface"), location: 0.5),
-                            ]), startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 2, antialiased: true)
-                )
+        
+        VStack {
+            Spacer()
+            VStack(spacing: 10) {
+                DragGestureTab()
+                header
+                    .padding(.bottom, 5)
                 
-                RoundedRectangle(cornerRadius: 15)
-                    .fill(Color("Surface"))
-                    .frame(width: 120, height: 120)
-                    .shadow(color: Color("OuterShadow"), radius: 4, x: 4, y: 4)
-                    .shadow(color: Color("OuterGlare"), radius: 2, x: -2, y: -2)
-//                RoundedRectangle(cornerRadius: 15)
-//                    .fill(Color("Surface"))
-//                    .frame(width: 150, height: 150)
-//                    .shadow(color: Color("OuterShadow"), radius: 4, x: 4, y: 4)
-//                    .shadow(color: Color("OuterGlare"), radius: 4, x: -2, y: -2)
-////                    .opacity(0.5)
-//                    .overlay(
-//                        RoundedRectangle(cornerRadius: 15)
-//                            .strokeBorder(LinearGradient(colors: [Color("OuterGlare"), Color("Surface")], startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 3, antialiased: true)
-//                            .blur(radius: 5)
-//                            .opacity(0.8)
-//                    )
+                settingsItems
+            }
+            .padding(.horizontal)
+            .padding(.bottom)
+            .padding(.bottom)
+            .background(Color("Surface"))
+            .customCornerRadius(25, corners: [.topRight, .topLeft])
+            .shadow(color: Color("OuterGlare"), radius: 1, y: -1)
+            .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
+            .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
+        }
+        .ignoresSafeArea(.container, edges: .bottom)
+        .offset(y: currentDragOffsetY)
+        .gesture(
+            DragGesture()
+                .onChanged { value in
+                    withAnimation(.spring()) {
+                        currentDragOffsetY = value.translation.height
+                    }
+                }
+                .onEnded { value in
+                    withAnimation(.spring()) {
+                        if currentDragOffsetY > 40 && settingTextFieldFocus == false {
+                            withAnimation {
+                                taskListVM.isShowingSettingsSheet = false
+                            }
+                        } else if currentDragOffsetY > 40 && settingTextFieldFocus == true {
+                            settingTextFieldFocus = false
+                        }
+                        currentDragOffsetY = 0
+                    }
+                }
+        )
+        
+        // scene phase isnt working
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
                 
-                Image(systemName: "circlebadge")
-                    .font(.body)
-                    .foregroundColor(taskListVM.initializedTaskList.customAccentColor)
-                    .padding(5)
-                    .background(
-                        Circle()
-                            .foregroundColor(Color("Surface"))
-                            .shadow(color: Color("OuterShadow"), radius: 2, x: 1, y: 2)
-                            .overlay(
-                                Circle()
-                                    .stroke( LinearGradient(gradient: Gradient(stops: [
-                                        Gradient.Stop(color: Color("OuterGlare"), location: 0.4),
-                                        Gradient.Stop(color: Color("Surface"), location: 0.6),
-                                    ]), startPoint: .topLeading, endPoint: .bottom), lineWidth: 1.5)
-                        )
-                    )
+            } else if newPhase == .inactive {
+                dismissSettingsSheet()
                 
-                
-                
-                
-                
-                Image(systemName: "circlebadge.fill")
-                    .font(.body)
-                    .foregroundColor(taskListVM.initializedTaskList.customAccentColor)
-                    .padding(5)
-                    .background(
-                        Circle()
-                            .foregroundColor(Color("Surface"))
-                            .overlay(
-                                Circle()
-                                    .stroke(Color("OuterGlare"), lineWidth: 4)
-                                    .blur(radius: 4)
-                                    .offset(x: 2, y: 2)
-                                    .mask(
-                                        Circle()
-                                            .fill(LinearGradient(colors: [Color.clear, Color("OuterGlare")], startPoint: .topLeading, endPoint: .bottomTrailing))
-                                    )
-                            )
-                            .overlay(
-                                Circle()
-                                    .stroke(Color("InnerShadow"), lineWidth: 4)
-                                    .blur(radius: 6)
-                                    .offset(x: -2, y: -2)
-                                    .mask(
-                                        Circle()
-                                            .fill(LinearGradient(colors: [Color.black, Color.clear], startPoint: .topLeading, endPoint: .bottomTrailing))
-                                    )
-                            )
-                            .overlay(
-                                Circle()
-                                    .stroke( LinearGradient(gradient: Gradient(stops: [
-                                        Gradient.Stop(color: Color("OuterGlare"), location: 0.4),
-                                        Gradient.Stop(color: Color("Surface"), location: 0.6),
-                                    ]), startPoint: .bottomTrailing, endPoint: .topLeading), lineWidth: 1.5)
-                        )
-                    )
-                
-              
+            } else if newPhase == .background {
+                dismissSettingsSheet()
+            }
+        }
+        
+    }
+}
+
+extension ListSettingsView {
+    
+    func dismissSettingsSheet() {
+        settingTextFieldFocus = false
+        taskListVM.isShowingSettingsSheet = false
+        currentDragOffsetY = 0
+    }
+    
+    private var header: some View {
+        HStack {
+            Text("Settings")
+                .customFontHeadline()
+                .foregroundColor(.primary)
+            Spacer()
+        }
+    }
+    
+    private var settingsItems: some View {
+        VStack {
+            HStack {
+                Text("Title: ")
+                    .customFontBodyRegular()
+                    .foregroundColor(.primary)
+                TextField("list name", text: $taskListVM.initializedTaskList.name)
+                    .focused($settingTextFieldFocus)
+                    .customFontBodyRegular()
+                    .foregroundColor(.primary)
+                    .submitLabel(.done)
+                    .onSubmit { settingTextFieldFocus = false }
                     
-                        
-                        
-                
-                
-                Button {
-                    print("Balls")
-                } label: {
-                    Image(systemName: "plus")
-                        .font(.largeTitle)
+                Spacer()
+            }
+         
+            HStack {
+                ColorPicker(selection: $taskListVM.initializedTaskList.customAccentColor, supportsOpacity: false) {
+                    Text("Accent color:")
+                        .customFontBodyRegular()
                         .foregroundColor(.primary)
                 }
-                .buttonStyle(AddTaskButtonStyle())
+                .frame(width: 165)
+                Spacer()
             }
 
-        }
             
+            Button {
+                taskListVM.isShowingDeleteListAlert.toggle()
+            } label: {
+                Text("Delete List")
+                    .customFontHeadline()
+                    .foregroundColor(.red)
+            }
+            .buttonStyle(.plain)
+            .padding(.top, 20)
+            .alert(isPresented: $taskListVM.isShowingDeleteListAlert) {
+                Alert(title: Text("Are you sure?"), message: Text("This will permanently remove the list from your collection"), primaryButton: .destructive(Text("Delete"), action: {
+                    taskListVM.isShowingSettingsSheet.toggle()
+                    taskListVM.isListExpanded.toggle()
+                    withAnimation {
+                        taskCollectionVM.deleteListFromCollection(list)
+                    }
+                    
+                }), secondaryButton: .cancel())
+            }
+        }
     }
 }
 
 struct ListSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        ListSettingsView()
+        ListSettingsView(list: TaskList(name: "Grocery List", customAccentColor: Color.blue))
             .environmentObject(TaskListVM())
             .preferredColorScheme(.dark)
     }

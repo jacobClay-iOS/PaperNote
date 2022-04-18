@@ -42,7 +42,7 @@ struct TaskCollectionView: View {
             .background(
                 Color("Surface")
             ) // ZStack
-            .cornerRadius(30)
+            .cornerRadius(25)
             .shadow(color: Color("OuterGlare"), radius: 1, y: -1)
             .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
             .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
@@ -159,7 +159,7 @@ extension TaskCollectionView {
             .padding()
             .frame(height: 150)
             .task {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                DispatchQueue.main.async {
                     newTaskListFieldFocus = true
                 }
             } // Task

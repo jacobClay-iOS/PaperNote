@@ -8,18 +8,14 @@
 import SwiftUI
 
 class TaskListVM: ObservableObject {
+    
+    // task list variables
     @Published var initializedTaskList = TaskList()
-    @Published var isListExpanded = false
-    @Published var isShowingAddNewTaskSheet = false
-    @Published var isShowingEditTaskSheet = false
-    @Published var isShowingSettingsSheet = false
-    @Published var isShowingDeleteListAlert = false
     @Published var taskID = ""
     @Published var taskName = ""
     @Published var taskNoteName = ""
     @Published var isTaskCompleted = false
     
-
     var percentageCompleted: CGFloat {
         1 - (initializedTaskList.completedTaskCount / initializedTaskList.totalTaskCount)
     }
@@ -28,9 +24,22 @@ class TaskListVM: ObservableObject {
         (percentageCompleted == 0) && (initializedTaskList.totalTaskCount != 0)
     }
     
-//    var selectedTask: TaskItem {
-//        
-//    }
+    
+    // navigation variables
+    @Published var isListExpanded = false
+    @Published var isShowingAddNewTaskSheet = false
+    @Published var isShowingEditTaskSheet = false
+    @Published var isShowingSettingsSheet = false
+    @Published var isShowingDeleteListAlert = false
+
+    var isShowingASheet: Bool {
+        isShowingSettingsSheet ||
+        isShowingAddNewTaskSheet ||
+        isShowingEditTaskSheet
+    }
+    
+
+    
     
     func addTaskToList(_ task: TaskItem) {
         if initializedTaskList.list.isEmpty {
@@ -40,16 +49,14 @@ class TaskListVM: ObservableObject {
             initializedTaskList.list.insert(task, at: initializedTaskList.list.endIndex)
             initializedTaskList.totalTaskCount += 1.0
         } else {
-            var j = 0
-            while (!initializedTaskList.list[j].isTaskCompleted) {
-                j += 1
+            var i = 0
+            while (!initializedTaskList.list[i].isTaskCompleted) {
+                i += 1
             }
-            initializedTaskList.list.insert(task, at: j)
+            initializedTaskList.list.insert(task, at: i)
             initializedTaskList.totalTaskCount += 1.0
-            
         }
     }
-    
     
     func updateTask(_ task: TaskItem) {
         guard let index = initializedTaskList.list.firstIndex(where: { $0.id == task.id }) else { return }
@@ -117,6 +124,16 @@ class TaskListVM: ObservableObject {
             guard let index = self.initializedTaskList.list.firstIndex(where: { $0.id == task.id }) else { return }
             let removedElement = self.initializedTaskList.list.remove(at: index)
             self.initializedTaskList.list.insert(removedElement, at: self.initializedTaskList.list.startIndex)
+        }
+    }
+    
+    func dismissAllSheets() {
+        if isShowingEditTaskSheet || isShowingAddNewTaskSheet {
+            isShowingAddNewTaskSheet = false
+            isShowingEditTaskSheet = false
+            resetAddTaskSheetProperties()
+        } else {
+            isShowingSettingsSheet = false
         }
     }
 }

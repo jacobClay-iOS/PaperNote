@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CalendarView: View {
     @StateObject var calendarVM = CalendarVm()
-    @Environment(\.scenePhase) var scenePhase
+    @Environment(\.scenePhase) private var scenePhase
     @State var currentDragOffsetX: CGFloat = 0
     
     var body: some View {
@@ -17,6 +17,7 @@ struct CalendarView: View {
             header
                 .padding(.horizontal)
                 .padding(.bottom, -5)
+                .padding(.top, 5)
             
             VStack(spacing: 5) {
                 dayOfTheWeekRow
@@ -156,21 +157,15 @@ extension CalendarView {
     
     private var eventView: some View {
         VStack(spacing: 0) {
-            HStack(spacing: 7) {
-                if calendarVM.isDateToday(today: calendarVM.highlightedDay) {
+            HStack {
+                if calendarVM.isDateToday(calendarVM.highlightedDay) {
                     Text("Today")
-                } else if calendarVM.isDateTomorrow(tomorrow: calendarVM.highlightedDay) {
+                } else if calendarVM.isDateTomorrow(calendarVM.highlightedDay) {
                     Text("Tomorrow")
-                } else if calendarVM.isDateYesterday(yesterday: calendarVM.highlightedDay){
+                } else if calendarVM.isDateYesterday(calendarVM.highlightedDay){
                     Text("Yesterday")
                 } else {
-                    Text(calendarVM.displaySelectedDay()[0])
-                    Text(calendarVM.displaySelectedDay()[2])
-                    if calendarVM.displaySelectedDay()[1].description.hasPrefix("0") {
-                        Text(calendarVM.displaySelectedDay()[1].suffix(1))
-                    } else {
-                        Text(calendarVM.displaySelectedDay()[1])
-                    }
+                    Text(calendarVM.displaySelectedDay())
                 }
                 
                 Spacer()
@@ -198,10 +193,13 @@ extension CalendarView {
                             HStack(spacing: 18) {
 //                                VStack(alignment: .leading, spacing: 4) {
                                     // for custom timing
-                                Text(event.time, style: .time)
-                                        .customFontCaptionBold()
-                                        .foregroundColor(.secondary)
-                                    
+                                
+                                // working here
+                                
+                                Text(calendarVM.displayEventTime(event: event))
+                                    .customFontCaptionBold()
+                                    .foregroundColor(.secondary)
+                                
                                     Text(event.title)
                                         .customFontBodyRegular()
                                         .foregroundColor(.primary)
@@ -232,13 +230,15 @@ extension CalendarView {
                         }
                         .padding(.top, 15)
                     }
-                    .padding(.bottom, 60)
+                    .padding(.bottom, 65)
                 }
             } else {
-                Text("No events")
-                    .customFontBodyRegular()
-                    .foregroundColor(.secondary)
-                    .padding(.top)
+                ScrollView(showsIndicators: false) {
+                    Text("No events")
+                        .customFontBodyRegular()
+                        .foregroundColor(.secondary)
+                        .padding(.top)
+                }
             }
         }
     }

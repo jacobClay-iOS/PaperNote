@@ -79,7 +79,7 @@ struct SunkenTextEditor: View {
                                         .fill(LinearGradient(colors: [Color.clear, Color("InnerShadow")], startPoint: .topLeading, endPoint: .bottomTrailing))
                                 )
                         )
-                        .padding(2)
+                        .padding(1)
                 }
             )
             .overlay(

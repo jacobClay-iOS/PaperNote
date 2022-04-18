@@ -223,6 +223,7 @@ extension ListItemView {
                             ]), startPoint: .topLeading, endPoint: .bottom), lineWidth: 0.5)
                 )
             )
+            .padding(1)
     }
     
     private var taskNoteCompletedView: some View {

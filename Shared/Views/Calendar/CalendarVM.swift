@@ -10,31 +10,28 @@ import SwiftUI
 
 class CalendarVm: ObservableObject {
     @Published var userSelectedDate: Date = Date()
-    
-    // update month with arrow buttons
     @Published var userSelectedMonth: Int = 0
     @Published var currentDay: Date = Date()
     @Published var highlightedDay: Date = Date()
     
     
-    
-    // checking dates
+
     func isSameDay(date1: Date, date2: Date) -> Bool {
         let calendar = Calendar.current
         return calendar.isDate(date1, inSameDayAs: date2)
     }
 
-    func isDateToday(today: Date) -> Bool {
+    func isDateToday(_: Date) -> Bool {
         let calendar = Calendar.current
         return calendar.isDateInToday(highlightedDay)
     }
 
-    func isDateTomorrow(tomorrow: Date) -> Bool {
+    func isDateTomorrow(_: Date) -> Bool {
         let calendar = Calendar.current
         return calendar.isDateInTomorrow(highlightedDay)
     }
 
-    func isDateYesterday(yesterday: Date) -> Bool {
+    func isDateYesterday(_: Date) -> Bool {
         let calendar = Calendar.current
         return calendar.isDateInYesterday(highlightedDay)
     }
@@ -56,13 +53,20 @@ class CalendarVm: ObservableObject {
         return date.components(separatedBy: " ")
     }
     
-    func displaySelectedDay() -> [String] {
+    func displaySelectedDay() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, dd MMMM"
+        formatter.dateFormat = "EEEE, MMMM d"
         
         let date = formatter.string(from: highlightedDay)
         
-        return date.components(separatedBy: " ")
+        return date.description
+    }
+    // working here
+    func displayEventTime(event: CalendarEvent) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        let date = formatter.string(from: event.time)
+        return date.description
     }
 
     func getCurrentMonth() -> Date {
@@ -84,8 +88,7 @@ class CalendarVm: ObservableObject {
             
             return CalendarDate(day: day, date: date)
         }
-        
-        // adding offset days to get exact week day
+
         let firstWeekday = calendar.component(.weekday, from: days.first?.date ?? Date())
         
         for _ in 0..<firstWeekday - 1 {
@@ -93,7 +96,6 @@ class CalendarVm: ObservableObject {
         }
         return days
     }
-    
     
     
     func resetCalendar() {

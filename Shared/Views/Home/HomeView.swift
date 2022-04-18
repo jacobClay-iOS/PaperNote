@@ -14,11 +14,16 @@ struct HomeView: View {
             NeumorphicBackground()
             VStack {
                 CalendarView()
+                    
             }
-            .ignoresSafeArea(.all, edges: .horizontal)
+//            .ignoresSafeArea(.all, edges: .horizontal)
             
-            TaskCollectionView()
+            
+                TaskCollectionView()
+           
+            
         }
+        .ignoresSafeArea(.container, edges: .bottom)
     }
 }
 
