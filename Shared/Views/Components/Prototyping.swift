@@ -12,6 +12,9 @@ struct Prototyping: View {
     @State private var isAllDay = false
     @State private var isRepeating = false
     @State private var eventName = ""
+    
+    let repeatingEventOptions = ["Day", "Week", "Month", "Year"]
+    @State private var selectedRepeatInterval = "Month"
     var body: some View {
         VStack {
             
@@ -45,14 +48,19 @@ struct Prototyping: View {
                             Text("Date")
                         }
                         
-                        Toggle("Repeat", isOn: $isRepeating)
+                        Toggle(isRepeating ? "Repeat every:" : "Repeat", isOn: $isRepeating)
                         
                         if isRepeating {
-                            
+                            Picker("Repeat interval", selection: $selectedRepeatInterval) {
+                                ForEach(repeatingEventOptions, id: \.self) {
+                                    Text($0)
+                            }
+
                         }
+                            .pickerStyle(.segmented)
                     }
                     
-                    
+                    }
                     
                 }
                 .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))

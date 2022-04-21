@@ -52,6 +52,8 @@
 		166AC4D627F14A9A00E197A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 166AC4D527F14A9A00E197A1 /* LaunchScreen.storyboard */; };
 		168FC5EA27D064FA00DD7ECA /* TaskListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168FC5E927D064FA00DD7ECA /* TaskListVM.swift */; };
 		168FC5EB27D064FA00DD7ECA /* TaskListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168FC5E927D064FA00DD7ECA /* TaskListVM.swift */; };
+		169787952810E8D100599E46 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169787942810E8D100599E46 /* AddEventView.swift */; };
+		169787962810E8D100599E46 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169787942810E8D100599E46 /* AddEventView.swift */; };
 		16CEA9DA27D448D4005F8CEA /* AddListButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CEA9D927D448D4005F8CEA /* AddListButtonStyle.swift */; };
 		16CEA9DB27D448D4005F8CEA /* AddListButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CEA9D927D448D4005F8CEA /* AddListButtonStyle.swift */; };
 		16DACFB727EDF46000689729 /* Prototyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DACFB627EDF46000689729 /* Prototyping.swift */; };
@@ -140,6 +142,7 @@
 		1658919227FD2FCC007D6D30 /* AddEventButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButtonStyle.swift; sourceTree = "<group>"; };
 		166AC4D527F14A9A00E197A1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		168FC5E927D064FA00DD7ECA /* TaskListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListVM.swift; sourceTree = "<group>"; };
+		169787942810E8D100599E46 /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
 		16CEA9D927D448D4005F8CEA /* AddListButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListButtonStyle.swift; sourceTree = "<group>"; };
 		16DACFB627EDF46000689729 /* Prototyping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototyping.swift; sourceTree = "<group>"; };
 		16DACFB927EDF5A700689729 /* RedHatText-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatText-Medium.ttf"; sourceTree = "<group>"; };
@@ -199,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				1615B6A827ED41A600C5EA08 /* CalendarView.swift */,
+				169787942810E8D100599E46 /* AddEventView.swift */,
 				16DACFC527EFF83C00689729 /* CalendarVM.swift */,
 			);
 			path = Calendar;
@@ -579,6 +583,7 @@
 				16FE62E127C1C2E700034B0D /* TaskItem.swift in Sources */,
 				1615B6AC27ED423700C5EA08 /* CalendarEvent.swift in Sources */,
 				1637F39B27D054AD00CA2C3E /* TaskCollectionView.swift in Sources */,
+				169787952810E8D100599E46 /* AddEventView.swift in Sources */,
 				1615B6A927ED41A600C5EA08 /* CalendarView.swift in Sources */,
 				1637F3A127D0554D00CA2C3E /* TaskListView.swift in Sources */,
 				1615B6AF27ED425F00C5EA08 /* CalendarDate.swift in Sources */,
@@ -614,6 +619,7 @@
 				16FE62E227C1C2E700034B0D /* TaskItem.swift in Sources */,
 				1615B6AD27ED423700C5EA08 /* CalendarEvent.swift in Sources */,
 				1637F39C27D054AD00CA2C3E /* TaskCollectionView.swift in Sources */,
+				169787962810E8D100599E46 /* AddEventView.swift in Sources */,
 				1615B6AA27ED41A600C5EA08 /* CalendarView.swift in Sources */,
 				1637F3A227D0554D00CA2C3E /* TaskListView.swift in Sources */,
 				1615B6B027ED425F00C5EA08 /* CalendarDate.swift in Sources */,

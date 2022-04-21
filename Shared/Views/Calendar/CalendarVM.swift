@@ -14,7 +14,7 @@ class CalendarVm: ObservableObject {
     @Published var currentDay: Date = Date()
     @Published var highlightedDay: Date = Date()
     
-    
+    @Published var isShowingAddEventView = false
 
     func isSameDay(date1: Date, date2: Date) -> Bool {
         let calendar = Calendar.current
@@ -55,7 +55,7 @@ class CalendarVm: ObservableObject {
     
     func displaySelectedDay() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, MMMM d"
+        formatter.dateFormat = "EEEE,  MMMM  d"
         
         let date = formatter.string(from: highlightedDay)
         
@@ -65,7 +65,7 @@ class CalendarVm: ObservableObject {
     func displayEventTime(event: CalendarEvent) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"
-        let date = formatter.string(from: event.time)
+        let date = formatter.string(from: event.date)
         return date.description
     }
 

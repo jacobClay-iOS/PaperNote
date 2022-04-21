@@ -12,37 +12,51 @@ struct CalendarView: View {
     @Environment(\.scenePhase) private var scenePhase
     @State var currentDragOffsetX: CGFloat = 0
     
+    
     var body: some View {
-        VStack(spacing: 15) {
-            header
-                .padding(.horizontal)
-                .padding(.bottom, -5)
-                .padding(.top, 5)
-            
-            VStack(spacing: 5) {
-                dayOfTheWeekRow
-                    .padding(.horizontal, 2)
-                calendar
-            }
-
-            eventView
-                .padding(.horizontal)
-            
-            Spacer()
-        }
-        .onChange(of: calendarVM.userSelectedMonth) { newValue in
-            // updating month
-            calendarVM.userSelectedDate = calendarVM.getCurrentMonth()
-        }
-        .onChange(of: scenePhase) { newPhase in
-            if newPhase == .active {
-                calendarVM.refreshCurrentDate()
-            } else if newPhase == .inactive {
+        ZStack {
+            VStack(spacing: 15) {
+                header
+                    .padding(.horizontal)
+                    .padding(.bottom, -5)
+                    .padding(.top, 5)
                 
-            } else if newPhase == .background {
-                calendarVM.resetCalendar()
+                VStack(spacing: 5) {
+                    dayOfTheWeekRow
+                        .padding(.horizontal, 2)
+                    calendar
+                }
+
+                eventView
+                    .padding(.horizontal)
+                
+                Spacer()
             }
+            .opacity(calendarVM.isShowingAddEventView ? 0.5 : 1.0)
+            .disabled(calendarVM.isShowingAddEventView ? true : false)
+            .onChange(of: calendarVM.userSelectedMonth) { newValue in
+                // updating month
+                calendarVM.userSelectedDate = calendarVM.getCurrentMonth()
+            }
+            .onChange(of: scenePhase) { newPhase in
+                if newPhase == .active {
+                    calendarVM.refreshCurrentDate()
+                } else if newPhase == .inactive {
+                    
+                } else if newPhase == .background {
+                    calendarVM.resetCalendar()
+                }
         }
+            
+            ZStack {
+                if calendarVM.isShowingAddEventView {
+                    AddEventView()
+                        .transition(.move(edge: .bottom))
+                }
+            }
+            .zIndex(2)
+        }
+        .environmentObject(calendarVM)
     }
     
     @ViewBuilder
@@ -64,7 +78,7 @@ struct CalendarView: View {
                     Spacer()
                 }
                 
-                if events.first(where: { event in
+                if sampleEvents.first(where: { event in
                     return calendarVM.isSameDay(date1: event.date, date2: value.date)
                 }) != nil {
     
@@ -170,6 +184,9 @@ extension CalendarView {
                 
                 Spacer()
                 Button {
+                    withAnimation {
+                        calendarVM.isShowingAddEventView = true
+                    }
                     
                 } label: {
                     Image(systemName: "plus")
@@ -184,11 +201,11 @@ extension CalendarView {
             .padding(.vertical, 10)
             
             
-            if let selectedDaysEvents = events.first(where: { value in
+            if let selectedDaysEvents = sampleEvents.first(where: { value in
                 return calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay)
             }) {
                 ScrollView(showsIndicators: false) {
-                    ForEach(selectedDaysEvents.collection) { event in
+                    ForEach(selectedDaysEvents.todaysEvents) { event in
                         VStack {
                             HStack(spacing: 18) {
 //                                VStack(alignment: .leading, spacing: 4) {

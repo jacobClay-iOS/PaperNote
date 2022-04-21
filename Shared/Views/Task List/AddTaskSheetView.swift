@@ -19,7 +19,7 @@ struct AddTaskSheetView: View {
             Spacer()
             VStack(spacing: 15) {
                 header
-                    .padding(.horizontal, 5)
+                    .padding(.horizontal, 4)
                 
                 textFields
                 
@@ -29,7 +29,7 @@ struct AddTaskSheetView: View {
             .padding(.bottom)
             .background(Color("Surface"))
             .customCornerRadius(25, corners: [.topLeft, .topRight])
-            .shadow(color: Color("OuterGlare"), radius: 1, y: -1)
+            .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
             .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
             .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
         }

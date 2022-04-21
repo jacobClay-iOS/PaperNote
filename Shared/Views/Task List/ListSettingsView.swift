@@ -31,7 +31,7 @@ struct ListSettingsView: View {
             .padding(.bottom)
             .background(Color("Surface"))
             .customCornerRadius(25, corners: [.topRight, .topLeft])
-            .shadow(color: Color("OuterGlare"), radius: 1, y: -1)
+            .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
             .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
             .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
         }

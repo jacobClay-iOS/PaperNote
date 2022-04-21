@@ -13,14 +13,22 @@ import SwiftUI
 struct CalendarEvent: Identifiable {
     var id = UUID().uuidString
     var title: String
-    var time: Date
+    var note: String?
+    var date: Date
+    var isAllday = false
+    var isRepeating = false
 }
 
 // total task meta view
-struct EventCollection: Identifiable {
+struct EachDayEventCollection: Identifiable {
     var id = UUID().uuidString
-    var collection: [CalendarEvent]
+    var todaysEvents: [CalendarEvent]
     var date: Date
+}
+
+struct TotalEventCollection: Identifiable {
+    var id = UUID().uuidString
+    var totalEvents: [EachDayEventCollection]
 }
 
 // sample data for testing
@@ -30,19 +38,29 @@ struct EventCollection: Identifiable {
 //    return date ?? Date()
 //}
 
-func sampleEvents(year: Int, month: Int, day: Int) -> Date {
-    let calendar = Calendar.current
-    let event = calendar.date(from: DateComponents(year: year, month: month, day: day))
-    return event ?? Date()
-}
+//func sampleEvents(year: Int, month: Int, day: Int) -> Date {
+//    let calendar = Calendar.current
+//    let event = calendar.date(from: DateComponents(year: year, month: month, day: day))
+//    return event ?? Date()
+//}
 
 // sample tasks
-var events: [EventCollection] = [
+var sampleEvents: [EachDayEventCollection] = [
 
+    EachDayEventCollection(todaysEvents:
+        [CalendarEvent(title: "Sample event", date: Date())],
+         date: Date()),
+
+
+    EachDayEventCollection(todaysEvents:
+        [CalendarEvent(title: "Sample event 2", date: Date())],
+         date: Date(timeIntervalSinceNow: (86500 * 2))),
+
+
+    EachDayEventCollection(todaysEvents:
+        [CalendarEvent(title: "Sample event", date: Date())],
+         date: Date())
+
+]
     
-    
-    EventCollection(collection: [
-        CalendarEvent(title: "Sample event", time: Date())
-                      ],  date: Date())
-    ]
-    
+
