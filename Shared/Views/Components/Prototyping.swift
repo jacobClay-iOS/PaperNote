@@ -28,10 +28,11 @@ struct Prototyping: View {
             Text("\(currentDate)")
                 .padding(.bottom, 200)
             
+            
             //            SunkenTextField(textField: TextField("Event", text: $eventName))
             //                .padding(.horizontal)
             
-            List {
+            Form {
                 
                 Section {
                     TextField("Title", text: $eventName)
@@ -47,6 +48,7 @@ struct Prototyping: View {
                         DatePicker(selection: $currentDate, displayedComponents: isAllDay ? .date : [.date, .hourAndMinute]) {
                             Text("Date")
                         }
+                        
                         
                         Toggle(isRepeating ? "Repeat every:" : "Repeat", isOn: $isRepeating)
                         

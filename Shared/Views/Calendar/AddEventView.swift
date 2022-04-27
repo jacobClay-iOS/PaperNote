@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct AddEventView: View {
-    @State private var eventDate = Date.now
+    @EnvironmentObject var calendarVM: CalendarVm
+    @FocusState private var eventFieldFocus
+    @Binding var eventDate: Date
+    
+    
     @State private var isAllDay = false
     @State private var isRepeating = false
+    @State private var isWithAlert = false
     @State private var eventName = ""
-    @State private var isShowingDatePicker = false
-    @FocusState private var eventFieldFocus
     @State private var currentDragOffsetY: CGFloat = 0
-    
-    @EnvironmentObject var calendarVM: CalendarVm
     
     let repeatingEventOptions = ["Day", "Week", "Month", "Year"]
     @State private var selectedRepeatInterval = "Month"
@@ -26,10 +27,15 @@ struct AddEventView: View {
         VStack {
             Spacer()
             VStack(spacing: 15) {
+                
                 header
-                    .padding(.horizontal, 4)
+//                Text("\(eventDate)")
                 eventTextField
+                
+                if isRepeating { repeatPicker }
+                    
                 toolBar
+                
             }
             .padding(.horizontal)
             .padding(.bottom)
@@ -40,11 +46,8 @@ struct AddEventView: View {
             .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
         }
         .ignoresSafeArea(.container, edges: .bottom)
-        .task {
-            DispatchQueue.main.async {
-                eventFieldFocus = true
-            }
-        }
+        .task { DispatchQueue.main.async { eventFieldFocus = true } }
+        .offset(y: currentDragOffsetY)
         .gesture(
             DragGesture()
                 .onChanged { value in
@@ -60,8 +63,8 @@ struct AddEventView: View {
                                 calendarVM.isShowingAddEventView = false
                             }
                         }
-                        currentDragOffsetY = 0
                     }
+                    currentDragOffsetY = 0
                 }
         )
     }
@@ -69,18 +72,39 @@ struct AddEventView: View {
     private var header: some View {
         VStack {
             DragGestureTab()
-            HStack {
-                Text("Add Event")
+            HStack(spacing: 15) {
+                Text(calendarVM.displaySelectedDay())
                     .customFontHeadline()
                     .foregroundColor(.primary)
 
                 Spacer()
+                
+                if isAllDay {
+                    Text("All Day")
+                        .font(.body)
+                        .foregroundColor(.primary)
+                        .padding(.vertical, 7)
+                        .padding(.horizontal, 12)
+                        .background(
+                            Color(uiColor: .tertiarySystemFill)
+                            
+                                
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                } else {
+                    DatePicker(selection: $eventDate, displayedComponents: .hourAndMinute) {
+                        Text("Today")
+                    }
+                    .labelsHidden()
+                    .datePickerStyle(.compact)
+                }
             }
         }
+        .padding(.horizontal, 4)
     }
     
     private var eventTextField: some View {
-        SunkenTextField(textField: TextField("Title", text: $eventName))
+        SunkenTextField(textField: TextField("event", text: $eventName))
             .focused($eventFieldFocus)
             .submitLabel(.done)
             .onSubmit {
@@ -93,69 +117,63 @@ struct AddEventView: View {
                     // submit event code here
                 }
             }
+            .padding(.horizontal, 2)
+    }
+    
+    private var repeatPicker: some View {
+        HStack(spacing: 8) {
+            Text("Every:")
+                .customFontBodyMedium()
+                .foregroundColor(.primary)
+            
+            Picker("Repeat interval", selection: $selectedRepeatInterval) {
+                ForEach(repeatingEventOptions, id: \.self) {
+                    Text($0)
+            }
+        }
+            .pickerStyle(.segmented)
+            .foregroundColor(.primary)
+        }
+        .padding(.horizontal, 4)
     }
     
     private var toolBar: some View {
         VStack {
             HStack(spacing: 15) {
-                DatePicker(selection: $eventDate, displayedComponents: isAllDay ? .date : [.date, .hourAndMinute]) {
-                    Text("Today")
-                }
-                .labelsHidden()
-                .datePickerStyle(.compact)
-                
-                if isAllDay {
-                    Text("All Day")
-                        .font(.body)
-                        .foregroundColor(.primary)
-                        .padding(.vertical, 6.5)
-                        .padding(.horizontal, 12)
-                        .background(
-                            Color(uiColor: .tertiarySystemFill)
-                            
-                                
-                        )
-                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-                        .padding(.leading, -10)
-                }
-                
-                
-                Spacer()
-                
-                Button {
-                   
-    
-                        isAllDay.toggle()
-                    
-                } label: {
+                Button { isAllDay.toggle() }
+                 label: {
                     Image(systemName: "sun.max")
                         .font(.title2)
                         .foregroundColor(isAllDay ? Color.accentColor : .secondary)
                 }
                 .buttonStyle(.plain)
                 
-                Button {
-                    withAnimation {
-                       
-    
-                    }
-                } label: {
+                Button { withAnimation { isRepeating.toggle() } }
+                 label: {
                     Image(systemName: "repeat")
                         .font(.title2)
                         .foregroundColor(isRepeating ? Color.accentColor : .secondary)
                 }
                 .buttonStyle(.plain)
     
-                Button {
-                    withAnimation {
-    
-    
-                    }
-                } label: {
+                Button { withAnimation { isWithAlert.toggle() } }
+                 label: {
                     Image(systemName: "bell")
                         .font(.title2)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(isWithAlert ? Color.accentColor : .secondary)
                 }
+                .buttonStyle(.plain)
+
+                Spacer()
+
+                Button {
+                    
+                } label: {
+                    Image(systemName: "checkmark.rectangle.fill")
+                        .font(.title)
+                        .foregroundColor(eventName.isEmpty ? .secondary : Color.accentColor)
+                }
+                .disabled(eventName.isEmpty)
                 .buttonStyle(.plain)
             }
             .padding(.leading, 2)
@@ -171,10 +189,13 @@ struct AddEventView_Previews: PreviewProvider {
         ZStack {
             NeumorphicBackground()
             VStack {
-                AddEventView()
+                AddEventView(
+//                    displayDate: Date.now,
+                    eventDate: .constant(Date.now))
                 Spacer()
                 
             }
         }
+        .environmentObject(CalendarVm())
     }
 }

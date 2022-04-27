@@ -158,11 +158,7 @@ extension TaskCollectionView {
             } // VStack
             .padding()
             .frame(height: 150)
-            .task {
-                DispatchQueue.main.async {
-                    newTaskListFieldFocus = true
-                }
-            } // Task
+            .task { DispatchQueue.main.async { newTaskListFieldFocus = true } }
     }
 }
 

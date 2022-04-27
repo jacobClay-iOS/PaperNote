@@ -20,18 +20,22 @@ struct CalendarView: View {
                     .padding(.horizontal)
                     .padding(.bottom, -5)
                     .padding(.top, 5)
-                
+                    
                 VStack(spacing: 5) {
                     dayOfTheWeekRow
                         .padding(.horizontal, 2)
                     calendar
+                        
                 }
-
-                eventView
-                    .padding(.horizontal)
-                
+                if !calendarVM.isShowingAddEventView {
+                    eventView
+                        .padding(.horizontal)
+                } 
                 Spacer()
             }
+            
+               
+            
             .opacity(calendarVM.isShowingAddEventView ? 0.5 : 1.0)
             .disabled(calendarVM.isShowingAddEventView ? true : false)
             .onChange(of: calendarVM.userSelectedMonth) { newValue in
@@ -50,12 +54,15 @@ struct CalendarView: View {
             
             ZStack {
                 if calendarVM.isShowingAddEventView {
-                    AddEventView()
+                    AddEventView(
+//                        displayDate: calendarVM.highlightedDay,
+                        eventDate: $calendarVM.highlightedDay)
                         .transition(.move(edge: .bottom))
                 }
             }
             .zIndex(2)
         }
+       
         .environmentObject(calendarVM)
     }
     

@@ -118,10 +118,8 @@ extension TaskListView {
     
     private var listHeader: some View {
         HStack {
-            Button {
-                withAnimation { taskListVM.isListExpanded.toggle() }
-            } label: {
-                
+            Button { withAnimation { taskListVM.isListExpanded.toggle() } }
+             label: {
                 Image(systemName: "chevron.backward")
                     .font(.headline)
                     .foregroundColor(.secondary)

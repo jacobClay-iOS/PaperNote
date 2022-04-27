@@ -18,6 +18,7 @@ struct AddTaskSheetView: View {
         VStack {
             Spacer()
             VStack(spacing: 15) {
+                
                 header
                     .padding(.horizontal, 4)
                 
@@ -34,11 +35,7 @@ struct AddTaskSheetView: View {
             .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
         }
         .ignoresSafeArea(.container, edges: .bottom)
-        .task {
-            DispatchQueue.main.async {
-                taskFieldFocus = true
-            }
-        }
+        .task { DispatchQueue.main.async { taskFieldFocus = true } }
         .offset(y: currentDragOffsetY)
         .gesture(
             DragGesture()
@@ -170,11 +167,15 @@ extension AddTaskSheetView {
     }
 }
 
-//
-//struct AddTaskSheetView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddTaskSheetView(isShowingAddTaskSheet: .constant(true))
-//            .environmentObject(TaskListVM((TaskList.init(id: "1", name: "Grocery List", list: [TaskItem(name: "Melons", note: "")], totalTaskCount: 1, completedTaskCount: 0))))
-//
-//    }
-//}
+
+struct AddTaskSheetView_Previews: PreviewProvider {
+    static var previews: some View {
+        ZStack {
+            AddTaskSheetView(isShowingAddNewTaskSheet: .constant(true), isShowingEditTaskSheet: .constant(false))
+        }
+        .environmentObject(TaskListVM())
+
+            
+
+    }
+}

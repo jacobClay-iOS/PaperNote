@@ -37,24 +37,18 @@ struct ListItemView: View {
 extension ListItemView {
     
     private var primaryTaskListItemNotCompletedView: some View {
-        HStack(spacing: 20) {
-            VStack {
-                Button {
-                    UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-                    withAnimation {
-                        taskListVM.completeTask(listItem)
-                        taskListVM.moveTaskEndOfArray(listItem)
-                    }
-                } label: { primaryTaskNotCompletedButtonLabel }
-                .buttonStyle(.plain)
-                .offset(y: 4)
-                Spacer()
-            }
-            
+        HStack(alignment: .firstTextBaseline, spacing: 20) {
             Button {
-                isShowingActionSheet.toggle()
-            }
-        label: {
+                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                withAnimation {
+                    taskListVM.completeTask(listItem)
+                    taskListVM.moveTaskEndOfArray(listItem)
+                }
+            } label: { primaryTaskNotCompletedButtonLabel }
+            .buttonStyle(.plain)
+            
+            Button { isShowingActionSheet.toggle() }
+            label: {
             Text(listItem.name)
                 .customFontBodyRegular()
                 .foregroundColor(.primary)
@@ -83,43 +77,31 @@ extension ListItemView {
         })
             
             if !listItem.note.isEmpty {
-                VStack {
-                    Button {
-                        withAnimation {
-                            isShowingNote.toggle()
-                        }
-                    } label: {
-                        Image(systemName: isShowingNote ? "chevron.up" : "chevron.down")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                    }
-                    .buttonStyle(.plain)
-                    .offset(y: 13)
-                    Spacer()
-                }
+                Button { withAnimation { isShowingNote.toggle() } }
+                label: {
+                Image(systemName: isShowingNote ? "chevron.up" : "chevron.down")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            .buttonStyle(.plain)
+                
             }
         }
     }
     
     private var primaryTaskListItemCompletedView: some View {
-        HStack(spacing: 20) {
-            VStack {
-                Button {
-                    UIImpactFeedbackGenerator(style: .soft).impactOccurred()
-                    withAnimation {
-                        taskListVM.unCompleteTask(listItem)
-                        taskListVM.moveTaskStartOfArray(listItem)
-                    }
-                } label: { primaryTaskCompletedButtonLabel }
-                .buttonStyle(.plain)
-                .offset(y: 4)
-                Spacer()
-            }
-            
+        HStack(alignment: .firstTextBaseline, spacing: 20) {
             Button {
-                isShowingActionSheet.toggle()
-            }
-        label: {
+                UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+                withAnimation {
+                    taskListVM.unCompleteTask(listItem)
+                    taskListVM.moveTaskStartOfArray(listItem)
+                }
+            } label: { primaryTaskCompletedButtonLabel }
+            .buttonStyle(.plain)
+            
+            Button { isShowingActionSheet.toggle() }
+            label: {
             Text(listItem.name)
                 .customFontBodyRegular()
                 .foregroundColor(.secondary)
@@ -148,20 +130,13 @@ extension ListItemView {
         })
             
             if !listItem.note.isEmpty {
-                VStack {
-                    Button {
-                        withAnimation {
-                            isShowingNote.toggle()
-                        }
-                    } label: {
-                        Image(systemName: isShowingNote ? "chevron.up" : "chevron.down")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                    }
-                    .buttonStyle(.plain)
-                    .offset(y: 13)
-                    Spacer()
-                }
+                Button { withAnimation { isShowingNote.toggle() } }
+                label: {
+                Image(systemName: isShowingNote ? "chevron.up" : "chevron.down")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            .buttonStyle(.plain)
             }
         }
     }

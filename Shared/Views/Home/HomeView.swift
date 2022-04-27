@@ -24,6 +24,7 @@ struct HomeView: View {
             
         }
         .ignoresSafeArea(.container, edges: .bottom)
+        
     }
 }
 
