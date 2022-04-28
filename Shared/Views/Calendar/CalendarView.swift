@@ -85,7 +85,7 @@ struct CalendarView: View {
                     Spacer()
                 }
                 
-                if sampleEvents.first(where: { event in
+                if calendarVM.totalCollectionOfEvents.first(where: { event in
                     return calendarVM.isSameDay(date1: event.date, date2: value.date)
                 }) != nil {
     
@@ -208,49 +208,13 @@ extension CalendarView {
             .padding(.vertical, 10)
             
             
-            if let selectedDaysEvents = sampleEvents.first(where: { value in
+            if let selectedDaysEvents = calendarVM.totalCollectionOfEvents.first(where: { value in
                 return calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay)
             }) {
                 ScrollView(showsIndicators: false) {
                     ForEach(selectedDaysEvents.todaysEvents) { event in
                         VStack {
-                            HStack(spacing: 18) {
-//                                VStack(alignment: .leading, spacing: 4) {
-                                    // for custom timing
-                                
-                                // working here
-                                
-                                Text(calendarVM.displayEventTime(event: event))
-                                    .customFontCaptionBold()
-                                    .foregroundColor(.secondary)
-                                
-                                    Text(event.title)
-                                        .customFontBodyRegular()
-                                        .foregroundColor(.primary)
-//                                }
-                                
-                                Spacer()
-//                                Image(systemName: "repeat")
-//                                    .font(.headline)
-//                                    .foregroundColor(.secondary)
-//                                Image(systemName: "bell.slash")
-//                                    .font(.headline)
-//                                    .foregroundColor(.secondary)
-                                
-                            }
-                            .padding(.vertical, 10)
-                            .padding(.horizontal)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .background(
-                                Color("Surface")
-                                    .cornerRadius(10)
-                                    
-                                    .shadow(color: Color("OuterGlare"), radius: 0.5, x: -0.5, y: -0.5)
-                                    .shadow(color: Color("OuterGlare"), radius: 0.5, x: -0.5, y: -0.5)
-                                    .shadow(color: Color("OuterGlare"), radius: 0.5, x: 0, y: -0.5)
-                                    .shadow(color: Color("OuterShadow"), radius: 3, x: 4, y: 4)
-                            )
-                        .padding(.horizontal, 15)
+                            EventCardView(event: event)
                         }
                         .padding(.top, 15)
                     }

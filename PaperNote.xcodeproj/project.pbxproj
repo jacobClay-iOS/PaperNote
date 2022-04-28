@@ -37,6 +37,8 @@
 		1631558327BBEC2700E05CD8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1631555527BBEC2600E05CD8 /* Persistence.swift */; };
 		1631558427BBEC2700E05CD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1631555627BBEC2700E05CD8 /* Assets.xcassets */; };
 		1631558527BBEC2700E05CD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1631555627BBEC2700E05CD8 /* Assets.xcassets */; };
+		163384C4281A37C000395BF5 /* EventCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163384C3281A37C000395BF5 /* EventCardView.swift */; };
+		163384C5281A37C000395BF5 /* EventCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163384C3281A37C000395BF5 /* EventCardView.swift */; };
 		1637F39B27D054AD00CA2C3E /* TaskCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637F39A27D054AD00CA2C3E /* TaskCollectionView.swift */; };
 		1637F39C27D054AD00CA2C3E /* TaskCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637F39A27D054AD00CA2C3E /* TaskCollectionView.swift */; };
 		1637F39E27D054C100CA2C3E /* TaskCollectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637F39D27D054C100CA2C3E /* TaskCollectionVM.swift */; };
@@ -135,6 +137,7 @@
 		1631557427BBEC2700E05CD8 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1631557827BBEC2700E05CD8 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		1631557A27BBEC2700E05CD8 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		163384C3281A37C000395BF5 /* EventCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardView.swift; sourceTree = "<group>"; };
 		1637F39A27D054AD00CA2C3E /* TaskCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCollectionView.swift; sourceTree = "<group>"; };
 		1637F39D27D054C100CA2C3E /* TaskCollectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCollectionVM.swift; sourceTree = "<group>"; };
 		1637F3A027D0554D00CA2C3E /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
@@ -203,6 +206,7 @@
 			children = (
 				1615B6A827ED41A600C5EA08 /* CalendarView.swift */,
 				169787942810E8D100599E46 /* AddEventView.swift */,
+				163384C3281A37C000395BF5 /* EventCardView.swift */,
 				16DACFC527EFF83C00689729 /* CalendarVM.swift */,
 			);
 			path = Calendar;
@@ -291,7 +295,6 @@
 				168FC5E927D064FA00DD7ECA /* TaskListVM.swift */,
 				1614256727C3D72200C74ACD /* AddTaskSheetView.swift */,
 				16440C4127E15B8C00821F16 /* ListSettingsView.swift */,
-				162809AE27C292AD009425CE /* ListItemView.swift */,
 			);
 			path = "Task List";
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 			children = (
 				16FE631327C1CDE700034B0D /* NeumorphicBackground.swift */,
 				16DACFB627EDF46000689729 /* Prototyping.swift */,
+				162809AE27C292AD009425CE /* ListItemView.swift */,
 				162A584B280279B000D8B227 /* RoundedCorner.swift */,
 				162A585128027CA300D8B227 /* DragGestureTab.swift */,
 			);
@@ -580,6 +584,7 @@
 				16FE630527C1C8C400034B0D /* AddTaskButtonStyle.swift in Sources */,
 				162809B327C348A9009425CE /* SunkenTextEditor.swift in Sources */,
 				16FE631427C1CDE700034B0D /* NeumorphicBackground.swift in Sources */,
+				163384C4281A37C000395BF5 /* EventCardView.swift in Sources */,
 				16FE62E127C1C2E700034B0D /* TaskItem.swift in Sources */,
 				1615B6AC27ED423700C5EA08 /* CalendarEvent.swift in Sources */,
 				1637F39B27D054AD00CA2C3E /* TaskCollectionView.swift in Sources */,
@@ -616,6 +621,7 @@
 				16FE630627C1C8C400034B0D /* AddTaskButtonStyle.swift in Sources */,
 				162809B427C348A9009425CE /* SunkenTextEditor.swift in Sources */,
 				16FE631527C1CDE700034B0D /* NeumorphicBackground.swift in Sources */,
+				163384C5281A37C000395BF5 /* EventCardView.swift in Sources */,
 				16FE62E227C1C2E700034B0D /* TaskItem.swift in Sources */,
 				1615B6AD27ED423700C5EA08 /* CalendarEvent.swift in Sources */,
 				1637F39C27D054AD00CA2C3E /* TaskCollectionView.swift in Sources */,

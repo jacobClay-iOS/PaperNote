@@ -17,6 +17,7 @@ struct CalendarEvent: Identifiable {
     var date: Date
     var isAllday = false
     var isRepeating = false
+    var isWithAlert = false
 }
 
 // total task meta view
@@ -26,10 +27,10 @@ struct EachDayEventCollection: Identifiable {
     var date: Date
 }
 
-struct TotalEventCollection: Identifiable {
-    var id = UUID().uuidString
-    var totalEvents: [EachDayEventCollection]
-}
+//struct TotalEventCollection: Identifiable {
+//    var id = UUID().uuidString
+//    var totalEvents: [EachDayEventCollection]
+//}
 
 // sample data for testing
 //func getSampleDate(offset: Int) -> Date {

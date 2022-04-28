@@ -115,6 +115,9 @@ struct AddEventView: View {
                     }
                 } else {
                     // submit event code here
+                    withAnimation {
+                        addEvent()
+                    }
                 }
             }
             .padding(.horizontal, 2)
@@ -181,6 +184,14 @@ struct AddEventView: View {
             
             
         }
+    }
+    
+    func addEvent() {
+        let event = EachDayEventCollection(todaysEvents: [CalendarEvent(title: eventName, date: eventDate, isAllday: isAllDay, isRepeating: isRepeating, isWithAlert: isWithAlert)], date: eventDate)
+        calendarVM.addEventToCollectionOfEvents(event)
+        eventFieldFocus = false
+        calendarVM.isShowingAddEventView = false
+        
     }
 }
 
