@@ -40,7 +40,7 @@ class TaskListVM: ObservableObject {
     
 
     
-    
+    // task list functions
     func addTaskToList(_ task: TaskItem) {
         if initializedTaskList.list.isEmpty {
             initializedTaskList.list.insert(task, at: initializedTaskList.list.startIndex)

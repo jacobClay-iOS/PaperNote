@@ -169,9 +169,8 @@ struct AddEventView: View {
 
                 Spacer()
 
-                Button {
-                    
-                } label: {
+                Button { withAnimation { addEvent() } }
+                    label: {
                     Image(systemName: "checkmark.rectangle.fill")
                         .font(.title)
                         .foregroundColor(eventName.isEmpty ? .secondary : Color.accentColor)

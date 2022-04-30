@@ -42,10 +42,10 @@ class CalendarVm: ObservableObject {
         return calendar.isDateInYesterday(highlightedDay)
     }
     
-    func isMonthNotInCurrentYear(month: Date) -> Bool {
+    func isMonthNotInCurrentYear() -> Bool {
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY"
-        let currentYearNumber = formatter.string(from: currentDay)
+        let currentYearNumber = formatter.string(from: Date.now)
         let userSelectedYearNumber = formatter.string(from: userSelectedDate)
         return currentYearNumber != userSelectedYearNumber
     }
@@ -78,7 +78,7 @@ class CalendarVm: ObservableObject {
     func getCurrentMonth() -> Date {
         let calendar = Calendar.current
 
-        guard let currentMonth = calendar.date(byAdding: .month, value: self.userSelectedMonth, to: Date())
+        guard let currentMonth = calendar.date(byAdding: .month, value: self.userSelectedMonth, to: currentDay.startOfMonth())
         else {
             return Date()
         }

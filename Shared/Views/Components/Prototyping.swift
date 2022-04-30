@@ -53,13 +53,23 @@ struct Prototyping: View {
                         Toggle(isRepeating ? "Repeat every:" : "Repeat", isOn: $isRepeating)
                         
                         if isRepeating {
-                            Picker("Repeat interval", selection: $selectedRepeatInterval) {
-                                ForEach(repeatingEventOptions, id: \.self) {
-                                    Text($0)
-                            }
+                            HStack {
+                                Picker("Repeat interval", selection: $selectedRepeatInterval) {
+                                    ForEach(repeatingEventOptions, id: \.self) {
+                                        Text($0)
+                                }
 
-                        }
-                            .pickerStyle(.segmented)
+                            }
+                                .pickerStyle(.wheel)
+                                Picker("Repeat interval", selection: $selectedRepeatInterval) {
+                                    ForEach(repeatingEventOptions, id: \.self) {
+                                        Text($0)
+                                }
+                                    .frame(width: 100)
+                            }
+                                .pickerStyle(.wheel)
+                            }
+                            
                     }
                     
                     }

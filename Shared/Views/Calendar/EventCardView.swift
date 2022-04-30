@@ -14,13 +14,16 @@ struct EventCardView: View {
         HStack(spacing: 18) {
 
             
-            Text(event.isAllday ? "All Day" : calendarVM.displayEventTime(event: event))
-                .customFontCaptionBold()
+            VStack(alignment: .leading, spacing: 4) {
+                Text(event.isAllday ? "All Day" : calendarVM.displayEventTime(event: event))
+                    .customFontCaptionRegular()
                 .foregroundColor(.secondary)
-            
                 Text(event.title)
                     .customFontBodyRegular()
                     .foregroundColor(.primary)
+            }
+            
+                
 
             
             Spacer()
@@ -49,7 +52,7 @@ struct EventCardView: View {
                 .shadow(color: Color("OuterGlare"), radius: 0.5, x: 0, y: -0.5)
                 .shadow(color: Color("OuterShadow"), radius: 3, x: 4, y: 4)
         )
-    .padding(.horizontal, 15)
+    .padding(.horizontal, 12)
     }
 }
 

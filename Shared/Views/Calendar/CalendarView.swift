@@ -94,28 +94,36 @@ struct CalendarView: View {
                         .frame(width: 7, height: 7)
                         .offset(y: calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay) ? -2 : 0)
                         
+                } else {
+                    Circle()
+                        .fill(Color("AccentEnd"))
+                        .frame(width: 7, height: 7)
+                        .offset(y: calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay) ? -2 : 0)
+                        .opacity(0.0)
                 }
             }
+                
         }
-        .padding(.vertical, 10)
+        .padding(.vertical, 8)
         .frame(
-            height: UIScreen.main.bounds.height * 0.062,
+            minHeight: UIScreen.main.bounds.height * 0.055, idealHeight: UIScreen.main.bounds.height * 0.065, maxHeight: UIScreen.main.bounds.height * 0.075,
             alignment: .top)
     }
-    
 }
 
 extension CalendarView {
     private var header: some View {
-        HStack(alignment: .bottom, spacing: 15) {
+        HStack(alignment: .firstTextBaseline, spacing: 15) {
             Text(calendarVM.displaySelectedMonthAndYear()[1])
                 .customFontTitleBold()
-            if calendarVM.isMonthNotInCurrentYear(month: calendarVM.highlightedDay) {
+            if calendarVM.isMonthNotInCurrentYear() {
                 Text(calendarVM.displaySelectedMonthAndYear()[0])
                     .customFontCaptionBold()
-                    .offset(y: -5)
             }
             Spacer()
+            
+            Image(systemName: "ellipsis")
+                .font(.title2)
         }
         .foregroundColor(.primary)
     }
@@ -145,10 +153,9 @@ extension CalendarView {
         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 5) {
             ForEach(calendarVM.populateCalendarWithDates()) { value in
                 CalendarDayView(value: value)
-                    
                     .background(
                         currentDayBackground
-                            .frame(height: UIScreen.main.bounds.height * 0.068)
+                            .padding(.bottom, -7)
                             .opacity(calendarVM.isSameDay(date1: value.date, date2: calendarVM.currentDay) ? 1 : 0)
                     )
                     .onTapGesture { calendarVM.highlightedDay = value.date }
@@ -280,7 +287,6 @@ extension CalendarView {
                 )
                 .padding(1)
         }
-        .offset(y: 6)
     }
     
     
@@ -296,6 +302,12 @@ extension Date {
         return range.compactMap { day -> Date in
             return calendar.date(byAdding: .day, value: day - 1, to: startDate) ?? Date()
         }
+    }
+    
+    func startOfMonth() -> Date {
+        let calendar = Calendar.current
+        guard let firstDay = calendar.date(from: Calendar.current.dateComponents([.year, .month], from: self)) else { return Date() }
+        return firstDay
     }
 }
 
