@@ -126,8 +126,7 @@ struct AddEventView: View {
     private var repeatPicker: some View {
         HStack(spacing: 8) {
             Text("Every:")
-                .customFontBodyMedium()
-                .foregroundColor(.primary)
+                .customFontCaptionMedium()
             
             Picker("Repeat interval", selection: $selectedRepeatInterval) {
                 ForEach(repeatingEventOptions, id: \.self) {
@@ -135,8 +134,8 @@ struct AddEventView: View {
             }
         }
             .pickerStyle(.segmented)
-            .foregroundColor(.primary)
         }
+        .foregroundColor(.primary)
         .padding(.horizontal, 4)
     }
     

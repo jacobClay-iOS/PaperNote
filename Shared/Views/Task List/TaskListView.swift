@@ -36,7 +36,6 @@ extension TaskListView {
     
     private var cardListView: some View {
         Button {
-            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
             withAnimation { taskListVM.isListExpanded.toggle() }
         }
         label: {
@@ -232,9 +231,20 @@ extension TaskListView {
                         taskListVM.clearTaskList()
                         taskListVM.resetTaskListCounters()
                     } label: {
-                        Text("clear list")
-                            .customFontHeadline()
-                            .foregroundColor(.primary)
+                        Text("Clear List")
+                            .customFontCaptionBold()
+                            .foregroundColor(.secondary)
+                            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
+                            .background(
+                                Capsule()
+                                    .stroke(lineWidth: 2)
+                                    .fill(Color.secondary)
+                            )
+                            .overlay(
+                                Rectangle()
+                                    .frame(width: 100, height: 80)
+                                    .foregroundColor(.secondary.opacity(0.000001))
+                            )
                     }
                     .buttonStyle(.plain)
                     .padding(.leading)

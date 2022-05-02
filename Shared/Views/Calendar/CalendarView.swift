@@ -10,7 +10,8 @@ import SwiftUI
 struct CalendarView: View {
     @StateObject var calendarVM = CalendarVm()
     @Environment(\.scenePhase) private var scenePhase
-    @State var currentDragOffsetX: CGFloat = 0
+    @State var addEventDragOffset: CGFloat = 0
+    
     
     
     var body: some View {
@@ -32,12 +33,14 @@ struct CalendarView: View {
                         .padding(.horizontal)
                 } 
                 Spacer()
+                
+                
             }
             
                
             
-            .opacity(calendarVM.isShowingAddEventView ? 0.5 : 1.0)
-            .disabled(calendarVM.isShowingAddEventView ? true : false)
+            .opacity(calendarVM.isShowingASheet ? 0.5 : 1.0)
+            .disabled(calendarVM.isShowingASheet)
             .onChange(of: calendarVM.userSelectedMonth) { newValue in
                 // updating month
                 calendarVM.userSelectedDate = calendarVM.getCurrentMonth()
@@ -54,9 +57,15 @@ struct CalendarView: View {
             
             ZStack {
                 if calendarVM.isShowingAddEventView {
-                    AddEventView(
-//                        displayDate: calendarVM.highlightedDay,
-                        eventDate: $calendarVM.highlightedDay)
+                    AddEventView(eventDate: $calendarVM.highlightedDay)
+                        .transition(.move(edge: .bottom))
+                }
+            }
+            .zIndex(2)
+            
+            ZStack {
+                if calendarVM.isShowingCalendarSettings {
+                    CalendarSettingsView()
                         .transition(.move(edge: .bottom))
                 }
             }
@@ -113,17 +122,42 @@ struct CalendarView: View {
 
 extension CalendarView {
     private var header: some View {
-        HStack(alignment: .firstTextBaseline, spacing: 15) {
-            Text(calendarVM.displaySelectedMonthAndYear()[1])
-                .customFontTitleBold()
-            if calendarVM.isMonthNotInCurrentYear() {
-                Text(calendarVM.displaySelectedMonthAndYear()[0])
-                    .customFontCaptionBold()
+        HStack(spacing: 15) {
+            HStack(alignment: .firstTextBaseline, spacing: 12) {
+                Text(calendarVM.displaySelectedMonthAndYear()[1])
+                    .customFontTitleBold()
+                if calendarVM.isMonthNotInCurrentYear() {
+                    Text(calendarVM.displaySelectedMonthAndYear()[0])
+                        .customFontCaptionBold()
+                }
             }
             Spacer()
             
-            Image(systemName: "ellipsis")
-                .font(.title2)
+            Button { withAnimation {  }
+            } label: {
+                Text("Get Pro")
+                    .foregroundColor(.secondary)
+                    .customFontCaptionBold()
+                    .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
+                    .background(
+                        Capsule()
+                            .stroke(lineWidth: 2)
+                            .fill(Color.secondary)
+                    )
+            }
+            .buttonStyle(.plain)
+            
+            Button { withAnimation { calendarVM.isShowingCalendarSettings.toggle() }
+            } label: {
+                Image(systemName: "ellipsis")
+                    .font(.title2)
+                    .overlay(
+                        Rectangle()
+                            .frame(width: 50, height: 50)
+                            .foregroundColor(.secondary.opacity(0.000001))
+                    )
+            }
+            .buttonStyle(.plain)
         }
         .foregroundColor(.primary)
     }
@@ -163,22 +197,22 @@ extension CalendarView {
             
         }
         .padding(.horizontal, 6)
-        .offset(x: currentDragOffsetX)
+        .offset(x: addEventDragOffset)
         .gesture(
             DragGesture()
                 .onChanged { value in
                     withAnimation(.linear(duration: 0.01)) {
                       
-                        currentDragOffsetX = value.translation.width
+                        addEventDragOffset = value.translation.width
                     }
                 }
                 .onEnded { value in
-                    if currentDragOffsetX < -80 {
+                    if addEventDragOffset < -80 {
                         calendarVM.userSelectedMonth += 1
-                    } else if currentDragOffsetX > 80  {
+                    } else if addEventDragOffset > 80  {
                         calendarVM.userSelectedMonth -= 1
                     }
-                    currentDragOffsetX = 0
+                    addEventDragOffset = 0
                 }
         )
     }
@@ -198,11 +232,9 @@ extension CalendarView {
                 
                 Spacer()
                 Button {
-                    withAnimation {
-                        calendarVM.isShowingAddEventView = true
-                    }
-                    
-                } label: {
+                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                    withAnimation { calendarVM.isShowingAddEventView = true } }
+                 label: {
                     Image(systemName: "plus")
                         .foregroundColor(.primary)
                         .font(.headline)

@@ -31,6 +31,8 @@ class TaskListVM: ObservableObject {
     @Published var isShowingEditTaskSheet = false
     @Published var isShowingSettingsSheet = false
     @Published var isShowingDeleteListAlert = false
+    @Published var isShowingNoteField = false
+    @Published var isShowingTaskPriorityPicker = false
 
     var isShowingASheet: Bool {
         isShowingSettingsSheet ||
@@ -38,7 +40,9 @@ class TaskListVM: ObservableObject {
         isShowingEditTaskSheet
     }
     
-
+    var isShowingtaskListNoteField: Bool {
+        !taskNoteName.isEmpty || isShowingNoteField 
+    }
     
     // task list functions
     func addTaskToList(_ task: TaskItem) {
@@ -90,6 +94,9 @@ class TaskListVM: ObservableObject {
         taskName = task.name
         taskNoteName = task.note
         isTaskCompleted = task.isTaskCompleted
+        if !taskNoteName.isEmpty {
+            isShowingNoteField = true
+        }
     }
     
     func resetAddTaskSheetProperties() {
@@ -97,6 +104,15 @@ class TaskListVM: ObservableObject {
         taskName = ""
         taskNoteName = ""
         isTaskCompleted = false
+        isShowingNoteField = false
+        isShowingTaskPriorityPicker = false
+    }
+    
+    func dismissWithoutSavingTask() {
+        isShowingEditTaskSheet = false
+        isShowingAddNewTaskSheet = false
+        isShowingNoteField = false
+        isShowingTaskPriorityPicker = false
     }
     
     func completeTask(_ task: TaskItem) {

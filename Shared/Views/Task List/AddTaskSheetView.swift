@@ -14,6 +14,9 @@ struct AddTaskSheetView: View {
     @FocusState private var taskFieldFocus
     @State private var currentDragOffsetY: CGFloat = 0
     
+    let taskPriorityOptions = ["High", "Med", "Low"]
+    @State private var selectedPriority = "Med"
+    
     var body: some View {
         VStack {
             Spacer()
@@ -23,6 +26,10 @@ struct AddTaskSheetView: View {
                     .padding(.horizontal, 4)
                 
                 textFields
+                
+                if taskListVM.isShowingTaskPriorityPicker {
+                    priorityPicker
+                }
                 
                 addTaskSheetToolBar
             }
@@ -110,45 +117,48 @@ extension AddTaskSheetView {
                         }
                     } else {
                         withAnimation {
-                            taskListVM.isShowingEditTaskSheet = false
-                            taskListVM.isShowingAddNewTaskSheet = false
-                        }
+                            taskListVM.dismissWithoutSavingTask()                        }
                     }
                 }
                 .submitLabel(.done)
             
-            SunkenTextEditor(textField: TextEditor(text: $taskListVM.taskNoteName), placeHolderText: taskListVM.taskNoteName.isEmpty ? "note" : "")
-                .frame(height: 100)
+            if taskListVM.isShowingtaskListNoteField {
+                SunkenTextEditor(textField: TextEditor(text: $taskListVM.taskNoteName), placeHolderText: taskListVM.taskNoteName.isEmpty ? "note" : "")
+                    .frame(height: 100)
+            }
         }
     }
     
     private var addTaskSheetToolBar: some View {
         HStack(spacing: 15) {
-            Image(systemName: "repeat")
-                .font(.title2)
-                .foregroundColor(.secondary)
             
             Button {
-                withAnimation {
-          
-                 
+                if taskListVM.isShowingNoteField && taskFieldFocus == false {
+                    withAnimation { taskListVM.isShowingNoteField.toggle() }
+                    taskFieldFocus = true
+                } else {
+                    withAnimation {
+                        taskListVM.isShowingNoteField.toggle()
+                        
+                    }
                 }
+                
             } label: {
-                Image(systemName: "note.text")
+                Image(systemName: "text.append")
                     .font(.title2)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(taskListVM.isShowingtaskListNoteField ? taskListVM.initializedTaskList.customAccentColor : .secondary)
             }
             .buttonStyle(.plain)
             
-            Button {
-                withAnimation {
+            Button { withAnimation { taskListVM.isShowingTaskPriorityPicker.toggle() }
+                
                    
          
-                }
+                
             } label: {
-                Image(systemName: "point.topleft.down.curvedto.point.bottomright.up")
+                Image(systemName: "arrow.up.arrow.down")
                     .font(.title2)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(taskListVM.isShowingTaskPriorityPicker ? taskListVM.initializedTaskList.customAccentColor : .secondary)
             }
             .buttonStyle(.plain)
             
@@ -164,6 +174,22 @@ extension AddTaskSheetView {
             .disabled(taskListVM.taskName.isEmpty)
             .buttonStyle(.plain)
         }
+    }
+    
+    private var priorityPicker: some View {
+        HStack(spacing: 8) {
+            Text("Priority:")
+                .customFontCaptionMedium()
+            
+            Picker("Repeat interval", selection: $selectedPriority) {
+                ForEach(taskPriorityOptions, id: \.self) {
+                    Text($0)
+            }
+        }
+            .pickerStyle(.segmented)
+        }
+        .foregroundColor(.primary)
+        .padding(.horizontal, 4)
     }
 }
 

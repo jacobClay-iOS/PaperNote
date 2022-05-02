@@ -142,8 +142,10 @@ extension ListSettingsView {
 
 struct ListSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        ListSettingsView(list: TaskList(name: "Grocery List", customAccentColor: Color.blue))
-            .environmentObject(TaskListVM())
+        ZStack {
+            ListSettingsView(list: TaskList(name: "Grocery List", customAccentColor: Color.blue))
+                .environmentObject(TaskListVM())
             .preferredColorScheme(.dark)
+        }
     }
 }

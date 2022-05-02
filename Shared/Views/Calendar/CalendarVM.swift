@@ -15,12 +15,16 @@ class CalendarVm: ObservableObject {
     @Published var highlightedDay: Date = Date()
     
     @Published var isShowingAddEventView = false
-    
+    @Published var isShowingCalendarSettings = false
     @Published var totalCollectionOfEvents: [EachDayEventCollection] = [
         EachDayEventCollection(todaysEvents: [CalendarEvent(title: "Sample event", date: Date.now)],
                                date: Date.now)
     
     ]
+    
+    var isShowingASheet: Bool {
+        isShowingCalendarSettings || isShowingAddEventView
+    }
 
     func isSameDay(date1: Date, date2: Date) -> Bool {
         let calendar = Calendar.current
