@@ -14,9 +14,6 @@ struct AddTaskSheetView: View {
     @FocusState private var taskFieldFocus
     @State private var currentDragOffsetY: CGFloat = 0
     
-    let taskPriorityOptions = ["High", "Med", "Low"]
-    @State private var selectedPriority = "Med"
-    
     var body: some View {
         VStack {
             Spacer()
@@ -76,7 +73,8 @@ extension AddTaskSheetView {
             id: taskListVM.taskID,
             name: taskListVM.taskName,
             isTaskCompleted: taskListVM.isTaskCompleted,
-            note: taskListVM.taskNoteName
+            note: taskListVM.taskNoteName,
+            priority: taskListVM.taskPriority
         )
         taskListVM.updateTask(task)
         taskListVM.isShowingEditTaskSheet = false
@@ -84,7 +82,7 @@ extension AddTaskSheetView {
     }
     
     func addTask() {
-        let task = TaskItem(name: taskListVM.taskName, note: taskListVM.taskNoteName)
+        let task = TaskItem(name: taskListVM.taskName, note: taskListVM.taskNoteName, priority: taskListVM.taskPriority)
         taskListVM.addTaskToList(task)
         taskListVM.isShowingAddNewTaskSheet = false
         taskListVM.resetAddTaskSheetProperties()
@@ -157,7 +155,7 @@ extension AddTaskSheetView {
                 
             } label: {
                 Image(systemName: "arrow.up.arrow.down")
-                    .font(.title2)
+                    .font(.title3)
                     .foregroundColor(taskListVM.isShowingTaskPriorityPicker ? taskListVM.initializedTaskList.customAccentColor : .secondary)
             }
             .buttonStyle(.plain)
@@ -181,9 +179,10 @@ extension AddTaskSheetView {
             Text("Priority:")
                 .customFontCaptionMedium()
             
-            Picker("Repeat interval", selection: $selectedPriority) {
-                ForEach(taskPriorityOptions, id: \.self) {
-                    Text($0)
+            Picker("Repeat interval", selection: $taskListVM.taskPriority) {
+                ForEach(TaskPriority.allCases, id: \.self) { value in
+                    Text(value.localizedName)
+                        .tag(value)
             }
         }
             .pickerStyle(.segmented)

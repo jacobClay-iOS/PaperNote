@@ -47,10 +47,13 @@ struct CalendarView: View {
             }
             .onChange(of: scenePhase) { newPhase in
                 if newPhase == .active {
-                    calendarVM.refreshCurrentDate()
+//                    if !calendarVM.isShowingAddEventView {
+                        calendarVM.refreshCurrentDate()
+//                    }
                 } else if newPhase == .inactive {
                     
                 } else if newPhase == .background {
+                    calendarVM.isShowingAddEventView = false
                     calendarVM.resetCalendar()
                 }
         }

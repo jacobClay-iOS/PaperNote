@@ -47,7 +47,7 @@ class TaskCollectionVM: ObservableObject {
         ),
         TaskList(name: "To-do List",
                  list: [
-                    TaskItem(name: "download PaperNote", isTaskCompleted: true, note: "on iPhone, iPad, and Mac"),
+                    TaskItem(name: "download PaperNote", isTaskCompleted: true, note: "on iPhone, iPad, and Mac", priority: .high),
                     TaskItem(name: "plan my day", isTaskCompleted: true, note: ""),
                     TaskItem(name: "get things done!", isTaskCompleted: true, note: "")
                  ],

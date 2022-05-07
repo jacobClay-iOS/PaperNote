@@ -15,6 +15,7 @@ class TaskListVM: ObservableObject {
     @Published var taskName = ""
     @Published var taskNoteName = ""
     @Published var isTaskCompleted = false
+    @Published var taskPriority: TaskPriority = .med
     
     var percentageCompleted: CGFloat {
         1 - (initializedTaskList.completedTaskCount / initializedTaskList.totalTaskCount)
@@ -46,7 +47,7 @@ class TaskListVM: ObservableObject {
     
     // task list functions
     func addTaskToList(_ task: TaskItem) {
-        if initializedTaskList.list.isEmpty {
+        if initializedTaskList.list.isEmpty || task.priority == .high {
             initializedTaskList.list.insert(task, at: initializedTaskList.list.startIndex)
             initializedTaskList.totalTaskCount += 1.0
         } else if initializedTaskList.completedTaskCount == 0.0 {
@@ -94,6 +95,7 @@ class TaskListVM: ObservableObject {
         taskName = task.name
         taskNoteName = task.note
         isTaskCompleted = task.isTaskCompleted
+        taskPriority = task.priority
         if !taskNoteName.isEmpty {
             isShowingNoteField = true
         }
@@ -103,6 +105,7 @@ class TaskListVM: ObservableObject {
         taskID = ""
         taskName = ""
         taskNoteName = ""
+        taskPriority = .med
         isTaskCompleted = false
         isShowingNoteField = false
         isShowingTaskPriorityPicker = false

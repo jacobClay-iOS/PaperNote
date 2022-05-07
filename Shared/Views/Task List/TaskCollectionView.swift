@@ -111,25 +111,26 @@ extension TaskCollectionView {
     
     private var scrollingCollectionOfLists: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 20) {
-                ForEach(taskCollectionVM.collectionOfLists) { collectionListItem in
-                    TaskListView(list: collectionListItem)
-                        .transition(.scale(scale: 0.1))
-                } // ForEach
-                Button {
-                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                    withAnimation(.spring()) {
-                        taskCollectionVM.newListTitle = ""
-                        taskCollectionVM.isShowingListTitleField.toggle()
-                    } // WithAnimation
-                } label: {
-                    Image(systemName: "plus")
-                        .font(.largeTitle)
-                        .foregroundColor(.primary)
-                } // Button
-                .buttonStyle(AddListButtonStyle())
-            } // HStack
-            .padding()
+                HStack(spacing: 20) {
+                    ForEach(taskCollectionVM.collectionOfLists) { collectionListItem in
+                        TaskListView(list: collectionListItem)
+                            .transition(.scale(scale: 0.1))
+                    } // ForEach
+                    
+                    Button {
+                        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                        withAnimation(.spring()) {
+                            taskCollectionVM.newListTitle = ""
+                            taskCollectionVM.isShowingListTitleField.toggle()
+                        } // WithAnimation
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.largeTitle)
+                            .foregroundColor(.primary)
+                    } // Button
+                    .buttonStyle(AddListButtonStyle())
+                } // HStack
+                .padding()
         } // Scrollview
         .frame(height: 150)
     }

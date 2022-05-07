@@ -49,9 +49,15 @@ extension ListItemView {
             
             Button { isShowingActionSheet.toggle() }
             label: {
-            Text(listItem.name)
-                .customFontBodyRegular()
-                .foregroundColor(.primary)
+                if listItem.priority == .high {
+                    Text(listItem.name)
+                        .customFontBodyMedium()
+                        .foregroundColor(.primary)
+                } else {
+                    Text(listItem.name)
+                        .customFontBodyRegular()
+                        .foregroundColor(.primary)
+                }
         }
         .buttonStyle(.plain)
         .confirmationDialog("Task options", isPresented: $isShowingActionSheet, actions: {
@@ -68,13 +74,11 @@ extension ListItemView {
                 }
             }
             Button("Delete", role: .destructive) {
-                withAnimation {
-                    taskListVM.deleteTask(listItem)
-                }
+                withAnimation { taskListVM.deleteTask(listItem) }
+                    
             }
-        }, message: {
-            Text(listItem.name)
-        })
+        }, message: { Text(listItem.name) }
+        )
             
             if !listItem.note.isEmpty {
                 Button { withAnimation { isShowingNote.toggle() } }
@@ -102,9 +106,15 @@ extension ListItemView {
             
             Button { isShowingActionSheet.toggle() }
             label: {
-            Text(listItem.name)
-                .customFontBodyRegular()
-                .foregroundColor(.secondary)
+                if listItem.priority == .high {
+                    Text(listItem.name)
+                        .customFontBodyMedium()
+                        .foregroundColor(.secondary)
+                } else {
+                    Text(listItem.name)
+                        .customFontBodyRegular()
+                        .foregroundColor(.secondary)
+                }
         }
         .buttonStyle(.plain)
         .confirmationDialog("Task options", isPresented: $isShowingActionSheet, actions: {
@@ -121,13 +131,11 @@ extension ListItemView {
                 }
             }
             Button("Delete", role: .destructive) {
-                withAnimation {
-                    taskListVM.deleteTask(listItem)
-                }
+                withAnimation { taskListVM.deleteTask(listItem) }
+                
             }
-        }, message: {
-            Text(listItem.name)
-        })
+        }, message: { Text(listItem.name) }
+        )
             
             if !listItem.note.isEmpty {
                 Button { withAnimation { isShowingNote.toggle() } }
