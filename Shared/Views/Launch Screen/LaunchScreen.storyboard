@@ -29,21 +29,30 @@
                                     <constraint firstAttribute="width" constant="120" id="Nli-c8-bAm"/>
                                 </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="NeumorphicText" translatesAutoresizingMaskIntoConstraints="NO" id="LKa-xK-PaL">
+                                <rect key="frame" x="97" y="809" width="220" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="oKc-LG-4HS"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" name="Surface"/>
                         <constraints>
                             <constraint firstItem="45P-7D-bNL" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-90" id="1iw-eI-xif"/>
+                            <constraint firstItem="LKa-xK-PaL" firstAttribute="bottom" secondItem="Bcu-3y-fUS" secondAttribute="bottom" constant="10" id="4T4-FP-QSS"/>
                             <constraint firstItem="45P-7D-bNL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="9" id="USo-hc-kBg"/>
+                            <constraint firstItem="LKa-xK-PaL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="qp5-ob-O0y"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
     <resources>
+        <image name="NeumorphicText" width="376" height="63"/>
         <image name="lauchScreenCheckmark" width="552" height="546"/>
         <namedColor name="Surface">
             <color red="0.92156862745098034" green="0.92156862745098034" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

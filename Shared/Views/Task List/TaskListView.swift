@@ -50,7 +50,7 @@ extension TaskListView {
                 VStack{
                     listHeader
                     taskProgressBar
-                    ScrollView {
+                    ScrollView(showsIndicators: false) {
                         
                         VStack(alignment: .leading, spacing: 8) {
                             ForEach(taskListVM.initializedTaskList.list) { listItem in

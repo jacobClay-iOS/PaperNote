@@ -15,7 +15,7 @@ class TaskListVM: ObservableObject {
     @Published var taskName = ""
     @Published var taskNoteName = ""
     @Published var isTaskCompleted = false
-    @Published var taskPriority: TaskPriority = .med
+    @Published var taskPriority: TaskPriority = .low
     
     var percentageCompleted: CGFloat {
         1 - (initializedTaskList.completedTaskCount / initializedTaskList.totalTaskCount)
@@ -105,7 +105,7 @@ class TaskListVM: ObservableObject {
         taskID = ""
         taskName = ""
         taskNoteName = ""
-        taskPriority = .med
+        taskPriority = .low
         isTaskCompleted = false
         isShowingNoteField = false
         isShowingTaskPriorityPicker = false

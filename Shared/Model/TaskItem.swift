@@ -13,13 +13,12 @@ struct TaskItem: Identifiable {
     var isTaskCompleted: Bool = false
     var date: Date = .now
     var note: String
-    var priority: TaskPriority = .med
+    var priority: TaskPriority = .low
 }
 
 
 enum TaskPriority: String, Equatable, CaseIterable {
     case low = "Low"
-    case med = "Medium"
     case high = "High"
     
     var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
