@@ -17,10 +17,11 @@ class CalendarVm: ObservableObject {
     @Published var isShowingAddEventView = false
     @Published var isShowingCalendarSettings = false
     @Published var totalCollectionOfEvents: [EachDayEventCollection] = [
-        EachDayEventCollection(todaysEvents: [CalendarEvent(title: "Sample event", date: Date.now)],
+        EachDayEventCollection(todaysEvents: [CalendarEvent(title: "Sample event", date: Date.now), CalendarEvent(title: "Sample event", date: Date.now)],
                                date: Date.now)
     
     ]
+    
     
     var isShowingASheet: Bool {
         isShowingCalendarSettings || isShowingAddEventView
@@ -107,8 +108,21 @@ class CalendarVm: ObservableObject {
         return days
     }
     
-    func addEventToCollectionOfEvents(_ event: EachDayEventCollection) {
-        totalCollectionOfEvents.append(event)
+
+    
+    func addEventToCollection(_ event: CalendarEvent) {
+        // create collection id from event date for comparison
+        let collectionID = event.date.description.components(separatedBy: " ")[0]
+        // find if collection for date already exists
+        guard let index = totalCollectionOfEvents.firstIndex(where: { $0.id == collectionID }) else {
+            // if it doesnt, create collection for that date
+            let newEventCollection = EachDayEventCollection(todaysEvents: [event], date: event.date)
+            totalCollectionOfEvents.append(newEventCollection)
+            return
+        }
+        // if it does, append event to that collection
+        totalCollectionOfEvents[index].todaysEvents.append(event)
+        
     }
     
     

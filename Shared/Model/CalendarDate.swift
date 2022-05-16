@@ -8,7 +8,19 @@
 import SwiftUI
 
 struct CalendarDate: Identifiable {
-    var id = UUID().uuidString
-    var day: Int
-    var date: Date
+    let id = UUID().uuidString
+    let day: Int
+    let date: Date
+//    var events: [CalendarEvent] = []
+//
+//    init(id: String = UUID().uuidString, day: Int, date: Date, events: [CalendarEvent] = []) {
+//        self.id = id
+//        self.day = day
+//        self.date = date
+//        self.events = events
+//    }
+//
+//    mutating func addEventToDate(event: CalendarEvent) {
+//        self.events.append(event)
+//    }
 }

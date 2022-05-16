@@ -29,7 +29,6 @@ struct AddEventView: View {
             VStack(spacing: 15) {
                 
                 header
-//                Text("\(eventDate)")
                 eventTextField
                 
                 if isRepeating { repeatPicker }
@@ -185,12 +184,13 @@ struct AddEventView: View {
     }
     
     func addEvent() {
-        let event = EachDayEventCollection(todaysEvents: [CalendarEvent(title: eventName, date: eventDate, isAllday: isAllDay, isRepeating: isRepeating, isWithAlert: isWithAlert)], date: eventDate)
-        calendarVM.addEventToCollectionOfEvents(event)
-        eventFieldFocus = false
-        calendarVM.isShowingAddEventView = false
-        
-    }
+//            let event = EachDayEventCollection(todaysEvents: [CalendarEvent(title: eventName, date: eventDate, isAllday: isAllDay, isRepeating: isRepeating, isWithAlert: isWithAlert)], date: eventDate)
+        let event = CalendarEvent(title: eventName, date: eventDate, isAllday: isAllDay, isRepeating: isRepeating, isWithAlert: isWithAlert)
+            calendarVM.addEventToCollection(event)
+            eventFieldFocus = false
+            calendarVM.isShowingAddEventView = false
+
+        }
 }
 
 struct AddEventView_Previews: PreviewProvider {
@@ -202,7 +202,7 @@ struct AddEventView_Previews: PreviewProvider {
 //                    displayDate: Date.now,
                     eventDate: .constant(Date.now))
                 Spacer()
-                
+
             }
         }
         .environmentObject(CalendarVm())

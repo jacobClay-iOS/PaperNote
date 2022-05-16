@@ -121,6 +121,60 @@ struct CalendarView: View {
             minHeight: UIScreen.main.bounds.height * 0.055, idealHeight: UIScreen.main.bounds.height * 0.065, maxHeight: UIScreen.main.bounds.height * 0.075,
             alignment: .top)
     }
+    
+    private var eventView: some View {
+        VStack(spacing: 0) {
+            HStack {
+                if calendarVM.isDateToday(calendarVM.highlightedDay) {
+                    Text("Today")
+                } else if calendarVM.isDateTomorrow(calendarVM.highlightedDay) {
+                    Text("Tomorrow")
+                } else if calendarVM.isDateYesterday(calendarVM.highlightedDay){
+                    Text("Yesterday")
+                } else {
+                    Text(calendarVM.displaySelectedDay())
+                }
+                
+                Spacer()
+                Button {
+                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                    withAnimation { calendarVM.isShowingAddEventView = true } }
+            label: {
+                Image(systemName: "plus")
+                    .foregroundColor(.primary)
+                    .font(.headline)
+            }
+            .buttonStyle(AddEventButtonStyle())
+            }
+            .customFontHeadline()
+            .foregroundColor(.primary)
+            .frame(maxWidth: .infinity , alignment: .leading)
+            .padding(.vertical, 10)
+            
+            
+            if let selectedDaysEvents = calendarVM.totalCollectionOfEvents.first(where: { value in
+                return calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay)
+            }) {
+                ScrollView(showsIndicators: false) {
+                    ForEach(selectedDaysEvents.todaysEvents) { event in
+                        VStack {
+                            EventCardView(event: event)
+                        }
+                        .padding(.top, 15)
+                    }
+                    .padding(.bottom, 65)
+                }
+            } else {
+                ScrollView(showsIndicators: false) {
+                    Text("No events")
+                        .customFontBodyRegular()
+                        .foregroundColor(.secondary)
+                        .padding(.top)
+                }
+            }
+        }
+    }
+    
 }
 
 extension CalendarView {
@@ -220,58 +274,6 @@ extension CalendarView {
         )
     }
     
-    private var eventView: some View {
-        VStack(spacing: 0) {
-            HStack {
-                if calendarVM.isDateToday(calendarVM.highlightedDay) {
-                    Text("Today")
-                } else if calendarVM.isDateTomorrow(calendarVM.highlightedDay) {
-                    Text("Tomorrow")
-                } else if calendarVM.isDateYesterday(calendarVM.highlightedDay){
-                    Text("Yesterday")
-                } else {
-                    Text(calendarVM.displaySelectedDay())
-                }
-                
-                Spacer()
-                Button {
-                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                    withAnimation { calendarVM.isShowingAddEventView = true } }
-                 label: {
-                    Image(systemName: "plus")
-                        .foregroundColor(.primary)
-                        .font(.headline)
-                }
-                .buttonStyle(AddEventButtonStyle())    
-            }
-            .customFontHeadline()
-            .foregroundColor(.primary)
-            .frame(maxWidth: .infinity , alignment: .leading)
-            .padding(.vertical, 10)
-            
-            
-            if let selectedDaysEvents = calendarVM.totalCollectionOfEvents.first(where: { value in
-                return calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay)
-            }) {
-                ScrollView(showsIndicators: false) {
-                    ForEach(selectedDaysEvents.todaysEvents) { event in
-                        VStack {
-                            EventCardView(event: event)
-                        }
-                        .padding(.top, 15)
-                    }
-                    .padding(.bottom, 65)
-                }
-            } else {
-                ScrollView(showsIndicators: false) {
-                    Text("No events")
-                        .customFontBodyRegular()
-                        .foregroundColor(.secondary)
-                        .padding(.top)
-                }
-            }
-        }
-    }
     
     private var currentDayBackground: some View {
         ZStack {
@@ -344,7 +346,17 @@ extension Date {
         guard let firstDay = calendar.date(from: Calendar.current.dateComponents([.year, .month], from: self)) else { return Date() }
         return firstDay
     }
+    
+    func currentDayNumber() -> Int {
+        let calendar = Calendar.current
+        let currentDay = calendar.component(.day, from: self)
+        return currentDay
+    }
+    
+    
 }
+
+
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {

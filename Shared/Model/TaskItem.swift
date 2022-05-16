@@ -11,7 +11,6 @@ struct TaskItem: Identifiable {
     var id = UUID().uuidString
     var name: String
     var isTaskCompleted: Bool = false
-    var date: Date = .now
     var note: String
     var priority: TaskPriority = .low
 }

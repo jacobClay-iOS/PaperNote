@@ -22,7 +22,9 @@ struct CalendarEvent: Identifiable {
 
 // total task meta view
 struct EachDayEventCollection: Identifiable {
-    var id = UUID().uuidString
+    var id: String {
+        date.description.components(separatedBy: " ")[0]
+    }
     var todaysEvents: [CalendarEvent]
     var date: Date
 }

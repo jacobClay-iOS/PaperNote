@@ -83,9 +83,10 @@ extension ListItemView {
             if !listItem.note.isEmpty {
                 Button { withAnimation { isShowingNote.toggle() } }
                 label: {
-                Image(systemName: isShowingNote ? "chevron.up" : "chevron.down")
+                Image(systemName: "chevron.down")
                     .font(.caption)
                     .foregroundColor(.secondary)
+                    .rotationEffect(Angle(degrees: isShowingNote ? 180 : 0))
             }
             .buttonStyle(.plain)
                 
@@ -140,9 +141,10 @@ extension ListItemView {
             if !listItem.note.isEmpty {
                 Button { withAnimation { isShowingNote.toggle() } }
                 label: {
-                Image(systemName: isShowingNote ? "chevron.up" : "chevron.down")
+                Image(systemName: "chevron.down")
                     .font(.caption)
                     .foregroundColor(.secondary)
+                    .rotationEffect(Angle(degrees: isShowingNote ? 180 : 0))
             }
             .buttonStyle(.plain)
             }
@@ -223,5 +225,38 @@ extension ListItemView {
             .foregroundColor(.primary)
             .padding(.horizontal, 48)
         
+    }
+}
+
+
+struct ListItemView_Previews: PreviewProvider {
+    static var notCompleted = TaskItem(name: "Sample Task", isTaskCompleted: false, note: "sample note", priority: .high)
+    static var completed = TaskItem(name: "Sample Task", isTaskCompleted: true, note: "sample note", priority: .low)
+    
+    static var previews: some View {
+
+            Group {
+                ZStack {
+                    NeumorphicBackground()
+                    ListItemView(listItem: notCompleted)
+                }
+                ZStack {
+                    NeumorphicBackground()
+                    ListItemView(listItem: notCompleted)
+                }
+                .preferredColorScheme(.dark)
+                ZStack {
+                    NeumorphicBackground()
+                    ListItemView(listItem: completed)
+                }
+                ZStack {
+                    NeumorphicBackground()
+                    ListItemView(listItem: completed)
+                }
+                .preferredColorScheme(.dark)
+            }
+            .previewLayout(.fixed(width: 300, height: 75))
+        
+        .environmentObject(TaskListVM())
     }
 }

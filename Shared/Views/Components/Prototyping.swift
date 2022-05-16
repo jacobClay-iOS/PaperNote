@@ -7,96 +7,53 @@
 
 import SwiftUI
 
+
 struct Prototyping: View {
-    @State private var currentDate = Date.now
-    @State private var isAllDay = false
-    @State private var isRepeating = false
-    @State private var eventName = ""
+
+     
+    var colors = ["Red", "Green", "Blue", "Tartan"]
+        @State private var selectedColor = "Red"
+     
+    let date = Date.now
+    let removal = 8
     
-    let repeatingEventOptions = ["Day", "Week", "Month", "Year"]
-    @State private var selectedRepeatInterval = "Month"
+    var id: String {
+        date.description.components(separatedBy: " ")[0].replacingOccurrences(of: "-", with: "")
+    }
+    
     var body: some View {
         VStack {
+            Text(date.description.drop(while: { char in
+                char != " "
+            }))
             
-            
-            Image("lauchScreenCheckmark")
-                .resizable()
-                .frame(width: 100, height: 100)
-                .padding(.bottom)
-          
-            
-            Text("\(currentDate)")
-                .padding(.bottom, 200)
-            
-            
-            //            SunkenTextField(textField: TextField("Event", text: $eventName))
-            //                .padding(.horizontal)
-            
-            Form {
+            Text(id)
                 
-                Section {
-                    TextField("Title", text: $eventName)
-                    TextField("Note", text: $eventName)
-                }
-                .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-                .listRowBackground(Color("Surface"))
-                
-                Section {
-                    VStack {
-                        Toggle("All-day", isOn: $isAllDay)
-                        
-                        DatePicker(selection: $currentDate, displayedComponents: isAllDay ? .date : [.date, .hourAndMinute]) {
-                            Text("Date")
-                        }
-                        
-                        
-                        Toggle(isRepeating ? "Repeat every:" : "Repeat", isOn: $isRepeating)
-                        
-                        if isRepeating {
-                            HStack {
-                                Picker("Repeat interval", selection: $selectedRepeatInterval) {
-                                    ForEach(repeatingEventOptions, id: \.self) {
-                                        Text($0)
-                                }
-
-                            }
-                                .pickerStyle(.wheel)
-                                Picker("Repeat interval", selection: $selectedRepeatInterval) {
-                                    ForEach(repeatingEventOptions, id: \.self) {
-                                        Text($0)
-                                }
-                                    .frame(width: 100)
-                            }
-                                .pickerStyle(.wheel)
-                            }
-                            
-                    }
-                    
-                    }
-                    
-                }
-                .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-                .listRowBackground(Color("Surface"))
-                
-                Section {
-                    
-                }
-            }
-            .listStyle(.insetGrouped)
-            .tint(.accentColor)
-            .onAppear {
-                UITableView.appearance().backgroundColor = .clear
-            }
-            .onDisappear {
-                UITableView.appearance().backgroundColor = .systemGroupedBackground
-            }
-            .shadow(color: Color("OuterGlare"), radius: 0.5, x: -0.5, y: -0.5)
-            .shadow(color: Color("OuterGlare"), radius: 0.5, x: -0.5, y: -0.5)
-            .shadow(color: Color("OuterGlare"), radius: 1, x: -1, y: -1)
-            .shadow(color: Color("OuterShadow"), radius: 4, x: 4, y: 6)
-            
+//            Picker(selection: $selectedColor) {
+//                ForEach(colors, id: \.self) {
+//                    Text($0)
+//                }
+//            } label: {
+//                Text("You selected \(selectedColor)")
+//            }
+//            .pickerStyle(.wheel)
+//            .frame(width: 100)
+//            .clipped()
+//            Picker(selection: $selectedColor) {
+//                ForEach(colors, id: \.self) {
+//                    Text($0)
+//                }
+//            } label: {
+//                Text("You selected \(selectedColor)")
+//            }
+//            .pickerStyle(.wheel)
+//            .frame(width: 100)
+//            .clipped()
         }
     }
+    
+
+
 }
 
 struct Prototyping_Previews: PreviewProvider {
