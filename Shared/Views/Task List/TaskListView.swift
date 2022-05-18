@@ -66,7 +66,9 @@ extension TaskListView {
                     }
                     
                     Spacer()
-                    bottomButtons
+                    if !taskListVM.isShowingASheet {
+                        bottomButtons
+                    }
                 }
                 
                 .padding(.horizontal)

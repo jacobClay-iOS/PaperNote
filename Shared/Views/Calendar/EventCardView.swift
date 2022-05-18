@@ -12,16 +12,25 @@ struct EventCardView: View {
     @EnvironmentObject var calendarVM: CalendarVm
     var body: some View {
         HStack(spacing: 18) {
-
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(event.isAllday ? "All Day" : calendarVM.displayEventTime(event: event))
                     .customFontCaptionRegular()
-                .foregroundColor(.secondary)
+                    .foregroundColor(.secondary)
                 Text(event.title)
                     .customFontBodyRegular()
                     .foregroundColor(.primary)
             }
+            .padding(.leading, 18)
+            .background(
+                HStack {
+                    RoundedRectangle(cornerRadius: .infinity)
+                        .foregroundColor(.secondary)
+                        .frame(width: 4)
+                    Spacer()
+                }
+            )
+            
             
                 
 
@@ -58,10 +67,19 @@ struct EventCardView: View {
 
 struct EventCardView_Previews: PreviewProvider {
     static var previews: some View {
-        ZStack {
-            NeumorphicBackground()
-            EventCardView(event: CalendarEvent(title: "Sample Event", date: Date.now, isAllday: true, isRepeating: true, isWithAlert: true))
+        Group {
+            ZStack {
+                NeumorphicBackground()
+                EventCardView(event: CalendarEvent(title: "Sample Event", date: Date.now, isAllday: true, isRepeating: true, isWithAlert: true))
+            }
+            ZStack {
+                NeumorphicBackground()
+                EventCardView(event: CalendarEvent(title: "Sample Event", date: Date.now, isAllday: true, isRepeating: true, isWithAlert: true))
+            }
+            .preferredColorScheme(.dark)
         }
+        .previewLayout(.fixed(width: 350, height: 150))
         .environmentObject(CalendarVm())
     }
 }
+
