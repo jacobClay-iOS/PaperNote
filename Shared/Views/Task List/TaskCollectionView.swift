@@ -10,9 +10,9 @@ import SwiftUI
 // MARK: remove horizontal padding on individual elements
 
 struct TaskCollectionView: View {
-    @StateObject var taskCollectionVM = TaskCollectionVM()
+//    @StateObject var taskCollectionVM = TaskCollectionVM()
     @FocusState private var newTaskListFieldFocus: Bool
-    
+    @EnvironmentObject var taskCollectionVM: TaskCollectionVM
     @Environment(\.scenePhase) var scenePhase
     @State private var startingOffsetY: CGFloat = UIScreen.main.bounds.height * 0.65
     @State private var currentDragOffsetY: CGFloat = 0
@@ -29,25 +29,20 @@ struct TaskCollectionView: View {
                         .padding(.horizontal)
                     if taskCollectionVM.isShowingListTitleField {
                         addListsheet
-                    } else {
-                        scrollingCollectionOfLists
-                    }
-                    
-                } // VStack
+                    } else { scrollingCollectionOfLists }
+                }
                 .padding(.top, 5)
                 Spacer()
                 footer
-            } // VStack
+            }
             .frame(maxWidth: .infinity)
-            .background(
-                Color("Surface")
-            ) // ZStack
+            .background(Color("Surface"))
             .cornerRadius(25)
             .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
             .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
             .shadow(color: Color("OuterGlare"), radius: 0.5, y: -1)
         }
-        .environmentObject(taskCollectionVM)
+//        .environmentObject(taskCollectionVM)
         .ignoresSafeArea(edges: .bottom)
         .offset(y: taskCollectionVM.isShowingListTitleField ? 0 : startingOffsetY)
         .offset(y: taskCollectionVM.isShowingListTitleField ? UIScreen.main.bounds.height * 0.35 : currentDragOffsetY)
@@ -83,8 +78,8 @@ struct TaskCollectionView: View {
                 
             }
         }
-    } // body
-} // Struct
+    }
+}
 
 extension TaskCollectionView {
     

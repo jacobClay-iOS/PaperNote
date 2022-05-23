@@ -16,7 +16,9 @@ struct AddEventView: View {
     @State private var isAllDay = false
     @State private var isRepeating = false
     @State private var isWithAlert = false
+    @State private var isShowingEventType = false
     @State private var eventName = ""
+    @State private var eventType: EventType = .personal
     @State private var currentDragOffsetY: CGFloat = 0
     
     let repeatingEventOptions = ["Day", "Week", "Month", "Year"]
@@ -31,7 +33,10 @@ struct AddEventView: View {
                 header
                 eventTextField
                 
+                if isShowingEventType { eventTypePicker }
+                
                 if isRepeating { repeatPicker }
+                
                     
                 toolBar
                 
@@ -123,13 +128,30 @@ struct AddEventView: View {
     }
     
     private var repeatPicker: some View {
-        HStack(spacing: 8) {
-            Text("Every:")
+        VStack(spacing: 8) {
+            Text("Repeat Interval")
                 .customFontCaptionMedium()
-            
+            Divider()
             Picker("Repeat interval", selection: $selectedRepeatInterval) {
                 ForEach(repeatingEventOptions, id: \.self) {
                     Text($0)
+            }
+        }
+            .pickerStyle(.segmented)
+        }
+        .foregroundColor(.primary)
+        .padding(.horizontal, 4)
+    }
+    
+    private var eventTypePicker: some View {
+        VStack(spacing: 8) {
+            Text("Category")
+                .customFontCaptionMedium()
+            Divider()
+            Picker("Repeat interval", selection: $eventType) {
+                ForEach(EventType.allCases, id: \.self) { value in
+                    Text(value.localizedName)
+                        .tag(value)
             }
         }
             .pickerStyle(.segmented)
@@ -146,6 +168,14 @@ struct AddEventView: View {
                     Image(systemName: "sun.max")
                         .font(.title2)
                         .foregroundColor(isAllDay ? Color.accentColor : .secondary)
+                }
+                .buttonStyle(.plain)
+                
+                Button { withAnimation { isShowingEventType.toggle() } }
+                 label: {
+                    Image(systemName: "eyedropper")
+                        .font(.title2)
+                        .foregroundColor(isShowingEventType ? Color.accentColor : .secondary)
                 }
                 .buttonStyle(.plain)
                 
@@ -185,7 +215,7 @@ struct AddEventView: View {
     
     func addEvent() {
 //            let event = EachDayEventCollection(todaysEvents: [CalendarEvent(title: eventName, date: eventDate, isAllday: isAllDay, isRepeating: isRepeating, isWithAlert: isWithAlert)], date: eventDate)
-        let event = CalendarEvent(title: eventName, date: eventDate, isAllday: isAllDay, isRepeating: isRepeating, isWithAlert: isWithAlert)
+        let event = CalendarEvent(title: eventName, date: eventDate, isAllday: isAllDay, isRepeating: isRepeating, isWithAlert: isWithAlert, eventType: eventType)
             calendarVM.addEventToCollection(event)
             eventFieldFocus = false
             calendarVM.isShowingAddEventView = false

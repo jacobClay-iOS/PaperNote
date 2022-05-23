@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct PaperNoteApp: App {
     let persistenceController = PersistenceController.shared
-
+    
     var body: some Scene {
         WindowGroup {
 //            ContentView()
@@ -18,6 +18,7 @@ struct PaperNoteApp: App {
         
                 HomeView()
 //                    .preferredColorScheme(.dark)
+                
             
         }
     }

@@ -17,8 +17,12 @@ class CalendarVm: ObservableObject {
     @Published var isShowingAddEventView = false
     @Published var isShowingCalendarSettings = false
     @Published var totalCollectionOfEvents: [EachDayEventCollection] = [
-        EachDayEventCollection(todaysEvents: [CalendarEvent(title: "Sample event", date: Date.now), CalendarEvent(title: "Sample event", date: Date.now)],
-                               date: Date.now)
+        EachDayEventCollection(
+            todaysEvents:
+                [CalendarEvent(title: "Sample event", date: Date.now),
+                 CalendarEvent(title: "Sample event", date: Date.now)],
+                              
+            date: Date.now)
     
     ]
     

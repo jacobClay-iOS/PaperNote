@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct CalendarView: View {
-    @StateObject var calendarVM = CalendarVm()
+//    @StateObject var calendarVM = CalendarVm()
     @Environment(\.scenePhase) private var scenePhase
     @State var addEventDragOffset: CGFloat = 0
-    
+    @EnvironmentObject var calendarVM: CalendarVm
     
     
     var body: some View {
@@ -26,25 +26,15 @@ struct CalendarView: View {
                     dayOfTheWeekRow
                         .padding(.horizontal, 2)
                     calendar
-                        
                 }
                 if !calendarVM.isShowingAddEventView {
                     eventView
                         .padding(.horizontal)
                 } 
                 Spacer()
-                
-                
             }
-            
-               
-            
             .opacity(calendarVM.isShowingASheet ? 0.5 : 1.0)
             .disabled(calendarVM.isShowingASheet)
-            .onChange(of: calendarVM.userSelectedMonth) { newValue in
-                // updating month
-                calendarVM.userSelectedDate = calendarVM.getCurrentMonth()
-            }
             .onChange(of: scenePhase) { newPhase in
                 if newPhase == .active {
 //                    if !calendarVM.isShowingAddEventView {
@@ -75,105 +65,12 @@ struct CalendarView: View {
             .zIndex(2)
         }
        
-        .environmentObject(calendarVM)
+//        .environmentObject(calendarVM)
     }
     
-    @ViewBuilder
-    func CalendarDayView(value: CalendarDate) -> some View {
-        VStack {
-            if value.day != -1 {
-                if calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay) {
-                    Text("\(value.day)")
-                        .customFontTitle2Bold()
-                        .foregroundColor(Color("AccentStart"))
-                        .frame(maxWidth: .infinity)
-                        .offset(y: -1)
-                    Spacer()
-                } else {
-                    Text("\(value.day)")
-                        .customFontTitle3Medium()
-                        .foregroundColor(Color.primary)
-                        .frame(maxWidth: .infinity)
-                    Spacer()
-                }
-                
-                if calendarVM.totalCollectionOfEvents.first(where: { event in
-                    return calendarVM.isSameDay(date1: event.date, date2: value.date)
-                }) != nil {
+
     
-                    Circle()
-                        .fill(Color("AccentEnd"))
-                        .frame(width: 7, height: 7)
-                        .offset(y: calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay) ? -2 : 0)
-                        
-                } else {
-                    Circle()
-                        .fill(Color("AccentEnd"))
-                        .frame(width: 7, height: 7)
-                        .offset(y: calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay) ? -2 : 0)
-                        .opacity(0.0)
-                }
-            }
-                
-        }
-        .padding(.vertical, 8)
-        .frame(
-            minHeight: UIScreen.main.bounds.height * 0.055, idealHeight: UIScreen.main.bounds.height * 0.065, maxHeight: UIScreen.main.bounds.height * 0.075,
-            alignment: .top)
-    }
-    
-    private var eventView: some View {
-        VStack(spacing: 0) {
-            HStack {
-                if calendarVM.isDateToday(calendarVM.highlightedDay) {
-                    Text("Today")
-                } else if calendarVM.isDateTomorrow(calendarVM.highlightedDay) {
-                    Text("Tomorrow")
-                } else if calendarVM.isDateYesterday(calendarVM.highlightedDay){
-                    Text("Yesterday")
-                } else {
-                    Text(calendarVM.displaySelectedDay())
-                }
-                
-                Spacer()
-                Button {
-                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                    withAnimation { calendarVM.isShowingAddEventView = true } }
-            label: {
-                Image(systemName: "plus")
-                    .foregroundColor(.primary)
-                    .font(.headline)
-            }
-            .buttonStyle(AddEventButtonStyle())
-            }
-            .customFontHeadline()
-            .foregroundColor(.primary)
-            .frame(maxWidth: .infinity , alignment: .leading)
-            .padding(.vertical, 10)
-            
-            
-            if let selectedDaysEvents = calendarVM.totalCollectionOfEvents.first(where: { value in
-                return calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay)
-            }) {
-                ScrollView(showsIndicators: false) {
-                    ForEach(selectedDaysEvents.todaysEvents) { event in
-                        VStack {
-                            EventCardView(event: event)
-                        }
-                        .padding(.top, 15)
-                    }
-                    .padding(.bottom, 65)
-                }
-            } else {
-                ScrollView(showsIndicators: false) {
-                    Text("No events")
-                        .customFontBodyRegular()
-                        .foregroundColor(.secondary)
-                        .padding(.top)
-                }
-            }
-        }
-    }
+
     
 }
 
@@ -255,6 +152,10 @@ extension CalendarView {
         }
         .padding(.horizontal, 6)
         .offset(x: addEventDragOffset)
+        .onChange(of: calendarVM.userSelectedMonth) { newValue in
+            // updating month
+            calendarVM.userSelectedDate = calendarVM.getCurrentMonth()
+        }
         .gesture(
             DragGesture()
                 .onChanged { value in
@@ -272,6 +173,103 @@ extension CalendarView {
                     addEventDragOffset = 0
                 }
         )
+    }
+    
+    //    @ViewBuilder
+        private func CalendarDayView(value: CalendarDate) -> some View {
+            VStack {
+                if value.day != -1 {
+                    if calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay) {
+                        Text("\(value.day)")
+                            .customFontTitle2Bold()
+                            .foregroundColor(Color("AccentStart"))
+                            .frame(maxWidth: .infinity)
+                            .offset(y: -1)
+                        Spacer()
+                    } else {
+                        Text("\(value.day)")
+                            .customFontTitle3Medium()
+                            .foregroundColor(Color.primary)
+                            .frame(maxWidth: .infinity)
+                        Spacer()
+                    }
+                    
+                    if calendarVM.totalCollectionOfEvents.first(where: { event in
+                        return calendarVM.isSameDay(date1: event.date, date2: value.date)
+                    }) != nil {
+        
+                        Circle()
+                            .fill(Color("AccentEnd"))
+                            .frame(width: 7, height: 7)
+                            .offset(y: calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay) ? -2 : 0)
+                            
+                    } else {
+                        Circle()
+                            .fill(Color("AccentEnd"))
+                            .frame(width: 7, height: 7)
+                            .offset(y: calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay) ? -2 : 0)
+                            .opacity(0.0)
+                    }
+                }
+                    
+            }
+            .padding(.vertical, 8)
+            .frame(
+                minHeight: UIScreen.main.bounds.height * 0.055, idealHeight: UIScreen.main.bounds.height * 0.065, maxHeight: UIScreen.main.bounds.height * 0.075,
+                alignment: .top)
+        }
+    
+    private var eventView: some View {
+        VStack(spacing: 0) {
+            HStack {
+                if calendarVM.isDateToday(calendarVM.highlightedDay) {
+                    Text("Today")
+                } else if calendarVM.isDateTomorrow(calendarVM.highlightedDay) {
+                    Text("Tomorrow")
+                } else if calendarVM.isDateYesterday(calendarVM.highlightedDay){
+                    Text("Yesterday")
+                } else {
+                    Text(calendarVM.displaySelectedDay())
+                }
+                
+                Spacer()
+                Button {
+                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                    withAnimation { calendarVM.isShowingAddEventView = true } }
+            label: {
+                Image(systemName: "plus")
+                    .foregroundColor(.primary)
+                    .font(.headline)
+            }
+            .buttonStyle(AddEventButtonStyle())
+            }
+            .customFontHeadline()
+            .foregroundColor(.primary)
+            .frame(maxWidth: .infinity , alignment: .leading)
+            .padding(.vertical, 10)
+            
+            
+            if let selectedDaysEvents = calendarVM.totalCollectionOfEvents.first(where: { value in
+                return calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay)
+            }) {
+                ScrollView(showsIndicators: false) {
+                    ForEach(selectedDaysEvents.todaysEvents) { event in
+                        VStack {
+                            EventCardView(event: event)
+                        }
+                        .padding(.top, 15)
+                    }
+                    .padding(.bottom, 65)
+                }
+            } else {
+                ScrollView(showsIndicators: false) {
+                    Text("No events")
+                        .customFontBodyRegular()
+                        .foregroundColor(.secondary)
+                        .padding(.top)
+                }
+            }
+        }
     }
     
     

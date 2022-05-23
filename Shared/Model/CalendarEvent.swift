@@ -18,6 +18,18 @@ struct CalendarEvent: Identifiable {
     var isAllday = false
     var isRepeating = false
     var isWithAlert = false
+    var eventType: EventType? = nil
+}
+
+enum EventType: String, Equatable, CaseIterable {
+    case personal = "Personal"
+    case work = "Work"
+    case holiday = "Holiday"
+    case birthday = "Birthday"
+    
+    
+    
+    var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
 
 // total task meta view

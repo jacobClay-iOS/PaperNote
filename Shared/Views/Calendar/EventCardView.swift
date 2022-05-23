@@ -24,10 +24,34 @@ struct EventCardView: View {
             .padding(.leading, 18)
             .background(
                 HStack {
-                    RoundedRectangle(cornerRadius: .infinity)
-                        .foregroundColor(.secondary)
-                        .frame(width: 4)
-                    Spacer()
+                    switch event.eventType {
+                    case .holiday:
+                        RoundedRectangle(cornerRadius: .infinity)
+                            .foregroundColor(.yellow)
+                            .frame(width: 4)
+                        Spacer()
+                    case .birthday:
+                        RoundedRectangle(cornerRadius: .infinity)
+                            .foregroundColor(.purple)
+                            .frame(width: 4)
+                        Spacer()
+                    case.work:
+                        RoundedRectangle(cornerRadius: .infinity)
+                            .foregroundColor(.red)
+                            .frame(width: 4)
+                        Spacer()
+                    case.personal:
+                        RoundedRectangle(cornerRadius: .infinity)
+                            .foregroundColor(.green)
+                            .frame(width: 4)
+                        Spacer()
+                    default:
+                        RoundedRectangle(cornerRadius: .infinity)
+                            .foregroundColor(.secondary)
+                            .frame(width: 4)
+                        Spacer()
+                    }
+                    
                 }
             )
             
@@ -70,11 +94,11 @@ struct EventCardView_Previews: PreviewProvider {
         Group {
             ZStack {
                 NeumorphicBackground()
-                EventCardView(event: CalendarEvent(title: "Sample Event", date: Date.now, isAllday: true, isRepeating: true, isWithAlert: true))
+                EventCardView(event: CalendarEvent(title: "Sample Event", date: Date.now, isAllday: true, isRepeating: true, isWithAlert: true, eventType: .holiday))
             }
             ZStack {
                 NeumorphicBackground()
-                EventCardView(event: CalendarEvent(title: "Sample Event", date: Date.now, isAllday: true, isRepeating: true, isWithAlert: true))
+                EventCardView(event: CalendarEvent(title: "Sample Event", date: Date.now, isAllday: true, isRepeating: true, isWithAlert: true, eventType: .work))
             }
             .preferredColorScheme(.dark)
         }
