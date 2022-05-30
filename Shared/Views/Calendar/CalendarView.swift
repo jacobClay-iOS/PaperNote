@@ -253,11 +253,9 @@ extension CalendarView {
                 return calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay)
             }) {
                 ScrollView(showsIndicators: false) {
-                    ForEach(selectedDaysEvents.todaysEvents) { event in
-                        VStack {
-                            EventCardView(event: event)
-                        }
-                        .padding(.top, 15)
+                    ForEach(selectedDaysEvents.todaysEvents.sorted(by: <)) { event in
+                        EventCardView(event: event)
+                            .padding(.top, 15)
                     }
                     .padding(.bottom, 65)
                 }
@@ -345,6 +343,7 @@ extension Date {
         return firstDay
     }
     
+    
     func currentDayNumber() -> Int {
         let calendar = Calendar.current
         let currentDay = calendar.component(.day, from: self)
@@ -363,6 +362,7 @@ struct CalendarView_Previews: PreviewProvider {
             VStack {
                 CalendarView()
             }
+            .environmentObject(CalendarVm())
 //                .preferredColorScheme(.dark)
         }
     }

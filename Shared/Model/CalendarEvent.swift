@@ -10,7 +10,19 @@ import SwiftUI
 // task model and sample tasks
 
 // array of tasks
-struct CalendarEvent: Identifiable {
+struct CalendarEvent: Identifiable, Comparable {
+    static func < (lhs: CalendarEvent, rhs: CalendarEvent) -> Bool {
+        if lhs.isAllday && rhs.isAllday {
+            return false
+        } else if lhs.isAllday && !rhs.isAllday {
+            return true
+        } else if !lhs.isAllday && rhs.isAllday {
+            return false
+        } else {
+            return lhs.date < rhs.date
+        }
+    }
+    
     var id = UUID().uuidString
     var title: String
     var note: String?

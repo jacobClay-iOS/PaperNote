@@ -122,6 +122,7 @@ class TaskListVM: ObservableObject {
         guard let index = initializedTaskList.list.firstIndex(where: { $0.id == task.id }) else { return }
         initializedTaskList.list[index].isTaskCompleted = true
         initializedTaskList.completedTaskCount += 1
+        
     }
     
     func unCompleteTask(_ task: TaskItem) {

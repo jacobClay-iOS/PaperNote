@@ -122,11 +122,18 @@ class CalendarVm: ObservableObject {
             // if it doesnt, create collection for that date
             let newEventCollection = EachDayEventCollection(todaysEvents: [event], date: event.date)
             totalCollectionOfEvents.append(newEventCollection)
+            print("a new collection was created")
+            print(collectionID)
+            print(event.date)
+            print(highlightedDay)
             return
         }
         // if it does, append event to that collection
         totalCollectionOfEvents[index].todaysEvents.append(event)
-        
+        print("__________________________")
+        print("This day has \(totalCollectionOfEvents[index].todaysEvents.count) events")
+        print("ID: \(collectionID)")
+        print("There are \(totalCollectionOfEvents.count) total event arrays")
     }
     
     

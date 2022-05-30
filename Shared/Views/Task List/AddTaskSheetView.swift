@@ -175,7 +175,7 @@ extension AddTaskSheetView {
     }
     
     private var priorityPicker: some View {
-        HStack(spacing: 8) {
+        HStack(spacing: 12) {
             Text("Priority:")
                 .customFontCaptionMedium()
             

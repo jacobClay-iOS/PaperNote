@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
-    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    <entity name="TaskItemEntity" representedClassName="TaskItemEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isTaskCompleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="note" optional="YES" attributeType="String"/>
+        <relationship name="taskList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TaskListEntity" inverseName="taskItems" inverseEntity="TaskListEntity"/>
+    </entity>
+    <entity name="TaskListEntity" representedClassName="TaskListEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="completedTaskCount" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="totalTaskCount" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="taskItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TaskItemEntity" inverseName="taskList" inverseEntity="TaskItemEntity"/>
     </entity>
     <elements>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="TaskListEntity" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="TaskItemEntity" positionX="-63" positionY="9" width="128" height="104"/>
     </elements>
 </model>

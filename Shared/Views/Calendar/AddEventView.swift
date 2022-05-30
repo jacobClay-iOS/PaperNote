@@ -75,6 +75,7 @@ struct AddEventView: View {
     
     private var header: some View {
         VStack {
+            Text("\(eventDate)")
             DragGestureTab()
             HStack(spacing: 15) {
                 Text(calendarVM.displaySelectedDay())
@@ -148,7 +149,7 @@ struct AddEventView: View {
             Text("Category")
                 .customFontCaptionMedium()
             Divider()
-            Picker("Repeat interval", selection: $eventType) {
+            Picker("Repeat Every", selection: $eventType) {
                 ForEach(EventType.allCases, id: \.self) { value in
                     Text(value.localizedName)
                         .tag(value)
@@ -219,7 +220,6 @@ struct AddEventView: View {
             calendarVM.addEventToCollection(event)
             eventFieldFocus = false
             calendarVM.isShowingAddEventView = false
-
         }
 }
 
