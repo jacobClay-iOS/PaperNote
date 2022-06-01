@@ -11,6 +11,16 @@ import SwiftUI
 
 // array of tasks
 struct CalendarEvent: Identifiable, Comparable {
+    
+    var id = UUID().uuidString
+    var title: String
+    var note: String?
+    var date: Date
+    var isAllday = false
+    var isRepeating = false
+    var isWithAlert = false
+    var eventType: EventType? = nil
+    
     static func < (lhs: CalendarEvent, rhs: CalendarEvent) -> Bool {
         if lhs.isAllday && rhs.isAllday {
             return false
@@ -22,15 +32,6 @@ struct CalendarEvent: Identifiable, Comparable {
             return lhs.date < rhs.date
         }
     }
-    
-    var id = UUID().uuidString
-    var title: String
-    var note: String?
-    var date: Date
-    var isAllday = false
-    var isRepeating = false
-    var isWithAlert = false
-    var eventType: EventType? = nil
 }
 
 enum EventType: String, Equatable, CaseIterable {
@@ -38,11 +39,22 @@ enum EventType: String, Equatable, CaseIterable {
     case work = "Work"
     case holiday = "Holiday"
     case birthday = "Birthday"
-    
-    
-    
+
     var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
+
+
+enum RepeatInterval: String, Equatable, CaseIterable {
+    case day = "Day"
+    case week = "Week"
+    case month = "Month"
+    case year = "Year"
+
+    var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
+}
+
+
+
 
 // total task meta view
 struct EachDayEventCollection: Identifiable {

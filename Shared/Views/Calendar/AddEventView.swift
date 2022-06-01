@@ -18,11 +18,11 @@ struct AddEventView: View {
     @State private var isWithAlert = false
     @State private var isShowingEventType = false
     @State private var eventName = ""
-    @State private var eventType: EventType = .personal
+    @State private var eventType: EventType?
     @State private var currentDragOffsetY: CGFloat = 0
     
-    let repeatingEventOptions = ["Day", "Week", "Month", "Year"]
-    @State private var selectedRepeatInterval = "Month"
+    
+    @State private var selectedRepeatInterval: RepeatInterval?
     
     var body: some View {
         
@@ -35,7 +35,7 @@ struct AddEventView: View {
                 
                 if isShowingEventType { eventTypePicker }
                 
-                if isRepeating { repeatPicker }
+                if isRepeating { repeatIntervalPicker }
                 
                     
                 toolBar
@@ -75,7 +75,6 @@ struct AddEventView: View {
     
     private var header: some View {
         VStack {
-            Text("\(eventDate)")
             DragGestureTab()
             HStack(spacing: 15) {
                 Text(calendarVM.displaySelectedDay())
@@ -128,14 +127,15 @@ struct AddEventView: View {
             .padding(.horizontal, 2)
     }
     
-    private var repeatPicker: some View {
+    private var repeatIntervalPicker: some View {
         VStack(spacing: 8) {
             Text("Repeat Interval")
                 .customFontCaptionMedium()
             Divider()
             Picker("Repeat interval", selection: $selectedRepeatInterval) {
-                ForEach(repeatingEventOptions, id: \.self) {
-                    Text($0)
+                ForEach(RepeatInterval.allCases, id: \.self) { value in
+                    Text(value.localizedName)
+                        .tag(value as RepeatInterval?)
             }
         }
             .pickerStyle(.segmented)
@@ -152,7 +152,7 @@ struct AddEventView: View {
             Picker("Repeat Every", selection: $eventType) {
                 ForEach(EventType.allCases, id: \.self) { value in
                     Text(value.localizedName)
-                        .tag(value)
+                        .tag(value as EventType?)
             }
         }
             .pickerStyle(.segmented)
