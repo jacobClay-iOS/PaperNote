@@ -21,6 +21,7 @@ struct HomeView: View {
             
             if !calendarVM.isShowingASheet {
                 TaskCollectionView()
+                    .transition(.move(edge: .bottom))
             }
                 
            

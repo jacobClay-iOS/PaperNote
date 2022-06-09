@@ -83,7 +83,7 @@ extension ListSettingsView {
     
     private var header: some View {
         HStack {
-            Text("Settings")
+            Text("Preferences")
                 .customFontHeadline()
                 .foregroundColor(.primary)
             Spacer()
@@ -92,29 +92,46 @@ extension ListSettingsView {
     
     private var settingsItems: some View {
         VStack {
-            HStack {
-                Text("Title: ")
-                    .customFontBodyRegular()
-                    .foregroundColor(.primary)
-                TextField("list name", text: $taskListVM.initializedTaskList.name)
-                    .focused($settingTextFieldFocus)
-                    .customFontBodyRegular()
-                    .foregroundColor(.primary)
-                    .submitLabel(.done)
-                    .onSubmit { settingTextFieldFocus = false }
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(alignment: .firstTextBaseline, spacing: 20) {
+                        Text("Title")
+                            .customFontCaptionMedium()
+                        TextField("list name", text: $taskListVM.initializedTaskList.name)
+                            .focused($settingTextFieldFocus)
+                            .customFontBodyRegular()
+                            .foregroundColor(.primary)
+                            .submitLabel(.done)
+                            .onSubmit { settingTextFieldFocus = false }
+                    }
+                    Divider()
                     
-                Spacer()
-            }
-         
-            HStack {
-                ColorPicker(selection: $taskListVM.initializedTaskList.customAccentColor, supportsOpacity: false) {
-                    Text("Accent color:")
-                        .customFontBodyRegular()
-                        .foregroundColor(.primary)
                 }
-                .frame(width: 165)
-                Spacer()
+                .foregroundColor(.primary)
+                .padding(.horizontal, 4)
+           
+                
+                    
+            VStack(alignment: .leading, spacing: 8) {
+                HStack(spacing: 20) {
+                    Text("Accent color")
+                        .customFontCaptionMedium()
+                    ColorPicker("Accent color", selection: $taskListVM.initializedTaskList.customAccentColor)
+                        .labelsHidden()
+                }
+                Divider()
+                
             }
+            .foregroundColor(.primary)
+            .padding(.horizontal, 4)
+//            HStack {
+//                ColorPicker(selection: $taskListVM.initializedTaskList.customAccentColor, supportsOpacity: false) {
+//                    Text("Accent color:")
+//                        .customFontBodyRegular()
+//                        .foregroundColor(.primary)
+//                }
+//                .frame(width: 165)
+//                Spacer()
+//            }
 
             
             Button {
@@ -143,9 +160,10 @@ extension ListSettingsView {
 struct ListSettingsView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
+            NeumorphicBackground()
             ListSettingsView(list: TaskList(name: "Grocery List", customAccentColor: Color.blue))
                 .environmentObject(TaskListVM())
-            .preferredColorScheme(.dark)
+//            .preferredColorScheme(.dark)
         }
     }
 }

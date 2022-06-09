@@ -128,7 +128,7 @@ struct AddEventView: View {
     }
     
     private var repeatIntervalPicker: some View {
-        VStack(spacing: 8) {
+        VStack(alignment: .leading, spacing: 8) {
             Text("Repeat Interval")
                 .customFontCaptionMedium()
             Divider()
@@ -145,7 +145,7 @@ struct AddEventView: View {
     }
     
     private var eventTypePicker: some View {
-        VStack(spacing: 8) {
+        VStack(alignment: .leading, spacing: 8) {
             Text("Category")
                 .customFontCaptionMedium()
             Divider()
