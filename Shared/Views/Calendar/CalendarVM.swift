@@ -13,7 +13,7 @@ class CalendarVm: ObservableObject {
     @Published var userSelectedMonth: Int = 0
     @Published var currentDay: Date = Date()
     @Published var highlightedDay: Date = Date()
-    
+    @Published var isEventViewExpanded = false
     @Published var isShowingAddEventView = false
     @Published var isShowingCalendarSettings = false
     @Published var totalCollectionOfEvents: [EachDayEventCollection] = [
@@ -26,9 +26,12 @@ class CalendarVm: ObservableObject {
     
     ]
     
-    
     var isShowingASheet: Bool {
         isShowingCalendarSettings || isShowingAddEventView
+    }
+    
+    var hideEventView: Bool {
+        !isEventViewExpanded && isShowingAddEventView
     }
 
     func isSameDay(date1: Date, date2: Date) -> Bool {

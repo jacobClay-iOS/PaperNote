@@ -5,13 +5,16 @@
 //  Created by Jacob Clay on 3/2/22.
 //
 
-import Foundation
+import SwiftUI
 
 class TaskCollectionVM: ObservableObject {
     @Published var collectionOfLists: [TaskList] = []
     @Published var newListTitle = ""
     @Published var isShowingListTitleField = false
     
+    @Published var startingOffsetY: CGFloat = UIScreen.main.bounds.height * 0.45
+    @Published var currentDragOffsetY: CGFloat = 0
+    @Published var hiddenOffsetY: CGFloat = 0
     
     init() {
         loadSampleCollection()
@@ -37,22 +40,22 @@ class TaskCollectionVM: ObservableObject {
     [
         TaskList(name: "Grocery List",
                  list: [
-                    TaskItem(name: "cereal", isTaskCompleted: false, note: "Lucky Charms"),
+                    TaskItem(name: "cereal", isTaskCompleted: true, note: ""),
                     TaskItem(name: "juice", isTaskCompleted: true, note: ""),
                     TaskItem(name: "bread", isTaskCompleted: true, note: "")
                  ],
                  totalTaskCount: 3,
-                 completedTaskCount: 2,
+                 completedTaskCount: 3,
                  customAccentColor: .mint
         ),
         TaskList(name: "To-do List",
                  list: [
-                    TaskItem(name: "download PaperNote", isTaskCompleted: true, note: "on iPhone, iPad, and Mac", priority: .high),
-                    TaskItem(name: "plan my day", isTaskCompleted: true, note: ""),
-                    TaskItem(name: "get things done!", isTaskCompleted: true, note: "")
+                    TaskItem(name: "plan my day", isTaskCompleted: false, note: ""),
+                    TaskItem(name: "get things done!", isTaskCompleted: false, note: ""),
+                    TaskItem(name: "download PaperNote", isTaskCompleted: true, note: "on iPhone, iPad, and Mac", priority: .high)
                  ],
                  totalTaskCount: 3,
-                 completedTaskCount: 3,
+                 completedTaskCount: 1,
                  customAccentColor: .indigo
         )
     ]

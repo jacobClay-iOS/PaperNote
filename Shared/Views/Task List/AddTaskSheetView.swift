@@ -175,10 +175,10 @@ extension AddTaskSheetView {
     }
     
     private var priorityPicker: some View {
-        HStack(spacing: 12) {
-            Text("Priority:")
+        VStack(alignment: .leading, spacing: 5) {
+            Text("Priority")
                 .customFontCaptionMedium()
-            
+            Divider()
             Picker("Repeat interval", selection: $taskListVM.taskPriority) {
                 ForEach(TaskPriority.allCases, id: \.self) { value in
                     Text(value.localizedName)

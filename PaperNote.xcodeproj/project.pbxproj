@@ -58,6 +58,18 @@
 		168FC5EB27D064FA00DD7ECA /* TaskListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168FC5E927D064FA00DD7ECA /* TaskListVM.swift */; };
 		169787952810E8D100599E46 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169787942810E8D100599E46 /* AddEventView.swift */; };
 		169787962810E8D100599E46 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169787942810E8D100599E46 /* AddEventView.swift */; };
+		16B323532856D64E00182779 /* NotepadCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B323522856D64E00182779 /* NotepadCollectionView.swift */; };
+		16B323542856D64E00182779 /* NotepadCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B323522856D64E00182779 /* NotepadCollectionView.swift */; };
+		16B323562856D65F00182779 /* NotepadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B323552856D65F00182779 /* NotepadView.swift */; };
+		16B323572856D65F00182779 /* NotepadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B323552856D65F00182779 /* NotepadView.swift */; };
+		16B323592856D67900182779 /* NotepadCollectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B323582856D67900182779 /* NotepadCollectionVM.swift */; };
+		16B3235A2856D67900182779 /* NotepadCollectionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B323582856D67900182779 /* NotepadCollectionVM.swift */; };
+		16B3235C2856D68B00182779 /* NotepadVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B3235B2856D68B00182779 /* NotepadVM.swift */; };
+		16B3235D2856D68B00182779 /* NotepadVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B3235B2856D68B00182779 /* NotepadVM.swift */; };
+		16B3235F2856D79C00182779 /* NotepadTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B3235E2856D79C00182779 /* NotepadTextEditor.swift */; };
+		16B323602856D79C00182779 /* NotepadTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B3235E2856D79C00182779 /* NotepadTextEditor.swift */; };
+		16BF99E928563F68005F11C9 /* AddNoteButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BF99E828563F68005F11C9 /* AddNoteButtonStyle.swift */; };
+		16BF99EA28563F68005F11C9 /* AddNoteButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BF99E828563F68005F11C9 /* AddNoteButtonStyle.swift */; };
 		16CEA9DA27D448D4005F8CEA /* AddListButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CEA9D927D448D4005F8CEA /* AddListButtonStyle.swift */; };
 		16CEA9DB27D448D4005F8CEA /* AddListButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CEA9D927D448D4005F8CEA /* AddListButtonStyle.swift */; };
 		16DACFB727EDF46000689729 /* Prototyping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DACFB627EDF46000689729 /* Prototyping.swift */; };
@@ -74,6 +86,8 @@
 		16DACFC727EFF83C00689729 /* CalendarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DACFC527EFF83C00689729 /* CalendarVM.swift */; };
 		16DACFCA27EFF9CE00689729 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DACFC927EFF9CE00689729 /* HomeView.swift */; };
 		16DACFCB27EFF9CE00689729 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DACFC927EFF9CE00689729 /* HomeView.swift */; };
+		16F24F9B2859731D00F59C01 /* ExpandedEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F24F9A2859731D00F59C01 /* ExpandedEventView.swift */; };
+		16F24F9C2859731D00F59C01 /* ExpandedEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F24F9A2859731D00F59C01 /* ExpandedEventView.swift */; };
 		16FE62E127C1C2E700034B0D /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE62E027C1C2E700034B0D /* TaskItem.swift */; };
 		16FE62E227C1C2E700034B0D /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE62E027C1C2E700034B0D /* TaskItem.swift */; };
 		16FE62E427C1C3B400034B0D /* TaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FE62E327C1C3B400034B0D /* TaskList.swift */; };
@@ -149,6 +163,12 @@
 		166AC4D527F14A9A00E197A1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		168FC5E927D064FA00DD7ECA /* TaskListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListVM.swift; sourceTree = "<group>"; };
 		169787942810E8D100599E46 /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
+		16B323522856D64E00182779 /* NotepadCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadCollectionView.swift; sourceTree = "<group>"; };
+		16B323552856D65F00182779 /* NotepadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadView.swift; sourceTree = "<group>"; };
+		16B323582856D67900182779 /* NotepadCollectionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadCollectionVM.swift; sourceTree = "<group>"; };
+		16B3235B2856D68B00182779 /* NotepadVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadVM.swift; sourceTree = "<group>"; };
+		16B3235E2856D79C00182779 /* NotepadTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadTextEditor.swift; sourceTree = "<group>"; };
+		16BF99E828563F68005F11C9 /* AddNoteButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteButtonStyle.swift; sourceTree = "<group>"; };
 		16CEA9D927D448D4005F8CEA /* AddListButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListButtonStyle.swift; sourceTree = "<group>"; };
 		16DACFB627EDF46000689729 /* Prototyping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototyping.swift; sourceTree = "<group>"; };
 		16DACFB927EDF5A700689729 /* RedHatText-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatText-Medium.ttf"; sourceTree = "<group>"; };
@@ -157,6 +177,7 @@
 		16DACFC227EDF60C00689729 /* RedHatText-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatText-MediumItalic.ttf"; sourceTree = "<group>"; };
 		16DACFC527EFF83C00689729 /* CalendarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVM.swift; sourceTree = "<group>"; };
 		16DACFC927EFF9CE00689729 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		16F24F9A2859731D00F59C01 /* ExpandedEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedEventView.swift; sourceTree = "<group>"; };
 		16FE62E027C1C2E700034B0D /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		16FE62E327C1C3B400034B0D /* TaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskList.swift; sourceTree = "<group>"; };
 		16FE62EA27C1C65A00034B0D /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
@@ -211,6 +232,7 @@
 				169787942810E8D100599E46 /* AddEventView.swift */,
 				163384C3281A37C000395BF5 /* EventCardView.swift */,
 				160E0E52281DEF2D0060D2F2 /* CalendarSettingsView.swift */,
+				16F24F9A2859731D00F59C01 /* ExpandedEventView.swift */,
 				16DACFC527EFF83C00689729 /* CalendarVM.swift */,
 			);
 			path = Calendar;
@@ -221,6 +243,7 @@
 			children = (
 				162809B227C348A9009425CE /* SunkenTextEditor.swift */,
 				162809B527C349C7009425CE /* SunkenTextField.swift */,
+				16B3235E2856D79C00182779 /* NotepadTextEditor.swift */,
 			);
 			path = "TextField Styles";
 			sourceTree = "<group>";
@@ -311,6 +334,17 @@
 			path = "Launch Screen";
 			sourceTree = "<group>";
 		};
+		16B323512856D5F100182779 /* Notepad */ = {
+			isa = PBXGroup;
+			children = (
+				16B323522856D64E00182779 /* NotepadCollectionView.swift */,
+				16B323582856D67900182779 /* NotepadCollectionVM.swift */,
+				16B323552856D65F00182779 /* NotepadView.swift */,
+				16B3235B2856D68B00182779 /* NotepadVM.swift */,
+			);
+			path = Notepad;
+			sourceTree = "<group>";
+		};
 		16DACFC827EFF9B500689729 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +405,7 @@
 				16FE630427C1C8C400034B0D /* AddTaskButtonStyle.swift */,
 				16CEA9D927D448D4005F8CEA /* AddListButtonStyle.swift */,
 				1658919227FD2FCC007D6D30 /* AddEventButtonStyle.swift */,
+				16BF99E828563F68005F11C9 /* AddNoteButtonStyle.swift */,
 			);
 			path = "Button Styles";
 			sourceTree = "<group>";
@@ -381,6 +416,7 @@
 				166AC4D427F14A7600E197A1 /* Launch Screen */,
 				16DACFC827EFF9B500689729 /* Home */,
 				1615B6A727ED418E00C5EA08 /* Calendar */,
+				16B323512856D5F100182779 /* Notepad */,
 				1637F39927D0547800CA2C3E /* Task List */,
 				16FE630B27C1CA8900034B0D /* Components */,
 				1631555427BBEC2600E05CD8 /* ContentView.swift */,
@@ -586,6 +622,7 @@
 				1631557E27BBEC2700E05CD8 /* PaperNoteApp.swift in Sources */,
 				1614256827C3D72200C74ACD /* AddTaskSheetView.swift in Sources */,
 				16FE630527C1C8C400034B0D /* AddTaskButtonStyle.swift in Sources */,
+				16B323532856D64E00182779 /* NotepadCollectionView.swift in Sources */,
 				162809B327C348A9009425CE /* SunkenTextEditor.swift in Sources */,
 				16FE631427C1CDE700034B0D /* NeumorphicBackground.swift in Sources */,
 				163384C4281A37C000395BF5 /* EventCardView.swift in Sources */,
@@ -598,9 +635,11 @@
 				1615B6AF27ED425F00C5EA08 /* CalendarDate.swift in Sources */,
 				162A585228027CA300D8B227 /* DragGestureTab.swift in Sources */,
 				160E0E53281DEF2D0060D2F2 /* CalendarSettingsView.swift in Sources */,
+				16B323562856D65F00182779 /* NotepadView.swift in Sources */,
 				1631558227BBEC2700E05CD8 /* Persistence.swift in Sources */,
 				162809B627C349C7009425CE /* SunkenTextField.swift in Sources */,
 				16DACFC627EFF83C00689729 /* CalendarVM.swift in Sources */,
+				16F24F9B2859731D00F59C01 /* ExpandedEventView.swift in Sources */,
 				1658919327FD2FCC007D6D30 /* AddEventButtonStyle.swift in Sources */,
 				168FC5EA27D064FA00DD7ECA /* TaskListVM.swift in Sources */,
 				16440C4227E15B8C00821F16 /* ListSettingsView.swift in Sources */,
@@ -608,8 +647,12 @@
 				1637F39E27D054C100CA2C3E /* TaskCollectionVM.swift in Sources */,
 				162809AF27C292AD009425CE /* ListItemView.swift in Sources */,
 				16FE62EB27C1C65A00034B0D /* FontManager.swift in Sources */,
+				16B3235F2856D79C00182779 /* NotepadTextEditor.swift in Sources */,
 				1631558027BBEC2700E05CD8 /* ContentView.swift in Sources */,
+				16B3235C2856D68B00182779 /* NotepadVM.swift in Sources */,
+				16B323592856D67900182779 /* NotepadCollectionVM.swift in Sources */,
 				16DACFB727EDF46000689729 /* Prototyping.swift in Sources */,
+				16BF99E928563F68005F11C9 /* AddNoteButtonStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,6 +667,7 @@
 				1631557F27BBEC2700E05CD8 /* PaperNoteApp.swift in Sources */,
 				1614256927C3D72200C74ACD /* AddTaskSheetView.swift in Sources */,
 				16FE630627C1C8C400034B0D /* AddTaskButtonStyle.swift in Sources */,
+				16B323542856D64E00182779 /* NotepadCollectionView.swift in Sources */,
 				162809B427C348A9009425CE /* SunkenTextEditor.swift in Sources */,
 				16FE631527C1CDE700034B0D /* NeumorphicBackground.swift in Sources */,
 				163384C5281A37C000395BF5 /* EventCardView.swift in Sources */,
@@ -636,9 +680,11 @@
 				1615B6B027ED425F00C5EA08 /* CalendarDate.swift in Sources */,
 				162A585328027CA300D8B227 /* DragGestureTab.swift in Sources */,
 				160E0E54281DEF2D0060D2F2 /* CalendarSettingsView.swift in Sources */,
+				16B323572856D65F00182779 /* NotepadView.swift in Sources */,
 				1631558327BBEC2700E05CD8 /* Persistence.swift in Sources */,
 				162809B727C349C7009425CE /* SunkenTextField.swift in Sources */,
 				16DACFC727EFF83C00689729 /* CalendarVM.swift in Sources */,
+				16F24F9C2859731D00F59C01 /* ExpandedEventView.swift in Sources */,
 				1658919427FD2FCC007D6D30 /* AddEventButtonStyle.swift in Sources */,
 				168FC5EB27D064FA00DD7ECA /* TaskListVM.swift in Sources */,
 				16440C4327E15B8C00821F16 /* ListSettingsView.swift in Sources */,
@@ -646,8 +692,12 @@
 				1637F39F27D054C100CA2C3E /* TaskCollectionVM.swift in Sources */,
 				162809B027C292AD009425CE /* ListItemView.swift in Sources */,
 				16FE62EC27C1C65A00034B0D /* FontManager.swift in Sources */,
+				16B323602856D79C00182779 /* NotepadTextEditor.swift in Sources */,
 				1631558127BBEC2700E05CD8 /* ContentView.swift in Sources */,
+				16B3235D2856D68B00182779 /* NotepadVM.swift in Sources */,
+				16B3235A2856D67900182779 /* NotepadCollectionVM.swift in Sources */,
 				16DACFB827EDF46000689729 /* Prototyping.swift in Sources */,
+				16BF99EA28563F68005F11C9 /* AddNoteButtonStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

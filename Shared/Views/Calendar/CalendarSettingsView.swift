@@ -34,12 +34,12 @@ struct CalendarSettingsView: View {
         .gesture(
             DragGesture()
                 .onChanged { value in
-                    withAnimation(.spring()) {
+                    withAnimation {
                         settingsViewDragOffset = value.translation.height
                     }
                 }
                 .onEnded { value in
-                    withAnimation(.spring()) {
+                    withAnimation {
                         if settingsViewDragOffset > 40 {
                             withAnimation {
                                 calendarVM.isShowingCalendarSettings = false

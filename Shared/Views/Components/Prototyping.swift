@@ -25,30 +25,51 @@ struct Prototyping: View {
     
     var body: some View {
         VStack {
-            SunkenTextField(textField: TextField("Time", text: $timeText))
-                .frame(width: 100)
-            
-            DatePicker("Title", selection: $sampleDate, displayedComponents: .hourAndMinute)
-                .datePickerStyle(.wheel)
-                .frame(height: 300)
-            Text("\(sampleDate.description)")
-            
-            HStack {
-                            Picker("", selection: $hours){
-                                ForEach(0..<4, id: \.self) { i in
-                                    Text("\(i) hours").tag(i)
-                                }
-                            }.pickerStyle(.wheel)
-                    .frame(width: 100)
-                            Picker("", selection: $minutes){
-                                ForEach(0..<60, id: \.self) { i in
-                                    Text("\(i) min").tag(i)
-                                }
-                            }
-                            .frame(width: 150)
-                            .pickerStyle(.wheel)
-                    
+            Button {
+                print("Balls")
+            } label: {
+                Image(systemName: "plus")
+                    .font(.largeTitle)
             }
+            .buttonStyle(AddListButtonStyle())
+            .padding()
+            
+            Button {
+                print("Balls")
+            } label: {
+                Image(systemName: "plus")
+                    .font(.largeTitle)
+            }
+            .buttonStyle(AddNoteButtonStyle())
+                
+        }
+            
+        
+//        VStack {
+//            SunkenTextField(textField: TextField("Time", text: $timeText))
+//                .frame(width: 100)
+//
+//            DatePicker("Title", selection: $sampleDate, displayedComponents: .hourAndMinute)
+//                .datePickerStyle(.wheel)
+//                .frame(height: 300)
+//            Text("\(sampleDate.description)")
+//
+//            HStack {
+//                            Picker("", selection: $hours){
+//                                ForEach(0..<4, id: \.self) { i in
+//                                    Text("\(i) hours").tag(i)
+//                                }
+//                            }.pickerStyle(.wheel)
+//                    .frame(width: 100)
+//                            Picker("", selection: $minutes){
+//                                ForEach(0..<60, id: \.self) { i in
+//                                    Text("\(i) min").tag(i)
+//                                }
+//                            }
+//                            .frame(width: 150)
+//                            .pickerStyle(.wheel)
+//
+//            }
             
 //            Picker(selection: $selectedColor) {
 //                ForEach(colors, id: \.self) {
@@ -70,7 +91,7 @@ struct Prototyping: View {
 //            .pickerStyle(.wheel)
 //            .frame(width: 100)
 //            .clipped()
-        }
+//        }
     }
     
 

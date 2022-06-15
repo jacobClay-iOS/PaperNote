@@ -37,6 +37,7 @@ struct AddEventView: View {
                 
                 if isRepeating { repeatIntervalPicker }
                 
+                if isWithAlert { alertPicker }
                     
                 toolBar
                 
@@ -55,12 +56,12 @@ struct AddEventView: View {
         .gesture(
             DragGesture()
                 .onChanged { value in
-                    withAnimation(.spring()) {
+                    withAnimation {
                         currentDragOffsetY = value.translation.height
                     }
                 }
                 .onEnded{ value in
-                    withAnimation(.spring()) {
+                    withAnimation {
                         if currentDragOffsetY > 40 {
                             withAnimation {
                                 eventFieldFocus = false
@@ -71,8 +72,25 @@ struct AddEventView: View {
                     currentDragOffsetY = 0
                 }
         )
+        .onDisappear {
+            calendarVM.isShowingAddEventView = false
+        }
     }
+}
+
+
+
+extension AddEventView {
+    // MARK: Functions
+    func addEvent() {
+//            let event = EachDayEventCollection(todaysEvents: [CalendarEvent(title: eventName, date: eventDate, isAllday: isAllDay, isRepeating: isRepeating, isWithAlert: isWithAlert)], date: eventDate)
+        let event = CalendarEvent(title: eventName, date: eventDate, isAllday: isAllDay, isRepeating: isRepeating, isWithAlert: isWithAlert, eventType: eventType)
+            calendarVM.addEventToCollection(event)
+            eventFieldFocus = false
+            calendarVM.isShowingAddEventView = false
+        }
     
+    // MARK: Views
     private var header: some View {
         VStack {
             DragGestureTab()
@@ -95,12 +113,15 @@ struct AddEventView: View {
                                 
                         )
                         .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                        .onTapGesture {
+                            isAllDay = false
+                        }
                 } else {
                     DatePicker(selection: $eventDate, displayedComponents: .hourAndMinute) {
                         Text("Today")
                     }
                     .labelsHidden()
-                    .datePickerStyle(.compact)
+//                    .datePickerStyle(.compact)
                 }
             }
         }
@@ -129,10 +150,21 @@ struct AddEventView: View {
     
     private var repeatIntervalPicker: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Repeat Interval")
-                .customFontCaptionMedium()
+            HStack {
+                Text("Repeat Interval")
+                    .customFontCaptionMedium()
+                Spacer()
+                if selectedRepeatInterval != nil {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.secondary)
+                        .font(.caption)
+                        .onTapGesture {
+                            selectedRepeatInterval = nil
+                        }
+                }
+            }
             Divider()
-            Picker("Repeat interval", selection: $selectedRepeatInterval) {
+            Picker("Repeat every", selection: $selectedRepeatInterval) {
                 ForEach(RepeatInterval.allCases, id: \.self) { value in
                     Text(value.localizedName)
                         .tag(value as RepeatInterval?)
@@ -146,8 +178,20 @@ struct AddEventView: View {
     
     private var eventTypePicker: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Category")
-                .customFontCaptionMedium()
+            HStack {
+                Text("Category")
+                    .customFontCaptionMedium()
+                Spacer()
+                if eventType != nil {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.secondary)
+                        .font(.caption)
+                        .onTapGesture {
+                            eventType = nil
+                        }
+                }
+                
+            }
             Divider()
             Picker("Repeat Every", selection: $eventType) {
                 ForEach(EventType.allCases, id: \.self) { value in
@@ -159,6 +203,20 @@ struct AddEventView: View {
         }
         .foregroundColor(.primary)
         .padding(.horizontal, 4)
+    }
+    
+    private var alertPicker: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Text("Alerts")
+                    .customFontCaptionMedium()
+                Spacer()
+                
+                
+            }
+            Divider()
+           Text("Content")
+        }
     }
     
     private var toolBar: some View {
@@ -213,14 +271,6 @@ struct AddEventView: View {
             
         }
     }
-    
-    func addEvent() {
-//            let event = EachDayEventCollection(todaysEvents: [CalendarEvent(title: eventName, date: eventDate, isAllday: isAllDay, isRepeating: isRepeating, isWithAlert: isWithAlert)], date: eventDate)
-        let event = CalendarEvent(title: eventName, date: eventDate, isAllday: isAllDay, isRepeating: isRepeating, isWithAlert: isWithAlert, eventType: eventType)
-            calendarVM.addEventToCollection(event)
-            eventFieldFocus = false
-            calendarVM.isShowingAddEventView = false
-        }
 }
 
 struct AddEventView_Previews: PreviewProvider {

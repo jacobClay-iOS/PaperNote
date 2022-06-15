@@ -14,9 +14,9 @@ struct TaskCollectionView: View {
     @FocusState private var newTaskListFieldFocus: Bool
     @EnvironmentObject var taskCollectionVM: TaskCollectionVM
     @Environment(\.scenePhase) var scenePhase
-    @State private var startingOffsetY: CGFloat = UIScreen.main.bounds.height * 0.65
-    @State private var currentDragOffsetY: CGFloat = 0
-    @State private var hiddenOffsetY: CGFloat = 0
+    @Binding var startingOffsetY: CGFloat
+    @Binding var currentDragOffsetY: CGFloat
+    @Binding var hiddenOffsetY: CGFloat
     
     
     var body: some View {
@@ -29,7 +29,9 @@ struct TaskCollectionView: View {
                         .padding(.horizontal)
                     if taskCollectionVM.isShowingListTitleField {
                         addListsheet
-                    } else { scrollingCollectionOfLists }
+                    } else {
+                        scrollingCollectionOfLists
+                    }
                 }
                 .padding(.top, 5)
                 Spacer()
@@ -50,14 +52,14 @@ struct TaskCollectionView: View {
         .gesture(
             DragGesture()
                 .onChanged { value in
-                    withAnimation(.spring()) {
+                    withAnimation {
                         currentDragOffsetY = value.translation.height
                     }
                 }
                 .onEnded{ value in
-                    withAnimation(.spring()) {
+                    withAnimation {
                         if (currentDragOffsetY > 40) && (!taskCollectionVM.isShowingListTitleField)  {
-                            hiddenOffsetY = UIScreen.main.bounds.height * 0.21
+                            hiddenOffsetY = UIScreen.main.bounds.height * 0.41
                         } else if hiddenOffsetY != 0 && currentDragOffsetY < -40 {
                             hiddenOffsetY = 0
                         } else if (taskCollectionVM.isShowingListTitleField) && (currentDragOffsetY > 40) {
@@ -160,6 +162,6 @@ extension TaskCollectionView {
 
 struct TaskCollectionView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskCollectionView()
+        TaskCollectionView(startingOffsetY: .constant(UIScreen.main.bounds.height * 0.45), currentDragOffsetY: .constant(0), hiddenOffsetY: .constant(0))
     }
 }

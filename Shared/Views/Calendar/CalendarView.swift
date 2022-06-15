@@ -17,20 +17,34 @@ struct CalendarView: View {
     var body: some View {
         ZStack {
             VStack(spacing: 15) {
-                header
-                    .padding(.horizontal)
-                    .padding(.bottom, -5)
-                    .padding(.top, 5)
-                    
-                VStack(spacing: 5) {
-                    dayOfTheWeekRow
-                        .padding(.horizontal, 2)
-                    calendar
+                if !calendarVM.isEventViewExpanded {
+                VStack {
+                    header
+                        .padding(.horizontal)
+                        .padding(.bottom, 4)
+                        .padding(.top, 5)
+                        .background(
+                            Color("Surface").ignoresSafeArea()
+                                .shadow(color: Color("OuterShadow"), radius: 4, y: 3)
+                        )
+                        
+                        
+                    VStack(spacing: 5) {
+                        dayOfTheWeekRow
+                            .padding(.horizontal, 2)
+                            .padding(.top, 4)
+                            calendar
+                                
+                        }
+                        
+                    }
+                .transition(.move(edge: .top))
                 }
-                if !calendarVM.isShowingAddEventView {
+                
+                if !calendarVM.hideEventView {
                     eventView
                         .padding(.horizontal)
-                } 
+                }
                 Spacer()
             }
             .opacity(calendarVM.isShowingASheet ? 0.5 : 1.0)
@@ -44,6 +58,7 @@ struct CalendarView: View {
                     
                 } else if newPhase == .background {
                     calendarVM.isShowingAddEventView = false
+                    
                     calendarVM.resetCalendar()
                 }
         }
@@ -53,16 +68,20 @@ struct CalendarView: View {
                     AddEventView(eventDate: $calendarVM.highlightedDay)
                         .transition(.move(edge: .bottom))
                 }
-            }
-            .zIndex(2)
-            
-            ZStack {
                 if calendarVM.isShowingCalendarSettings {
                     CalendarSettingsView()
                         .transition(.move(edge: .bottom))
                 }
             }
             .zIndex(2)
+            
+//            ZStack {
+//                if calendarVM.isShowingCalendarSettings {
+//                    CalendarSettingsView()
+//                        .transition(.move(edge: .bottom))
+//                }
+//            }
+//            .zIndex(2)
         }
        
 //        .environmentObject(calendarVM)
@@ -238,7 +257,6 @@ extension CalendarView {
                     withAnimation { calendarVM.isShowingAddEventView = true } }
             label: {
                 Image(systemName: "plus")
-                    .foregroundColor(.primary)
                     .font(.headline)
             }
             .buttonStyle(AddEventButtonStyle())
@@ -252,12 +270,31 @@ extension CalendarView {
             if let selectedDaysEvents = calendarVM.totalCollectionOfEvents.first(where: { value in
                 return calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay)
             }) {
-                ScrollView(showsIndicators: false) {
-                    ForEach(selectedDaysEvents.todaysEvents.sorted(by: <)) { event in
-                        EventCardView(event: event)
-                            .padding(.top, 15)
+                VStack {
+                    ScrollView(showsIndicators: false) {
+                        ForEach(selectedDaysEvents.todaysEvents.sorted(by: <)) { event in
+                            EventCardView(event: event)
+                                .padding(.top, 15)
+                        }
+                        Divider()
+                            .frame(maxWidth: 120)
+                            .padding(.top, 160)
+                        Button {
+                            withAnimation {
+                                
+                                calendarVM.isEventViewExpanded.toggle()
+                            }
+                        } label: {
+                            Text(calendarVM.isEventViewExpanded ? "Close" : "Expand")
+                                .customFontBodyLight()
+                                .foregroundColor(.secondary)
+                                
+                        }
+                        .buttonStyle(.plain)
+                        .padding(.bottom, 65)
+                        
                     }
-                    .padding(.bottom, 65)
+                    
                 }
             } else {
                 ScrollView(showsIndicators: false) {
@@ -363,7 +400,7 @@ struct CalendarView_Previews: PreviewProvider {
                 CalendarView()
             }
             .environmentObject(CalendarVm())
-//                .preferredColorScheme(.dark)
+                .preferredColorScheme(.dark)
         }
     }
 }

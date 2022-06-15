@@ -19,8 +19,8 @@ struct HomeView: View {
             }
 //            .ignoresSafeArea(.all, edges: .horizontal)
             
-            if !calendarVM.isShowingASheet {
-                TaskCollectionView()
+            if !calendarVM.isShowingASheet && !calendarVM.isEventViewExpanded {
+                TaskCollectionView(startingOffsetY: $taskCollectionVM.startingOffsetY, currentDragOffsetY: $taskCollectionVM.currentDragOffsetY, hiddenOffsetY: $taskCollectionVM.hiddenOffsetY)
                     .transition(.move(edge: .bottom))
             }
                 

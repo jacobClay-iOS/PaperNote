@@ -17,8 +17,8 @@ struct TaskItem: Identifiable {
 
 
 enum TaskPriority: String, Equatable, CaseIterable {
-    case low = "Low"
     case high = "High"
+    case low = "Low"
     
     var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
