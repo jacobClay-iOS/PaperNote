@@ -17,9 +17,9 @@ struct CalendarEvent: Identifiable, Comparable {
     var note: String?
     var date: Date
     var isAllday = false
-    var isRepeating = false
     var isWithAlert = false
     var eventType: EventType? = nil
+    var repeatInterval: RepeatInterval? = nil
     
     static func < (lhs: CalendarEvent, rhs: CalendarEvent) -> Bool {
         if lhs.isAllday && rhs.isAllday {
@@ -45,7 +45,6 @@ enum EventType: String, Equatable, CaseIterable {
 
 
 enum RepeatInterval: String, Equatable, CaseIterable {
-    case day = "Day"
     case week = "Week"
     case month = "Month"
     case year = "Year"

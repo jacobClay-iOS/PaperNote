@@ -18,7 +18,7 @@ struct EventCardView: View {
             Spacer()
             
             // MARK: Alert Symbols
-            if event.isRepeating {
+            if event.repeatInterval != nil {
                 Image(systemName: "repeat")
                     .font(.body)
                     .foregroundColor(.secondary)
@@ -103,15 +103,15 @@ struct EventCardView_Previews: PreviewProvider {
         Group {
             ZStack {
                 NeumorphicBackground()
-                EventCardView(event: CalendarEvent(title: "Sample Event", date: Date.now, isAllday: true, isRepeating: true, isWithAlert: false, eventType: .holiday))
+                EventCardView(event: CalendarEvent(title: "Sample Event", date: Date.now, isAllday: true, isWithAlert: false, eventType: .holiday, repeatInterval: .year))
             }
             ZStack {
                 NeumorphicBackground()
-                EventCardView(event: CalendarEvent(title: "Happy birthday!! :)", date: Date.now, isAllday: true, isRepeating: true, isWithAlert: true, eventType: .birthday))
+                EventCardView(event: CalendarEvent(title: "Happy birthday!! :)", date: Date.now, isAllday: true, isWithAlert: true, eventType: .birthday))
             }
             ZStack {
                 NeumorphicBackground()
-                EventCardView(event: CalendarEvent(title: "......dark mode eventwith a lot of text and stuff", date: Date.now, isAllday: true, isRepeating: true, isWithAlert: true))
+                EventCardView(event: CalendarEvent(title: "......dark mode eventwith a lot of text and stuff", date: Date.now, isAllday: true, isWithAlert: true))
             }
             .preferredColorScheme(.dark)
         }

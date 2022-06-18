@@ -195,48 +195,48 @@ extension CalendarView {
     }
     
     //    @ViewBuilder
-        private func CalendarDayView(value: CalendarDate) -> some View {
-            VStack {
-                if value.day != -1 {
-                    if calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay) {
-                        Text("\(value.day)")
-                            .customFontTitle2Bold()
-                            .foregroundColor(Color("AccentStart"))
-                            .frame(maxWidth: .infinity)
-                            .offset(y: -1)
-                        Spacer()
-                    } else {
-                        Text("\(value.day)")
-                            .customFontTitle3Medium()
-                            .foregroundColor(Color.primary)
-                            .frame(maxWidth: .infinity)
-                        Spacer()
-                    }
-                    
-                    if calendarVM.totalCollectionOfEvents.first(where: { event in
-                        return calendarVM.isSameDay(date1: event.date, date2: value.date)
-                    }) != nil {
-        
-                        Circle()
-                            .fill(Color("AccentEnd"))
-                            .frame(width: 7, height: 7)
-                            .offset(y: calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay) ? -2 : 0)
-                            
-                    } else {
-                        Circle()
-                            .fill(Color("AccentEnd"))
-                            .frame(width: 7, height: 7)
-                            .offset(y: calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay) ? -2 : 0)
-                            .opacity(0.0)
-                    }
+    private func CalendarDayView(value: CalendarDate) -> some View {
+        VStack {
+            if value.day != -1 {
+                if calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay) {
+                    Text("\(value.day)")
+                        .customFontTitle2Bold()
+                        .foregroundColor(Color("AccentStart"))
+                        .frame(maxWidth: .infinity)
+                        .offset(y: -1)
+                    Spacer()
+                } else {
+                    Text("\(value.day)")
+                        .customFontTitle3Medium()
+                        .foregroundColor(Color.primary)
+                        .frame(maxWidth: .infinity)
+                    Spacer()
                 }
-                    
+                
+                if calendarVM.totalCollectionOfEvents.first(where: { event in
+                    return calendarVM.isSameDay(date1: event.date, date2: value.date)
+                }) != nil {
+    
+                    Circle()
+                        .fill(Color("AccentEnd"))
+                        .frame(width: 7, height: 7)
+                        .offset(y: calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay) ? -2 : 0)
+                        
+                } else {
+                    Circle()
+                        .fill(Color("AccentEnd"))
+                        .frame(width: 7, height: 7)
+                        .offset(y: calendarVM.isSameDay(date1: value.date, date2: calendarVM.highlightedDay) ? -2 : 0)
+                        .opacity(0.0)
+                }
             }
-            .padding(.vertical, 8)
-            .frame(
-                minHeight: UIScreen.main.bounds.height * 0.055, idealHeight: UIScreen.main.bounds.height * 0.065, maxHeight: UIScreen.main.bounds.height * 0.075,
-                alignment: .top)
+                
         }
+        .padding(.vertical, 8)
+        .frame(
+            minHeight: UIScreen.main.bounds.height * 0.055, idealHeight: UIScreen.main.bounds.height * 0.065, maxHeight: UIScreen.main.bounds.height * 0.075,
+            alignment: .top)
+    }
     
     private var eventView: some View {
         VStack(spacing: 0) {

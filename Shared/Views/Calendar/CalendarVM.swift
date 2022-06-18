@@ -79,7 +79,7 @@ class CalendarVm: ObservableObject {
         
         return date.description
     }
-    // working here
+
     func displayEventTime(event: CalendarEvent) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"
@@ -115,6 +115,49 @@ class CalendarVm: ObservableObject {
         return days
     }
     
+    func gatherWeeklyIntervalDates(startingDate: Date) -> [Date] {
+        
+        let calendar = Calendar.current
+        let daysPerYear: Int = 364
+        let years: Int = 10
+        let multiplier = daysPerYear * years
+        var arrayOfDates: [Date] = []
+        
+        for num in stride(from: 0, to: multiplier, by: 7) {
+            guard let date = calendar.date(byAdding: .day, value: num, to: startingDate) else { return [Date()] }
+            arrayOfDates.append(date)
+        }
+        return arrayOfDates
+        
+    }
+    
+    func gatherMonthlyIntervalDates(startingDate: Date) -> [Date] {
+        
+        let calendar = Calendar.current
+        let numberOfMonths: Int = 12
+        let years: Int = 10
+        let multiplier = numberOfMonths * years
+        var arrayOfDates: [Date] = []
+        
+        for num in 0...multiplier {
+            guard let date = calendar.date(byAdding: .month, value: num, to: startingDate) else { return [Date()] }
+            arrayOfDates.append(date)
+        }
+        return arrayOfDates
+    }
+
+    func gatherYearlyIntervalDates(startingDate: Date) -> [Date] {
+        
+        let calendar = Calendar.current
+        let numberOfYears: Int = 10
+        var arrayOfDates: [Date] = []
+        
+        for num in 0...numberOfYears {
+            guard let date = calendar.date(byAdding: .year, value: num, to: startingDate) else { return [Date()] }
+            arrayOfDates.append(date)
+        }
+        return arrayOfDates
+    }
 
     
     func addEventToCollection(_ event: CalendarEvent) {
@@ -125,18 +168,65 @@ class CalendarVm: ObservableObject {
             // if it doesnt, create collection for that date
             let newEventCollection = EachDayEventCollection(todaysEvents: [event], date: event.date)
             totalCollectionOfEvents.append(newEventCollection)
-            print("a new collection was created")
-            print(collectionID)
-            print(event.date)
-            print(highlightedDay)
             return
         }
         // if it does, append event to that collection
         totalCollectionOfEvents[index].todaysEvents.append(event)
-        print("__________________________")
-        print("This day has \(totalCollectionOfEvents[index].todaysEvents.count) events")
-        print("ID: \(collectionID)")
-        print("There are \(totalCollectionOfEvents.count) total event arrays")
+       
+    }
+    
+    
+    func addEventWithRepeatInterval(_ event: CalendarEvent) {
+        switch event.repeatInterval {
+        case .week:
+            let repeatingEventIdSuffix = UUID().uuidString
+            let arrayofDates = gatherWeeklyIntervalDates(startingDate: event.date)
+            for date in 0...arrayofDates.count - 1 {
+                let newEvent = CalendarEvent(
+                    id: event.date.description.components(separatedBy: " ")[0] + repeatingEventIdSuffix,
+                    title: event.title,
+                    note: event.note,
+                    date: arrayofDates[date],
+                    isAllday: event.isAllday,
+                    isWithAlert: event.isWithAlert,
+                    eventType: event.eventType,
+                    repeatInterval: event.repeatInterval)
+                addEventToCollection(newEvent)
+            }
+            
+        case .month:
+            let repeatingEventIdSuffix = UUID().uuidString
+            let arrayofDates = gatherMonthlyIntervalDates(startingDate: event.date)
+            for date in 0...arrayofDates.count - 1 {
+                let newEvent = CalendarEvent(
+                    id: event.date.description.components(separatedBy: " ")[0] + repeatingEventIdSuffix,
+                    title: event.title,
+                    note: event.note,
+                    date: arrayofDates[date],
+                    isAllday: event.isAllday,
+                    isWithAlert: event.isWithAlert,
+                    eventType: event.eventType,
+                    repeatInterval: event.repeatInterval)
+                addEventToCollection(newEvent)
+            }
+        case .year:
+            let repeatingEventIdSuffix = UUID().uuidString
+            let arrayofDates = gatherYearlyIntervalDates(startingDate: event.date)
+            for date in 0...arrayofDates.count - 1 {
+                let newEvent = CalendarEvent(
+                    id: event.date.description.components(separatedBy: " ")[0] + repeatingEventIdSuffix,
+                    title: event.title,
+                    note: event.note,
+                    date: arrayofDates[date],
+                    isAllday: event.isAllday,
+                    isWithAlert: event.isWithAlert,
+                    eventType: event.eventType,
+                    repeatInterval: event.repeatInterval)
+                addEventToCollection(newEvent)
+            }
+        default:
+           addEventToCollection(event)
+        }
     }
     
     

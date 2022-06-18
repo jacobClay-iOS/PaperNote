@@ -84,8 +84,9 @@ extension AddEventView {
     // MARK: Functions
     func addEvent() {
 //            let event = EachDayEventCollection(todaysEvents: [CalendarEvent(title: eventName, date: eventDate, isAllday: isAllDay, isRepeating: isRepeating, isWithAlert: isWithAlert)], date: eventDate)
-        let event = CalendarEvent(title: eventName, date: eventDate, isAllday: isAllDay, isRepeating: isRepeating, isWithAlert: isWithAlert, eventType: eventType)
-            calendarVM.addEventToCollection(event)
+        let event = CalendarEvent(title: eventName, date: eventDate, isAllday: isAllDay, isWithAlert: isWithAlert, eventType: eventType, repeatInterval: selectedRepeatInterval)
+//            calendarVM.addEventToCollection(event)
+        calendarVM.addEventWithRepeatInterval(event)
             eventFieldFocus = false
             calendarVM.isShowingAddEventView = false
         }
