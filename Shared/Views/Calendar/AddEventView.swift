@@ -248,7 +248,7 @@ extension AddEventView {
                 
                 Button { withAnimation { isShowingEventType.toggle() } }
                  label: {
-                    Image(systemName: "eyedropper")
+                    Image(systemName: "paintpalette")
                         .font(.title2)
                         .foregroundColor(isShowingEventType ? Color.accentColor : .secondary)
                 }
