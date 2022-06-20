@@ -41,7 +41,16 @@ struct Prototyping: View {
                     .font(.largeTitle)
             }
             .buttonStyle(AddNoteButtonStyle())
-                
+            
+            Text("Content")
+                .contextMenu {
+                    Button {
+                        
+                    } label: {
+                        Text("Balls")
+                    }
+
+                }
         }
             
         

@@ -17,9 +17,9 @@ struct CalendarEvent: Identifiable, Comparable {
     var note: String?
     var date: Date
     var isAllday = false
-    var isWithAlert = false
     var eventType: EventType? = nil
     var repeatInterval: RepeatInterval? = nil
+    var eventAlert: EventAlerts? = nil
     
     static func < (lhs: CalendarEvent, rhs: CalendarEvent) -> Bool {
         if lhs.isAllday && rhs.isAllday {
@@ -52,6 +52,14 @@ enum RepeatInterval: String, Equatable, CaseIterable {
     var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
 
+
+enum EventAlerts: String, Equatable, CaseIterable {
+    case onTime = "On time"
+    case hourBefore = "Hour before"
+    case dayBefore = "Day before"
+
+    var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
+}
 
 
 

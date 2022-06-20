@@ -37,7 +37,7 @@ struct CalendarView: View {
                                 
                         }
                         
-                    }
+                }
                 .transition(.move(edge: .top))
                 }
                 
@@ -49,19 +49,7 @@ struct CalendarView: View {
             }
             .opacity(calendarVM.isShowingASheet ? 0.5 : 1.0)
             .disabled(calendarVM.isShowingASheet)
-            .onChange(of: scenePhase) { newPhase in
-                if newPhase == .active {
-//                    if !calendarVM.isShowingAddEventView {
-                        calendarVM.refreshCurrentDate()
-//                    }
-                } else if newPhase == .inactive {
-                    
-                } else if newPhase == .background {
-                    calendarVM.isShowingAddEventView = false
-                    
-                    calendarVM.resetCalendar()
-                }
-        }
+            
             
             ZStack {
                 if calendarVM.isShowingAddEventView {
@@ -74,23 +62,21 @@ struct CalendarView: View {
                 }
             }
             .zIndex(2)
-            
-//            ZStack {
-//                if calendarVM.isShowingCalendarSettings {
-//                    CalendarSettingsView()
-//                        .transition(.move(edge: .bottom))
-//                }
-//            }
-//            .zIndex(2)
         }
-       
-//        .environmentObject(calendarVM)
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                //                    if !calendarVM.isShowingAddEventView {
+                calendarVM.refreshCurrentDate()
+                //                    }
+            } else if newPhase == .inactive {
+                
+            } else if newPhase == .background {
+                calendarVM.isShowingAddEventView = false
+                
+                calendarVM.resetCalendar()
+            }
+        }
     }
-    
-
-    
-
-    
 }
 
 extension CalendarView {

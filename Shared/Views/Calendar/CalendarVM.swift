@@ -188,9 +188,9 @@ class CalendarVm: ObservableObject {
                     note: event.note,
                     date: arrayofDates[date],
                     isAllday: event.isAllday,
-                    isWithAlert: event.isWithAlert,
                     eventType: event.eventType,
-                    repeatInterval: event.repeatInterval)
+                    repeatInterval: event.repeatInterval,
+                    eventAlert: event.eventAlert)
                 addEventToCollection(newEvent)
             }
             
@@ -204,9 +204,9 @@ class CalendarVm: ObservableObject {
                     note: event.note,
                     date: arrayofDates[date],
                     isAllday: event.isAllday,
-                    isWithAlert: event.isWithAlert,
                     eventType: event.eventType,
-                    repeatInterval: event.repeatInterval)
+                    repeatInterval: event.repeatInterval,
+                    eventAlert: event.eventAlert)
                 addEventToCollection(newEvent)
             }
         case .year:
@@ -219,9 +219,9 @@ class CalendarVm: ObservableObject {
                     note: event.note,
                     date: arrayofDates[date],
                     isAllday: event.isAllday,
-                    isWithAlert: event.isWithAlert,
                     eventType: event.eventType,
-                    repeatInterval: event.repeatInterval)
+                    repeatInterval: event.repeatInterval,
+                    eventAlert: event.eventAlert)
                 addEventToCollection(newEvent)
             }
         default:

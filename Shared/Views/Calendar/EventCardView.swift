@@ -23,7 +23,7 @@ struct EventCardView: View {
                     .font(.body)
                     .foregroundColor(.secondary)
             }
-            if event.isWithAlert {
+            if event.eventAlert != nil {
                 Image(systemName: "bell")
                     .font(.body)
                     .foregroundColor(.secondary)
@@ -103,15 +103,15 @@ struct EventCardView_Previews: PreviewProvider {
         Group {
             ZStack {
                 NeumorphicBackground()
-                EventCardView(event: CalendarEvent(title: "Sample Event", date: Date.now, isAllday: true, isWithAlert: false, eventType: .holiday, repeatInterval: .year))
+                EventCardView(event: CalendarEvent(title: "Sample Event", date: Date.now, isAllday: true, eventType: .holiday, repeatInterval: .year, eventAlert: .hourBefore))
             }
             ZStack {
                 NeumorphicBackground()
-                EventCardView(event: CalendarEvent(title: "Happy birthday!! :)", date: Date.now, isAllday: true, isWithAlert: true, eventType: .birthday))
+                EventCardView(event: CalendarEvent(title: "Happy birthday!! :)", date: Date.now, isAllday: true, eventType: .birthday, eventAlert: .dayBefore))
             }
             ZStack {
                 NeumorphicBackground()
-                EventCardView(event: CalendarEvent(title: "......dark mode eventwith a lot of text and stuff", date: Date.now, isAllday: true, isWithAlert: true))
+                EventCardView(event: CalendarEvent(title: "......dark mode eventwith a lot of text and stuff", date: Date.now, isAllday: true))
             }
             .preferredColorScheme(.dark)
         }

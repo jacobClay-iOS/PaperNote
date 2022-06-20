@@ -19,10 +19,12 @@ struct AddEventView: View {
     @State private var isShowingEventType = false
     @State private var eventName = ""
     @State private var eventType: EventType?
+    @State private var eventAlert: EventAlerts?
+    @State private var selectedRepeatInterval: RepeatInterval?
     @State private var currentDragOffsetY: CGFloat = 0
     
     
-    @State private var selectedRepeatInterval: RepeatInterval?
+    
     
     var body: some View {
         
@@ -84,7 +86,7 @@ extension AddEventView {
     // MARK: Functions
     func addEvent() {
 //            let event = EachDayEventCollection(todaysEvents: [CalendarEvent(title: eventName, date: eventDate, isAllday: isAllDay, isRepeating: isRepeating, isWithAlert: isWithAlert)], date: eventDate)
-        let event = CalendarEvent(title: eventName, date: eventDate, isAllday: isAllDay, isWithAlert: isWithAlert, eventType: eventType, repeatInterval: selectedRepeatInterval)
+        let event = CalendarEvent(title: eventName, date: eventDate, isAllday: isAllDay, eventType: eventType, repeatInterval: selectedRepeatInterval, eventAlert: eventAlert)
 //            calendarVM.addEventToCollection(event)
         calendarVM.addEventWithRepeatInterval(event)
             eventFieldFocus = false
@@ -152,7 +154,7 @@ extension AddEventView {
     private var repeatIntervalPicker: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text("Repeat Interval")
+                Text("Repeat every")
                     .customFontCaptionMedium()
                 Spacer()
                 if selectedRepeatInterval != nil {
@@ -194,7 +196,7 @@ extension AddEventView {
                 
             }
             Divider()
-            Picker("Repeat Every", selection: $eventType) {
+            Picker("Event Category", selection: $eventType) {
                 ForEach(EventType.allCases, id: \.self) { value in
                     Text(value.localizedName)
                         .tag(value as EventType?)
@@ -212,11 +214,24 @@ extension AddEventView {
                 Text("Alerts")
                     .customFontCaptionMedium()
                 Spacer()
-                
+                if eventAlert != nil {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.secondary)
+                        .font(.caption)
+                        .onTapGesture {
+                            eventAlert = nil
+                        }
+                }
                 
             }
             Divider()
-           Text("Content")
+            Picker("alert timing", selection: $eventAlert) {
+                ForEach(EventAlerts.allCases, id: \.self) { value in
+                    Text(value.localizedName)
+                        .tag(value as EventAlerts?)
+            }
+        }
+            .pickerStyle(.segmented)
         }
     }
     
