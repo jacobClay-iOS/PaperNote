@@ -101,9 +101,10 @@ extension TaskCollectionView {
     }
     
     private var footer: some View {
-        Text("peek-a-boo ;)")
-            .foregroundColor(.secondary)
-            .customFontCaptionLight()
+        Image("NeumorphicText")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 200)
     }
     
     private var scrollingCollectionOfLists: some View {
